@@ -255,18 +255,33 @@ const server = http.createServer((req, res) => {
     if (pathname === '/') {
         filePath = path.join(__dirname, 'index.html');
     } else {
-        filePath = path.join(__dirname, pathname);
+        // Remove leading slash and join with __dirname
+        const cleanPath = pathname.startsWith('/') ? pathname.slice(1) : pathname;
+        filePath = path.join(__dirname, cleanPath);
     }
     
     // Security check - prevent directory traversal
-    if (!filePath.startsWith(__dirname)) {
+    const normalizedPath = path.normalize(filePath);
+    if (!normalizedPath.startsWith(__dirname)) {
         sendResponse(res, 403, { error: 'Forbidden' });
         return;
     }
 
-    // Check if file exists
-    if (!fs.existsSync(filePath) || !fs.statSync(filePath).isFile()) {
+    // Check if file exists and log for debugging
+    console.log(`📁 Looking for file: ${filePath}`);
+    console.log(`📂 Directory exists: ${fs.existsSync(path.dirname(filePath))}`);
+    console.log(`📄 File exists: ${fs.existsSync(filePath)}`);
+    
+    if (!fs.existsSync(filePath)) {
+        console.log(`❌ File not found: ${filePath}`);
         sendResponse(res, 404, { error: 'File not found' });
+        return;
+    }
+    
+    const stats = fs.statSync(filePath);
+    if (!stats.isFile()) {
+        console.log(`❌ Not a file: ${filePath}`);
+        sendResponse(res, 404, { error: 'Not a file' });
         return;
     }
 
@@ -305,6 +320,32 @@ server.listen(PORT, '0.0.0.0', () => {
     console.log(`✅ RecetasWorld server running on port ${PORT}`);
     console.log(`🌐 Frontend available at: http://localhost:${PORT}`);
     console.log(`🔗 API available at: http://localhost:${PORT}/api/`);
+    console.log(`📁 Working directory: ${__dirname}`);
+    
+    // List directory contents for debugging
+    console.log('\n📂 Directory structure:');
+    try {
+        const files = fs.readdirSync(__dirname);
+        files.forEach(file => {
+            const filePath = path.join(__dirname, file);
+            const stats = fs.statSync(filePath);
+            if (stats.isDirectory()) {
+                console.log(`  📁 ${file}/`);
+                try {
+                    const subFiles = fs.readdirSync(filePath);
+                    subFiles.forEach(subFile => {
+                        console.log(`    📄 ${file}/${subFile}`);
+                    });
+                } catch (e) {
+                    console.log(`    ❌ Cannot read directory: ${e.message}`);
+                }
+            } else {
+                console.log(`  📄 ${file}`);
+            }
+        });
+    } catch (e) {
+        console.log(`❌ Cannot read root directory: ${e.message}`);
+    }
 });
 
 // Add some sample data
