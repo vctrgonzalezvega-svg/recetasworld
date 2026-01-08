@@ -8067,4 +8067,6 @@ button#advancedFiltersBtn i,
 
 .upload-card.rejected {
     border-color: var(--danger);
+/* Updated for Render */
+
 }
