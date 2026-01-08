@@ -1,15 +1,11 @@
 {
   "name": "recetasworld",
   "version": "1.0.0",
-  "description": "RecetasWorld - Recipe management app",
-  "main": "server.js",
+  "main": "index.js",
   "scripts": {
-    "start": "node server.js"
+    "start": "node index.js"
   },
   "engines": {
     "node": "18.x"
-  },
-  "keywords": ["recipes", "nodejs"],
-  "author": "RecetasWorld Team",
-  "license": "MIT"
+  }
 }
