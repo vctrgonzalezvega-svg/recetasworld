@@ -8793,4 +8793,5 @@ document.addEventListener('DOMContentLoaded', () => {
     console.log('🚀 Inicializando RecetasWorld...');
     window.app = new RecipesApp();
     app = window.app; // Para compatibilidad
+ // Updated for Render
 });
