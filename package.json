@@ -4,16 +4,12 @@
   "description": "RecetasWorld - Recipe management app",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js",
-    "dev": "node server.js"
+    "start": "node server.js"
   },
   "engines": {
     "node": "18.x"
   },
-  "dependencies": {
-    "sqlite3": "^5.1.7"
-  },
-  "keywords": ["recipes", "nodejs", "sqlite"],
+  "keywords": ["recipes", "nodejs"],
   "author": "RecetasWorld Team",
   "license": "MIT"
 }

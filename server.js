@@ -2,48 +2,78 @@ const http = require('http');
 const fs = require('fs');
 const path = require('path');
 const url = require('url');
-const sqlite3 = require('sqlite3').verbose();
 
-// Configuración simple para Railway
+// Simple configuration for Railway
 const PORT = process.env.PORT || 3000;
 const NODE_ENV = process.env.NODE_ENV || 'production';
 
-console.log(`🚀 Starting server on port ${PORT}`);
+console.log(`🚀 Starting RecetasWorld server on port ${PORT}`);
 console.log(`🌐 Environment: ${NODE_ENV}`);
 
 const ROOT = path.resolve(__dirname);
-const DB_PATH = path.join(ROOT, 'data', 'database.sqlite');
+
+// Use JSON file instead of SQLite for Railway compatibility
+const DATA_DIR = path.join(ROOT, 'data');
+const RECIPES_FILE = path.join(DATA_DIR, 'recipes.json');
+const USERS_FILE = path.join(DATA_DIR, 'users.json');
 
 // Ensure data directory exists
-const dataDir = path.join(ROOT, 'data');
-if (!fs.existsSync(dataDir)) {
-    fs.mkdirSync(dataDir, { recursive: true });
+if (!fs.existsSync(DATA_DIR)) {
+    fs.mkdirSync(DATA_DIR, { recursive: true });
 }
 
-// Initialize database
-const db = new sqlite3.Database(DB_PATH);
+// Initialize data files
+function initializeData() {
+    if (!fs.existsSync(RECIPES_FILE)) {
+        fs.writeFileSync(RECIPES_FILE, JSON.stringify([]));
+    }
+    if (!fs.existsSync(USERS_FILE)) {
+        fs.writeFileSync(USERS_FILE, JSON.stringify([]));
+    }
+}
 
-db.serialize(() => {
-    db.run(`CREATE TABLE IF NOT EXISTS users (
-        id INTEGER PRIMARY KEY AUTOINCREMENT,
-        username TEXT UNIQUE,
-        password TEXT,
-        role TEXT
-    )`);
-    
-    db.run(`CREATE TABLE IF NOT EXISTS recipes (
-        id INTEGER PRIMARY KEY AUTOINCREMENT,
-        nombre TEXT,
-        pais TEXT,
-        tiempo INTEGER,
-        categorias TEXT,
-        ingredientes TEXT,
-        instrucciones TEXT,
-        imagen TEXT,
-        calificacion REAL DEFAULT 0,
-        resenas INTEGER DEFAULT 0
-    )`);
-});
+initializeData();
+
+// Helper functions
+function loadRecipes() {
+    try {
+        const data = fs.readFileSync(RECIPES_FILE, 'utf8');
+        return JSON.parse(data);
+    } catch (err) {
+        console.error('Error loading recipes:', err);
+        return [];
+    }
+}
+
+function saveRecipes(recipes) {
+    try {
+        fs.writeFileSync(RECIPES_FILE, JSON.stringify(recipes, null, 2));
+        return true;
+    } catch (err) {
+        console.error('Error saving recipes:', err);
+        return false;
+    }
+}
+
+function loadUsers() {
+    try {
+        const data = fs.readFileSync(USERS_FILE, 'utf8');
+        return JSON.parse(data);
+    } catch (err) {
+        console.error('Error loading users:', err);
+        return [];
+    }
+}
+
+function saveUsers(users) {
+    try {
+        fs.writeFileSync(USERS_FILE, JSON.stringify(users, null, 2));
+        return true;
+    } catch (err) {
+        console.error('Error saving users:', err);
+        return false;
+    }
+}
 
 function sendJSON(res, status, obj) {
     res.writeHead(status, {
@@ -64,24 +94,11 @@ function readRequestBody(req) {
     });
 }
 
-function serializeRecipeRow(r) {
-    return {
-        id: r.id,
-        nombre: r.nombre,
-        pais: r.pais,
-        tiempo: r.tiempo,
-        categorias: r.categorias ? JSON.parse(r.categorias) : [],
-        ingredientes: r.ingredientes ? JSON.parse(r.ingredientes) : [],
-        instrucciones: r.instrucciones ? JSON.parse(r.instrucciones) : [],
-        imagen: r.imagen || '',
-        calificacion: r.calificacion || 0,
-        resenas: r.resenas || 0
-    };
-}
-
 const server = http.createServer(async (req, res) => {
     const parsed = url.parse(req.url, true);
     const pathname = parsed.pathname;
+
+    console.log(`${req.method} ${pathname}`);
 
     // Handle CORS preflight
     if (req.method === 'OPTIONS') {
@@ -94,12 +111,25 @@ const server = http.createServer(async (req, res) => {
         return;
     }
 
-    // Health check for Railway
-    if (pathname === '/health' || pathname === '/api/health') {
+    // Health check endpoints
+    if (pathname === '/health' || pathname === '/api/health' || pathname === '/') {
+        if (pathname === '/') {
+            // Serve index.html for root path
+            const indexPath = path.join(ROOT, 'index.html');
+            if (fs.existsSync(indexPath)) {
+                const content = fs.readFileSync(indexPath);
+                res.writeHead(200, { 'Content-Type': 'text/html' });
+                res.end(content);
+                return;
+            }
+        }
+        
         return sendJSON(res, 200, { 
             status: 'ok', 
+            message: 'RecetasWorld server is running',
             timestamp: new Date().toISOString(),
-            port: PORT 
+            port: PORT,
+            environment: NODE_ENV
         });
     }
 
@@ -108,12 +138,8 @@ const server = http.createServer(async (req, res) => {
         try {
             // GET recipes
             if (req.method === 'GET' && pathname === '/api/recipes') {
-                db.all('SELECT * FROM recipes ORDER BY id DESC', [], (err, rows) => {
-                    if (err) return sendJSON(res, 500, { ok: false, error: err.message });
-                    const recetas = rows.map(serializeRecipeRow);
-                    return sendJSON(res, 200, { recetas });
-                });
-                return;
+                const recipes = loadRecipes();
+                return sendJSON(res, 200, { recetas: recipes });
             }
 
             // POST create recipe
@@ -154,26 +180,29 @@ const server = http.createServer(async (req, res) => {
                     }
                 }
 
-                const sql = `INSERT INTO recipes (nombre,pais,tiempo,categorias,ingredientes,instrucciones,imagen) VALUES (?,?,?,?,?,?,?)`;
-                const params = [
-                    payload.nombre.trim(),
-                    (payload.pais || '').trim(),
-                    parseInt(payload.tiempo) || 0,
-                    JSON.stringify(payload.categorias || []),
-                    JSON.stringify(payload.ingredientes || []),
-                    JSON.stringify(payload.instrucciones || []),
-                    payload.imagen || ''
-                ];
+                const recipes = loadRecipes();
+                const newId = recipes.length > 0 ? Math.max(...recipes.map(r => r.id || 0)) + 1 : 1;
+                
+                const newRecipe = {
+                    id: newId,
+                    nombre: payload.nombre.trim(),
+                    pais: (payload.pais || '').trim(),
+                    tiempo: parseInt(payload.tiempo) || 0,
+                    categorias: payload.categorias || [],
+                    ingredientes: payload.ingredientes || [],
+                    instrucciones: payload.instrucciones || [],
+                    imagen: payload.imagen || '',
+                    calificacion: 0,
+                    resenas: 0
+                };
 
-                db.run(sql, params, function(err) {
-                    if (err) return sendJSON(res, 500, { ok: false, error: err.message });
-                    
-                    db.get('SELECT * FROM recipes WHERE id = ?', [this.lastID], (err, row) => {
-                        if (err) return sendJSON(res, 500, { ok: false, error: err.message });
-                        return sendJSON(res, 201, { ok: true, receta: serializeRecipeRow(row) });
-                    });
-                });
-                return;
+                recipes.unshift(newRecipe);
+                
+                if (saveRecipes(recipes)) {
+                    return sendJSON(res, 201, { ok: true, receta: newRecipe });
+                } else {
+                    return sendJSON(res, 500, { ok: false, error: 'Failed to save recipe' });
+                }
             }
 
             // PUT update recipe
@@ -213,34 +242,32 @@ const server = http.createServer(async (req, res) => {
                     }
                 }
 
-                db.get('SELECT * FROM recipes WHERE id = ?', [id], (err, currentRow) => {
-                    if (err) return sendJSON(res, 500, { ok: false, error: err.message });
-                    if (!currentRow) return sendJSON(res, 404, { ok: false, error: 'Recipe not found' });
+                const recipes = loadRecipes();
+                const recipeIndex = recipes.findIndex(r => r.id === id);
+                
+                if (recipeIndex === -1) {
+                    return sendJSON(res, 404, { ok: false, error: 'Recipe not found' });
+                }
 
-                    const merged = {
-                        nombre: (payload.nombre !== undefined ? payload.nombre : currentRow.nombre) || '',
-                        pais: (payload.pais !== undefined ? payload.pais : currentRow.pais) || '',
-                        tiempo: (payload.tiempo !== undefined ? parseInt(payload.tiempo) : currentRow.tiempo) || 0,
-                        categorias: JSON.stringify(payload.categorias !== undefined ? payload.categorias : (currentRow.categorias ? JSON.parse(currentRow.categorias) : [])),
-                        ingredientes: JSON.stringify(payload.ingredientes !== undefined ? payload.ingredientes : (currentRow.ingredientes ? JSON.parse(currentRow.ingredientes) : [])),
-                        instrucciones: JSON.stringify(payload.instrucciones !== undefined ? payload.instrucciones : (currentRow.instrucciones ? JSON.parse(currentRow.instrucciones) : [])),
-                        imagen: (payload.imagen !== undefined ? payload.imagen : currentRow.imagen) || ''
-                    };
+                const currentRecipe = recipes[recipeIndex];
+                const updatedRecipe = {
+                    ...currentRecipe,
+                    nombre: payload.nombre !== undefined ? payload.nombre.trim() : currentRecipe.nombre,
+                    pais: payload.pais !== undefined ? payload.pais.trim() : currentRecipe.pais,
+                    tiempo: payload.tiempo !== undefined ? parseInt(payload.tiempo) : currentRecipe.tiempo,
+                    categorias: payload.categorias !== undefined ? payload.categorias : currentRecipe.categorias,
+                    ingredientes: payload.ingredientes !== undefined ? payload.ingredientes : currentRecipe.ingredientes,
+                    instrucciones: payload.instrucciones !== undefined ? payload.instrucciones : currentRecipe.instrucciones,
+                    imagen: payload.imagen !== undefined ? payload.imagen : currentRecipe.imagen
+                };
 
-                    const sql = `UPDATE recipes SET nombre=?,pais=?,tiempo=?,categorias=?,ingredientes=?,instrucciones=?,imagen=? WHERE id=?`;
-                    const params = [merged.nombre, merged.pais, merged.tiempo, merged.categorias, merged.ingredientes, merged.instrucciones, merged.imagen, id];
-
-                    db.run(sql, params, function(err) {
-                        if (err) return sendJSON(res, 500, { ok: false, error: err.message });
-                        if (this.changes === 0) return sendJSON(res, 404, { ok: false, error: 'Recipe not found' });
-                        
-                        db.get('SELECT * FROM recipes WHERE id = ?', [id], (err, row) => {
-                            if (err) return sendJSON(res, 500, { ok: false, error: err.message });
-                            return sendJSON(res, 200, { ok: true, receta: serializeRecipeRow(row) });
-                        });
-                    });
-                });
-                return;
+                recipes[recipeIndex] = updatedRecipe;
+                
+                if (saveRecipes(recipes)) {
+                    return sendJSON(res, 200, { ok: true, receta: updatedRecipe });
+                } else {
+                    return sendJSON(res, 500, { ok: false, error: 'Failed to update recipe' });
+                }
             }
 
             // DELETE recipe
@@ -248,50 +275,59 @@ const server = http.createServer(async (req, res) => {
                 const id = parseInt(parsed.query.id, 10);
                 if (!id) return sendJSON(res, 400, { ok: false, error: 'ID required' });
 
-                db.get('SELECT * FROM recipes WHERE id = ?', [id], (err, row) => {
-                    if (err) return sendJSON(res, 500, { ok: false, error: err.message });
-                    if (!row) return sendJSON(res, 404, { ok: false, error: 'Not found' });
+                const recipes = loadRecipes();
+                const recipeIndex = recipes.findIndex(r => r.id === id);
+                
+                if (recipeIndex === -1) {
+                    return sendJSON(res, 404, { ok: false, error: 'Recipe not found' });
+                }
 
-                    db.run('DELETE FROM recipes WHERE id = ?', [id], function(err) {
-                        if (err) return sendJSON(res, 500, { ok: false, error: err.message });
-                        return sendJSON(res, 200, { ok: true });
-                    });
-                });
-                return;
+                recipes.splice(recipeIndex, 1);
+                
+                if (saveRecipes(recipes)) {
+                    return sendJSON(res, 200, { ok: true });
+                } else {
+                    return sendJSON(res, 500, { ok: false, error: 'Failed to delete recipe' });
+                }
             }
 
             // GET users
             if (req.method === 'GET' && pathname === '/api/users') {
-                db.all('SELECT id,username,role FROM users ORDER BY id DESC', [], (err, rows) => {
-                    if (err) return sendJSON(res, 500, { ok: false, error: err.message });
-                    return sendJSON(res, 200, { users: rows });
-                });
-                return;
+                const users = loadUsers();
+                return sendJSON(res, 200, { users: users.map(u => ({ id: u.id, username: u.username, role: u.role })) });
             }
 
             // POST register
             if (req.method === 'POST' && pathname === '/api/register') {
                 const body = await readRequestBody(req);
                 const payload = JSON.parse(body || '{}');
+                
                 if (!payload.username || !payload.password) {
                     return sendJSON(res, 400, { ok: false, error: 'Username and password required' });
                 }
 
-                db.get('SELECT * FROM users WHERE username = ?', [payload.username], (err, existing) => {
-                    if (err) return sendJSON(res, 500, { ok: false, error: err.message });
-                    if (existing) return sendJSON(res, 409, { ok: false, error: 'User exists' });
+                const users = loadUsers();
+                const existingUser = users.find(u => u.username === payload.username);
+                
+                if (existingUser) {
+                    return sendJSON(res, 409, { ok: false, error: 'User already exists' });
+                }
 
-                    const role = payload.role === 'admin' ? 'admin' : 'user';
-                    db.run('INSERT INTO users (username,password,role) VALUES (?,?,?)', [payload.username, payload.password, role], function(err) {
-                        if (err) return sendJSON(res, 500, { ok: false, error: err.message });
-                        const newId = this.lastID;
-                        db.get('SELECT id,username,role FROM users WHERE id = ?', [newId], (err, user) => {
-                            if (err) return sendJSON(res, 500, { ok: false, error: err.message });
-                            return sendJSON(res, 201, { ok: true, user });
-                        });
-                    });
-                });
-                return;
+                const newId = users.length > 0 ? Math.max(...users.map(u => u.id || 0)) + 1 : 1;
+                const newUser = {
+                    id: newId,
+                    username: payload.username,
+                    password: payload.password,
+                    role: payload.role === 'admin' ? 'admin' : 'user'
+                };
+
+                users.push(newUser);
+                
+                if (saveUsers(users)) {
+                    return sendJSON(res, 201, { ok: true, user: { id: newUser.id, username: newUser.username, role: newUser.role } });
+                } else {
+                    return sendJSON(res, 500, { ok: false, error: 'Failed to create user' });
+                }
             }
 
             // POST login
@@ -299,18 +335,20 @@ const server = http.createServer(async (req, res) => {
                 const body = await readRequestBody(req);
                 const payload = JSON.parse(body || '{}');
                 
-                db.get('SELECT id,username,role FROM users WHERE username = ? AND password = ?', [payload.username, payload.password], (err, user) => {
-                    if (err) return sendJSON(res, 500, { ok: false, error: err.message });
-                    if (!user) return sendJSON(res, 401, { ok: false, error: 'Invalid credentials' });
-                    return sendJSON(res, 200, { ok: true, user });
-                });
-                return;
+                const users = loadUsers();
+                const user = users.find(u => u.username === payload.username && u.password === payload.password);
+                
+                if (!user) {
+                    return sendJSON(res, 401, { ok: false, error: 'Invalid credentials' });
+                }
+                
+                return sendJSON(res, 200, { ok: true, user: { id: user.id, username: user.username, role: user.role } });
             }
 
             return sendJSON(res, 404, { ok: false, error: 'API route not found' });
         } catch (err) {
             console.error('API error:', err);
-            return sendJSON(res, 500, { ok: false, error: 'Server error' });
+            return sendJSON(res, 500, { ok: false, error: 'Server error: ' + err.message });
         }
     }
 
@@ -325,7 +363,7 @@ const server = http.createServer(async (req, res) => {
     fs.stat(filePath, (err, stats) => {
         if (err || !stats.isFile()) {
             res.writeHead(404, { 'Content-Type': 'text/html' });
-            res.end('<h1>404 - File not found</h1>');
+            res.end('<h1>404 - File not found</h1><p>RecetasWorld Server is running</p>');
             return;
         }
 
@@ -359,6 +397,8 @@ const server = http.createServer(async (req, res) => {
 });
 
 server.listen(PORT, '0.0.0.0', () => {
-    console.log(`✅ Server running on port ${PORT}`);
+    console.log(`✅ RecetasWorld server is running on port ${PORT}`);
     console.log(`🌐 Environment: ${NODE_ENV}`);
+    console.log(`📁 Data directory: ${DATA_DIR}`);
+    console.log(`🔗 Health check available at /health`);
 });
