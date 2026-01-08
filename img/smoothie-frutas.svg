@@ -1,0 +1,67 @@
+<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="smoothieGlass" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#FCE4EC;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#F8BBD9;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="smoothie" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#F48FB1;stop-opacity:0.9" />
+      <stop offset="50%" style="stop-color:#EC407A;stop-opacity:0.9" />
+      <stop offset="100%" style="stop-color:#E91E63;stop-opacity:0.9" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background circle -->
+  <circle cx="100" cy="100" r="95" fill="#FCE4EC" stroke="#E91E63" stroke-width="3"/>
+  
+  <!-- Glass -->
+  <path d="M70 70 L130 70 L125 160 L75 160 Z" fill="url(#smoothieGlass)" stroke="#AD1457" stroke-width="2"/>
+  
+  <!-- Smoothie -->
+  <path d="M75 75 L125 75 L121 155 L79 155 Z" fill="url(#smoothie)"/>
+  
+  <!-- Strawberry pieces -->
+  <ellipse cx="85" cy="90" rx="4" ry="6" fill="#C62828"/>
+  <path d="M83 87 L87 87" stroke="#2E7D32" stroke-width="1"/>
+  <circle cx="84" cy="86" r="0.5" fill="#4CAF50"/>
+  <circle cx="86" cy="86" r="0.5" fill="#4CAF50"/>
+  
+  <ellipse cx="110" cy="100" rx="3" ry="5" fill="#C62828"/>
+  <path d="M108 98 L112 98" stroke="#2E7D32" stroke-width="1"/>
+  <circle cx="109" cy="97" r="0.5" fill="#4CAF50"/>
+  <circle cx="111" cy="97" r="0.5" fill="#4CAF50"/>
+  
+  <!-- Banana slices -->
+  <ellipse cx="95" cy="110" rx="5" ry="3" fill="#FFF9C4"/>
+  <ellipse cx="95" cy="110" rx="4" ry="2" fill="#FFEB3B"/>
+  
+  <ellipse cx="115" cy="125" rx="4" ry="3" fill="#FFF9C4"/>
+  <ellipse cx="115" cy="125" rx="3" ry="2" fill="#FFEB3B"/>
+  
+  <!-- Blueberries -->
+  <circle cx="90" cy="130" r="2" fill="#3F51B5"/>
+  <circle cx="105" cy="140" r="2" fill="#3F51B5"/>
+  <circle cx="88" cy="145" r="1.5" fill="#3F51B5"/>
+  
+  <!-- Foam/bubbles on top -->
+  <ellipse cx="100" cy="75" rx="25" ry="5" fill="#FFFFFF" opacity="0.8"/>
+  <circle cx="90" cy="78" r="2" fill="#FFFFFF" opacity="0.6"/>
+  <circle cx="110" cy="80" r="1.5" fill="#FFFFFF" opacity="0.6"/>
+  <circle cx="100" cy="82" r="1" fill="#FFFFFF" opacity="0.6"/>
+  
+  <!-- Straw -->
+  <rect x="115" y="50" width="4" height="60" fill="#FF5722" rx="2"/>
+  <rect x="113" y="48" width="8" height="6" fill="#FF5722" rx="3"/>
+  
+  <!-- Decorative fruits around -->
+  <circle cx="40" cy="60" r="8" fill="#E91E63"/>
+  <path d="M38 57 L42 57" stroke="#4CAF50" stroke-width="1"/>
+  <circle cx="39" cy="56" r="0.5" fill="#4CAF50"/>
+  <circle cx="41" cy="56" r="0.5" fill="#4CAF50"/>
+  
+  <ellipse cx="160" cy="80" rx="6" ry="4" fill="#FFEB3B"/>
+  <ellipse cx="160" cy="80" rx="5" ry="3" fill="#FFC107"/>
+  
+  <circle cx="50" cy="170" r="4" fill="#3F51B5"/>
+  <circle cx="150" cy="160" r="4" fill="#3F51B5"/>
+</svg>

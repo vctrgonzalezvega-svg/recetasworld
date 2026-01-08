@@ -1,0 +1,16 @@
+services:
+  - type: web
+    name: recetasworld
+    env: node
+    plan: free
+    buildCommand: npm install
+    startCommand: npm start
+    healthCheckPath: /
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        fromService:
+          type: web
+          name: recetasworld
+          property: port

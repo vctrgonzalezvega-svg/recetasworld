@@ -1,0 +1,69 @@
+<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="plate" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#FFFFFF;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#F5F5F5;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="pasta" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#FFF8E1;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#F57F17;stop-opacity:0.3" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background circle -->
+  <circle cx="100" cy="100" r="95" fill="#FFF8E1" stroke="#FF8F00" stroke-width="3"/>
+  
+  <!-- Plate -->
+  <circle cx="100" cy="120" r="70" fill="url(#plate)" stroke="#E0E0E0" stroke-width="2"/>
+  
+  <!-- Spaghetti strands -->
+  <path d="M50 100 Q80 90 110 100 Q140 110 170 100" 
+        fill="none" stroke="url(#pasta)" stroke-width="3" stroke-linecap="round"/>
+  <path d="M45 110 Q75 100 105 110 Q135 120 165 110" 
+        fill="none" stroke="url(#pasta)" stroke-width="3" stroke-linecap="round"/>
+  <path d="M55 120 Q85 110 115 120 Q145 130 175 120" 
+        fill="none" stroke="url(#pasta)" stroke-width="3" stroke-linecap="round"/>
+  <path d="M40 130 Q70 120 100 130 Q130 140 160 130" 
+        fill="none" stroke="url(#pasta)" stroke-width="3" stroke-linecap="round"/>
+  <path d="M60 140 Q90 130 120 140 Q150 150 180 140" 
+        fill="none" stroke="url(#pasta)" stroke-width="3" stroke-linecap="round"/>
+  <path d="M35 140 Q65 130 95 140 Q125 150 155 140" 
+        fill="none" stroke="url(#pasta)" stroke-width="3" stroke-linecap="round"/>
+  
+  <!-- More pasta layers -->
+  <path d="M70 95 Q100 85 130 95 Q160 105 190 95" 
+        fill="none" stroke="url(#pasta)" stroke-width="2.5" stroke-linecap="round"/>
+  <path d="M30 115 Q60 105 90 115 Q120 125 150 115" 
+        fill="none" stroke="url(#pasta)" stroke-width="2.5" stroke-linecap="round"/>
+  <path d="M50 135 Q80 125 110 135 Q140 145 170 135" 
+        fill="none" stroke="url(#pasta)" stroke-width="2.5" stroke-linecap="round"/>
+  
+  <!-- Pancetta pieces -->
+  <rect x="85" y="105" width="8" height="6" fill="#8D6E63" rx="2" transform="rotate(20 89 108)"/>
+  <rect x="110" y="115" width="7" height="5" fill="#A1887F" rx="2" transform="rotate(-15 113.5 117.5)"/>
+  <rect x="95" y="125" width="6" height="4" fill="#8D6E63" rx="1" transform="rotate(45 98 127)"/>
+  <rect x="120" y="110" width="8" height="5" fill="#A1887F" rx="2" transform="rotate(-30 124 112.5)"/>
+  <rect x="75" y="120" width="7" height="6" fill="#8D6E63" rx="2" transform="rotate(10 78.5 123)"/>
+  
+  <!-- Cheese (Pecorino) -->
+  <ellipse cx="90" cy="100" rx="3" ry="2" fill="#FFF9C4" opacity="0.8"/>
+  <ellipse cx="115" cy="105" rx="4" ry="2" fill="#FFF9C4" opacity="0.8"/>
+  <ellipse cx="105" cy="120" rx="3" ry="2" fill="#FFF9C4" opacity="0.8"/>
+  <ellipse cx="80" cy="115" rx="2" ry="1" fill="#FFF9C4" opacity="0.8"/>
+  <ellipse cx="125" cy="125" rx="3" ry="2" fill="#FFF9C4" opacity="0.8"/>
+  
+  <!-- Black pepper specks -->
+  <circle cx="88" cy="108" r="0.5" fill="#212121"/>
+  <circle cx="112" cy="118" r="0.5" fill="#212121"/>
+  <circle cx="98" cy="128" r="0.5" fill="#212121"/>
+  <circle cx="118" cy="108" r="0.5" fill="#212121"/>
+  <circle cx="82" cy="118" r="0.5" fill="#212121"/>
+  <circle cx="108" cy="112" r="0.5" fill="#212121"/>
+  
+  <!-- Fork -->
+  <rect x="160" y="60" width="3" height="40" fill="#C0C0C0" transform="rotate(30 161.5 80)"/>
+  <rect x="158" y="58" width="2" height="8" fill="#C0C0C0" transform="rotate(30 159 62)"/>
+  <rect x="160" y="58" width="2" height="8" fill="#C0C0C0" transform="rotate(30 161 62)"/>
+  <rect x="162" y="58" width="2" height="8" fill="#C0C0C0" transform="rotate(30 163 62)"/>
+  <rect x="164" y="58" width="2" height="8" fill="#C0C0C0" transform="rotate(30 165 62)"/>
+</svg>

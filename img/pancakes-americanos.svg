@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600" viewBox="0 0 800 600">
+  <defs>
+    <linearGradient id="g" x1="0" x2="1">
+      <stop offset="0%" stop-color="#FFD54F" />
+      <stop offset="100%" stop-color="#FF7043" />
+    </linearGradient>
+  </defs>
+  <rect width="100%" height="100%" fill="url(#g)" rx="24"/>
+  <g transform="translate(40,40)">
+    <rect x="0" y="0" width="720" height="360" rx="18" fill="rgba(255,255,255,0.06)" />
+    <text x="360" y="180" font-family="Arial, Helvetica, sans-serif" font-size="48" font-weight="800" fill="#fff" text-anchor="middle">Pancakes Americanos</text>
+    <text x="360" y="230" font-family="Arial" font-size="20" fill="rgba(255,255,255,0.9)" text-anchor="middle">Estados Unidos • 30 min</text>
+  </g>
+  <circle cx="650" cy="480" r="80" fill="rgba(255,255,255,0.12)" />
+</svg>

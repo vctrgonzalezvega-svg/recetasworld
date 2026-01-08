@@ -1,0 +1,51 @@
+<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="margaritaGlass" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#E8F5E8;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#C8E6C9;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="drink" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#81C784;stop-opacity:0.8" />
+      <stop offset="100%" style="stop-color:#4CAF50;stop-opacity:0.9" />
+    </linearGradient>
+    <radialGradient id="lime" cx="50%" cy="30%" r="50%">
+      <stop offset="0%" style="stop-color:#C8E6C9;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#4CAF50;stop-opacity:1" />
+    </radialGradient>
+  </defs>
+  
+  <!-- Background circle -->
+  <circle cx="100" cy="100" r="95" fill="#FFF3E0" stroke="#FF8A65" stroke-width="3"/>
+  
+  <!-- Glass base -->
+  <path d="M70 160 L130 160 L125 170 L75 170 Z" fill="#E0E0E0"/>
+  
+  <!-- Glass stem -->
+  <rect x="95" y="140" width="10" height="20" fill="#BDBDBD"/>
+  
+  <!-- Glass bowl -->
+  <path d="M60 80 L140 80 L130 140 L70 140 Z" fill="url(#margaritaGlass)" stroke="#81C784" stroke-width="2"/>
+  
+  <!-- Drink -->
+  <path d="M65 85 L135 85 L127 135 L73 135 Z" fill="url(#drink)"/>
+  
+  <!-- Salt rim -->
+  <ellipse cx="100" cy="80" rx="40" ry="8" fill="#F5F5F5" stroke="#E0E0E0" stroke-width="1"/>
+  <ellipse cx="100" cy="78" rx="38" ry="6" fill="#FFFFFF"/>
+  
+  <!-- Lime slice -->
+  <circle cx="120" cy="70" r="12" fill="url(#lime)"/>
+  <path d="M108 70 L132 70" stroke="#2E7D32" stroke-width="1"/>
+  <path d="M114 64 L126 76" stroke="#2E7D32" stroke-width="1"/>
+  <path d="M114 76 L126 64" stroke="#2E7D32" stroke-width="1"/>
+  
+  <!-- Ice cubes -->
+  <rect x="85" y="95" width="8" height="8" fill="#E3F2FD" opacity="0.7" rx="1"/>
+  <rect x="105" y="105" width="8" height="8" fill="#E3F2FD" opacity="0.7" rx="1"/>
+  <rect x="95" y="120" width="8" height="8" fill="#E3F2FD" opacity="0.7" rx="1"/>
+  
+  <!-- Bubbles -->
+  <circle cx="90" cy="110" r="2" fill="#FFFFFF" opacity="0.6"/>
+  <circle cx="110" cy="95" r="1.5" fill="#FFFFFF" opacity="0.6"/>
+  <circle cx="115" cy="125" r="1" fill="#FFFFFF" opacity="0.6"/>
+</svg>

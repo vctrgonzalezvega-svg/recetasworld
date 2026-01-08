@@ -1,0 +1,69 @@
+<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="tortilla" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#FFF8E1;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#F57F17;stop-opacity:0.3" />
+    </linearGradient>
+    <linearGradient id="meat" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#D84315;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#BF360C;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background circle -->
+  <circle cx="100" cy="100" r="95" fill="#FFF3E0" stroke="#FF6F00" stroke-width="3"/>
+  
+  <!-- Plate -->
+  <ellipse cx="100" cy="150" rx="80" ry="20" fill="#E0E0E0"/>
+  <ellipse cx="100" cy="148" rx="75" ry="18" fill="#F5F5F5"/>
+  
+  <!-- Taco 1 -->
+  <ellipse cx="80" cy="120" rx="35" ry="50" fill="url(#tortilla)" transform="rotate(-15 80 120)"/>
+  
+  <!-- Meat filling 1 -->
+  <ellipse cx="78" cy="115" rx="20" ry="30" fill="url(#meat)" transform="rotate(-15 78 115)"/>
+  
+  <!-- Pineapple pieces 1 -->
+  <rect x="70" y="105" width="6" height="6" fill="#FFD54F" transform="rotate(-15 73 108)" rx="1"/>
+  <rect x="82" y="110" width="5" height="5" fill="#FFC107" transform="rotate(-15 84.5 112.5)" rx="1"/>
+  
+  <!-- Onion 1 -->
+  <ellipse cx="75" cy="100" rx="3" ry="8" fill="#F8BBD9" transform="rotate(-15 75 100)"/>
+  <ellipse cx="85" cy="105" rx="2" ry="6" fill="#F8BBD9" transform="rotate(-15 85 105)"/>
+  
+  <!-- Cilantro 1 -->
+  <ellipse cx="72" cy="95" rx="2" ry="5" fill="#4CAF50" transform="rotate(-10 72 95)"/>
+  <ellipse cx="88" cy="100" rx="2" ry="4" fill="#4CAF50" transform="rotate(-20 88 100)"/>
+  
+  <!-- Taco 2 -->
+  <ellipse cx="120" cy="125" rx="35" ry="50" fill="url(#tortilla)" transform="rotate(15 120 125)"/>
+  
+  <!-- Meat filling 2 -->
+  <ellipse cx="122" cy="120" rx="20" ry="30" fill="url(#meat)" transform="rotate(15 122 120)"/>
+  
+  <!-- Pineapple pieces 2 -->
+  <rect x="115" y="110" width="6" height="6" fill="#FFD54F" transform="rotate(15 118 113)" rx="1"/>
+  <rect x="125" y="115" width="5" height="5" fill="#FFC107" transform="rotate(15 127.5 117.5)" rx="1"/>
+  
+  <!-- Onion 2 -->
+  <ellipse cx="118" cy="105" rx="3" ry="8" fill="#F8BBD9" transform="rotate(15 118 105)"/>
+  <ellipse cx="128" cy="110" rx="2" ry="6" fill="#F8BBD9" transform="rotate(15 128 110)"/>
+  
+  <!-- Cilantro 2 -->
+  <ellipse cx="115" cy="100" rx="2" ry="5" fill="#4CAF50" transform="rotate(10 115 100)"/>
+  <ellipse cx="130" cy="105" rx="2" ry="4" fill="#4CAF50" transform="rotate(20 130 105)"/>
+  
+  <!-- Lime wedges -->
+  <path d="M50 140 L65 135 L60 150 Z" fill="#C8E6C9"/>
+  <path d="M52 142 L62 138 L58 148 Z" fill="#81C784"/>
+  <path d="M57 142 L57 146" stroke="#2E7D32" stroke-width="1"/>
+  
+  <path d="M140 145 L155 140 L150 155 Z" fill="#C8E6C9"/>
+  <path d="M142 147 L152 143 L148 153 Z" fill="#81C784"/>
+  <path d="M147 147 L147 151" stroke="#2E7D32" stroke-width="1"/>
+  
+  <!-- Salsa drops -->
+  <circle cx="90" cy="135" r="2" fill="#D32F2F"/>
+  <circle cx="110" cy="140" r="1.5" fill="#D32F2F"/>
+  <circle cx="95" cy="145" r="1" fill="#D32F2F"/>
+</svg>

@@ -1,0 +1,56 @@
+<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="cup" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#FFFFFF;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#F5F5F5;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="coffee" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#D7CCC8;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#8D6E63;stop-opacity:1" />
+    </linearGradient>
+    <radialGradient id="foam" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" style="stop-color:#FFFFFF;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#F5F5F5;stop-opacity:0.8" />
+    </radialGradient>
+  </defs>
+  
+  <!-- Background circle -->
+  <circle cx="100" cy="100" r="95" fill="#FFF8E1" stroke="#FF8F00" stroke-width="3"/>
+  
+  <!-- Saucer -->
+  <ellipse cx="100" cy="160" rx="50" ry="12" fill="#E0E0E0"/>
+  <ellipse cx="100" cy="158" rx="48" ry="10" fill="#F5F5F5"/>
+  
+  <!-- Cup -->
+  <path d="M60 80 L140 80 L135 150 L65 150 Z" fill="url(#cup)" stroke="#BDBDBD" stroke-width="2"/>
+  
+  <!-- Coffee -->
+  <path d="M65 85 L135 85 L131 145 L69 145 Z" fill="url(#coffee)"/>
+  
+  <!-- Milk foam -->
+  <ellipse cx="100" cy="85" rx="35" ry="8" fill="url(#foam)"/>
+  
+  <!-- Handle -->
+  <path d="M140 100 Q155 100 155 120 Q155 140 140 140" 
+        fill="none" stroke="#BDBDBD" stroke-width="6" stroke-linecap="round"/>
+  <path d="M140 105 Q150 105 150 120 Q150 135 140 135" 
+        fill="none" stroke="url(#cup)" stroke-width="3" stroke-linecap="round"/>
+  
+  <!-- Steam -->
+  <path d="M85 70 Q87 60 85 50 Q83 40 85 30" 
+        fill="none" stroke="#E0E0E0" stroke-width="2" stroke-linecap="round" opacity="0.7"/>
+  <path d="M100 70 Q102 60 100 50 Q98 40 100 30" 
+        fill="none" stroke="#E0E0E0" stroke-width="2" stroke-linecap="round" opacity="0.7"/>
+  <path d="M115 70 Q117 60 115 50 Q113 40 115 30" 
+        fill="none" stroke="#E0E0E0" stroke-width="2" stroke-linecap="round" opacity="0.7"/>
+  
+  <!-- Coffee beans decoration -->
+  <ellipse cx="40" cy="50" rx="4" ry="6" fill="#5D4037" transform="rotate(20 40 50)"/>
+  <path d="M40 47 L40 53" stroke="#3E2723" stroke-width="1"/>
+  
+  <ellipse cx="160" cy="60" rx="4" ry="6" fill="#5D4037" transform="rotate(-15 160 60)"/>
+  <path d="M160 57 L160 63" stroke="#3E2723" stroke-width="1"/>
+  
+  <ellipse cx="45" cy="170" rx="4" ry="6" fill="#5D4037" transform="rotate(45 45 170)"/>
+  <path d="M45 167 L45 173" stroke="#3E2723" stroke-width="1"/>
+</svg>

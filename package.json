@@ -1,0 +1,31 @@
+{
+  "name": "recetasworld",
+  "version": "1.0.0",
+  "description": "RecetasWorld - servidor con SQLite y CDN optimizado para producción",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js",
+    "setup-cdn": "node setup-cdn.js",
+    "test-cdn": "echo 'Abre http://localhost:8081/test-cdn.html en tu navegador'",
+    "optimize-images": "echo 'Ejecuta optimizeImages() en la consola del navegador'"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "dependencies": {
+    "sqlite3": "^5.1.7"
+  },
+  "keywords": [
+    "recetas",
+    "cdn",
+    "nodejs",
+    "sqlite",
+    "responsive-images",
+    "railway",
+    "render",
+    "heroku"
+  ],
+  "author": "RecetasWorld Team",
+  "license": "MIT"
+}

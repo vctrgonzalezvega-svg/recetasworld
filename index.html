@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RecetasWorld - Descubre Sabores del Mundo 🌍</title>
+    <meta name="description" content="Descubre las mejores recetas del mundo. Desayunos, comidas, cenas, bebidas y postres de diferentes culturas. ¡Cocina como un chef profesional!">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <!-- CDN Configuration -->
+    <script src="cdn-config.js"></script>
+    <!-- Backend Checker -->
+    <script src="check-backend.js"></script>
+</head>
+<body>
+    <!-- Header con menú hamburguesa -->
+    <header class="header">
+        <div class="header-container">
+            <div class="hamburger" id="hamburger" role="button" aria-label="Abrir menú" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <div class="logo">
+                <div class="logo-icon">
+                    <i class="fas fa-globe-americas"></i>
+                    <i class="fas fa-utensils logo-utensils"></i>
+                </div>
+                <div class="logo-text">
+                    <h1>RecetasWorld</h1>
+                    <span class="logo-subtitle">Sabores del Mundo</span>
+                </div>
+            </div>
+            <div class="header-actions">
+                <button id="loginBtn" class="btn-login"><i class="fas fa-user"></i><span>Iniciar sesión</span></button>
+                <button id="achievementsBtn" class="achievements-btn" style="display:none;"><i class="fas fa-trophy"></i><span>Logros</span></button>
+                <button id="adminPanelBtn" class="btn-primary" style="display:none;margin-left:8px;">Panel Admin</button>
+                <button id="userConfigBtn" class="btn-secondary" style="display:none;margin-left:8px;"><i class="fas fa-cog"></i> Configuración</button>
+                <div id="pointsBadge" style="display:none;margin-left:12px;background:rgba(255,255,255,0.08);padding:8px 12px;border-radius:12px;color:white;font-weight:700;">Puntos: 0</div>
+                <div id="uploadsRemainingBadge" style="display:none;margin-left:12px;background:rgba(255,255,255,0.06);padding:6px 10px;border-radius:12px;color:white;font-weight:600;font-size:0.95rem;">Subidas: 5</div>
+                <div id="userArea" style="display:inline-flex;align-items:center;gap:8px;margin-left:12px;">
+                    <!-- Filled dynamically: username + logout -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Mega Dropdown (categories & products) -->
+        <div id="megaMenu" class="mega-menu" aria-hidden="true">
+            <div class="container">
+                <div class="mega-inner">
+                    <div class="categories">
+                        <h4>Categorías</h4>
+                        <div class="categories-grid">
+                            <a href="#" class="mega-link" data-category="desayunos"><i class="fas fa-coffee"></i> Desayunos</a>
+                            <a href="#" class="mega-link" data-category="comidas"><i class="fas fa-utensils"></i> Comidas</a>
+                            <a href="#" class="mega-link" data-category="cenas"><i class="fas fa-moon"></i> Cenas</a>
+                            <a href="#" class="mega-link" data-category="entradas"><i class="fas fa-leaf"></i> Entradas</a>
+                            <a href="#" class="mega-link" data-category="postres"><i class="fas fa-cake-candles"></i> Postres</a>
+                            <a href="#" class="mega-link" data-category="bebidas"><i class="fas fa-tint"></i> Bebidas</a>
+                            <a href="#" class="mega-link" data-category="botanas"><i class="fas fa-bowl-food"></i> Botanas</a>
+                            <a href="#" class="mega-link" data-category="rapidas"><i class="fas fa-bolt"></i> Rápidas</a>
+                            <a href="#" class="mega-link" data-category="baratas"><i class="fas fa-coins"></i> Económicas</a>
+                        </div>
+                    </div>
+                    <div class="products">
+                        <h4>Productos destacados</h4>
+                        <div id="megaProducts" class="mega-products">
+                            <!-- Dynamic products inserted here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Menú desplegable -->
+        <nav class="menu" id="menu">
+            <ul>
+                <li><a href="#" id="recommendations-link" class="menu-link"><i class="fas fa-magic"></i> Recetas</a></li>
+                <li><a href="#" id="products-link" class="menu-link"><i class="fas fa-box-open"></i> Productos</a></li>
+            </ul>
+            <div class="menu-footer">
+                <a href="#" class="menu-link" id="favorites-link"><i class="fas fa-heart"></i> Favoritos</a>
+                <a href="#" class="menu-link" id="planner-link"><i class="fas fa-calendar"></i> Planificador</a>
+            </div>
+        </nav>
+
+
+    </header>
+
+    <!-- Barra de búsqueda -->
+    <div class="search-bar-container">
+        <input type="text" id="searchInput" class="search-bar" placeholder="🔍 Busca tacos, sushi, pasta, curry... ¡Explora el mundo!">
+        <button class="search-btn">
+            <i class="fas fa-search"></i>
+            <span>Buscar</span>
+        </button>
+        <button class="advanced-filters-btn always-visible" id="advancedFiltersBtn" title="Filtros avanzados">
+            <i class="fas fa-filter"></i>
+            <span>Filtros</span>
+        </button>
+        <button class="surprise-btn" id="surpriseBtn" title="Sorpréndeme con recetas aleatorias">
+            <i class="fas fa-dice"></i>
+            <span>Sorpréndeme</span>
+        </button>
+        <div id="searchSuggestions" class="search-suggestions" style="display:none"></div>
+    </div>
+
+    <!-- Main content -->
+    <main class="main-content" id="mainContent">
+        <!-- Vista inicial: Mejores calificadas -->
+        <section class="recipes-section" id="homeSection">
+            <h2 id="sectionTitle">Cargando recetas personalizadas...</h2>
+            <div class="recipes-grid" id="recipesGrid"></div>
+        </section>
+    </main>
+
+    <!-- Login Modal -->
+    <div class="modal" id="loginModal">
+        <div class="modal-content modal-medium">
+            <button class="modal-close" id="closeLoginModal">&times;</button>
+            <div class="login-modal-body">
+                <div class="login-header">
+                    <div class="login-icon">
+                        <i class="fas fa-user-circle"></i>
+                    </div>
+                    <h2>Bienvenido a RecetasWorld</h2>
+                    <p class="login-subtitle">Accede a tu cuenta para descubrir más recetas</p>
+                </div>
+                
+                <form id="loginForm" class="login-form">
+                    <div class="role-selector">
+                        <label class="role-option">
+                            <input type="radio" name="loginRole" value="user" checked>
+                            <span class="role-card">
+                                <i class="fas fa-user"></i>
+                                <span>Usuario</span>
+                            </span>
+                        </label>
+                        <label class="role-option">
+                            <input type="radio" name="loginRole" value="admin">
+                            <span class="role-card">
+                                <i class="fas fa-user-shield"></i>
+                                <span>Administrador</span>
+                            </span>
+                        </label>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="loginUsername">Usuario</label>
+                        <div class="input-wrapper">
+                            <i class="fas fa-user"></i>
+                            <input type="text" id="loginUsername" placeholder="Ingresa tu usuario" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="loginPassword">Contraseña</label>
+                        <div class="input-wrapper">
+                            <i class="fas fa-lock"></i>
+                            <input type="password" id="loginPassword" placeholder="Ingresa tu contraseña" required>
+                        </div>
+                    </div>
+                    
+                    <div id="adminKeyWrapper" class="form-group" style="display:none;">
+                        <label for="loginAdminKey">Clave maestra</label>
+                        <div class="input-wrapper">
+                            <i class="fas fa-key"></i>
+                            <input type="password" id="loginAdminKey" placeholder="Clave maestra de administrador">
+                        </div>
+                    </div>
+                    
+                    <div class="login-actions">
+                        <button type="submit" class="btn-primary btn-login-submit">
+                            <i class="fas fa-sign-in-alt"></i>
+                            Iniciar Sesión
+                        </button>
+                        <button type="button" id="registerBtn" class="btn-secondary btn-register">
+                            <i class="fas fa-user-plus"></i>
+                            Crear Cuenta
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Admin Panel Modal -->
+    <div class="modal" id="adminPanel">
+        <div class="modal-content modal-large">
+            <button class="modal-close" id="closeAdminPanel">&times;</button>
+            <div class="modal-body" id="adminContent">
+                <div class="admin-panel-header">
+                    <div class="admin-panel-icon">
+                        <i class="fas fa-crown"></i>
+                    </div>
+                    <h2>Panel de Administrador</h2>
+                    <p class="admin-panel-subtitle">Gestiona recetas, usuarios y productos de la plataforma</p>
+                </div>
+                
+                <div class="admin-tabs">
+                    <button class="admin-tab-btn active" data-tab="register">
+                        <i class="fas fa-plus-circle"></i>
+                        <span>Agregar Receta</span>
+                    </button>
+                    <button class="admin-tab-btn" data-tab="recetas">
+                        <i class="fas fa-list"></i>
+                        <span>Recetas</span>
+                    </button>
+                    <button class="admin-tab-btn" data-tab="usuarios">
+                        <i class="fas fa-users"></i>
+                        <span>Usuarios</span>
+                    </button>
+                    <button class="admin-tab-btn" data-tab="productos">
+                        <i class="fas fa-box"></i>
+                        <span>Productos</span>
+                    </button>
+                </div>
+
+                <!-- Tab: Agregar Receta -->
+                <div class="admin-tab-content" id="tab-register">
+                    <div class="admin-form-container">
+                        <div class="admin-form-header">
+                            <h3><i class="fas fa-plus-circle"></i> Agregar Nueva Receta</h3>
+                            <p>Completa los campos para agregar una nueva receta a la plataforma</p>
+                        </div>
+                        
+                        <form id="addRecipeForm" class="modern-admin-form">
+                            <div class="form-section">
+                                <h4><i class="fas fa-info-circle"></i> Información Básica</h4>
+                                <div class="form-grid">
+                                    <div class="form-group">
+                                        <label for="r_nombre">
+                                            <i class="fas fa-utensils"></i>
+                                            Nombre de la receta *
+                                        </label>
+                                        <input class="modern-input" type="text" id="r_nombre" placeholder="Ej: Tacos al Pastor Auténticos" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="r_pais">
+                                            <i class="fas fa-globe"></i>
+                                            País de origen
+                                        </label>
+                                        <input class="modern-input" type="text" id="r_pais" placeholder="Ej: México">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="r_tiempo">
+                                            <i class="fas fa-clock"></i>
+                                            Tiempo (minutos)
+                                        </label>
+                                        <input class="modern-input" type="number" id="r_tiempo" placeholder="30" min="1">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-section">
+                                <h4><i class="fas fa-tags"></i> Categorías</h4>
+                                <div id="categoriesWrapper" class="modern-categories">
+                                    <label class="category-checkbox">
+                                        <input type="checkbox" value="desayunos">
+                                        <span class="checkmark"></span>
+                                        <i class="fas fa-coffee"></i>
+                                        Desayunos
+                                    </label>
+                                    <label class="category-checkbox">
+                                        <input type="checkbox" value="comidas">
+                                        <span class="checkmark"></span>
+                                        <i class="fas fa-utensils"></i>
+                                        Comidas
+                                    </label>
+                                    <label class="category-checkbox">
+                                        <input type="checkbox" value="cenas">
+                                        <span class="checkmark"></span>
+                                        <i class="fas fa-moon"></i>
+                                        Cenas
+                                    </label>
+                                    <label class="category-checkbox">
+                                        <input type="checkbox" value="postres">
+                                        <span class="checkmark"></span>
+                                        <i class="fas fa-cake-candles"></i>
+                                        Postres
+                                    </label>
+                                    <label class="category-checkbox">
+                                        <input type="checkbox" value="bebidas">
+                                        <span class="checkmark"></span>
+                                        <i class="fas fa-tint"></i>
+                                        Bebidas
+                                    </label>
+                                    <label class="category-checkbox">
+                                        <input type="checkbox" value="botanas">
+                                        <span class="checkmark"></span>
+                                        <i class="fas fa-bowl-food"></i>
+                                        Botanas
+                                    </label>
+                                    <label class="category-checkbox">
+                                        <input type="checkbox" value="entradas">
+                                        <span class="checkmark"></span>
+                                        <i class="fas fa-leaf"></i>
+                                        Entradas
+                                    </label>
+                                    <label class="category-checkbox">
+                                        <input type="checkbox" value="rapidas">
+                                        <span class="checkmark"></span>
+                                        <i class="fas fa-bolt"></i>
+                                        Rápidas
+                                    </label>
+                                    <label class="category-checkbox">
+                                        <input type="checkbox" value="baratas">
+                                        <span class="checkmark"></span>
+                                        <i class="fas fa-coins"></i>
+                                        Económicas
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="form-section">
+                                <h4><i class="fas fa-image"></i> Imagen</h4>
+                                <div class="image-upload-area">
+                                    <input type="file" id="r_imagenfile" accept="image/*" hidden>
+                                    <div class="image-upload-zone" onclick="document.getElementById('r_imagenfile').click()">
+                                        <div class="upload-placeholder" id="imagePreview">
+                                            <i class="fas fa-cloud-upload-alt"></i>
+                                            <p>Haz clic para subir una imagen</p>
+                                            <small>PNG, JPG hasta 5MB</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="recipe-content-sections">
+                                <div class="form-section ingredients-section">
+                                    <h4><i class="fas fa-list"></i> Ingredientes</h4>
+                                    <textarea class="modern-textarea" id="r_ingredientes" placeholder="Escribe cada ingrediente en una línea separada:&#10;&#10;2 tazas de harina&#10;1 huevo&#10;250ml de leche&#10;1 cucharadita de sal"></textarea>
+                                    <small class="helper-text">Cada línea será un ingrediente separado</small>
+                                </div>
+
+                                <div class="form-section instructions-section">
+                                    <h4><i class="fas fa-clipboard-list"></i> Instrucciones</h4>
+                                    <textarea class="modern-textarea" id="r_instrucciones" placeholder="Escribe cada paso en una línea separada:&#10;&#10;Mezcla los ingredientes secos en un bowl&#10;Agrega los líquidos gradualmente&#10;Bate hasta obtener una mezcla homogénea&#10;Cocina en sartén caliente por 2-3 minutos"></textarea>
+                                    <small class="helper-text">Cada línea será un paso de la preparación</small>
+                                </div>
+                            </div>
+
+                            <div class="form-actions">
+                                <button type="button" id="submitAddRecipe" class="btn-primary-modern">
+                                    <i class="fas fa-plus"></i>
+                                    Agregar Receta
+                                </button>
+                                <button type="button" id="clearRecipeForm" class="btn-secondary-modern">
+                                    <i class="fas fa-eraser"></i>
+                                    Limpiar Formulario
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Tab: Lista de Recetas -->
+                <div class="admin-tab-content" id="tab-recetas" style="display:none;">
+                    <div class="admin-section-header">
+                        <h3><i class="fas fa-list"></i> Gestión de Recetas</h3>
+                        <div class="search-controls">
+                            <div class="search-input-group">
+                                <i class="fas fa-search"></i>
+                                <input type="text" id="adminRecipeSearch" placeholder="Buscar por nombre o país...">
+                                <button id="clearAdminRecipeSearch" class="clear-btn">
+                                    <i class="fas fa-times"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="adminRecipes" class="admin-items-grid"></div>
+                </div>
+
+                <!-- Tab: Usuarios -->
+                <div class="admin-tab-content" id="tab-usuarios" style="display:none;">
+                    <div class="admin-section-header">
+                        <h3><i class="fas fa-users"></i> Gestión de Usuarios</h3>
+                        <div class="search-controls">
+                            <div class="search-input-group">
+                                <i class="fas fa-search"></i>
+                                <input type="text" id="adminUserSearch" placeholder="Buscar usuario...">
+                                <button id="clearAdminUserSearch" class="clear-btn">
+                                    <i class="fas fa-times"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="adminUsers" class="admin-users-list"></div>
+                </div>
+
+                <!-- Tab: Productos -->
+                <div class="admin-tab-content" id="tab-productos" style="display:none;">
+                    <div class="admin-section-header">
+                        <h3><i class="fas fa-box"></i> Gestión de Productos</h3>
+                        <div class="search-controls">
+                            <div class="search-input-group">
+                                <i class="fas fa-search"></i>
+                                <input type="text" id="adminProductSearch" placeholder="Buscar producto...">
+                                <button id="clearAdminProductSearch" class="clear-btn">
+                                    <i class="fas fa-times"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="admin-form-container">
+                        <div class="admin-form-header">
+                            <h4><i class="fas fa-plus-circle"></i> Agregar Producto</h4>
+                        </div>
+                        
+                        <form id="addProductForm" class="modern-admin-form compact">
+                            <div class="form-grid">
+                                <div class="form-group">
+                                    <label for="p_name">
+                                        <i class="fas fa-tag"></i>
+                                        Nombre del producto *
+                                    </label>
+                                    <input class="modern-input" type="text" id="p_name" placeholder="Ej: Delantal Premium" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="p_points">
+                                        <i class="fas fa-coins"></i>
+                                        Costo en puntos *
+                                    </label>
+                                    <input class="modern-input" type="number" id="p_points" placeholder="50" min="1" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="p_stock">
+                                        <i class="fas fa-boxes"></i>
+                                        Stock disponible *
+                                    </label>
+                                    <input class="modern-input" type="number" id="p_stock" placeholder="10" min="0" required>
+                                </div>
+                            </div>
+                            
+                            <div class="form-section">
+                                <h4><i class="fas fa-image"></i> Imagen del producto</h4>
+                                <div class="image-upload-area">
+                                    <input type="file" id="p_imagefile" accept="image/*" hidden>
+                                    <div class="image-upload-zone" onclick="document.getElementById('p_imagefile').click()">
+                                        <div class="upload-placeholder" id="productImagePreview">
+                                            <i class="fas fa-cloud-upload-alt"></i>
+                                            <p>Haz clic para subir imagen</p>
+                                            <small>PNG, JPG hasta 5MB</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-actions">
+                                <button type="button" id="submitAddProduct" class="btn-primary-modern">
+                                    <i class="fas fa-plus"></i>
+                                    Agregar Producto
+                                </button>
+                                <button type="button" id="clearProductForm" class="btn-secondary-modern">
+                                    <i class="fas fa-eraser"></i>
+                                    Limpiar
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <div id="adminProductsList" class="admin-items-grid"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de Edición de Receta -->
+    <div class="modal" id="editRecipeModal">
+        <div class="modal-content modal-large">
+            <button class="modal-close" id="closeEditRecipeModal">&times;</button>
+            <div class="modal-body">
+                <div class="admin-form-container">
+                    <div class="admin-form-header">
+                        <h3><i class="fas fa-edit"></i> Editar Receta</h3>
+                        <p id="editRecipeTitle">Modifica los campos de la receta seleccionada</p>
+                    </div>
+                    
+                    <form id="editRecipeForm" class="modern-admin-form">
+                        <div class="form-section">
+                            <h4><i class="fas fa-info-circle"></i> Información Básica</h4>
+                            <div class="form-grid">
+                                <div class="form-group">
+                                    <label for="edit_nombre">
+                                        <i class="fas fa-utensils"></i>
+                                        Nombre de la receta *
+                                    </label>
+                                    <input class="modern-input" type="text" id="edit_nombre" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="edit_pais">
+                                        <i class="fas fa-globe"></i>
+                                        País de origen
+                                    </label>
+                                    <input class="modern-input" type="text" id="edit_pais">
+                                </div>
+                                <div class="form-group">
+                                    <label for="edit_tiempo">
+                                        <i class="fas fa-clock"></i>
+                                        Tiempo (minutos)
+                                    </label>
+                                    <input class="modern-input" type="number" id="edit_tiempo" min="1">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-section">
+                            <h4><i class="fas fa-tags"></i> Categorías</h4>
+                            <div id="editCategoriesWrapper" class="modern-categories">
+                                <label class="category-checkbox">
+                                    <input type="checkbox" value="desayunos">
+                                    <span class="checkmark"></span>
+                                    <i class="fas fa-coffee"></i>
+                                    Desayunos
+                                </label>
+                                <label class="category-checkbox">
+                                    <input type="checkbox" value="comidas">
+                                    <span class="checkmark"></span>
+                                    <i class="fas fa-utensils"></i>
+                                    Comidas
+                                </label>
+                                <label class="category-checkbox">
+                                    <input type="checkbox" value="cenas">
+                                    <span class="checkmark"></span>
+                                    <i class="fas fa-moon"></i>
+                                    Cenas
+                                </label>
+                                <label class="category-checkbox">
+                                    <input type="checkbox" value="postres">
+                                    <span class="checkmark"></span>
+                                    <i class="fas fa-cake-candles"></i>
+                                    Postres
+                                </label>
+                                <label class="category-checkbox">
+                                    <input type="checkbox" value="bebidas">
+                                    <span class="checkmark"></span>
+                                    <i class="fas fa-tint"></i>
+                                    Bebidas
+                                </label>
+                                <label class="category-checkbox">
+                                    <input type="checkbox" value="botanas">
+                                    <span class="checkmark"></span>
+                                    <i class="fas fa-bowl-food"></i>
+                                    Botanas
+                                </label>
+                                <label class="category-checkbox">
+                                    <input type="checkbox" value="entradas">
+                                    <span class="checkmark"></span>
+                                    <i class="fas fa-leaf"></i>
+                                    Entradas
+                                </label>
+                                <label class="category-checkbox">
+                                    <input type="checkbox" value="rapidas">
+                                    <span class="checkmark"></span>
+                                    <i class="fas fa-bolt"></i>
+                                    Rápidas
+                                </label>
+                                <label class="category-checkbox">
+                                    <input type="checkbox" value="baratas">
+                                    <span class="checkmark"></span>
+                                    <i class="fas fa-coins"></i>
+                                    Económicas
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="form-section">
+                            <h4><i class="fas fa-image"></i> Imagen</h4>
+                            <div class="image-upload-area">
+                                <input type="file" id="edit_imagenfile" accept="image/*" hidden>
+                                <div class="image-upload-zone" onclick="document.getElementById('edit_imagenfile').click()">
+                                    <div class="upload-placeholder" id="editImagePreview">
+                                        <i class="fas fa-cloud-upload-alt"></i>
+                                        <p>Haz clic para cambiar la imagen</p>
+                                        <small>PNG, JPG hasta 5MB</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="recipe-content-sections">
+                            <div class="form-section ingredients-section">
+                                <h4><i class="fas fa-list"></i> Ingredientes</h4>
+                                <textarea class="modern-textarea" id="edit_ingredientes" placeholder="Escribe cada ingrediente en una línea separada:&#10;&#10;2 tazas de harina&#10;1 huevo&#10;250ml de leche&#10;1 cucharadita de sal"></textarea>
+                                <small class="helper-text">Cada línea será un ingrediente separado</small>
+                            </div>
+
+                            <div class="form-section instructions-section">
+                                <h4><i class="fas fa-clipboard-list"></i> Instrucciones</h4>
+                                <textarea class="modern-textarea" id="edit_instrucciones" placeholder="Escribe cada paso en una línea separada:&#10;&#10;Mezcla los ingredientes secos en un bowl&#10;Agrega los líquidos gradualmente&#10;Bate hasta obtener una mezcla homogénea&#10;Cocina en sartén caliente por 2-3 minutos"></textarea>
+                                <small class="helper-text">Cada línea será un paso de la preparación</small>
+                            </div>
+                        </div>
+
+                        <div class="form-actions">
+                            <button type="button" id="submitEditRecipe" class="btn-primary-modern">
+                                <i class="fas fa-save"></i>
+                                Guardar Cambios
+                            </button>
+                            <button type="button" id="cancelEditRecipe" class="btn-secondary-modern">
+                                <i class="fas fa-times"></i>
+                                Cancelar
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal para ver receta completa -->
+    <div class="modal" id="recipeModal">
+        <div class="modal-content">
+            <button class="modal-close" id="closeModal">&times;</button>
+            <div class="modal-body" id="modalBody"></div>
+        </div>
+    </div>
+
+    <!-- Modal del Planificador Semanal -->
+    <div class="modal" id="plannerModal">
+        <div class="modal-content modal-large">
+            <button class="modal-close" id="closePlannerModal">&times;</button>
+            <div id="plannerContent"></div>
+        </div>
+    </div>
+
+    <!-- Modal de Favoritos -->
+    <div class="modal" id="favoritesModal">
+        <div class="modal-content modal-large">
+            <button class="modal-close" id="closeFavoritesModal">&times;</button>
+            <div id="favoritesContent"></div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+            </div>
+        </div>
+    </div>
+
+    <script src="js/recipes-data.js"></script>
+    <script src="js/app.js"></script>
+    <!-- Bootstrap JS (bundle includes Popper) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <style>
+        @keyframes slideIn {
+            from {
+                transform: translateY(-50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+    </style>
+</body>
+</html>

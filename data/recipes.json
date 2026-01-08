@@ -1,0 +1,867 @@
+{
+  "recetas": [
+    {
+      "id": 1,
+      "nombre": "Pancakes americanos",
+      "pais": "Estados Unidos",
+      "imagen": "img/pancakes-americanos.svg",
+      "tiempo": 30,
+      "categorias": ["desayunos", "rapidas"],
+      "calificacion": 4.8,
+      "resenas": 125,
+      "ingredientes": [
+        {"nombre": "Harina de trigo", "cantidad": "200g", "icono": "🌾"},
+        {"nombre": "Azúcar", "cantidad": "30g", "icono": "🍬"},
+        {"nombre": "Polvo para hornear", "cantidad": "10g", "icono": "⚪"},
+        {"nombre": "Sal", "cantidad": "2g", "icono": "🧂"},
+        {"nombre": "Leche", "cantidad": "240ml", "icono": "🥛"},
+        {"nombre": "Huevo", "cantidad": "1", "icono": "🥚"},
+        {"nombre": "Aceite vegetal", "cantidad": "30ml", "icono": "🛢️"},
+        {"nombre": "Vainilla", "cantidad": "5ml", "icono": "🌸"},
+        {"nombre": "Mantequilla", "cantidad": "10g", "icono": "🧈"}
+      ],
+      "instrucciones": [
+        "Mezcla los ingredientes secos: harina, azúcar, polvo para hornear y sal",
+        "En otro recipiente, bate los ingredientes líquidos: leche, huevo, aceite y vainilla",
+        "Vierte la mezcla líquida en los secos y mezcla suavemente",
+        "Deja reposar 5 minutos",
+        "Calienta una sartén a fuego medio con mantequilla",
+        "Vierte 1/4 de taza de mezcla por pancake",
+        "Cocina 2-3 minutos hasta que aparezcan burbujas, luego voltea",
+        "Cocina 1-2 minutos más del otro lado",
+        "Sirve con miel de maple, mantequilla y fruta fresca"
+      ]
+    },
+    {
+      "id": 2,
+      "nombre": "Smoothie bowl",
+      "pais": "Estados Unidos",
+      "imagen": "img/smoothie-bowl.svg",
+      "tiempo": 15,
+      "categorias": ["desayunos", "rapidas", "baratas"],
+      "calificacion": 4.7,
+      "resenas": 98,
+      "ingredientes": [
+        {"nombre": "Plátano congelado", "cantidad": "2", "icono": "🍌"},
+        {"nombre": "Fresas congeladas", "cantidad": "150g", "icono": "🍓"},
+        {"nombre": "Yogurt griego", "cantidad": "200ml", "icono": "🥛"},
+        {"nombre": "Miel", "cantidad": "15ml", "icono": "🍯"},
+        {"nombre": "Granola", "cantidad": "50g", "icono": "🥣"},
+        {"nombre": "Arándanos", "cantidad": "30g", "icono": "🫐"},
+        {"nombre": "Coco rallado", "cantidad": "15g", "icono": "🥥"}
+      ],
+      "instrucciones": [
+        "Congela los plátanos y fresas la noche anterior",
+        "Licúa plátano, fresas, yogurt y miel hasta obtener consistencia espesa",
+        "Vierte en un bowl",
+        "Decora con granola, arándanos y coco",
+        "Agrega más frutas frescas al gusto",
+        "Sirve inmediatamente"
+      ]
+    },
+    {
+      "id": 3,
+      "nombre": "Yogurt con granola",
+      "pais": "Estados Unidos",
+      "imagen": "img/yogurt-con-granola.svg",
+      "tiempo": 8,
+      "categorias": ["desayunos", "rapidas", "baratas"],
+      "calificacion": 4.6,
+      "resenas": 87,
+      "ingredientes": [
+        {"nombre": "Yogurt natural", "cantidad": "250ml", "icono": "🥛"},
+        {"nombre": "Granola", "cantidad": "60g", "icono": "🥣"},
+        {"nombre": "Miel", "cantidad": "20ml", "icono": "🍯"},
+        {"nombre": "Fresas", "cantidad": "100g", "icono": "🍓"},
+        {"nombre": "Arándanos", "cantidad": "50g", "icono": "🫐"},
+        {"nombre": "Nueces", "cantidad": "30g", "icono": "🥜"}
+      ],
+      "instrucciones": [
+        "Coloca yogurt en un bowl",
+        "Agrega una capa de granola",
+        "Añade fresas cortadas y arándanos",
+        "Rocía con miel",
+        "Espolvorea nueces picadas",
+        "Sirve inmediatamente"
+      ]
+    },
+    {
+      "id": 4,
+      "nombre": "Arepas venezolanas",
+      "pais": "Venezuela",
+      "imagen": "img/arepas-venezolanas.svg",
+      "tiempo": 30,
+      "categorias": ["desayunos", "comidas", "rapidas", "baratas"],
+      "calificacion": 4.7,
+      "resenas": 142,
+      "ingredientes": [
+        {"nombre": "Harina de maíz precocida", "cantidad": "200g", "icono": "🌽"},
+        {"nombre": "Agua tibia", "cantidad": "300ml", "icono": "💧"},
+        {"nombre": "Sal", "cantidad": "5g", "icono": "🧂"},
+        {"nombre": "Aceite", "cantidad": "15ml", "icono": "🛢️"},
+        {"nombre": "Queso blanco", "cantidad": "150g", "icono": "🧀"},
+        {"nombre": "Jamón", "cantidad": "100g", "icono": "🥓"}
+      ],
+      "instrucciones": [
+        "Mezcla harina de maíz con sal",
+        "Agrega agua tibia poco a poco mientras mezclas",
+        "Amasa hasta obtener masa suave y sin grumos",
+        "Deja reposar 5 minutos",
+        "Forma bolas y aplana en discos",
+        "Cocina en plancha caliente 7-8 minutos por lado",
+        "Abre con cuidado y rellena con queso y jamón"
+      ]
+    },
+    {
+      "id": 5,
+      "nombre": "Huevos rancheros",
+      "pais": "México",
+      "imagen": "img/huevos-rancheros.svg",
+      "tiempo": 20,
+      "categorias": ["desayunos", "comidas", "rapidas", "baratas"],
+      "calificacion": 4.8,
+      "resenas": 156,
+      "ingredientes": [
+        {"nombre": "Huevos", "cantidad": "4", "icono": "🥚"},
+        {"nombre": "Tortillas de maíz", "cantidad": "4", "icono": "🌮"},
+        {"nombre": "Tomate", "cantidad": "3", "icono": "🍅"},
+        {"nombre": "Cebolla", "cantidad": "½", "icono": "🧅"},
+        {"nombre": "Chile jalapeño", "cantidad": "1", "icono": "🌶️"},
+        {"nombre": "Ajo", "cantidad": "2 dientes", "icono": "🧄"},
+        {"nombre": "Aceite", "cantidad": "30ml", "icono": "🛢️"},
+        {"nombre": "Sal y pimienta", "cantidad": "al gusto", "icono": "🧂"}
+      ],
+      "instrucciones": [
+        "Sofríe cebolla y ajo picados",
+        "Agrega tomate picado y chile",
+        "Cocina hasta que espese la salsa",
+        "Sazona con sal y pimienta",
+        "Calienta tortillas en comal",
+        "Fríe huevos al gusto",
+        "Coloca huevos sobre tortillas",
+        "Cubre con salsa ranchera caliente"
+      ]
+    },
+    {
+      "id": 6,
+      "nombre": "Chilaquiles rojos",
+      "pais": "México",
+      "imagen": "img/chilaquiles-rojos.svg",
+      "tiempo": 25,
+      "categorias": ["desayunos", "comidas", "baratas"],
+      "calificacion": 4.7,
+      "resenas": 134,
+      "ingredientes": [
+        {"nombre": "Totopos", "cantidad": "200g", "icono": "🌮"},
+        {"nombre": "Chile guajillo", "cantidad": "4", "icono": "🌶️"},
+        {"nombre": "Tomate", "cantidad": "2", "icono": "🍅"},
+        {"nombre": "Cebolla", "cantidad": "¼", "icono": "🧅"},
+        {"nombre": "Ajo", "cantidad": "2 dientes", "icono": "🧄"},
+        {"nombre": "Queso fresco", "cantidad": "100g", "icono": "🧀"},
+        {"nombre": "Crema", "cantidad": "60ml", "icono": "🥛"},
+        {"nombre": "Cebolla morada", "cantidad": "¼", "icono": "🧅"}
+      ],
+      "instrucciones": [
+        "Desvenar y tostar los chiles guajillo",
+        "Remojar chiles en agua caliente 15 minutos",
+        "Licuar chiles con tomate, cebolla y ajo",
+        "Colar la salsa y cocinar 10 minutos",
+        "Agregar totopos a la salsa caliente",
+        "Mezclar suavemente para cubrir",
+        "Servir con queso, crema y cebolla"
+      ]
+    },
+    {
+      "id": 7,
+      "nombre": "Desayuno japonés",
+      "pais": "Japón",
+      "imagen": "img/desayuno-japones.svg",
+      "tiempo": 35,
+      "categorias": ["desayunos"],
+      "calificacion": 4.6,
+      "resenas": 89,
+      "ingredientes": [
+        {"nombre": "Arroz japonés", "cantidad": "200g", "icono": "🍚"},
+        {"nombre": "Miso", "cantidad": "30g", "icono": "🍜"},
+        {"nombre": "Tofu", "cantidad": "100g", "icono": "⬜"},
+        {"nombre": "Alga wakame", "cantidad": "10g", "icono": "🌿"},
+        {"nombre": "Huevo", "cantidad": "1", "icono": "🥚"},
+        {"nombre": "Nori", "cantidad": "2 hojas", "icono": "🌿"},
+        {"nombre": "Salmón", "cantidad": "80g", "icono": "🐟"}
+      ],
+      "instrucciones": [
+        "Cocina arroz japonés según instrucciones",
+        "Prepara sopa miso con tofu y wakame",
+        "Cocina huevo como tamagoyaki (tortilla dulce)",
+        "Asa el salmón ligeramente",
+        "Sirve arroz en bowl individual",
+        "Acompaña con sopa miso",
+        "Presenta huevo y salmón en platos separados"
+      ]
+    },
+    {
+      "id": 8,
+      "nombre": "Tostadas con aguacate",
+      "pais": "México",
+      "imagen": "img/tostadas-aguacate.svg",
+      "tiempo": 12,
+      "categorias": ["desayunos", "rapidas", "baratas"],
+      "calificacion": 4.5,
+      "resenas": 112,
+      "ingredientes": [
+        {"nombre": "Pan integral", "cantidad": "4 rebanadas", "icono": "🍞"},
+        {"nombre": "Aguacate maduro", "cantidad": "2", "icono": "🥑"},
+        {"nombre": "Limón", "cantidad": "1", "icono": "🍋"},
+        {"nombre": "Sal", "cantidad": "al gusto", "icono": "🧂"},
+        {"nombre": "Pimienta", "cantidad": "al gusto", "icono": "⚫"},
+        {"nombre": "Tomate cherry", "cantidad": "100g", "icono": "🍅"},
+        {"nombre": "Aceite de oliva", "cantidad": "15ml", "icono": "🫒"}
+      ],
+      "instrucciones": [
+        "Tuesta el pan hasta dorar",
+        "Machaca aguacate con tenedor",
+        "Agrega jugo de limón, sal y pimienta",
+        "Unta mezcla de aguacate en tostadas",
+        "Corta tomates cherry por la mitad",
+        "Decora con tomates",
+        "Rocía con aceite de oliva"
+      ]
+    },
+    {
+      "id": 9,
+      "nombre": "Enchiladas de desayuno",
+      "pais": "México",
+      "imagen": "img/enchiladas-desayuno.svg",
+      "tiempo": 35,
+      "categorias": ["desayunos", "comidas"],
+      "calificacion": 4.6,
+      "resenas": 98,
+      "ingredientes": [
+        {"nombre": "Tortillas de maíz", "cantidad": "8", "icono": "🌮"},
+        {"nombre": "Huevos", "cantidad": "6", "icono": "🥚"},
+        {"nombre": "Chile guajillo", "cantidad": "4", "icono": "🌶️"},
+        {"nombre": "Tomate", "cantidad": "2", "icono": "🍅"},
+        {"nombre": "Cebolla", "cantidad": "½", "icono": "🧅"},
+        {"nombre": "Queso fresco", "cantidad": "200g", "icono": "🧀"},
+        {"nombre": "Crema", "cantidad": "100ml", "icono": "🥛"},
+        {"nombre": "Aceite", "cantidad": "60ml", "icono": "🛢️"}
+      ],
+      "instrucciones": [
+        "Desvenar chiles y tostarlos ligeramente",
+        "Remojar en agua caliente 15 minutos",
+        "Licuar chiles con tomate y cebolla",
+        "Colar y cocinar la salsa 10 minutos",
+        "Revolver huevos y cocinar suavemente",
+        "Calentar tortillas y rellenar con huevo",
+        "Enrollar y colocar en refractario",
+        "Cubrir con salsa, queso y crema",
+        "Hornear 10 minutos a 180°C"
+      ]
+    },
+    {
+      "id": 10,
+      "nombre": "Croissants franceses",
+      "pais": "Francia",
+      "imagen": "img/croissants-franceses.svg",
+      "tiempo": 240,
+      "categorias": ["desayunos", "postres"],
+      "calificacion": 4.9,
+      "resenas": 178,
+      "ingredientes": [
+        {"nombre": "Harina de trigo", "cantidad": "500g", "icono": "🌾"},
+        {"nombre": "Mantequilla fría", "cantidad": "300g", "icono": "🧈"},
+        {"nombre": "Leche tibia", "cantidad": "250ml", "icono": "🥛"},
+        {"nombre": "Azúcar", "cantidad": "50g", "icono": "🍬"},
+        {"nombre": "Levadura seca", "cantidad": "7g", "icono": "⚪"},
+        {"nombre": "Sal", "cantidad": "10g", "icono": "🧂"},
+        {"nombre": "Huevo", "cantidad": "1", "icono": "🥚"}
+      ],
+      "instrucciones": [
+        "Mezclar harina, azúcar, sal y levadura",
+        "Agregar leche tibia y amasar 10 minutos",
+        "Refrigerar masa 1 hora",
+        "Extender mantequilla en rectángulo",
+        "Envolver mantequilla con masa",
+        "Hacer 3 dobleces con reposo de 30 min cada uno",
+        "Extender y cortar triángulos",
+        "Enrollar desde la base hacia la punta",
+        "Dejar leudar 2 horas",
+        "Barnizar con huevo y hornear 15 min a 200°C"
+      ]
+    },
+    {
+      "id": 11,
+      "nombre": "Huevos benedictinos",
+      "pais": "Estados Unidos",
+      "imagen": "img/huevos-benedictinos.svg",
+      "tiempo": 30,
+      "categorias": ["desayunos", "comidas"],
+      "calificacion": 4.8,
+      "resenas": 145,
+      "ingredientes": [
+        {"nombre": "Muffins ingleses", "cantidad": "4 mitades", "icono": "🍞"},
+        {"nombre": "Huevos", "cantidad": "4", "icono": "🥚"},
+        {"nombre": "Jamón canadiense", "cantidad": "4 rebanadas", "icono": "🥓"},
+        {"nombre": "Mantequilla", "cantidad": "100g", "icono": "🧈"},
+        {"nombre": "Yemas de huevo", "cantidad": "3", "icono": "🥚"},
+        {"nombre": "Limón", "cantidad": "½", "icono": "🍋"},
+        {"nombre": "Vinagre blanco", "cantidad": "15ml", "icono": "🍶"},
+        {"nombre": "Sal y pimienta", "cantidad": "al gusto", "icono": "🧂"}
+      ],
+      "instrucciones": [
+        "Tostar muffins ingleses hasta dorar",
+        "Calentar jamón en sartén",
+        "Preparar salsa holandesa: batir yemas con limón",
+        "Agregar mantequilla derretida poco a poco batiendo",
+        "Sazonar salsa con sal y pimienta",
+        "Hervir agua con vinagre para huevos pochados",
+        "Cocinar huevos pochados 3-4 minutos",
+        "Montar: muffin, jamón, huevo, salsa holandesa"
+      ]
+    },
+    {
+      "id": 12,
+      "nombre": "Pan francés",
+      "pais": "Francia",
+      "imagen": "img/pan-frances.svg",
+      "tiempo": 20,
+      "categorias": ["desayunos", "rapidas", "baratas"],
+      "calificacion": 4.7,
+      "resenas": 127,
+      "ingredientes": [
+        {"nombre": "Pan del día anterior", "cantidad": "8 rebanadas", "icono": "🍞"},
+        {"nombre": "Huevos", "cantidad": "4", "icono": "🥚"},
+        {"nombre": "Leche", "cantidad": "200ml", "icono": "🥛"},
+        {"nombre": "Azúcar", "cantidad": "30g", "icono": "🍬"},
+        {"nombre": "Vainilla", "cantidad": "5ml", "icono": "🌸"},
+        {"nombre": "Canela", "cantidad": "2g", "icono": "🟤"},
+        {"nombre": "Mantequilla", "cantidad": "50g", "icono": "🧈"},
+        {"nombre": "Miel de maple", "cantidad": "60ml", "icono": "🍯"}
+      ],
+      "instrucciones": [
+        "Batir huevos, leche, azúcar, vainilla y canela",
+        "Remojar rebanadas de pan en la mezcla",
+        "Dejar que absorban bien el líquido",
+        "Calentar mantequilla en sartén",
+        "Cocinar pan 3-4 minutos por lado",
+        "Dorar hasta que esté crujiente",
+        "Servir caliente con miel de maple",
+        "Espolvorear canela extra si se desea"
+      ]
+    },
+    {
+      "id": 13,
+      "nombre": "Muffins de arándanos",
+      "pais": "Estados Unidos",
+      "imagen": "img/muffins-arandanos.svg",
+      "tiempo": 45,
+      "categorias": ["desayunos", "postres", "baratas"],
+      "calificacion": 4.7,
+      "resenas": 119,
+      "ingredientes": [
+        {"nombre": "Harina de trigo", "cantidad": "300g", "icono": "🌾"},
+        {"nombre": "Azúcar", "cantidad": "150g", "icono": "🍬"},
+        {"nombre": "Polvo para hornear", "cantidad": "15g", "icono": "⚪"},
+        {"nombre": "Sal", "cantidad": "3g", "icono": "🧂"},
+        {"nombre": "Leche", "cantidad": "250ml", "icono": "🥛"},
+        {"nombre": "Aceite vegetal", "cantidad": "80ml", "icono": "🛢️"},
+        {"nombre": "Huevo", "cantidad": "1", "icono": "🥚"},
+        {"nombre": "Arándanos frescos", "cantidad": "150g", "icono": "🫐"},
+        {"nombre": "Vainilla", "cantidad": "5ml", "icono": "🌸"}
+      ],
+      "instrucciones": [
+        "Precalentar horno a 190°C",
+        "Mezclar ingredientes secos en un bowl",
+        "En otro bowl, batir huevo, leche, aceite y vainilla",
+        "Combinar mezclas húmedas y secas suavemente",
+        "Enharinar arándanos y agregar a la masa",
+        "Llenar moldes de muffin ¾ partes",
+        "Hornear 20-25 minutos hasta dorar",
+        "Enfriar 5 minutos antes de desmoldar"
+      ]
+    },
+    {
+      "id": 14,
+      "nombre": "Banana bread",
+      "pais": "Estados Unidos",
+      "imagen": "img/banana-bread.svg",
+      "tiempo": 60,
+      "categorias": ["desayunos", "postres", "baratas"],
+      "calificacion": 4.6,
+      "resenas": 108,
+      "ingredientes": [
+        {"nombre": "Plátanos maduros", "cantidad": "4", "icono": "🍌"},
+        {"nombre": "Harina de trigo", "cantidad": "250g", "icono": "🌾"},
+        {"nombre": "Azúcar morena", "cantidad": "150g", "icono": "🍯"},
+        {"nombre": "Mantequilla derretida", "cantidad": "80g", "icono": "🧈"},
+        {"nombre": "Huevo", "cantidad": "1", "icono": "🥚"},
+        {"nombre": "Bicarbonato", "cantidad": "5g", "icono": "⚪"},
+        {"nombre": "Sal", "cantidad": "2g", "icono": "🧂"},
+        {"nombre": "Vainilla", "cantidad": "5ml", "icono": "🌸"},
+        {"nombre": "Nueces picadas", "cantidad": "100g", "icono": "🥜"}
+      ],
+      "instrucciones": [
+        "Precalentar horno a 175°C",
+        "Machacar plátanos hasta obtener puré",
+        "Mezclar mantequilla derretida con azúcar",
+        "Agregar huevo, vainilla y puré de plátano",
+        "Incorporar harina, bicarbonato y sal",
+        "Añadir nueces picadas",
+        "Verter en molde engrasado",
+        "Hornear 50-60 minutos hasta que pase prueba del palillo"
+      ]
+    },
+    {
+      "id": 15,
+      "nombre": "Empanadas colombianas",
+      "pais": "Colombia",
+      "imagen": "img/empanadas-colombianas.svg",
+      "tiempo": 45,
+      "categorias": ["desayunos", "comidas", "botanas", "entradas"],
+      "calificacion": 4.7,
+      "resenas": 134,
+      "ingredientes": [
+        {"nombre": "Harina de maíz amarilla", "cantidad": "300g", "icono": "🌽"},
+        {"nombre": "Agua", "cantidad": "400ml", "icono": "💧"},
+        {"nombre": "Sal", "cantidad": "5g", "icono": "🧂"},
+        {"nombre": "Carne molida", "cantidad": "300g", "icono": "🥩"},
+        {"nombre": "Papa", "cantidad": "2", "icono": "🥔"},
+        {"nombre": "Cebolla", "cantidad": "1", "icono": "🧅"},
+        {"nombre": "Ajo", "cantidad": "3 dientes", "icono": "🧄"},
+        {"nombre": "Comino", "cantidad": "5g", "icono": "🌿"},
+        {"nombre": "Aceite para freír", "cantidad": "500ml", "icono": "🛢️"}
+      ],
+      "instrucciones": [
+        "Hierve agua con sal y agrega harina poco a poco",
+        "Amasa hasta obtener masa suave, deja enfriar",
+        "Sofríe cebolla y ajo, agrega carne molida",
+        "Añade papa picada y comino, cocina 15 minutos",
+        "Extiende masa y corta círculos",
+        "Rellena con guiso y cierra formando media luna",
+        "Fríe en aceite caliente hasta dorar",
+        "Escurre en papel absorbente"
+      ]
+    },
+    {
+      "id": 16,
+      "nombre": "Pupusas salvadoreñas",
+      "pais": "El Salvador",
+      "imagen": "img/pupusas-salvadorenas.svg",
+      "tiempo": 30,
+      "categorias": ["desayunos", "comidas", "botanas", "baratas"],
+      "calificacion": 4.8,
+      "resenas": 121,
+      "ingredientes": [
+        {"nombre": "Masa harina", "cantidad": "300g", "icono": "🌽"},
+        {"nombre": "Agua tibia", "cantidad": "350ml", "icono": "💧"},
+        {"nombre": "Sal", "cantidad": "5g", "icono": "🧂"},
+        {"nombre": "Queso mozzarella", "cantidad": "200g", "icono": "🧀"},
+        {"nombre": "Frijoles refritos", "cantidad": "150g", "icono": "🫘"},
+        {"nombre": "Chicharrón prensado", "cantidad": "100g", "icono": "🥓"},
+        {"nombre": "Aceite", "cantidad": "30ml", "icono": "🛢️"}
+      ],
+      "instrucciones": [
+        "Mezclar masa harina con agua tibia y sal",
+        "Amasar hasta obtener consistencia suave",
+        "Dejar reposar 10 minutos",
+        "Formar bolas de masa del tamaño de una pelota de tenis",
+        "Aplanar y rellenar con queso, frijoles o chicharrón",
+        "Cerrar bien los bordes y aplanar nuevamente",
+        "Cocinar en comal caliente 3-4 minutos por lado",
+        "Servir con curtido y salsa de tomate"
+      ]
+    },
+    {
+      "id": 17,
+      "nombre": "Gallo pinto",
+      "pais": "Costa Rica",
+      "imagen": "img/gallo-pinto.svg",
+      "tiempo": 25,
+      "categorias": ["desayunos", "comidas", "rapidas", "baratas"],
+      "calificacion": 4.6,
+      "resenas": 98,
+      "ingredientes": [
+        {"nombre": "Arroz cocido", "cantidad": "300g", "icono": "🍚"},
+        {"nombre": "Frijoles negros cocidos", "cantidad": "200g", "icono": "🫘"},
+        {"nombre": "Cebolla", "cantidad": "1", "icono": "🧅"},
+        {"nombre": "Pimiento rojo", "cantidad": "½", "icono": "🫑"},
+        {"nombre": "Ajo", "cantidad": "3 dientes", "icono": "🧄"},
+        {"nombre": "Cilantro", "cantidad": "30g", "icono": "🌿"},
+        {"nombre": "Salsa inglesa", "cantidad": "15ml", "icono": "🍶"},
+        {"nombre": "Aceite", "cantidad": "30ml", "icono": "🛢️"}
+      ],
+      "instrucciones": [
+        "Sofríe cebolla y pimiento picados",
+        "Agrega ajo y cocina 1 minuto",
+        "Añade frijoles con su líquido",
+        "Incorpora arroz y mezcla bien",
+        "Agrega salsa inglesa y cilantro",
+        "Cocina 5 minutos más revolviendo",
+        "Sirve caliente con huevos fritos"
+      ]
+    },
+    {
+      "id": 18,
+      "nombre": "Molletes mexicanos",
+      "pais": "México",
+      "imagen": "img/molletes-mexicanos.svg",
+      "tiempo": 20,
+      "categorias": ["desayunos", "rapidas", "botanas"],
+      "calificacion": 4.5,
+      "resenas": 87,
+      "ingredientes": [
+        {"nombre": "Bolillos", "cantidad": "4", "icono": "🍞"},
+        {"nombre": "Frijoles refritos", "cantidad": "200g", "icono": "🫘"},
+        {"nombre": "Queso Oaxaca", "cantidad": "200g", "icono": "🧀"},
+        {"nombre": "Pico de gallo", "cantidad": "150g", "icono": "🍅"},
+        {"nombre": "Aguacate", "cantidad": "1", "icono": "🥑"},
+        {"nombre": "Crema", "cantidad": "60ml", "icono": "🥛"},
+        {"nombre": "Salsa verde", "cantidad": "al gusto", "icono": "🌶️"}
+      ],
+      "instrucciones": [
+        "Cortar bolillos por la mitad a lo largo",
+        "Tostar ligeramente en comal",
+        "Untar frijoles refritos en cada mitad",
+        "Cubrir generosamente con queso",
+        "Gratinar en horno hasta que derrita el queso",
+        "Servir con pico de gallo, aguacate y crema",
+        "Acompañar con salsa verde al gusto"
+      ]
+    },
+    {
+      "id": 19,
+      "nombre": "Scones ingleses",
+      "pais": "Reino Unido",
+      "imagen": "img/scones-ingleses.svg",
+      "tiempo": 30,
+      "categorias": ["desayunos", "postres"],
+      "calificacion": 4.8,
+      "resenas": 142,
+      "ingredientes": [
+        {"nombre": "Harina de trigo", "cantidad": "300g", "icono": "🌾"},
+        {"nombre": "Polvo para hornear", "cantidad": "15g", "icono": "⚪"},
+        {"nombre": "Azúcar", "cantidad": "50g", "icono": "🍬"},
+        {"nombre": "Sal", "cantidad": "3g", "icono": "🧂"},
+        {"nombre": "Mantequilla fría", "cantidad": "80g", "icono": "🧈"},
+        {"nombre": "Leche", "cantidad": "150ml", "icono": "🥛"},
+        {"nombre": "Huevo", "cantidad": "1", "icono": "🥚"},
+        {"nombre": "Pasas", "cantidad": "80g", "icono": "🍇"},
+        {"nombre": "Mermelada", "cantidad": "para servir", "icono": "🍓"}
+      ],
+      "instrucciones": [
+        "Precalentar horno a 200°C",
+        "Mezclar harina, polvo para hornear, azúcar y sal",
+        "Incorporar mantequilla fría cortada en cubos",
+        "Frotar con dedos hasta obtener textura de migas",
+        "Agregar pasas y mezclar",
+        "Hacer un hueco y verter leche",
+        "Mezclar suavemente hasta formar masa",
+        "Extender masa de 2cm de grosor",
+        "Cortar círculos y colocar en bandeja",
+        "Barnizar con huevo batido",
+        "Hornear 12-15 minutos hasta dorar",
+        "Servir tibios con mermelada y crema"
+      ]
+    },
+    {
+      "id": 20,
+      "nombre": "Pain au chocolat",
+      "pais": "Francia",
+      "imagen": "img/pain-au-chocolat.svg",
+      "tiempo": 240,
+      "categorias": ["desayunos", "postres"],
+      "calificacion": 4.9,
+      "resenas": 167,
+      "ingredientes": [
+        {"nombre": "Masa de hojaldre", "cantidad": "500g", "icono": "🥐"},
+        {"nombre": "Chocolate oscuro", "cantidad": "200g", "icono": "🍫"},
+        {"nombre": "Mantequilla", "cantidad": "50g", "icono": "🧈"},
+        {"nombre": "Azúcar", "cantidad": "30g", "icono": "🍬"},
+        {"nombre": "Huevo", "cantidad": "1", "icono": "🥚"}
+      ],
+      "instrucciones": [
+        "Prepara la masa de hojaldre (o usa masa congelada)",
+        "Estira la masa en un rectángulo",
+        "Corta en rectángulos medianos",
+        "Coloca 2-3 trozos de chocolate en el centro de cada rectángulo",
+        "Dobla la masa sobre el chocolate",
+        "Presiona los bordes para sellar",
+        "Coloca en una bandeja",
+        "Deja reposar 30 minutos",
+        "Barniza con huevo batido",
+        "Hornea a 200°C durante 20-25 minutos",
+        "Sirve caliente"
+      ]
+    },
+    {
+      "id": 21,
+      "nombre": "Tacos al pastor",
+      "pais": "México",
+      "imagen": "img/tacos-al-pastor.svg",
+      "tiempo": 35,
+      "categorias": ["comidas", "cenas", "rapidas"],
+      "calificacion": 4.8,
+      "resenas": 289,
+      "ingredientes": [
+        {"nombre": "Carne de cerdo", "cantidad": "600g", "icono": "🥩"},
+        {"nombre": "Piña", "cantidad": "½ pieza", "icono": "🍍"},
+        {"nombre": "Cebolla", "cantidad": "3 piezas", "icono": "🧅"},
+        {"nombre": "Cilantro", "cantidad": "al gusto", "icono": "🌿"},
+        {"nombre": "Limón", "cantidad": "2", "icono": "🍋"},
+        {"nombre": "Tortillas de maíz", "cantidad": "12", "icono": "🌮"},
+        {"nombre": "Achiote", "cantidad": "3 cucharadas", "icono": "🌶️"}
+      ],
+      "instrucciones": [
+        "Marina la carne en achiote, vinagre, sal y especias",
+        "Cocina la carne marinada en una sartén caliente",
+        "Coloca piña en los últimos minutos de cocción",
+        "Calienta las tortillas",
+        "Coloca la carne en las tortillas",
+        "Decora con cebolla picada, cilantro y limón"
+      ]
+    },
+    {
+      "id": 22,
+      "nombre": "Spaghetti Carbonara",
+      "pais": "Italia",
+      "imagen": "img/spaghetti-carbonara.svg",
+      "tiempo": 20,
+      "categorias": ["comidas", "cenas", "rapidas"],
+      "calificacion": 4.7,
+      "resenas": 234,
+      "ingredientes": [
+        {"nombre": "Espagueti", "cantidad": "400g", "icono": "🍝"},
+        {"nombre": "Guanciale o Panceta", "cantidad": "150g", "icono": "🥓"},
+        {"nombre": "Huevo", "cantidad": "4", "icono": "🥚"},
+        {"nombre": "Queso Pecorino", "cantidad": "100g", "icono": "🧀"},
+        {"nombre": "Pimienta negra", "cantidad": "al gusto", "icono": "⚫"},
+        {"nombre": "Sal", "cantidad": "al gusto", "icono": "🧂"}
+      ],
+      "instrucciones": [
+        "Cocina el espagueti según las instrucciones",
+        "Fríe el guanciale hasta que esté crujiente",
+        "Bate los huevos con queso y pimienta",
+        "Escurre la pasta dejando agua de cocción",
+        "Mezcla pasta caliente con el guanciale",
+        "Retira del fuego y agrega la mezcla de huevo",
+        "Revuelve constantemente para crear salsa cremosa"
+      ]
+    },
+    {
+      "id": 23,
+      "nombre": "Salmón a la plancha",
+      "pais": "Noruega",
+      "imagen": "img/salmon-plancha.svg",
+      "tiempo": 25,
+      "categorias": ["cenas", "comidas"],
+      "calificacion": 4.6,
+      "resenas": 178,
+      "ingredientes": [
+        {"nombre": "Filete de salmón", "cantidad": "4 piezas", "icono": "🐟"},
+        {"nombre": "Limón", "cantidad": "2", "icono": "🍋"},
+        {"nombre": "Aceite de oliva", "cantidad": "30ml", "icono": "🫒"},
+        {"nombre": "Ajo", "cantidad": "3 dientes", "icono": "🧄"},
+        {"nombre": "Hierbas frescas", "cantidad": "al gusto", "icono": "🌿"},
+        {"nombre": "Sal", "cantidad": "al gusto", "icono": "🧂"},
+        {"nombre": "Pimienta", "cantidad": "al gusto", "icono": "⚫"}
+      ],
+      "instrucciones": [
+        "Sazona el salmón con sal y pimienta",
+        "Calienta aceite en una sartén",
+        "Cocina el salmón 4-5 minutos por lado",
+        "Agrega ajo y hierbas en los últimos minutos",
+        "Exprime limón sobre el pescado",
+        "Sirve inmediatamente con vegetales"
+      ]
+    },
+    {
+      "id": 24,
+      "nombre": "Pollo al curry",
+      "pais": "India",
+      "imagen": "img/pollo-curry.svg",
+      "tiempo": 40,
+      "categorias": ["cenas", "comidas"],
+      "calificacion": 4.7,
+      "resenas": 198,
+      "ingredientes": [
+        {"nombre": "Pollo en trozos", "cantidad": "800g", "icono": "🍗"},
+        {"nombre": "Leche de coco", "cantidad": "400ml", "icono": "🥥"},
+        {"nombre": "Curry en polvo", "cantidad": "30g", "icono": "🟡"},
+        {"nombre": "Cebolla", "cantidad": "2", "icono": "🧅"},
+        {"nombre": "Ajo", "cantidad": "4 dientes", "icono": "🧄"},
+        {"nombre": "Jengibre", "cantidad": "20g", "icono": "🟤"},
+        {"nombre": "Tomate", "cantidad": "3", "icono": "🍅"},
+        {"nombre": "Aceite", "cantidad": "40ml", "icono": "🛢️"}
+      ],
+      "instrucciones": [
+        "Sofríe cebolla, ajo y jengibre",
+        "Agrega curry en polvo y cocina 1 minuto",
+        "Añade tomate picado y cocina hasta que se ablande",
+        "Agrega pollo y sella por todos lados",
+        "Vierte leche de coco",
+        "Cocina a fuego lento 25-30 minutos",
+        "Sirve con arroz basmati"
+      ]
+    },
+    {
+      "id": 25,
+      "nombre": "Margarita clásica",
+      "pais": "México",
+      "imagen": "img/margarita.svg",
+      "tiempo": 5,
+      "categorias": ["bebidas", "rapidas"],
+      "calificacion": 4.7,
+      "resenas": 178,
+      "ingredientes": [
+        {"nombre": "Tequila blanco", "cantidad": "60ml", "icono": "🥃"},
+        {"nombre": "Licor de naranja", "cantidad": "30ml", "icono": "🍊"},
+        {"nombre": "Jugo de limón", "cantidad": "30ml", "icono": "🍋"},
+        {"nombre": "Hielo", "cantidad": "abundante", "icono": "🧊"},
+        {"nombre": "Sal", "cantidad": "para el borde", "icono": "🧂"}
+      ],
+      "instrucciones": [
+        "Pasa limón por el borde de la copa",
+        "Presiona el borde en sal",
+        "Llena de hielo",
+        "Vierte tequila, licor y jugo de limón",
+        "Agita vigorosamente",
+        "Vierte en la copa",
+        "Decora con rodaja de limón"
+      ]
+    },
+    {
+      "id": 26,
+      "nombre": "Mojito cubano",
+      "pais": "Cuba",
+      "imagen": "img/mojito.svg",
+      "tiempo": 8,
+      "categorias": ["bebidas", "rapidas"],
+      "calificacion": 4.6,
+      "resenas": 156,
+      "ingredientes": [
+        {"nombre": "Ron blanco", "cantidad": "60ml", "icono": "🥃"},
+        {"nombre": "Azúcar", "cantidad": "15g", "icono": "🍬"},
+        {"nombre": "Limón", "cantidad": "½", "icono": "🍋"},
+        {"nombre": "Hierbabuena", "cantidad": "8 hojas", "icono": "🌿"},
+        {"nombre": "Agua con gas", "cantidad": "120ml", "icono": "💧"},
+        {"nombre": "Hielo", "cantidad": "abundante", "icono": "🧊"}
+      ],
+      "instrucciones": [
+        "Coloca hierbabuena y azúcar en el vaso",
+        "Machaca suavemente las hojas",
+        "Agrega jugo de limón",
+        "Llena el vaso con hielo",
+        "Vierte el ron",
+        "Completa con agua con gas",
+        "Revuelve suavemente",
+        "Decora con hierbabuena fresca"
+      ]
+    },
+    {
+      "id": 27,
+      "nombre": "Café con leche",
+      "pais": "Varios países",
+      "imagen": "img/cafe-con-leche.svg",
+      "tiempo": 10,
+      "categorias": ["bebidas", "rapidas", "baratas"],
+      "calificacion": 4.6,
+      "resenas": 245,
+      "ingredientes": [
+        {"nombre": "Café molido", "cantidad": "15g", "icono": "☕"},
+        {"nombre": "Agua caliente", "cantidad": "150ml", "icono": "💧"},
+        {"nombre": "Leche", "cantidad": "150ml", "icono": "🥛"},
+        {"nombre": "Azúcar", "cantidad": "al gusto", "icono": "🍯"}
+      ],
+      "instrucciones": [
+        "Calienta agua a 90-95°C",
+        "Prepara el café",
+        "Calienta la leche",
+        "Vierte café en taza",
+        "Agrega leche caliente",
+        "Añade azúcar si deseas",
+        "Revuelve bien"
+      ]
+    },
+    {
+      "id": 28,
+      "nombre": "Smoothie de frutas",
+      "pais": "Estados Unidos",
+      "imagen": "img/smoothie-frutas.svg",
+      "tiempo": 5,
+      "categorias": ["bebidas", "rapidas", "baratas"],
+      "calificacion": 4.5,
+      "resenas": 134,
+      "ingredientes": [
+        {"nombre": "Plátano", "cantidad": "1", "icono": "🍌"},
+        {"nombre": "Fresas", "cantidad": "150g", "icono": "🍓"},
+        {"nombre": "Yogurt natural", "cantidad": "200ml", "icono": "🥛"},
+        {"nombre": "Miel", "cantidad": "15ml", "icono": "🍯"},
+        {"nombre": "Hielo", "cantidad": "100g", "icono": "🧊"}
+      ],
+      "instrucciones": [
+        "Pela y corta el plátano",
+        "Lava las fresas",
+        "Coloca todos los ingredientes en la licuadora",
+        "Licúa hasta obtener consistencia suave",
+        "Sirve inmediatamente",
+        "Decora con fruta fresca"
+      ]
+    },
+    {
+      "id": 29,
+      "nombre": "Agua de jamaica",
+      "pais": "México",
+      "imagen": "img/agua-jamaica.svg",
+      "tiempo": 15,
+      "categorias": ["bebidas", "baratas"],
+      "calificacion": 4.4,
+      "resenas": 98,
+      "ingredientes": [
+        {"nombre": "Flor de jamaica", "cantidad": "100g", "icono": "🌺"},
+        {"nombre": "Agua", "cantidad": "2 litros", "icono": "💧"},
+        {"nombre": "Azúcar", "cantidad": "150g", "icono": "🍬"},
+        {"nombre": "Limón", "cantidad": "2", "icono": "🍋"},
+        {"nombre": "Hielo", "cantidad": "al gusto", "icono": "🧊"}
+      ],
+      "instrucciones": [
+        "Hierve 1 litro de agua",
+        "Agrega la flor de jamaica",
+        "Deja reposar 10 minutos",
+        "Cuela y agrega el agua restante fría",
+        "Endulza con azúcar al gusto",
+        "Agrega jugo de limón",
+        "Sirve con hielo"
+      ]
+    },
+    {
+      "id": 30,
+      "nombre": "Lasaña de carne",
+      "pais": "Italia",
+      "imagen": "img/lasana-carne.svg",
+      "tiempo": 90,
+      "categorias": ["cenas", "comidas"],
+      "calificacion": 4.8,
+      "resenas": 267,
+      "ingredientes": [
+        {"nombre": "Pasta para lasaña", "cantidad": "500g", "icono": "🍝"},
+        {"nombre": "Carne molida", "cantidad": "600g", "icono": "🥩"},
+        {"nombre": "Salsa de tomate", "cantidad": "500ml", "icono": "🍅"},
+        {"nombre": "Queso mozzarella", "cantidad": "400g", "icono": "🧀"},
+        {"nombre": "Queso parmesano", "cantidad": "100g", "icono": "🧀"},
+        {"nombre": "Cebolla", "cantidad": "2", "icono": "🧅"},
+        {"nombre": "Ajo", "cantidad": "4 dientes", "icono": "🧄"},
+        {"nombre": "Aceite de oliva", "cantidad": "40ml", "icono": "🫒"}
+      ],
+      "instrucciones": [
+        "Cocina la pasta según instrucciones",
+        "Sofríe cebolla y ajo",
+        "Agrega carne molida y cocina hasta dorar",
+        "Añade salsa de tomate y cocina 20 minutos",
+        "En un refractario, alterna capas de pasta, carne y queso",
+        "Termina con queso mozzarella y parmesano",
+        "Hornea a 180°C durante 45 minutos",
+        "Deja reposar 10 minutos antes de servir"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,70 @@
+<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="salmon" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#FFAB91;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#FF7043;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="plate" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#FFFFFF;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#F5F5F5;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background circle -->
+  <circle cx="100" cy="100" r="95" fill="#E3F2FD" stroke="#2196F3" stroke-width="3"/>
+  
+  <!-- Plate -->
+  <ellipse cx="100" cy="140" rx="80" ry="25" fill="url(#plate)" stroke="#E0E0E0" stroke-width="2"/>
+  
+  <!-- Salmon fillet -->
+  <ellipse cx="100" cy="120" rx="45" ry="25" fill="url(#salmon)"/>
+  
+  <!-- Grill marks -->
+  <path d="M70 115 L130 115" stroke="#D84315" stroke-width="2" opacity="0.7"/>
+  <path d="M70 125 L130 125" stroke="#D84315" stroke-width="2" opacity="0.7"/>
+  <path d="M75 110 L125 110" stroke="#D84315" stroke-width="1.5" opacity="0.5"/>
+  <path d="M75 130 L125 130" stroke="#D84315" stroke-width="1.5" opacity="0.5"/>
+  
+  <!-- Lemon slices -->
+  <circle cx="60" cy="110" r="12" fill="#FFF9C4"/>
+  <circle cx="60" cy="110" r="10" fill="#FFEB3B"/>
+  <path d="M50 110 L70 110" stroke="#F57F17" stroke-width="1"/>
+  <path d="M56 104 L64 116" stroke="#F57F17" stroke-width="1"/>
+  <path d="M56 116 L64 104" stroke="#F57F17" stroke-width="1"/>
+  <path d="M60 100 L60 120" stroke="#F57F17" stroke-width="1"/>
+  
+  <circle cx="140" cy="130" r="10" fill="#FFF9C4"/>
+  <circle cx="140" cy="130" r="8" fill="#FFEB3B"/>
+  <path d="M132 130 L148 130" stroke="#F57F17" stroke-width="1"/>
+  <path d="M136 125 L144 135" stroke="#F57F17" stroke-width="1"/>
+  <path d="M136 135 L144 125" stroke="#F57F17" stroke-width="1"/>
+  
+  <!-- Herbs (dill) -->
+  <path d="M85 100 Q87 95 85 90 Q83 85 85 80" 
+        stroke="#4CAF50" stroke-width="2" fill="none"/>
+  <path d="M82 95 L88 95" stroke="#4CAF50" stroke-width="1"/>
+  <path d="M83 90 L87 90" stroke="#4CAF50" stroke-width="1"/>
+  <path d="M84 85 L86 85" stroke="#4CAF50" stroke-width="1"/>
+  
+  <path d="M115 105 Q117 100 115 95 Q113 90 115 85" 
+        stroke="#4CAF50" stroke-width="2" fill="none"/>
+  <path d="M112 100 L118 100" stroke="#4CAF50" stroke-width="1"/>
+  <path d="M113 95 L117 95" stroke="#4CAF50" stroke-width="1"/>
+  <path d="M114 90 L116 90" stroke="#4CAF50" stroke-width="1"/>
+  
+  <!-- Asparagus spears -->
+  <rect x="50" y="135" width="4" height="20" fill="#4CAF50" rx="2"/>
+  <circle cx="52" cy="133" r="2" fill="#66BB6A"/>
+  
+  <rect x="56" y="138" width="4" height="18" fill="#4CAF50" rx="2"/>
+  <circle cx="58" cy="136" r="2" fill="#66BB6A"/>
+  
+  <rect x="62" y="140" width="4" height="16" fill="#4CAF50" rx="2"/>
+  <circle cx="64" cy="138" r="2" fill="#66BB6A"/>
+  
+  <!-- Steam -->
+  <path d="M90 105 Q92 95 90 85 Q88 75 90 65" 
+        fill="none" stroke="#E0E0E0" stroke-width="2" stroke-linecap="round" opacity="0.6"/>
+  <path d="M110 108 Q112 98 110 88 Q108 78 110 68" 
+        fill="none" stroke="#E0E0E0" stroke-width="2" stroke-linecap="round" opacity="0.6"/>
+</svg>

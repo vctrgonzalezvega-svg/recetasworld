@@ -1,0 +1,72 @@
+<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bowl" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#FFFFFF;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#F5F5F5;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="curry" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#FFB74D;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#FF8F00;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background circle -->
+  <circle cx="100" cy="100" r="95" fill="#FFF8E1" stroke="#FF8F00" stroke-width="3"/>
+  
+  <!-- Bowl -->
+  <ellipse cx="100" cy="130" rx="70" ry="50" fill="url(#bowl)" stroke="#E0E0E0" stroke-width="2"/>
+  
+  <!-- Curry sauce -->
+  <ellipse cx="100" cy="125" rx="60" ry="40" fill="url(#curry)"/>
+  
+  <!-- Chicken pieces -->
+  <ellipse cx="85" cy="115" rx="12" ry="8" fill="#D7CCC8" transform="rotate(-15 85 115)"/>
+  <ellipse cx="115" cy="120" rx="10" ry="7" fill="#BCAAA4" transform="rotate(20 115 120)"/>
+  <ellipse cx="95" cy="135" rx="11" ry="8" fill="#D7CCC8" transform="rotate(10 95 135)"/>
+  <ellipse cx="110" cy="140" rx="9" ry="6" fill="#BCAAA4" transform="rotate(-25 110 140)"/>
+  
+  <!-- Vegetables -->
+  <!-- Onion pieces -->
+  <ellipse cx="75" cy="125" rx="4" ry="6" fill="#F8BBD9" transform="rotate(30 75 125)"/>
+  <ellipse cx="125" cy="130" rx="3" ry="5" fill="#F8BBD9" transform="rotate(-20 125 130)"/>
+  
+  <!-- Tomato pieces -->
+  <ellipse cx="90" cy="145" rx="5" ry="4" fill="#FFCDD2"/>
+  <ellipse cx="120" cy="115" rx="4" ry="3" fill="#FFCDD2"/>
+  
+  <!-- Coconut milk swirls -->
+  <path d="M80 110 Q90 105 100 110 Q110 115 120 110" 
+        fill="none" stroke="#FFFFFF" stroke-width="2" opacity="0.7"/>
+  <path d="M85 140 Q95 135 105 140 Q115 145 125 140" 
+        fill="none" stroke="#FFFFFF" stroke-width="2" opacity="0.7"/>
+  
+  <!-- Spices -->
+  <circle cx="88" cy="128" r="1" fill="#8D6E63"/>
+  <circle cx="112" cy="125" r="1" fill="#8D6E63"/>
+  <circle cx="98" cy="118" r="0.5" fill="#D32F2F"/>
+  <circle cx="105" cy="132" r="0.5" fill="#D32F2F"/>
+  
+  <!-- Rice on the side -->
+  <ellipse cx="50" cy="150" rx="20" ry="15" fill="#FFFFFF"/>
+  <ellipse cx="50" cy="148" rx="18" ry="12" fill="#FFFDE7"/>
+  
+  <!-- Rice grains texture -->
+  <ellipse cx="45" cy="145" rx="2" ry="1" fill="#F5F5F5"/>
+  <ellipse cx="52" cy="148" rx="2" ry="1" fill="#F5F5F5"/>
+  <ellipse cx="48" cy="152" rx="2" ry="1" fill="#F5F5F5"/>
+  <ellipse cx="55" cy="150" rx="2" ry="1" fill="#F5F5F5"/>
+  
+  <!-- Cilantro garnish -->
+  <ellipse cx="100" cy="105" rx="3" ry="8" fill="#4CAF50" transform="rotate(15 100 105)"/>
+  <ellipse cx="105" cy="108" rx="2" ry="6" fill="#4CAF50" transform="rotate(-10 105 108)"/>
+  <path d="M100 100 L100 110" stroke="#2E7D32" stroke-width="1"/>
+  <path d="M105 103 L105 113" stroke="#2E7D32" stroke-width="1"/>
+  
+  <!-- Steam -->
+  <path d="M90 95 Q92 85 90 75 Q88 65 90 55" 
+        fill="none" stroke="#E0E0E0" stroke-width="2" stroke-linecap="round" opacity="0.6"/>
+  <path d="M110 98 Q112 88 110 78 Q108 68 110 58" 
+        fill="none" stroke="#E0E0E0" stroke-width="2" stroke-linecap="round" opacity="0.6"/>
+  <path d="M100 100 Q102 90 100 80 Q98 70 100 60" 
+        fill="none" stroke="#E0E0E0" stroke-width="2" stroke-linecap="round" opacity="0.6"/>
+</svg>
