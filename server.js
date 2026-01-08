@@ -20,21 +20,34 @@ function sendJSON(res, status, obj) {
     const allowedOrigins = [
         'http://localhost:8081',
         'http://127.0.0.1:8081',
-        'https://recetasworld.railway.app', // Cambiar por tu dominio
-        'https://recetasworld.onrender.com', // Cambiar por tu dominio
-        'https://recetasworld.herokuapp.com' // Cambiar por tu dominio
+        'https://recetasworld.railway.app', // Cambiar por tu dominio Railway real
+        'https://recetasworld-production.up.railway.app', // Formato típico de Railway
+        // Agregar aquí tu URL real de Railway cuando la obtengas
     ];
     
     const origin = res.req ? res.req.headers.origin : null;
-    const corsOrigin = allowedOrigins.includes(origin) ? origin : '*';
     
-    res.writeHead(status, {
-        'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': corsOrigin,
-        'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
-        'Access-Control-Allow-Headers': 'Content-Type',
-        'Access-Control-Allow-Credentials': 'true'
-    });
+    // En Railway, permitir same-origin siempre
+    if (NODE_ENV === 'production' && !origin) {
+        // Same-origin request en producción
+        res.writeHead(status, {
+            'Content-Type': 'application/json',
+            'Access-Control-Allow-Origin': '*',
+            'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
+            'Access-Control-Allow-Headers': 'Content-Type',
+            'Access-Control-Allow-Credentials': 'true'
+        });
+    } else {
+        const corsOrigin = allowedOrigins.includes(origin) ? origin : '*';
+        res.writeHead(status, {
+            'Content-Type': 'application/json',
+            'Access-Control-Allow-Origin': corsOrigin,
+            'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
+            'Access-Control-Allow-Headers': 'Content-Type',
+            'Access-Control-Allow-Credentials': 'true'
+        });
+    }
+    
     res.end(JSON.stringify(obj));
 }
 
@@ -112,6 +125,18 @@ const server = http.createServer(async (req, res) => {
             res.end();
             return;
         }
+        
+        // Health check endpoint for Railway
+        if (req.method === 'GET' && pathname === '/api/health') {
+            return sendJSON(res, 200, { 
+                ok: true, 
+                status: 'healthy',
+                timestamp: new Date().toISOString(),
+                environment: NODE_ENV,
+                port: PORT
+            });
+        }
+        
         try {
             // GET recipes
             if (req.method === 'GET' && pathname === '/api/recipes') {
@@ -501,9 +526,6 @@ const server = http.createServer(async (req, res) => {
         });
     });
 });
-
-const PORT = process.env.PORT || 8081;
-const HOST = process.env.HOST || '0.0.0.0';
 
 server.listen(PORT, HOST, () => {
     console.log(`🚀 Servidor ejecutándose en http://${HOST}:${PORT}`);
