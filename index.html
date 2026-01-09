@@ -374,6 +374,7 @@
                             </div>
                         </div>
                     </div>
+                    <div id="adminRecipesCounter" class="admin-counter">Cargando recetas...</div>
                     <div id="adminRecipes" class="admin-items-grid"></div>
                 </div>
 
@@ -636,6 +637,75 @@
         <div class="modal-content modal-large">
             <button class="modal-close" id="closeFavoritesModal">&times;</button>
             <div id="favoritesContent"></div>
+        </div>
+    </div>
+
+    <!-- Modal de Edición de Producto -->
+    <div class="modal" id="editProductModal">
+        <div class="modal-content modal-medium">
+            <button class="modal-close" id="closeEditProductModal">&times;</button>
+            <div class="modal-body">
+                <div class="admin-form-container">
+                    <div class="admin-form-header">
+                        <h3><i class="fas fa-edit"></i> Editar Producto</h3>
+                        <p id="editProductTitle">Modifica los datos del producto seleccionado</p>
+                    </div>
+                    
+                    <form id="editProductForm" class="modern-admin-form">
+                        <div class="form-section">
+                            <h4><i class="fas fa-info-circle"></i> Información del Producto</h4>
+                            <div class="form-grid">
+                                <div class="form-group">
+                                    <label for="edit_p_name">
+                                        <i class="fas fa-tag"></i>
+                                        Nombre del producto *
+                                    </label>
+                                    <input class="modern-input" type="text" id="edit_p_name" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="edit_p_points">
+                                        <i class="fas fa-coins"></i>
+                                        Costo en puntos *
+                                    </label>
+                                    <input class="modern-input" type="number" id="edit_p_points" min="1" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="edit_p_stock">
+                                        <i class="fas fa-boxes"></i>
+                                        Stock disponible *
+                                    </label>
+                                    <input class="modern-input" type="number" id="edit_p_stock" min="0" required>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-section">
+                            <h4><i class="fas fa-image"></i> Imagen del producto</h4>
+                            <div class="image-upload-area">
+                                <input type="file" id="edit_p_imagefile" accept="image/*" hidden>
+                                <div class="image-upload-zone" onclick="document.getElementById('edit_p_imagefile').click()">
+                                    <div class="upload-placeholder" id="editProductImagePreview">
+                                        <i class="fas fa-cloud-upload-alt"></i>
+                                        <p>Haz clic para cambiar la imagen</p>
+                                        <small>PNG, JPG hasta 5MB</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-actions">
+                            <button type="button" id="submitEditProduct" class="btn-primary-modern">
+                                <i class="fas fa-save"></i>
+                                Guardar Cambios
+                            </button>
+                            <button type="button" id="cancelEditProduct" class="btn-secondary-modern">
+                                <i class="fas fa-times"></i>
+                                Cancelar
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
         </div>
     </div>
 

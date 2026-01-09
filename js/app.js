@@ -17,6 +17,7 @@ class RecipesApp {
         this.blockedRecipes = JSON.parse(localStorage.getItem('blockedRecipes')) || {}; // { username: { [recipeId]: timestamp } }
         this.lastSearchQuery = '';
         this.openRecipeId = null;
+        this.originalIngredientIcons = {};
         
         // ========== CONFIGURACIÓN AUTOMÁTICA DE ENTORNO ==========
         this.environment = this.detectEnvironment();
@@ -342,19 +343,13 @@ class RecipesApp {
     }
     
     getApiBase() {
-        // Si estamos en Netlify, necesitamos un backend separado
-        if (window.location.hostname.includes('netlify.app')) {
-            // IMPORTANTE: Cambiar esta URL por tu backend en Railway/Render
-            return 'https://tu-backend.railway.app/api';
-            // O usar Railway: https://recetasworld-production-xxxx.up.railway.app/api
-        }
-        
         // Si estamos en desarrollo, usar localhost
         if (this.environment === 'development') {
             return 'http://localhost:8081/api';
         }
         
-        // Si estamos en un servidor completo (Railway, Render, etc.)
+        // En producción (Railway, Render, etc.), usar same-origin
+        // Esto funciona porque el servidor sirve tanto frontend como backend
         return `${window.location.protocol}//${window.location.host}/api`;
     }
     
@@ -1911,150 +1906,84 @@ class RecipesApp {
     }
 
     // Cargar recetas desde JSON usando AJAX
-    loadRecipesFromJSON() {
-        console.log('Inicio: loadRecipesFromJSON');
-        // Leer posibles recetas locales (solo como último recurso)
+    async loadRecipesFromJSON() {
+        console.log('🚀 Inicio: loadRecipesFromJSON - Cargando todas las recetas disponibles');
+        
+        let allRecipes = [];
         const localRaw = localStorage.getItem('localRecipes');
-        console.log('localRaw presente:', localRaw ? 'sí' : 'no');
-        // Intentar cargar desde la API cuando exista, sino desde el JSON local
-        console.log('Intentando fetch API /api/recipes');
+        
         // Detectar si se está abriendo por file:// — esto bloqueará fetch por motivos de CORS/file access
         if (location && location.protocol === 'file:') {
-            this.debugLog('Aviso: la página se abrió via file:// — fetch() no funcionará. Usa un servidor local (Apache/XAMPP o `node server.js`).');
-            // intentar cargar directamente desde data/recipes.json
-            return fetch('data/recipes.json')
-                .then(r => r.json())
-                .then(data => {
-                    const arr = Array.isArray(data.recetas) ? data.recetas : [];
-                    this.debugLog('data/recipes.json length (file protocol): ' + arr.length);
-                    this.recipes = arr;
-                    this.applyRatingStatsToRecipes();
-                    this.applyRecipeOverrides();
-                    this.initializeApp();
-                })
-                .catch(err => {
-                    this.debugLog('Fallo fetch data/recipes.json en file protocol: ' + (err && err.message ? err.message : String(err)));
-                    
-                    // Fallback: usar recipesDatabase si está disponible
-                    if (typeof recipesDatabase !== 'undefined' && Array.isArray(recipesDatabase)) {
-                        this.debugLog('Usando recipesDatabase como fallback en file protocol: ' + recipesDatabase.length + ' recetas');
-                        this.recipes = recipesDatabase;
-                        this.applyRatingStatsToRecipes();
-                        this.applyRecipeOverrides();
-                        this.initializeApp();
-                    } else {
-                        this.recipes = [];
-                        this.initializeApp();
-                    }
-                });
-        }
-
-        this.apiFetch('/api/recipes')
-            .then(response => {
-                this.debugLog('API respuesta recibida (status ' + (response && response.status) + ')');
-                if (!response.ok) throw new Error('API no disponible');
-                return response.json();
-            })
-            .then(data => {
-                const apiRecipes = Array.isArray(data.recetas) ? data.recetas : [];
-                this.debugLog('API recetas: ' + apiRecipes.length);
-                if (apiRecipes.length > 0) {
-                    this.recipes = apiRecipes;
-                    this.applyRatingStatsToRecipes();
-                    this.applyRecipeOverrides();
-                    this.initializeApp();
-                    try { localStorage.removeItem('localRecipes'); } catch(e) {}
-                } else {
-                    this.debugLog('API devolvió 0 recetas; probando localRaw y luego data/recipes.json');
-                    // Si la API trae 0, intentar usar local primero y luego JSON
-                    try {
-                        if (localRaw) {
-                            const parsedLocal = JSON.parse(localRaw);
-                            if (Array.isArray(parsedLocal) && parsedLocal.length > 0) {
-                                this.debugLog('Cargando recetas desde localRaw: ' + parsedLocal.length);
-                                this.recipes = parsedLocal;
-                                this.applyRatingStatsToRecipes();
-                                this.applyRecipeOverrides();
-                                this.initializeApp();
-                                return;
-                            }
-                        }
-                    } catch(e) { this.debugLog('Error parseando localRaw: ' + (e && e.message ? e.message : String(e))); }
-
-                    this.debugLog('Cargando data/recipes.json como fallback');
-                    return fetch('data/recipes.json')
-                        .then(r => r.json())
-                        .then(fallback => {
-                            const arr = Array.isArray(fallback.recetas) ? fallback.recetas : [];
-                            this.debugLog('data/recipes.json length: ' + arr.length);
-                            this.recipes = arr;
-                            this.applyRatingStatsToRecipes();
-                            this.applyRecipeOverrides();
-                            this.initializeApp();
-                        })
-                        .catch(err => {
-                            this.debugLog('Error cargando data/recipes.json: ' + (err && err.message ? err.message : String(err)));
-                            
-                            // Fallback: usar recipesDatabase si está disponible
-                            if (typeof recipesDatabase !== 'undefined' && Array.isArray(recipesDatabase)) {
-                                this.debugLog('Usando recipesDatabase como fallback: ' + recipesDatabase.length + ' recetas');
-                                this.recipes = recipesDatabase;
-                                this.applyRatingStatsToRecipes();
-                                this.applyRecipeOverrides();
-                                this.initializeApp();
-                            } else {
-                                this.recipes = [];
-                                this.initializeApp();
-                            }
-                        });
+            this.debugLog('Aviso: la página se abrió via file:// — fetch() no funcionará. Usa un servidor local.');
+            
+            // Fallback: usar recipesDatabase si está disponible
+            if (typeof recipesDatabase !== 'undefined' && Array.isArray(recipesDatabase)) {
+                allRecipes = [...recipesDatabase];
+                this.debugLog(`📚 Usando recipesDatabase como fallback: ${recipesDatabase.length} recetas`);
+            }
+        } else {
+            // Protocolo HTTP/HTTPS - intentar cargar desde múltiples fuentes
+            
+            // 1. Intentar cargar desde la API
+            try {
+                const response = await this.apiFetch('/api/recipes');
+                if (response.ok) {
+                    const data = await response.json();
+                    const apiRecipes = Array.isArray(data.recetas) ? data.recetas : [];
+                    allRecipes = [...apiRecipes];
+                    console.log(`📡 API devolvió ${apiRecipes.length} recetas`);
+                    console.log(`📡 Primeras 5 recetas de API:`, apiRecipes.slice(0, 5).map(r => r.nombre));
+                    this.debugLog(`📡 Cargadas ${apiRecipes.length} recetas desde API`);
                 }
-            })
-            .catch((err) => {
-                this.debugLog('API fetch falló: ' + (err && err.message ? err.message : String(err)));
-                // Si la API falla: intentar local y luego JSON
-                try {
-                    if (localRaw) {
-                        const parsedLocal = JSON.parse(localRaw);
-                        if (Array.isArray(parsedLocal) && parsedLocal.length > 0) {
-                            this.debugLog('Cargando recetas desde localRaw en catch: ' + parsedLocal.length);
-                            this.recipes = parsedLocal;
-                            this.applyRatingStatsToRecipes();
-                            this.applyRecipeOverrides();
-                            this.initializeApp();
-                            return;
-                        }
+            } catch (err) {
+                this.debugLog('⚠️ API no disponible: ' + (err?.message || String(err)));
+            }
+            
+            // 2. Cargar desde localStorage y combinar
+            try {
+                if (localRaw) {
+                    const localRecipes = JSON.parse(localRaw);
+                    if (Array.isArray(localRecipes) && localRecipes.length > 0) {
+                        // Combinar evitando duplicados por ID
+                        const existingIds = new Set(allRecipes.map(r => String(r.id)));
+                        const uniqueLocalRecipes = localRecipes.filter(r => !existingIds.has(String(r.id)));
+                        allRecipes = [...allRecipes, ...uniqueLocalRecipes];
+                        console.log(`💾 LocalStorage tenía ${localRecipes.length} recetas, agregadas ${uniqueLocalRecipes.length} únicas`);
+                        this.debugLog(`💾 Agregadas ${uniqueLocalRecipes.length} recetas únicas desde localStorage`);
                     }
-                } catch(e) { this.debugLog('Error parseando localRaw en catch: ' + (e && e.message ? e.message : String(e))); }
-                this.debugLog('Intentando cargar data/recipes.json en catch');
-                fetch('data/recipes.json')
-                    .then(response => response.json())
-                    .then(data => {
-                        const arr = Array.isArray(data.recetas) ? data.recetas : [];
-                        this.debugLog('data/recipes.json length (catch): ' + arr.length);
-                        this.recipes = arr;
-                        this.applyRatingStatsToRecipes();
-                        this.applyRecipeOverrides();
-                        this.initializeApp();
-                    })
-                    .catch(error => {
-                        console.error('Error cargando recetas:', error);
-                        this.debugLog('Error cargando recetas final: ' + (error && error.message ? error.message : String(error)));
-                        
-                        // Último fallback: usar recipesDatabase si está disponible
-                        if (typeof recipesDatabase !== 'undefined' && Array.isArray(recipesDatabase)) {
-                            this.debugLog('Usando recipesDatabase como último fallback: ' + recipesDatabase.length + ' recetas');
-                            this.recipes = recipesDatabase;
-                            this.applyRatingStatsToRecipes();
-                            this.applyRecipeOverrides();
-                            this.initializeApp();
-                        } else {
-                            this.debugLog('recipesDatabase no disponible');
-                            this.recipes = [];
-                            this.initializeApp();
-                            this.showNotification('Error al cargar las recetas ❌');
-                        }
-                    });
-            });
+                }
+            } catch (e) {
+                this.debugLog('❌ Error parseando localStorage: ' + (e?.message || String(e)));
+            }
+            
+            // 3. Último fallback: recipesDatabase desde js/recipes-data.js
+            if (allRecipes.length === 0 && typeof recipesDatabase !== 'undefined' && Array.isArray(recipesDatabase)) {
+                allRecipes = [...recipesDatabase];
+                console.log(`📚 Usando recipesDatabase: ${recipesDatabase.length} recetas`);
+                this.debugLog(`📚 Usando recipesDatabase como último recurso: ${recipesDatabase.length} recetas`);
+            }
+        }
+        
+        // Asignar todas las recetas combinadas
+        this.recipes = allRecipes;
+        console.log(`✅ TOTAL FINAL: ${this.recipes.length} recetas cargadas`);
+        console.log(`📋 Lista de todas las recetas:`, this.recipes.map(r => r.nombre));
+        
+        if (this.recipes.length === 0) {
+            this.debugLog('❌ No se pudieron cargar recetas desde ninguna fuente');
+            this.showNotification('Error al cargar las recetas ❌');
+        } else {
+            // Limpiar localStorage si tenemos recetas de la API
+            const hasApiRecipes = allRecipes.some(r => !String(r.id).startsWith('r_'));
+            if (hasApiRecipes) {
+                try { localStorage.removeItem('localRecipes'); } catch(e) {}
+            }
+        }
+        
+        // Aplicar estadísticas y inicializar
+        this.applyRatingStatsToRecipes();
+        this.applyRecipeOverrides();
+        this.initializeApp();
     }
 
     applyRatingStatsToRecipes() {
@@ -2675,7 +2604,7 @@ class RecipesApp {
         const recommendationsTrigger = document.getElementById('recommendations-link');
         if (recommendationsTrigger) recommendationsTrigger.addEventListener('click', (e) => {
             e.preventDefault();
-            this.showRecommendations();
+            this.showHome(); // Cambiar a showHome para que funcione igual que el logo
             this.closeMenu();
         });
 
@@ -2951,7 +2880,11 @@ class RecipesApp {
         if (productsLink) productsLink.addEventListener('click', (e) => { e.preventDefault(); this.showProducts(); this.closeMenu(); });
 
         const recommendationsLink = document.getElementById('recommendations-link');
-        if (recommendationsLink) recommendationsLink.addEventListener('click', (e) => { e.preventDefault(); this.showRecommendations(); this.closeMenu(); });
+        if (recommendationsLink) recommendationsLink.addEventListener('click', (e) => { 
+            e.preventDefault(); 
+            this.showHome(); // Cambiar a showHome para que funcione igual que el logo
+            this.closeMenu(); 
+        });
 
         const submitAddProduct = document.getElementById('submitAddProduct');
         if (submitAddProduct) submitAddProduct.addEventListener('click', () => this.adminAddProduct());
@@ -3014,20 +2947,56 @@ class RecipesApp {
     purchaseProduct(productId) {
         const user = this.currentUser;
         if (!user) return this.showNotification('Inicia sesión para canjear productos', 'error');
+        
+        // Verificar si el usuario tiene dirección configurada
+        if (!this.checkAddressBeforeRedeem(productId)) {
+            return; // La función checkAddressBeforeRedeem maneja el modal
+        }
+        
         const product = this.products.find(p => p.id === productId);
         if (!product) return this.showNotification('Producto no encontrado', 'error');
         if (product.stock <= 0) return this.showNotification('Producto agotado', 'error');
         const username = user.username;
         const balance = this.userPoints[username] || 0;
         if (balance < product.points) return this.showNotification('No tienes suficientes puntos', 'error');
+        
         // deduct points using centralized function
         const pointsToDeduct = -product.points; // Negative to deduct
         this.awardPoints(username, pointsToDeduct, `canje de ${product.name}`);
         
         product.stock = Math.max(0, product.stock - 1);
         this.saveProducts();
-        this.showNotification(`Has canjeado ${product.name} por ${product.points} pts`);
+        
+        // Registrar el canje
+        this.recordProductRedemption(productId, product);
+        
+        this.showNotification(`¡Has canjeado ${product.name} por ${product.points} pts! Se enviará a tu dirección registrada.`, 'success');
         this.showProducts();
+    }
+    
+    recordProductRedemption(productId, product) {
+        if (!this.currentUser) return;
+        
+        const redemptions = JSON.parse(localStorage.getItem('productRedemptions')) || {};
+        const username = this.currentUser.username;
+        
+        if (!redemptions[username]) {
+            redemptions[username] = [];
+        }
+        
+        const redemption = {
+            productId: productId,
+            productName: product.name,
+            points: product.points,
+            redeemedAt: new Date().toISOString(),
+            status: 'pending', // pending, shipped, delivered
+            address: this.getUserAddress()
+        };
+        
+        redemptions[username].push(redemption);
+        localStorage.setItem('productRedemptions', JSON.stringify(redemptions));
+        
+        console.log('✅ Canje registrado:', redemption);
     }
 
     toggleMenu() {
@@ -3141,8 +3110,13 @@ class RecipesApp {
         this.currentCategory = null;
         this.lastSearchQuery = '';
         
+        console.log(`🏠 showHome() iniciado - this.recipes.length = ${this.recipes.length}`);
+        
         // Mostrar TODAS las recetas ordenadas por preferencias del usuario
         const allRecipesPersonalized = this.getAllRecipesPersonalized();
+        
+        console.log(`🏠 getAllRecipesPersonalized() devolvió ${allRecipesPersonalized.length} recetas`);
+        console.log(`🏠 Primeras 10 recetas:`, allRecipesPersonalized.slice(0, 10).map(r => r.nombre));
         
         document.getElementById('sectionTitle').textContent = 'Todas las Recetas - Personalizadas para Ti';
         this.displayRecipes(allRecipesPersonalized);
@@ -3369,8 +3343,26 @@ class RecipesApp {
 
     filterByCategory(category) {
         this.currentCategory = category;
+        
+        // Mapeo de categorías del filtro a categorías de las recetas
+        const categoryMapping = {
+            'desayunos': 'Desayuno',
+            'comidas': 'Comida', 
+            'cenas': 'Cena',
+            'postres': 'Postre',
+            'bebidas': 'Bebida',
+            'botanas': 'Botana',
+            'entradas': 'Entrada',
+            'rapidas': 'Rápida',
+            'baratas': 'Económica',
+            'economicas': 'Económica'
+        };
+        
+        // Convertir la categoría del filtro a la categoría de la receta
+        const recipeCategory = categoryMapping[category] || category;
+        
         let filtered = this.recipes.filter(recipe => 
-            recipe.categorias.includes(category)
+            recipe.categorias && recipe.categorias.includes(recipeCategory)
         );
         
         const categoryNames = {
@@ -3382,10 +3374,12 @@ class RecipesApp {
             'botanas': 'Botanas',
             'entradas': 'Entradas',
             'rapidas': 'Recetas Rápidas',
-            'baratas': 'Recetas Económicas'
+            'baratas': 'Recetas Económicas',
+            'economicas': 'Recetas Económicas'
         };
         
         document.getElementById('sectionTitle').textContent = categoryNames[category] || category;
+        console.log(`🔍 Filtro aplicado: ${category} -> ${recipeCategory}, encontradas: ${filtered.length} recetas`);
         this.displayRecipes(filtered);
     }
 
@@ -3953,9 +3947,8 @@ class RecipesApp {
                     <ul class="ingredients-list">
                         ${recipe.ingredientes.map(ing => `
                             <li class="ingredient-item">
-                                <span class="ingredient-icon">${ing.icono}</span>
-                                <span class="ingredient-name">${ing.nombre}</span>
-                                <span class="ingredient-amount">${ing.cantidad}</span>
+                                <span class="ingredient-icon">${ing.icono || '🥄'}</span>
+                                <span class="ingredient-name">${ing.nombre || ing}</span>
                             </li>
                         `).join('')}
                     </ul>
@@ -4267,6 +4260,9 @@ class RecipesApp {
                     <button class="profile-tab-btn" data-tab="stats">
                         <i class="fas fa-chart-bar"></i> Estadísticas
                     </button>
+                    <button class="profile-tab-btn" data-tab="address">
+                        <i class="fas fa-map-marker-alt"></i> Mi Dirección
+                    </button>
                     <button class="profile-tab-btn" data-tab="account">
                         <i class="fas fa-user"></i> Mi Cuenta
                     </button>
@@ -4414,6 +4410,123 @@ class RecipesApp {
                         </div>
                     </div>
 
+                    <!-- Tab: Mi Dirección -->
+                    <div class="profile-tab-panel" id="profile-tab-address">
+                        <div class="address-section">
+                            <h4><i class="fas fa-map-marker-alt"></i> Dirección de Envío</h4>
+                            
+                            <div class="address-info">
+                                <p class="address-description">
+                                    <i class="fas fa-info-circle"></i>
+                                    Esta dirección se utilizará para enviar los productos que canjees con tus puntos.
+                                </p>
+                                
+                                <form id="addressForm" class="address-form">
+                                    <div class="form-grid">
+                                        <div class="form-group">
+                                            <label for="address_name">
+                                                <i class="fas fa-user"></i> Nombre completo *
+                                            </label>
+                                            <input type="text" id="address_name" class="modern-input" placeholder="Tu nombre completo" required>
+                                        </div>
+                                        
+                                        <div class="form-group">
+                                            <label for="address_phone">
+                                                <i class="fas fa-phone"></i> Teléfono *
+                                            </label>
+                                            <input type="tel" id="address_phone" class="modern-input" placeholder="Tu número de teléfono" required>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                        <label for="address_street">
+                                            <i class="fas fa-road"></i> Dirección *
+                                        </label>
+                                        <input type="text" id="address_street" class="modern-input" placeholder="Calle, número, colonia" required>
+                                    </div>
+                                    
+                                    <div class="form-grid">
+                                        <div class="form-group">
+                                            <label for="address_city">
+                                                <i class="fas fa-city"></i> Ciudad *
+                                            </label>
+                                            <input type="text" id="address_city" class="modern-input" placeholder="Tu ciudad" required>
+                                        </div>
+                                        
+                                        <div class="form-group">
+                                            <label for="address_state">
+                                                <i class="fas fa-map"></i> Estado/Provincia *
+                                            </label>
+                                            <input type="text" id="address_state" class="modern-input" placeholder="Tu estado o provincia" required>
+                                        </div>
+                                        
+                                        <div class="form-group">
+                                            <label for="address_postal">
+                                                <i class="fas fa-mail-bulk"></i> Código Postal *
+                                            </label>
+                                            <input type="text" id="address_postal" class="modern-input" placeholder="Código postal" required>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                        <label for="address_country">
+                                            <i class="fas fa-globe"></i> País *
+                                        </label>
+                                        <select id="address_country" class="modern-input" required>
+                                            <option value="">Selecciona tu país</option>
+                                            <option value="MX">México</option>
+                                            <option value="US">Estados Unidos</option>
+                                            <option value="CA">Canadá</option>
+                                            <option value="ES">España</option>
+                                            <option value="AR">Argentina</option>
+                                            <option value="CO">Colombia</option>
+                                            <option value="PE">Perú</option>
+                                            <option value="CL">Chile</option>
+                                            <option value="EC">Ecuador</option>
+                                            <option value="VE">Venezuela</option>
+                                            <option value="UY">Uruguay</option>
+                                            <option value="PY">Paraguay</option>
+                                            <option value="BO">Bolivia</option>
+                                            <option value="CR">Costa Rica</option>
+                                            <option value="PA">Panamá</option>
+                                            <option value="GT">Guatemala</option>
+                                            <option value="HN">Honduras</option>
+                                            <option value="SV">El Salvador</option>
+                                            <option value="NI">Nicaragua</option>
+                                            <option value="DO">República Dominicana</option>
+                                            <option value="CU">Cuba</option>
+                                            <option value="PR">Puerto Rico</option>
+                                        </select>
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                        <label for="address_notes">
+                                            <i class="fas fa-sticky-note"></i> Notas adicionales (opcional)
+                                        </label>
+                                        <textarea id="address_notes" class="modern-input" rows="3" placeholder="Referencias, instrucciones especiales, etc."></textarea>
+                                    </div>
+                                    
+                                    <div class="form-actions">
+                                        <button type="button" id="saveAddressBtn" class="btn-primary">
+                                            <i class="fas fa-save"></i> Guardar Dirección
+                                        </button>
+                                        <button type="button" id="clearAddressBtn" class="btn-secondary">
+                                            <i class="fas fa-eraser"></i> Limpiar
+                                        </button>
+                                    </div>
+                                </form>
+                                
+                                <div id="savedAddressDisplay" class="saved-address" style="display: none;">
+                                    <h5><i class="fas fa-check-circle"></i> Dirección Guardada</h5>
+                                    <div class="address-display-content"></div>
+                                    <button type="button" id="editAddressBtn" class="btn-secondary">
+                                        <i class="fas fa-edit"></i> Editar Dirección
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                     <!-- Tab: Mi Cuenta -->
                     <div class="profile-tab-panel" id="profile-tab-account">
                         <div class="account-section">
@@ -4454,9 +4567,6 @@ class RecipesApp {
                             <div class="account-actions">
                                 <button class="btn-secondary" onclick="app.exportUserData()">
                                     <i class="fas fa-download"></i> Exportar Datos
-                                </button>
-                                <button class="btn-warning" onclick="app.resetUserProgress()">
-                                    <i class="fas fa-refresh"></i> Reiniciar Progreso
                                 </button>
                             </div>
                         </div>
@@ -6494,6 +6604,32 @@ class RecipesApp {
             closeEditRecipeModal.addEventListener('click', () => this.closeEditRecipeModal());
         }
 
+        // ========== EVENT LISTENERS PARA MODAL DE EDICIÓN DE PRODUCTOS ==========
+        const submitEditProduct = document.getElementById('submitEditProduct');
+        if (submitEditProduct) {
+            submitEditProduct.addEventListener('click', () => this.adminEditProduct());
+        }
+
+        const cancelEditProduct = document.getElementById('cancelEditProduct');
+        if (cancelEditProduct) {
+            cancelEditProduct.addEventListener('click', () => this.closeEditProductModal());
+        }
+
+        const closeEditProductModal = document.getElementById('closeEditProductModal');
+        if (closeEditProductModal) {
+            closeEditProductModal.addEventListener('click', () => this.closeEditProductModal());
+        }
+
+        // Event listener para cerrar modal al hacer click fuera
+        const editProductModal = document.getElementById('editProductModal');
+        if (editProductModal) {
+            editProductModal.addEventListener('click', (e) => {
+                if (e.target === editProductModal) {
+                    this.closeEditProductModal();
+                }
+            });
+        }
+
         // Event listeners para búsquedas
         const adminRecipeSearch = document.getElementById('adminRecipeSearch');
         if (adminRecipeSearch) {
@@ -6720,10 +6856,24 @@ class RecipesApp {
         
         // Llenar ingredientes
         if (recipe.ingredientes && Array.isArray(recipe.ingredientes)) {
-            const ingredientesText = recipe.ingredientes.map(ing => 
-                typeof ing === 'string' ? ing : ing.nombre || ing
-            ).join('\n');
+            const ingredientesText = recipe.ingredientes.map(ing => {
+                if (typeof ing === 'string') {
+                    return ing;
+                } else if (ing.nombre) {
+                    return ing.nombre;
+                } else {
+                    return ing;
+                }
+            }).join('\n');
             document.getElementById('edit_ingredientes').value = ingredientesText;
+            
+            // Guardar los iconos originales para preservarlos
+            this.originalIngredientIcons = recipe.ingredientes.reduce((acc, ing, index) => {
+                if (ing.icono) {
+                    acc[ing.nombre || ing] = ing.icono;
+                }
+                return acc;
+            }, {});
         }
         
         // Llenar instrucciones
@@ -6776,6 +6926,9 @@ class RecipesApp {
         document.getElementById('edit_instrucciones').value = '';
         document.getElementById('edit_imagenfile').value = '';
         
+        // Limpiar iconos originales
+        this.originalIngredientIcons = {};
+        
         // Limpiar checkboxes de categorías
         document.querySelectorAll('#editCategoriesWrapper input[type="checkbox"]').forEach(cb => {
             cb.checked = false;
@@ -6825,10 +6978,25 @@ class RecipesApp {
         try {
             const parsed = JSON.parse(ingredientesRaw);
             if (Array.isArray(parsed)) {
-                ingredientes = parsed.map(item => (typeof item === 'string') ? { nombre: item, cantidad: '', icono: '' } : item);
+                ingredientes = parsed.map(item => {
+                    if (typeof item === 'string') {
+                        return { 
+                            nombre: item, 
+                            icono: this.originalIngredientIcons?.[item] || '🥄' 
+                        };
+                    } else {
+                        return {
+                            nombre: item.nombre || item,
+                            icono: item.icono || this.originalIngredientIcons?.[item.nombre] || '🥄'
+                        };
+                    }
+                });
             } else ingredientes = [];
         } catch {
-            ingredientes = ingredientesRaw.split(/\r?\n/).map(l => l.trim()).filter(Boolean).map(l => ({ nombre: l, cantidad: '', icono: '' }));
+            ingredientes = ingredientesRaw.split(/\r?\n/).map(l => l.trim()).filter(Boolean).map(l => ({ 
+                nombre: l, 
+                icono: this.originalIngredientIcons?.[l] || '🥄' 
+            }));
         }
 
         try {
@@ -7042,28 +7210,48 @@ class RecipesApp {
     }
 
     async loadAdminLists() {
+        let allRecipes = [];
+        
         try {
+            // Primero intentar cargar desde la API
             const rres = await this.apiFetch('/api/recipes');
             if (rres.ok) {
                 const rdata = await rres.json();
-                const recetas = rdata.recetas || [];
-                this.renderAdminRecipes(recetas);
+                const recetasAPI = rdata.recetas || [];
+                allRecipes = [...recetasAPI];
+                console.log(`📡 ADMIN: Cargadas ${recetasAPI.length} recetas desde API`);
+                console.log(`📡 ADMIN: Primeras 5 recetas de API:`, recetasAPI.slice(0, 5).map(r => r.nombre));
             }
-
-            // render admin products area from local storage
-            this.renderAdminProducts();
         } catch (err) { 
-            console.error(err); 
+            console.error('Error cargando desde API:', err); 
         }
 
-        // Si la API no está disponible o no devolvió recetas, renderizar desde las recetas locales en memoria
+        // Luego cargar desde almacenamiento local y combinar
         try {
             const recetasLocal = this.recipes && this.recipes.length ? this.recipes : (JSON.parse(localStorage.getItem('localRecipes') || '[]'));
-            this.renderAdminRecipes(recetasLocal);
+            
+            // Combinar recetas evitando duplicados (por ID)
+            const existingIds = new Set(allRecipes.map(r => String(r.id)));
+            const uniqueLocalRecipes = recetasLocal.filter(r => !existingIds.has(String(r.id)));
+            
+            allRecipes = [...allRecipes, ...uniqueLocalRecipes];
+            console.log(`💾 ADMIN: Total de recetas combinadas: ${allRecipes.length} (${uniqueLocalRecipes.length} adicionales desde local)`);
+            console.log(`📋 ADMIN: Lista completa de recetas:`, allRecipes.map(r => r.nombre));
+            
+            // Renderizar todas las recetas combinadas
+            this.renderAdminRecipes(allRecipes);
         } catch (err) { 
-            /* ignore */ 
+            console.error('Error cargando recetas locales:', err);
+            // Si hay error con local, al menos mostrar las de la API
+            if (allRecipes.length > 0) {
+                this.renderAdminRecipes(allRecipes);
+            }
         }
 
+        // Cargar productos desde localStorage
+        this.renderAdminProducts();
+
+        // Cargar usuarios
         try {
             const ures = await this.apiFetch('/api/users');
             if (ures.ok) {
@@ -7101,6 +7289,12 @@ class RecipesApp {
                 (r.nombre||'').toLowerCase().includes(searchVal) || 
                 (r.pais||'').toLowerCase().includes(searchVal)
             );
+        }
+
+        // Agregar contador de recetas
+        const counterElement = document.getElementById('adminRecipesCounter');
+        if (counterElement) {
+            counterElement.textContent = `Mostrando ${recetasToRender.length} de ${recetas.length} recetas`;
         }
 
         list.innerHTML = recetasToRender.map(r => `
@@ -7259,11 +7453,23 @@ class RecipesApp {
                 const parsed = JSON.parse(ingredientesRaw);
                 if (Array.isArray(parsed)) {
                     // Si vienen objetos o strings, normalizar a objetos
-                    ingredientes = parsed.map(item => (typeof item === 'string') ? { nombre: item, cantidad: '', icono: '' } : item);
+                    ingredientes = parsed.map(item => {
+                        if (typeof item === 'string') {
+                            return { nombre: item, icono: this.getIngredientIcon(item) };
+                        } else {
+                            return {
+                                nombre: item.nombre || item,
+                                icono: item.icono || this.getIngredientIcon(item.nombre || item)
+                            };
+                        }
+                    });
                 } else ingredientes = [];
             } catch {
                 // No es JSON: tratar cada línea como ingrediente
-                ingredientes = ingredientesRaw.split(/\r?\n/).map(l => l.trim()).filter(Boolean).map(l => ({ nombre: l, cantidad: '', icono: '' }));
+                ingredientes = ingredientesRaw.split(/\r?\n/).map(l => l.trim()).filter(Boolean).map(l => ({ 
+                    nombre: l, 
+                    icono: this.getIngredientIcon(l) // Usar función automática de iconos
+                }));
             }
 
             try {
@@ -7641,27 +7847,42 @@ class RecipesApp {
     }
 
     openAdminEditProduct(prod) {
-        document.getElementById('p_name').value = prod.name || '';
-        document.getElementById('p_points').value = prod.points || 0;
-        document.getElementById('p_stock').value = prod.stock || 0;
+        console.log('🔧 Abriendo modal de edición de producto:', prod);
+        
+        // Guardar ID del producto que se está editando
+        this.adminProductEditId = prod.id;
+        
+        // Llenar el formulario de edición
+        document.getElementById('edit_p_name').value = prod.name || '';
+        document.getElementById('edit_p_points').value = prod.points || 0;
+        document.getElementById('edit_p_stock').value = prod.stock || 0;
+        
+        // Actualizar título del modal
+        document.getElementById('editProductTitle').textContent = `Editando: ${prod.name}`;
         
         // Mostrar imagen actual si existe
-        const productImagePreview = document.getElementById('productImagePreview');
-        if (productImagePreview && prod.imageBase64) {
-            productImagePreview.innerHTML = `
-                <img src="${prod.imageBase64}" class="image-preview" alt="Imagen actual">
-                <p>Imagen actual del producto</p>
-                <small>Haz clic para cambiar</small>
+        const imagePreview = document.getElementById('editProductImagePreview');
+        if (prod.imageBase64 || prod.imagen) {
+            const imageSrc = prod.imageBase64 || prod.imagen;
+            imagePreview.innerHTML = `
+                <img src="${imageSrc}" alt="${prod.name}" style="max-width: 100%; max-height: 200px; object-fit: cover; border-radius: 8px;">
+                <p style="margin-top: 10px;">Haz clic para cambiar la imagen</p>
+                <small>PNG, JPG hasta 5MB</small>
+            `;
+        } else {
+            imagePreview.innerHTML = `
+                <i class="fas fa-cloud-upload-alt"></i>
+                <p>Haz clic para agregar una imagen</p>
+                <small>PNG, JPG hasta 5MB</small>
             `;
         }
         
-        this.adminProductEditId = prod.id;
-        const submitBtn = document.getElementById('submitAddProduct'); 
-        if (submitBtn) {
-            submitBtn.innerHTML = '<i class="fas fa-save"></i> Actualizar Producto';
+        // Mostrar el modal
+        const modal = document.getElementById('editProductModal');
+        if (modal) {
+            modal.classList.add('active');
+            modal.style.display = 'flex';
         }
-        
-        this.showNotification(`Editando: ${prod.name}`, 'info');
     }
 
     adminDeleteProduct(id) {
@@ -8495,8 +8716,16 @@ class RecipesApp {
                 if (targetPanel) {
                     targetPanel.classList.add('active');
                 }
+                
+                // Si se abre la pestaña de dirección, cargar datos guardados
+                if (targetTab === 'address') {
+                    this.loadSavedAddress();
+                }
             });
         });
+        
+        // Event listeners para la dirección
+        this.setupAddressEventListeners();
     }
     
     // Obtener nombre de categoría para mostrar
@@ -8793,6 +9022,13 @@ class RecipesApp {
 
 // Variable global para la instancia de la app
 let app;
+
+// Inicializar cuando el DOM esté listo
+document.addEventListener('DOMContentLoaded', () => {
+    console.log('🚀 Inicializando RecetasWorld...');
+    window.app = new RecipesApp();
+    app = window.app; // Para compatibilidad
+});
 
 // Inicializar cuando el DOM esté listo
 document.addEventListener('DOMContentLoaded', () => {

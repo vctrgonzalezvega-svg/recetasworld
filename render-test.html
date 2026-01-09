@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Render - RecetasWorld</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; background: #f5f5f5; }
+        .container { max-width: 800px; margin: 0 auto; background: white; padding: 20px; border-radius: 8px; }
+        .test-item { margin: 10px 0; padding: 10px; border-radius: 4px; }
+        .success { background: #d4edda; color: #155724; border: 1px solid #c3e6cb; }
+        .error { background: #f8d7da; color: #721c24; border: 1px solid #f5c6cb; }
+        .info { background: #d1ecf1; color: #0c5460; border: 1px solid #bee5eb; }
+        button { padding: 10px 20px; margin: 5px; background: #007bff; color: white; border: none; border-radius: 4px; cursor: pointer; }
+        button:hover { background: #0056b3; }
+        pre { background: #f8f9fa; padding: 10px; border-radius: 4px; overflow-x: auto; }
+        .loading { color: #6c757d; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🧪 Test de Render - RecetasWorld</h1>
+        <p>Esta página te ayuda a diagnosticar problemas en tu despliegue de Render.</p>
+        
+        <div id="results"></div>
+        
+        <button onclick="runAllTests()">🚀 Ejecutar Todas las Pruebas</button>
+        <button onclick="testAPI()">📊 Probar API</button>
+        <button onclick="testStatic()">📄 Probar Archivos Estáticos</button>
+        <button onclick="getDebugInfo()">🔍 Info de Debug</button>
+    </div>
+
+    <script>
+        const baseURL = window.location.origin;
+        
+        function log(message, type = 'info') {
+            const results = document.getElementById('results');
+            const div = document.createElement('div');
+            div.className = `test-item ${type}`;
+            div.innerHTML = message;
+            results.appendChild(div);
+            results.scrollTop = results.scrollHeight;
+        }
+        
+        function clearResults() {
+            document.getElementById('results').innerHTML = '';
+        }
+        
+        async function testEndpoint(path, description) {
+            log(`🔍 Probando: ${description}`, 'loading');
+            
+            try {
+                const response = await fetch(`${baseURL}${path}`);
+                const contentType = response.headers.get('content-type');
+                
+                if (response.ok) {
+                    let content = '';
+                    if (contentType && contentType.includes('application/json')) {
+                        const data = await response.json();
+                        content = `<pre>${JSON.stringify(data, null, 2)}</pre>`;
+                    } else {
+                        const text = await response.text();
+                        content = `Tamaño: ${text.length} caracteres`;
+                    }
+                    
+                    log(`✅ ${description}<br>${content}`, 'success');
+                } else {
+                    const errorText = await response.text();
+                    log(`❌ ${description}<br>Status: ${response.status}<br>Error: ${errorText}`, 'error');
+                }
+            } catch (error) {
+                log(`❌ ${description}<br>Error: ${error.message}`, 'error');
+            }
+        }
+        
+        async function runAllTests() {
+            clearResults();
+            log('🚀 Iniciando pruebas completas...', 'info');
+            
+            const tests = [
+                ['/api/health', 'Health Check'],
+                ['/api/debug', 'Debug Info'],
+                ['/api/test-static', 'Test Archivos Estáticos'],
+                ['/api/recipes', 'API de Recetas'],
+                ['/css/styles.css', 'Archivo CSS'],
+                ['/js/app.js', 'JavaScript Principal'],
+                ['/js/recipes-data.js', 'Base de Datos de Recetas']
+            ];
+            
+            for (const [path, description] of tests) {
+                await testEndpoint(path, description);
+                await new Promise(resolve => setTimeout(resolve, 500));
+            }
+            
+            log('🏁 Pruebas completadas', 'info');
+        }
+        
+        async function testAPI() {
+            clearResults();
+            await testEndpoint('/api/health', 'Health Check');
+            await testEndpoint('/api/recipes', 'API de Recetas');
+        }
+        
+        async function testStatic() {
+            clearResults();
+            await testEndpoint('/css/styles.css', 'Archivo CSS');
+            await testEndpoint('/js/app.js', 'JavaScript Principal');
+            await testEndpoint('/js/recipes-data.js', 'Base de Datos');
+        }
+        
+        async function getDebugInfo() {
+            clearResults();
+            await testEndpoint('/api/debug', 'Información de Debug');
+            await testEndpoint('/api/test-static', 'Test de Archivos Estáticos');
+        }
+        
+        // Auto-ejecutar al cargar
+        window.onload = function() {
+            log('📋 Página de pruebas cargada. Haz clic en los botones para probar.', 'info');
+        };
+    </script>
+</body>
+</html>
