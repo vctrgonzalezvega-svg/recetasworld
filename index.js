@@ -23,22 +23,8 @@ function loadRecipesDatabase() {
             return recipesDatabase;
         }
         
-        // Fallback: try to load from js/recipes-data.js by reading and parsing
-        if (fs.existsSync(path.join(__dirname, 'js/recipes-data.js'))) {
-            const jsContent = fs.readFileSync(path.join(__dirname, 'js/recipes-data.js'), 'utf8');
-            
-            // Extract the recipesDatabase array from the JS file
-            const match = jsContent.match(/const recipesDatabase = (\[[\s\S]*?\]);/);
-            if (match) {
-                // Use eval to parse the array (safe in this controlled environment)
-                recipesDatabase = eval(match[1]);
-                console.log(`📚 Loaded ${recipesDatabase.length} recipes from js/recipes-data.js`);
-                return recipesDatabase;
-            }
-        }
-        
-        // If no external files found, use minimal fallback
-        console.log('⚠️ No recipe database files found, using minimal fallback');
+        // If no JSON file, use minimal fallback recipes
+        console.log('⚠️ No recipes-data.json found, using minimal fallback');
         recipesDatabase = [
             {
                 id: 1,
@@ -60,6 +46,46 @@ function loadRecipesDatabase() {
                 ],
                 calificacion: 4.8,
                 resenas: 125
+            },
+            {
+                id: 2,
+                nombre: "Tacos al Pastor",
+                pais: "México",
+                imagen: "🌮",
+                tiempo: 35,
+                categorias: ["comidas", "rapidas", "baratas"],
+                ingredientes: [
+                    { nombre: "Carne de cerdo", cantidad: "600g", icono: "🥩" },
+                    { nombre: "Piña", cantidad: "½ pieza", icono: "🍍" },
+                    { nombre: "Tortillas", cantidad: "12", icono: "🌮" }
+                ],
+                instrucciones: [
+                    "Marina la carne",
+                    "Cocina la carne",
+                    "Sirve en tortillas"
+                ],
+                calificacion: 4.8,
+                resenas: 289
+            },
+            {
+                id: 3,
+                nombre: "Spaghetti Carbonara",
+                pais: "Italia",
+                imagen: "🍝",
+                tiempo: 20,
+                categorias: ["comidas", "rapidas"],
+                ingredientes: [
+                    { nombre: "Espagueti", cantidad: "400g", icono: "🍝" },
+                    { nombre: "Panceta", cantidad: "150g", icono: "🥓" },
+                    { nombre: "Huevos", cantidad: "4", icono: "🥚" }
+                ],
+                instrucciones: [
+                    "Cocina la pasta",
+                    "Fríe la panceta",
+                    "Mezcla con huevos"
+                ],
+                calificacion: 4.7,
+                resenas: 234
             }
         ];
         
@@ -179,49 +205,50 @@ const server = http.createServer((req, res) => {
         // Log for debugging in production
         if (NODE_ENV === 'production') {
             console.log(`📁 Static request: ${pathname}`);
-            console.log(`📁 Relative path: ${relativePath}`);
-            console.log(`📁 Full path: ${filePath}`);
-            console.log(`📁 File exists: ${fs.existsSync(filePath)}`);
         }
         
-        // Security check
-        const normalizedPath = path.normalize(filePath);
-        if (!normalizedPath.startsWith(__dirname)) {
-            console.log(`❌ Security check failed: ${normalizedPath}`);
-            sendResponse(res, 403, { error: 'Forbidden' });
+        // Security check - ensure path is within working directory
+        try {
+            const normalizedPath = path.resolve(filePath);
+            const normalizedBase = path.resolve(__dirname);
+            
+            if (!normalizedPath.startsWith(normalizedBase)) {
+                console.log(`❌ Security check failed: ${normalizedPath}`);
+                sendResponse(res, 403, { error: 'Forbidden' });
+                return;
+            }
+        } catch (err) {
+            console.log(`❌ Path resolution error: ${err.message}`);
+            sendResponse(res, 400, { error: 'Bad request' });
             return;
         }
 
         // Check if file exists and is a file
-        if (fs.existsSync(filePath)) {
-            const stats = fs.statSync(filePath);
-            if (stats.isFile()) {
-                const ext = path.extname(filePath).toLowerCase();
-                const contentTypes = {
-                    '.html': 'text/html; charset=utf-8',
-                    '.js': 'application/javascript; charset=utf-8',
-                    '.css': 'text/css; charset=utf-8',
-                    '.json': 'application/json',
-                    '.png': 'image/png',
-                    '.jpg': 'image/jpeg',
-                    '.jpeg': 'image/jpeg',
-                    '.gif': 'image/gif',
-                    '.svg': 'image/svg+xml',
-                    '.ico': 'image/x-icon',
-                    '.woff': 'font/woff',
-                    '.woff2': 'font/woff2',
-                    '.ttf': 'font/ttf',
-                    '.eot': 'application/vnd.ms-fontobject'
-                };
-                
-                const contentType = contentTypes[ext] || 'text/plain';
-                
-                try {
+        try {
+            if (fs.existsSync(filePath)) {
+                const stats = fs.statSync(filePath);
+                if (stats.isFile()) {
+                    const ext = path.extname(filePath).toLowerCase();
+                    const contentTypes = {
+                        '.html': 'text/html; charset=utf-8',
+                        '.js': 'application/javascript; charset=utf-8',
+                        '.css': 'text/css; charset=utf-8',
+                        '.json': 'application/json',
+                        '.png': 'image/png',
+                        '.jpg': 'image/jpeg',
+                        '.jpeg': 'image/jpeg',
+                        '.gif': 'image/gif',
+                        '.svg': 'image/svg+xml',
+                        '.ico': 'image/x-icon'
+                    };
+                    
+                    const contentType = contentTypes[ext] || 'text/plain';
+                    
                     const content = fs.readFileSync(filePath);
                     res.writeHead(200, {
                         'Content-Type': contentType,
                         'Access-Control-Allow-Origin': '*',
-                        'Cache-Control': NODE_ENV === 'production' ? 'public, max-age=86400' : 'no-cache',
+                        'Cache-Control': NODE_ENV === 'production' ? 'public, max-age=3600' : 'no-cache',
                         'Content-Length': content.length
                     });
                     res.end(content);
@@ -230,33 +257,16 @@ const server = http.createServer((req, res) => {
                         console.log(`✅ Served: ${pathname} (${contentType}, ${content.length} bytes)`);
                     }
                     return;
-                } catch (err) {
-                    console.error('❌ Error reading file:', err);
-                    sendResponse(res, 500, { error: 'Internal server error' });
-                    return;
                 }
             }
+        } catch (err) {
+            console.error('❌ Error serving file:', err.message);
+            sendResponse(res, 500, { error: 'Internal server error' });
+            return;
         }
         
-        // File not found - log detailed info for debugging
+        // File not found
         console.log(`❌ File not found: ${pathname}`);
-        console.log(`❌ Tried path: ${filePath}`);
-        
-        if (NODE_ENV === 'production') {
-            // List directory contents for debugging
-            try {
-                const dirPath = path.dirname(filePath);
-                if (fs.existsSync(dirPath)) {
-                    const files = fs.readdirSync(dirPath);
-                    console.log(`📁 Directory ${dirPath} contains:`, files.slice(0, 10));
-                } else {
-                    console.log(`📁 Directory ${dirPath} does not exist`);
-                }
-            } catch (err) {
-                console.log(`📁 Error listing directory:`, err.message);
-            }
-        }
-        
         sendResponse(res, 404, { error: 'File not found', path: pathname });
         return;
     }
@@ -431,40 +441,25 @@ server.listen(PORT, '0.0.0.0', () => {
     
     // List available files for debugging in production
     if (NODE_ENV === 'production') {
-        console.log('📂 Listing all available files and directories:');
+        console.log('📂 Production environment detected');
+        console.log('📂 Working directory:', __dirname);
+        
         try {
-            function listDirectory(dir, prefix = '') {
-                const items = fs.readdirSync(dir);
-                items.forEach(item => {
-                    const fullPath = path.join(dir, item);
-                    const relativePath = path.relative(__dirname, fullPath);
-                    const stat = fs.statSync(fullPath);
-                    
-                    if (stat.isDirectory()) {
-                        console.log(`${prefix}📁 ${relativePath}/`);
-                        // Only go one level deep to avoid too much output
-                        if (prefix === '') {
-                            listDirectory(fullPath, '  ');
-                        }
-                    } else {
-                        const sizeKB = (stat.size / 1024).toFixed(1);
-                        console.log(`${prefix}📄 ${relativePath} (${sizeKB}KB)`);
-                    }
-                });
+            const rootFiles = fs.readdirSync(__dirname);
+            console.log('📂 Root files:', rootFiles.join(', '));
+            
+            // Check critical directories
+            if (fs.existsSync(path.join(__dirname, 'css'))) {
+                const cssFiles = fs.readdirSync(path.join(__dirname, 'css'));
+                console.log('📂 CSS files:', cssFiles.join(', '));
             }
             
-            listDirectory(__dirname);
+            if (fs.existsSync(path.join(__dirname, 'js'))) {
+                const jsFiles = fs.readdirSync(path.join(__dirname, 'js'));
+                console.log('📂 JS files:', jsFiles.join(', '));
+            }
         } catch (err) {
-            console.error('❌ Error listing files:', err);
+            console.error('❌ Error listing files:', err.message);
         }
-        
-        // Test critical files
-        const criticalFiles = ['index.html', 'css/styles.css', 'js/app.js', 'js/recipes-data.js'];
-        console.log('\n🔍 Testing critical files:');
-        criticalFiles.forEach(file => {
-            const fullPath = path.join(__dirname, file);
-            const exists = fs.existsSync(fullPath);
-            console.log(`${exists ? '✅' : '❌'} ${file} -> ${fullPath}`);
-        });
     }
 });
