@@ -391,21 +391,165 @@ server.listen(PORT, '0.0.0.0', () => {
     
     // If no data exists, add sample data
     if (recipes.length === 0) {
-        console.log('📝 No existing recipes found, adding sample data...');
-        // Add sample recipes here
-        recipes.push({
-            id: nextRecipeId++,
-            nombre: 'Tacos al Pastor',
-            pais: 'México',
-            tiempo: 30,
-            categorias: ['Mexicana', 'Cena'],
-            ingredientes: ['Carne de cerdo', 'Tortillas', 'Piña', 'Cebolla'],
-            instrucciones: ['Marinar la carne', 'Cocinar en trompo', 'Servir en tortillas'],
-            imagen: 'img/tacos-al-pastor.svg',
-            calificacion: 4.5,
-            resenas: 10
-        });
+        console.log('📝 No existing recipes found, adding comprehensive recipe database...');
+        
+        const megaRecipeDatabase = [
+            // ========== DESAYUNOS (25 recetas) ==========
+            {
+                id: nextRecipeId++, nombre: 'Pancakes Americanos', pais: 'Estados Unidos', tiempo: 20,
+                categorias: ['Americana', 'Desayuno'], ingredientes: ['Harina', 'Huevos', 'Leche', 'Azúcar', 'Polvo de hornear', 'Mantequilla'],
+                instrucciones: ['Mezclar ingredientes secos', 'Batir huevos con leche', 'Combinar todo', 'Cocinar en sartén caliente'],
+                imagen: 'img/pancakes-americanos.svg', calificacion: 4.2, resenas: 8
+            },
+            {
+                id: nextRecipeId++, nombre: 'Huevos Rancheros', pais: 'México', tiempo: 15,
+                categorias: ['Mexicana', 'Desayuno'], ingredientes: ['Huevos', 'Tortillas', 'Salsa roja', 'Frijoles refritos', 'Queso fresco', 'Aguacate'],
+                instrucciones: ['Calentar tortillas', 'Freír huevos', 'Calentar salsa', 'Montar el plato con todos los ingredientes'],
+                imagen: 'img/huevos-rancheros.svg', calificacion: 4.4, resenas: 18
+            },
+            {
+                id: nextRecipeId++, nombre: 'Croissants Franceses', pais: 'Francia', tiempo: 180,
+                categorias: ['Francesa', 'Desayuno'], ingredientes: ['Harina', 'Mantequilla fría', 'Levadura', 'Leche tibia', 'Sal', 'Azúcar'],
+                instrucciones: ['Preparar masa base', 'Laminar con mantequilla', 'Plegar varias veces', 'Formar y hornear'],
+                imagen: 'img/croissants-franceses.svg', calificacion: 4.6, resenas: 20
+            },
+            {
+                id: nextRecipeId++, nombre: 'Waffles Belgas', pais: 'Bélgica', tiempo: 25,
+                categorias: ['Europea', 'Desayuno'], ingredientes: ['Harina', 'Huevos', 'Leche', 'Mantequilla derretida', 'Azúcar', 'Levadura', 'Vainilla'],
+                instrucciones: ['Separar claras y yemas', 'Mezclar ingredientes secos', 'Combinar con líquidos', 'Cocinar en waflera'],
+                imagen: 'img/waffles-belgas.svg', calificacion: 4.5, resenas: 14
+            },
+            {
+                id: nextRecipeId++, nombre: 'Arepas Venezolanas', pais: 'Venezuela', tiempo: 30,
+                categorias: ['Venezolana', 'Desayuno'], ingredientes: ['Harina de maíz precocida', 'Agua tibia', 'Sal', 'Relleno variado'],
+                instrucciones: ['Mezclar harina con agua y sal', 'Formar bolas y aplastar', 'Cocinar en budare', 'Rellenar al gusto'],
+                imagen: 'img/arepas-venezolanas.svg', calificacion: 4.3, resenas: 16
+            },
+            {
+                id: nextRecipeId++, nombre: 'Desayuno Japonés', pais: 'Japón', tiempo: 45,
+                categorias: ['Japonesa', 'Desayuno'], ingredientes: ['Arroz', 'Miso', 'Huevo', 'Nori', 'Salmón', 'Verduras encurtidas'],
+                instrucciones: ['Cocinar arroz', 'Preparar sopa miso', 'Cocinar huevo', 'Servir todo junto tradicionalmente'],
+                imagen: 'img/desayuno-japones.svg', calificacion: 4.1, resenas: 9
+            },
+            {
+                id: nextRecipeId++, nombre: 'Muffins de Arándanos', pais: 'Estados Unidos', tiempo: 35,
+                categorias: ['Americana', 'Desayuno'], ingredientes: ['Harina', 'Arándanos', 'Huevos', 'Leche', 'Mantequilla', 'Azúcar', 'Polvo de hornear'],
+                instrucciones: ['Mezclar ingredientes secos', 'Combinar líquidos', 'Agregar arándanos', 'Hornear en moldes'],
+                imagen: 'img/muffins-arandanos.svg', calificacion: 4.2, resenas: 11
+            },
+            {
+                id: nextRecipeId++, nombre: 'Tostadas de Aguacate', pais: 'Australia', tiempo: 10,
+                categorias: ['Saludable', 'Desayuno'], ingredientes: ['Pan integral', 'Aguacate maduro', 'Limón', 'Sal', 'Pimienta', 'Tomate cherry'],
+                instrucciones: ['Tostar el pan', 'Machacar aguacate', 'Sazonar con limón y sal', 'Servir con tomates'],
+                imagen: 'img/tostadas-aguacate.svg', calificacion: 4.0, resenas: 13
+            },
+            {
+                id: nextRecipeId++, nombre: 'Yogurt con Granola', pais: 'Grecia', tiempo: 5,
+                categorias: ['Saludable', 'Desayuno'], ingredientes: ['Yogurt griego', 'Granola', 'Miel', 'Frutas del bosque', 'Nueces'],
+                instrucciones: ['Servir yogurt en bowl', 'Agregar granola', 'Decorar con frutas', 'Endulzar con miel'],
+                imagen: 'img/yogurt-con-granola.svg', calificacion: 4.1, resenas: 7
+            },
+            {
+                id: nextRecipeId++, nombre: 'Molletes Mexicanos', pais: 'México', tiempo: 15,
+                categorias: ['Mexicana', 'Desayuno'], ingredientes: ['Bolillos', 'Frijoles refritos', 'Queso Oaxaca', 'Pico de gallo', 'Aguacate'],
+                instrucciones: ['Partir bolillos por la mitad', 'Untar frijoles', 'Agregar queso', 'Gratinar y servir'],
+                imagen: 'img/molletes-mexicanos.svg', calificacion: 4.3, resenas: 19
+            },
+            {
+                id: nextRecipeId++, nombre: 'Pan Francés', pais: 'Francia', tiempo: 20,
+                categorias: ['Francesa', 'Desayuno'], ingredientes: ['Pan del día anterior', 'Huevos', 'Leche', 'Canela', 'Vainilla', 'Mantequilla'],
+                instrucciones: ['Batir huevos con leche y especias', 'Remojar pan', 'Freír en mantequilla', 'Servir caliente'],
+                imagen: 'img/pan-frances.svg', calificacion: 4.4, resenas: 12
+            },
+            {
+                id: nextRecipeId++, nombre: 'Smoothie Bowl', pais: 'Brasil', tiempo: 10,
+                categorias: ['Saludable', 'Desayuno'], ingredientes: ['Açaí congelado', 'Plátano', 'Granola', 'Fresas', 'Miel', 'Coco rallado'],
+                instrucciones: ['Licuar açaí con plátano', 'Servir en bowl', 'Decorar con granola y frutas', 'Agregar miel al gusto'],
+                imagen: 'img/smoothie-bowl.svg', calificacion: 4.3, resenas: 12
+            },
+            {
+                id: nextRecipeId++, nombre: 'Chilaquiles Rojos', pais: 'México', tiempo: 20,
+                categorias: ['Mexicana', 'Desayuno'], ingredientes: ['Tortillas', 'Salsa roja', 'Queso fresco', 'Crema', 'Cebolla'],
+                instrucciones: ['Freír tortillas cortadas', 'Calentar salsa', 'Mezclar tortillas con salsa', 'Servir con queso y crema'],
+                imagen: 'img/chilaquiles-rojos.svg', calificacion: 4.5, resenas: 22
+            },
+            {
+                id: nextRecipeId++, nombre: 'Gallo Pinto', pais: 'Costa Rica', tiempo: 15,
+                categorias: ['Centroamericana', 'Desayuno'], ingredientes: ['Arroz cocido', 'Frijoles negros', 'Cebolla', 'Pimiento', 'Cilantro', 'Salsa inglesa'],
+                instrucciones: ['Sofreír cebolla y pimiento', 'Agregar arroz y frijoles', 'Sazonar con salsa inglesa', 'Decorar con cilantro'],
+                imagen: 'img/gallo-pinto.svg', calificacion: 4.2, resenas: 15
+            },
+            {
+                id: nextRecipeId++, nombre: 'Huevos Benedictinos', pais: 'Estados Unidos', tiempo: 25,
+                categorias: ['Americana', 'Desayuno'], ingredientes: ['Huevos', 'Muffin inglés', 'Jamón canadiense', 'Salsa holandesa', 'Mantequilla'],
+                instrucciones: ['Tostar muffins', 'Escalfar huevos', 'Preparar salsa holandesa', 'Montar: muffin, jamón, huevo, salsa'],
+                imagen: 'img/huevos-benedictinos.svg', calificacion: 4.6, resenas: 18
+            },
+            {
+                id: nextRecipeId++, nombre: 'Enchiladas de Desayuno', pais: 'México', tiempo: 30,
+                categorias: ['Mexicana', 'Desayuno'], ingredientes: ['Tortillas', 'Huevos revueltos', 'Salsa verde', 'Queso', 'Crema', 'Cebolla'],
+                instrucciones: ['Preparar huevos revueltos', 'Rellenar tortillas', 'Bañar con salsa', 'Gratinar con queso'],
+                imagen: 'img/enchiladas-desayuno.svg', calificacion: 4.4, resenas: 20
+            },
+            {
+                id: nextRecipeId++, nombre: 'Pupusas Salvadoreñas', pais: 'El Salvador', tiempo: 40,
+                categorias: ['Centroamericana', 'Desayuno'], ingredientes: ['Masa de maíz', 'Queso', 'Frijoles refritos', 'Chicharrón', 'Curtido'],
+                instrucciones: ['Preparar masa', 'Rellenar con queso y frijoles', 'Formar pupusas', 'Cocinar en comal'],
+                imagen: 'img/pupusas-salvadorenas.svg', calificacion: 4.3, resenas: 16
+            },
+            {
+                id: nextRecipeId++, nombre: 'Empanadas Colombianas', pais: 'Colombia', tiempo: 45,
+                categorias: ['Colombiana', 'Desayuno'], ingredientes: ['Harina de maíz', 'Carne molida', 'Papa', 'Cebolla', 'Comino', 'Aceite'],
+                instrucciones: ['Preparar relleno de carne', 'Hacer masa', 'Rellenar y cerrar empanadas', 'Freír hasta dorar'],
+                imagen: 'img/empanadas-colombianas.svg', calificacion: 4.2, resenas: 14
+            },
+            {
+                id: nextRecipeId++, nombre: 'Banana Bread', pais: 'Estados Unidos', tiempo: 75,
+                categorias: ['Americana', 'Desayuno'], ingredientes: ['Plátanos maduros', 'Harina', 'Azúcar', 'Huevos', 'Mantequilla', 'Bicarbonato'],
+                instrucciones: ['Machacar plátanos', 'Mezclar ingredientes secos', 'Combinar todo', 'Hornear por 1 hora'],
+                imagen: 'img/banana-bread.svg', calificacion: 4.5, resenas: 22
+            },
+            {
+                id: nextRecipeId++, nombre: 'Café con Leche', pais: 'España', tiempo: 5,
+                categorias: ['Española', 'Bebida', 'Desayuno'], ingredientes: ['Café espresso', 'Leche', 'Azúcar'],
+                instrucciones: ['Preparar café espresso', 'Calentar leche', 'Mezclar en partes iguales', 'Endulzar al gusto'],
+                imagen: 'img/cafe-con-leche.svg', calificacion: 4.1, resenas: 25
+            },
+            {
+                id: nextRecipeId++, nombre: 'Avena con Frutas', pais: 'Escocia', tiempo: 10,
+                categorias: ['Saludable', 'Desayuno'], ingredientes: ['Avena', 'Leche', 'Plátano', 'Fresas', 'Miel', 'Canela'],
+                instrucciones: ['Cocinar avena con leche', 'Agregar frutas cortadas', 'Endulzar con miel', 'Espolvorear canela'],
+                imagen: 'img/avena-frutas.svg', calificacion: 4.0, resenas: 18
+            },
+            {
+                id: nextRecipeId++, nombre: 'Tortilla Española', pais: 'España', tiempo: 30,
+                categorias: ['Española', 'Desayuno'], ingredientes: ['Huevos', 'Papas', 'Cebolla', 'Aceite de oliva', 'Sal'],
+                instrucciones: ['Freír papas y cebolla', 'Batir huevos', 'Mezclar todo', 'Cocinar tortilla por ambos lados'],
+                imagen: 'img/tortilla-espanola.svg', calificacion: 4.4, resenas: 21
+            },
+            {
+                id: nextRecipeId++, nombre: 'Bagel con Salmón', pais: 'Estados Unidos', tiempo: 10,
+                categorias: ['Americana', 'Desayuno'], ingredientes: ['Bagel', 'Queso crema', 'Salmón ahumado', 'Cebolla morada', 'Alcaparras'],
+                instrucciones: ['Tostar bagel', 'Untar queso crema', 'Agregar salmón', 'Decorar con cebolla y alcaparras'],
+                imagen: 'img/bagel-salmon.svg', calificacion: 4.3, resenas: 17
+            },
+            {
+                id: nextRecipeId++, nombre: 'Crepes Francesas', pais: 'Francia', tiempo: 20,
+                categorias: ['Francesa', 'Desayuno'], ingredientes: ['Harina', 'Huevos', 'Leche', 'Mantequilla', 'Azúcar', 'Vainilla'],
+                instrucciones: ['Preparar masa líquida', 'Dejar reposar', 'Cocinar crepes finas', 'Rellenar al gusto'],
+                imagen: 'img/crepes-francesas.svg', calificacion: 4.2, resenas: 19
+            },
+            {
+                id: nextRecipeId++, nombre: 'Granola Casera', pais: 'Estados Unidos', tiempo: 45,
+                categorias: ['Saludable', 'Desayuno'], ingredientes: ['Avena', 'Nueces', 'Miel', 'Aceite de coco', 'Pasas', 'Canela'],
+                instrucciones: ['Mezclar ingredientes secos', 'Agregar miel y aceite', 'Hornear removiendo ocasionalmente', 'Enfriar completamente'],
+                imagen: 'img/granola-casera.svg', calificacion: 4.1, resenas: 13
+            }
+        ];
+        
+        recipes.push(...megaRecipeDatabase);
         saveRecipes();
+        console.log(`✅ Added ${megaRecipeDatabase.length} recipes to database`);
     }
     
     // List directory contents for debugging
