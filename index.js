@@ -3810,3 +3810,738 @@ server.listen(PORT, '0.0.0.0', () => {
         console.log(`❌ Cannot read root directory: ${e.message}`);
     }
 });
+        // ========== RECETAS ADICIONALES SIN IMÁGENES ==========
+        
+        recipes.push({
+            id: Date.now() + Math.random(),
+            nombre: 'Ceviche Peruano Clásico',
+            pais: 'Perú',
+            tiempo: 30,
+            categorias: ['Entradas', 'Comidas'],
+            ingredientes: [
+                { nombre: '500g de pescado blanco fresco', icono: '🐟' },
+                { nombre: '8 limones peruanos', icono: '🍋' },
+                { nombre: '1 cebolla roja grande', icono: '🧅' },
+                { nombre: '2 ajíes amarillos', icono: '🌶️' },
+                { nombre: '1 camote cocido', icono: '🍠' },
+                { nombre: '1 choclo desgranado', icono: '🌽' },
+                { nombre: 'Sal y pimienta', icono: '🧂' },
+                { nombre: 'Cilantro fresco', icono: '🌿' }
+            ],
+            instrucciones: [
+                'Cortar el pescado en cubos pequeños y uniformes',
+                'Colocar en un bowl y cubrir completamente con jugo de limón',
+                'Dejar marinar en refrigerador por 15-20 minutos',
+                'Cortar la cebolla en juliana fina y enjuagar con agua fría',
+                'Picar finamente el ají amarillo sin semillas',
+                'Escurrir el pescado y mezclar con cebolla y ají',
+                'Sazonar con sal y pimienta al gusto',
+                'Servir acompañado de camote y choclo, decorar con cilantro'
+            ],
+            calificacion: 4.6,
+            resenas: 42
+        });
+
+        recipes.push({
+            id: Date.now() + Math.random() + 1,
+            nombre: 'Paella Valenciana Tradicional',
+            pais: 'España',
+            tiempo: 60,
+            categorias: ['Comidas', 'Cenas'],
+            ingredientes: [
+                { nombre: '400g de arroz bomba', icono: '🍚' },
+                { nombre: '1 pollo troceado', icono: '🐔' },
+                { nombre: '300g de conejo troceado', icono: '🐰' },
+                { nombre: '200g de judías verdes', icono: '🫘' },
+                { nombre: '200g de garrofón', icono: '🫘' },
+                { nombre: '2 tomates rallados', icono: '🍅' },
+                { nombre: 'Azafrán en hebras', icono: '🌾' },
+                { nombre: 'Aceite de oliva', icono: '🫒' },
+                { nombre: 'Sal y pimentón dulce', icono: '🧂' }
+            ],
+            instrucciones: [
+                'Calentar aceite en paellera y dorar el pollo y conejo',
+                'Añadir las judías verdes y garrofón, sofreír 5 minutos',
+                'Incorporar el tomate rallado y pimentón, cocinar 2 minutos',
+                'Agregar el arroz y mezclar bien con los ingredientes',
+                'Verter caldo caliente con azafrán, no remover más',
+                'Cocinar a fuego fuerte 10 minutos, luego medio 10 minutos',
+                'Dejar reposar 5 minutos antes de servir',
+                'Decorar con rodajas de limón'
+            ],
+            calificacion: 4.7,
+            resenas: 38
+        });
+
+        recipes.push({
+            id: Date.now() + Math.random() + 2,
+            nombre: 'Ramen Tonkotsu Auténtico',
+            pais: 'Japón',
+            tiempo: 180,
+            categorias: ['Comidas', 'Cenas'],
+            ingredientes: [
+                { nombre: '2kg de huesos de cerdo', icono: '🦴' },
+                { nombre: '400g de fideos ramen', icono: '🍜' },
+                { nombre: '4 huevos', icono: '🥚' },
+                { nombre: '200g de panceta de cerdo', icono: '🥓' },
+                { nombre: '2 cebolletas', icono: '🧅' },
+                { nombre: 'Pasta de miso', icono: '🥄' },
+                { nombre: 'Alga nori', icono: '🌿' },
+                { nombre: 'Brotes de bambú', icono: '🎋' }
+            ],
+            instrucciones: [
+                'Hervir los huesos de cerdo durante 12 horas para hacer el caldo',
+                'Cocinar los huevos 6 minutos y marinar en salsa de soja',
+                'Asar la panceta de cerdo hasta que esté dorada',
+                'Cocinar los fideos ramen según instrucciones del paquete',
+                'Calentar el caldo y mezclar con pasta de miso',
+                'Colocar los fideos en bowls y verter el caldo caliente',
+                'Decorar con panceta, huevo, cebolleta, nori y bambú',
+                'Servir inmediatamente muy caliente'
+            ],
+            calificacion: 4.8,
+            resenas: 29
+        });
+
+        recipes.push({
+            id: Date.now() + Math.random() + 3,
+            nombre: 'Coq au Vin Francés',
+            pais: 'Francia',
+            tiempo: 120,
+            categorias: ['Comidas', 'Cenas'],
+            ingredientes: [
+                { nombre: '1 pollo entero troceado', icono: '🐔' },
+                { nombre: '750ml de vino tinto', icono: '🍷' },
+                { nombre: '200g de tocino', icono: '🥓' },
+                { nombre: '12 cebollitas perla', icono: '🧅' },
+                { nombre: '250g de champiñones', icono: '🍄' },
+                { nombre: '3 dientes de ajo', icono: '🧄' },
+                { nombre: 'Hierbas de Provenza', icono: '🌿' },
+                { nombre: 'Mantequilla y harina', icono: '🧈' }
+            ],
+            instrucciones: [
+                'Marinar el pollo en vino tinto durante 2 horas',
+                'Freír el tocino hasta que esté crujiente, reservar',
+                'Dorar las piezas de pollo en la grasa del tocino',
+                'Añadir cebollitas, champiñones y ajo, sofreír',
+                'Verter el vino de la marinada y hierbas',
+                'Cocinar a fuego lento durante 45 minutos',
+                'Espesar la salsa con mantequilla y harina',
+                'Servir decorado con el tocino crujiente'
+            ],
+            calificacion: 4.5,
+            resenas: 31
+        });
+
+        recipes.push({
+            id: Date.now() + Math.random() + 4,
+            nombre: 'Biryani de Cordero Indio',
+            pais: 'India',
+            tiempo: 90,
+            categorias: ['Comidas', 'Cenas'],
+            ingredientes: [
+                { nombre: '500g de cordero en trozos', icono: '🐑' },
+                { nombre: '400g de arroz basmati', icono: '🍚' },
+                { nombre: '1 taza de yogur natural', icono: '🥛' },
+                { nombre: 'Especias garam masala', icono: '🌶️' },
+                { nombre: '1 cebolla grande', icono: '🧅' },
+                { nombre: 'Azafrán en hebras', icono: '🌾' },
+                { nombre: 'Almendras fileteadas', icono: '🥜' },
+                { nombre: 'Cilantro y menta fresca', icono: '🌿' }
+            ],
+            instrucciones: [
+                'Marinar el cordero con yogur y especias durante 1 hora',
+                'Freír cebolla hasta dorar, reservar la mitad',
+                'Cocinar el cordero marinado hasta que esté tierno',
+                'Hervir el arroz con especias enteras hasta 70% cocido',
+                'Alternar capas de arroz y cordero en una olla',
+                'Espolvorear con cebolla frita, azafrán y almendras',
+                'Cocinar tapado a fuego lento durante 45 minutos',
+                'Servir decorado con cilantro y menta fresca'
+            ],
+            calificacion: 4.6,
+            resenas: 25
+        });
+
+        recipes.push({
+            id: Date.now() + Math.random() + 5,
+            nombre: 'Moussaka Griega Tradicional',
+            pais: 'Grecia',
+            tiempo: 150,
+            categorias: ['Comidas', 'Cenas'],
+            ingredientes: [
+                { nombre: '3 berenjenas grandes', icono: '🍆' },
+                { nombre: '500g de carne de cordero molida', icono: '🐑' },
+                { nombre: '400g de tomates triturados', icono: '🍅' },
+                { nombre: '500ml de leche', icono: '🥛' },
+                { nombre: '100g de queso kefalotyri', icono: '🧀' },
+                { nombre: '1 cebolla grande', icono: '🧅' },
+                { nombre: 'Canela y nuez moscada', icono: '🌰' },
+                { nombre: 'Aceite de oliva', icono: '🫒' }
+            ],
+            instrucciones: [
+                'Cortar berenjenas en rodajas y salar, dejar reposar 30 minutos',
+                'Freír las berenjenas hasta dorar, escurrir en papel',
+                'Sofreír cebolla y agregar la carne molida',
+                'Añadir tomates, canela y nuez moscada, cocinar 20 minutos',
+                'Preparar bechamel con leche, harina y mantequilla',
+                'Alternar capas de berenjena y carne en molde',
+                'Cubrir con bechamel y queso rallado',
+                'Hornear a 180°C durante 45 minutos hasta dorar'
+            ],
+            calificacion: 4.4,
+            resenas: 33
+        });
+
+        recipes.push({
+            id: Date.now() + Math.random() + 6,
+            nombre: 'Pho Bo Vietnamita',
+            pais: 'Vietnam',
+            tiempo: 240,
+            categorias: ['Comidas', 'Cenas'],
+            ingredientes: [
+                { nombre: '1kg de huesos de res', icono: '🦴' },
+                { nombre: '300g de carne de res en láminas', icono: '🥩' },
+                { nombre: '400g de fideos de arroz', icono: '🍜' },
+                { nombre: 'Anís estrellado', icono: '⭐' },
+                { nombre: 'Canela en rama', icono: '🌰' },
+                { nombre: '1 cebolla grande', icono: '🧅' },
+                { nombre: 'Cilantro y albahaca thai', icono: '🌿' },
+                { nombre: 'Brotes de soja', icono: '🌱' }
+            ],
+            instrucciones: [
+                'Hervir huesos de res durante 6 horas con especias',
+                'Asar cebolla y jengibre hasta que estén caramelizados',
+                'Agregar al caldo y cocinar 2 horas más',
+                'Colar el caldo y mantener caliente',
+                'Remojar fideos de arroz en agua caliente',
+                'Colocar fideos en bowls y agregar carne cruda',
+                'Verter caldo hirviendo sobre la carne',
+                'Servir con hierbas frescas, brotes y limón'
+            ],
+            calificacion: 4.7,
+            resenas: 27
+        });
+
+        recipes.push({
+            id: Date.now() + Math.random() + 7,
+            nombre: 'Tagine de Pollo Marroquí',
+            pais: 'Marruecos',
+            tiempo: 90,
+            categorias: ['Comidas', 'Cenas'],
+            ingredientes: [
+                { nombre: '1 pollo entero troceado', icono: '🐔' },
+                { nombre: '200g de aceitunas verdes', icono: '🫒' },
+                { nombre: '2 limones en conserva', icono: '🍋' },
+                { nombre: '1 cebolla grande', icono: '🧅' },
+                { nombre: 'Especias ras el hanout', icono: '🌶️' },
+                { nombre: '200g de ciruelas pasas', icono: '🟣' },
+                { nombre: 'Almendras tostadas', icono: '🥜' },
+                { nombre: 'Cilantro fresco', icono: '🌿' }
+            ],
+            instrucciones: [
+                'Marinar el pollo con especias ras el hanout',
+                'Dorar las piezas de pollo en aceite de oliva',
+                'Añadir cebolla cortada en gajos',
+                'Incorporar aceitunas y limones en conserva',
+                'Agregar ciruelas pasas y un poco de agua',
+                'Cocinar tapado a fuego lento durante 45 minutos',
+                'Espolvorear con almendras tostadas',
+                'Servir decorado con cilantro fresco'
+            ],
+            calificacion: 4.5,
+            resenas: 22
+        });
+
+        recipes.push({
+            id: Date.now() + Math.random() + 8,
+            nombre: 'Goulash Húngaro Auténtico',
+            pais: 'Hungría',
+            tiempo: 120,
+            categorias: ['Comidas', 'Cenas'],
+            ingredientes: [
+                { nombre: '800g de carne de res en cubos', icono: '🥩' },
+                { nombre: '3 cebollas grandes', icono: '🧅' },
+                { nombre: '3 pimientos rojos', icono: '🫑' },
+                { nombre: '400g de tomates', icono: '🍅' },
+                { nombre: 'Pimentón húngaro dulce', icono: '🌶️' },
+                { nombre: '500g de papas', icono: '🥔' },
+                { nombre: 'Comino y mejorana', icono: '🌿' },
+                { nombre: 'Crema agria', icono: '🥛' }
+            ],
+            instrucciones: [
+                'Cortar cebollas en juliana y sofreír hasta dorar',
+                'Añadir la carne y dorar por todos los lados',
+                'Incorporar pimentón dulce y mezclar bien',
+                'Agregar pimientos cortados en tiras',
+                'Añadir tomates y especias, cubrir con agua',
+                'Cocinar a fuego lento durante 1 hora',
+                'Incorporar papas cortadas en cubos',
+                'Servir caliente con crema agria'
+            ],
+            calificacion: 4.3,
+            resenas: 35
+        });
+
+        recipes.push({
+            id: Date.now() + Math.random() + 9,
+            nombre: 'Feijoada Brasileña Completa',
+            pais: 'Brasil',
+            tiempo: 180,
+            categorias: ['Comidas', 'Cenas'],
+            ingredientes: [
+                { nombre: '500g de frijoles negros', icono: '🫘' },
+                { nombre: '300g de carne seca', icono: '🥩' },
+                { nombre: '200g de chorizo', icono: '🌭' },
+                { nombre: '200g de panceta', icono: '🥓' },
+                { nombre: '1 cebolla grande', icono: '🧅' },
+                { nombre: '4 dientes de ajo', icono: '🧄' },
+                { nombre: 'Hojas de laurel', icono: '🍃' },
+                { nombre: 'Naranja para acompañar', icono: '🍊' }
+            ],
+            instrucciones: [
+                'Remojar los frijoles negros durante toda la noche',
+                'Cocinar los frijoles con laurel durante 1 hora',
+                'Sofreír cebolla y ajo hasta que estén dorados',
+                'Añadir todas las carnes y dorar bien',
+                'Incorporar las carnes a los frijoles',
+                'Cocinar todo junto durante 1 hora más',
+                'Ajustar sazón con sal y pimienta',
+                'Servir con arroz blanco, farofa y rodajas de naranja'
+            ],
+            calificacion: 4.6,
+            resenas: 41
+        });
+
+        recipes.push({
+            id: Date.now() + Math.random() + 10,
+            nombre: 'Kimchi Coreano Fermentado',
+            pais: 'Corea del Sur',
+            tiempo: 60,
+            categorias: ['Entradas', 'Botanas'],
+            ingredientes: [
+                { nombre: '1 col china grande', icono: '🥬' },
+                { nombre: '60g de sal marina', icono: '🧂' },
+                { nombre: '30g de gochugaru (chile coreano)', icono: '🌶️' },
+                { nombre: '15ml de salsa de pescado', icono: '🐟' },
+                { nombre: '4 cebolletas', icono: '🧅' },
+                { nombre: '1 pera asiática', icono: '🍐' },
+                { nombre: '6 dientes de ajo', icono: '🧄' },
+                { nombre: '1 trozo de jengibre', icono: '🫚' }
+            ],
+            instrucciones: [
+                'Cortar la col en trozos y salar, dejar 2 horas',
+                'Enjuagar la col y escurrir muy bien',
+                'Licuar pera, ajo, jengibre y salsa de pescado',
+                'Mezclar la pasta con gochugaru',
+                'Incorporar la col y cebolletas a la mezcla',
+                'Masajear bien todos los ingredientes',
+                'Colocar en frasco hermético y fermentar 3-5 días',
+                'Refrigerar una vez alcanzado el sabor deseado'
+            ],
+            calificacion: 4.4,
+            resenas: 18
+        });
+
+        recipes.push({
+            id: Date.now() + Math.random() + 11,
+            nombre: 'Borscht Ucraniano Tradicional',
+            pais: 'Ucrania',
+            tiempo: 90,
+            categorias: ['Comidas', 'Cenas'],
+            ingredientes: [
+                { nombre: '500g de remolacha fresca', icono: '🟣' },
+                { nombre: '300g de carne de res', icono: '🥩' },
+                { nombre: '1 col pequeña', icono: '🥬' },
+                { nombre: '2 zanahorias', icono: '🥕' },
+                { nombre: '2 papas medianas', icono: '🥔' },
+                { nombre: '1 cebolla', icono: '🧅' },
+                { nombre: 'Crema agria', icono: '🥛' },
+                { nombre: 'Eneldo fresco', icono: '🌿' }
+            ],
+            instrucciones: [
+                'Hervir la carne de res durante 1 hora para hacer caldo',
+                'Rallar la remolacha y sofreír con un poco de vinagre',
+                'Cortar todas las verduras en juliana fina',
+                'Añadir verduras al caldo en orden de cocción',
+                'Incorporar la remolacha sofrida al final',
+                'Cocinar hasta que todas las verduras estén tiernas',
+                'Ajustar sazón con sal, pimienta y azúcar',
+                'Servir caliente con crema agria y eneldo'
+            ],
+            calificacion: 4.2,
+            resenas: 24
+        });
+
+        recipes.push({
+            id: Date.now() + Math.random() + 12,
+            nombre: 'Empanadas Argentinas de Carne',
+            pais: 'Argentina',
+            tiempo: 120,
+            categorias: ['Entradas', 'Botanas'],
+            ingredientes: [
+                { nombre: '500g de harina', icono: '🌾' },
+                { nombre: '400g de carne molida', icono: '🥩' },
+                { nombre: '2 cebollas grandes', icono: '🧅' },
+                { nombre: '2 huevos duros', icono: '🥚' },
+                { nombre: '100g de aceitunas verdes', icono: '🫒' },
+                { nombre: 'Comino y pimentón', icono: '🌶️' },
+                { nombre: 'Grasa de cerdo', icono: '🥓' },
+                { nombre: '1 huevo para pintar', icono: '🥚' }
+            ],
+            instrucciones: [
+                'Preparar masa con harina, grasa y agua tibia',
+                'Sofreír cebolla hasta que esté transparente',
+                'Añadir carne molida y cocinar hasta dorar',
+                'Condimentar con comino, pimentón, sal y pimienta',
+                'Dejar enfriar y agregar huevo duro picado y aceitunas',
+                'Estirar masa y cortar círculos de 12cm',
+                'Rellenar, cerrar en forma de repulgue',
+                'Pintar con huevo y hornear a 200°C por 20 minutos'
+            ],
+            calificacion: 4.7,
+            resenas: 52
+        });
+
+        console.log(`✅ Total de recetas cargadas: ${recipes.length}`);
+        // ========== RECETAS DE BEBIDAS ADICIONALES ==========
+        
+        recipes.push({
+            id: Date.now() + Math.random() + 100,
+            nombre: 'Piña Colada Tropical',
+            pais: 'Puerto Rico',
+            tiempo: 10,
+            categorias: ['Bebidas'],
+            ingredientes: [
+                { nombre: '200ml de ron blanco', icono: '🥃' },
+                { nombre: '100ml de crema de coco', icono: '🥥' },
+                { nombre: '200ml de jugo de piña', icono: '🍍' },
+                { nombre: '2 tazas de hielo', icono: '🧊' },
+                { nombre: '1 rodaja de piña', icono: '🍍' },
+                { nombre: '1 cereza marrasquino', icono: '🍒' },
+                { nombre: 'Coco rallado', icono: '🥥' }
+            ],
+            instrucciones: [
+                'Colocar todos los ingredientes líquidos en la licuadora',
+                'Agregar el hielo y licuar hasta obtener consistencia cremosa',
+                'Servir en copa hurricane o vaso alto',
+                'Decorar con rodaja de piña y cereza',
+                'Espolvorear coco rallado por encima',
+                'Servir con pajita y sombrilla decorativa',
+                'Disfrutar inmediatamente bien frío'
+            ],
+            calificacion: 4.5,
+            resenas: 28
+        });
+
+        recipes.push({
+            id: Date.now() + Math.random() + 101,
+            nombre: 'Sangría Española Clásica',
+            pais: 'España',
+            tiempo: 15,
+            categorias: ['Bebidas'],
+            ingredientes: [
+                { nombre: '750ml de vino tinto', icono: '🍷' },
+                { nombre: '100ml de brandy', icono: '🥃' },
+                { nombre: '50ml de licor de naranja', icono: '🍊' },
+                { nombre: '2 naranjas', icono: '🍊' },
+                { nombre: '2 manzanas', icono: '🍎' },
+                { nombre: '1 limón', icono: '🍋' },
+                { nombre: '2 cucharadas de azúcar', icono: '🍯' },
+                { nombre: 'Agua con gas', icono: '💧' }
+            ],
+            instrucciones: [
+                'Cortar las frutas en rodajas y cubos pequeños',
+                'Mezclar vino tinto con brandy y licor de naranja',
+                'Agregar las frutas cortadas a la mezcla',
+                'Endulzar con azúcar al gusto',
+                'Refrigerar durante al menos 2 horas',
+                'Servir en copas con hielo',
+                'Completar con agua con gas al momento de servir',
+                'Decorar con frutas frescas'
+            ],
+            calificacion: 4.4,
+            resenas: 35
+        });
+
+        recipes.push({
+            id: Date.now() + Math.random() + 102,
+            nombre: 'Caipirinha Brasileña',
+            pais: 'Brasil',
+            tiempo: 5,
+            categorias: ['Bebidas'],
+            ingredientes: [
+                { nombre: '60ml de cachaça', icono: '🥃' },
+                { nombre: '1 lima entera', icono: '🟢' },
+                { nombre: '2 cucharaditas de azúcar', icono: '🍯' },
+                { nombre: 'Hielo picado', icono: '🧊' }
+            ],
+            instrucciones: [
+                'Lavar bien la lima y cortarla en 8 gajos',
+                'Colocar los gajos de lima en un vaso bajo',
+                'Agregar el azúcar sobre la lima',
+                'Machacar bien con un muddler para extraer el jugo',
+                'Llenar el vaso con hielo picado',
+                'Verter la cachaça sobre el hielo',
+                'Mezclar bien con una cuchara larga',
+                'Servir inmediatamente con pajita'
+            ],
+            calificacion: 4.6,
+            resenas: 42
+        });
+
+        recipes.push({
+            id: Date.now() + Math.random() + 103,
+            nombre: 'Horchata Valenciana',
+            pais: 'España',
+            tiempo: 30,
+            categorias: ['Bebidas'],
+            ingredientes: [
+                { nombre: '200g de chufa', icono: '🥜' },
+                { nombre: '1 litro de agua', icono: '💧' },
+                { nombre: '100g de azúcar', icono: '🍯' },
+                { nombre: '1 pizca de sal', icono: '🧂' },
+                { nombre: 'Canela en polvo', icono: '🌰' },
+                { nombre: 'Hielo', icono: '🧊' }
+            ],
+            instrucciones: [
+                'Remojar la chufa en agua durante 24 horas',
+                'Escurrir y enjuagar la chufa remojada',
+                'Triturar la chufa con agua en batidora potente',
+                'Colar la mezcla con un colador fino',
+                'Volver a colar con tela o filtro muy fino',
+                'Endulzar con azúcar y agregar pizca de sal',
+                'Servir bien fría con hielo',
+                'Espolvorear canela por encima antes de servir'
+            ],
+            calificacion: 4.3,
+            resenas: 19
+        });
+
+        recipes.push({
+            id: Date.now() + Math.random() + 104,
+            nombre: 'Agua de Jamaica Mexicana',
+            pais: 'México',
+            tiempo: 20,
+            categorias: ['Bebidas'],
+            ingredientes: [
+                { nombre: '100g de flores de jamaica secas', icono: '🌺' },
+                { nombre: '2 litros de agua', icono: '💧' },
+                { nombre: '150g de azúcar', icono: '🍯' },
+                { nombre: '1 limón', icono: '🍋' },
+                { nombre: 'Hielo', icono: '🧊' }
+            ],
+            instrucciones: [
+                'Hervir 1 litro de agua en una olla',
+                'Agregar las flores de jamaica al agua hirviendo',
+                'Cocinar durante 5 minutos a fuego medio',
+                'Retirar del fuego y dejar reposar 10 minutos',
+                'Colar el líquido y descartar las flores',
+                'Agregar azúcar mientras esté caliente',
+                'Completar con el litro de agua fría restante',
+                'Servir con hielo y rodajas de limón'
+            ],
+            calificacion: 4.2,
+            resenas: 31
+        });
+
+        recipes.push({
+            id: Date.now() + Math.random() + 105,
+            nombre: 'Lassi de Mango Indio',
+            pais: 'India',
+            tiempo: 10,
+            categorias: ['Bebidas'],
+            ingredientes: [
+                { nombre: '2 mangos maduros', icono: '🥭' },
+                { nombre: '200ml de yogur natural', icono: '🥛' },
+                { nombre: '100ml de leche', icono: '🥛' },
+                { nombre: '3 cucharadas de azúcar', icono: '🍯' },
+                { nombre: '1/2 cucharadita de cardamomo', icono: '🌿' },
+                { nombre: 'Hielo', icono: '🧊' },
+                { nombre: 'Pistachos picados', icono: '🥜' }
+            ],
+            instrucciones: [
+                'Pelar y cortar los mangos en trozos',
+                'Colocar mango, yogur y leche en la licuadora',
+                'Agregar azúcar y cardamomo molido',
+                'Licuar hasta obtener consistencia cremosa',
+                'Agregar hielo y licuar nuevamente',
+                'Probar y ajustar dulzor si es necesario',
+                'Servir en vasos altos',
+                'Decorar con pistachos picados'
+            ],
+            calificacion: 4.5,
+            resenas: 24
+        });
+
+        recipes.push({
+            id: Date.now() + Math.random() + 106,
+            nombre: 'Té Chai Masala Indio',
+            pais: 'India',
+            tiempo: 15,
+            categorias: ['Bebidas'],
+            ingredientes: [
+                { nombre: '2 tazas de agua', icono: '💧' },
+                { nombre: '1 taza de leche', icono: '🥛' },
+                { nombre: '2 cucharadas de té negro', icono: '🍃' },
+                { nombre: '4 vainas de cardamomo', icono: '🌿' },
+                { nombre: '1 rama de canela', icono: '🌰' },
+                { nombre: '4 clavos de olor', icono: '🌿' },
+                { nombre: '1 trozo de jengibre', icono: '🫚' },
+                { nombre: 'Azúcar al gusto', icono: '🍯' }
+            ],
+            instrucciones: [
+                'Machacar ligeramente las especias enteras',
+                'Hervir agua con especias durante 5 minutos',
+                'Agregar té negro y cocinar 2 minutos más',
+                'Incorporar leche y jengibre rallado',
+                'Hervir la mezcla durante 3-4 minutos',
+                'Endulzar con azúcar al gusto',
+                'Colar y servir caliente inmediatamente',
+                'Decorar con una pizca de canela en polvo'
+            ],
+            calificacion: 4.4,
+            resenas: 33
+        });
+
+        recipes.push({
+            id: Date.now() + Math.random() + 107,
+            nombre: 'Limonada de Coco Brasileña',
+            pais: 'Brasil',
+            tiempo: 10,
+            categorias: ['Bebidas'],
+            ingredientes: [
+                { nombre: '4 limones grandes', icono: '🍋' },
+                { nombre: '400ml de leche de coco', icono: '🥥' },
+                { nombre: '200ml de agua', icono: '💧' },
+                { nombre: '4 cucharadas de azúcar', icono: '🍯' },
+                { nombre: '2 tazas de hielo', icono: '🧊' },
+                { nombre: 'Coco rallado', icono: '🥥' }
+            ],
+            instrucciones: [
+                'Exprimir el jugo de los limones',
+                'Colocar jugo de limón en la licuadora',
+                'Agregar leche de coco y agua',
+                'Incorporar azúcar al gusto',
+                'Añadir hielo y licuar hasta que esté espumoso',
+                'Probar y ajustar dulzor si es necesario',
+                'Servir inmediatamente en vasos altos',
+                'Decorar con coco rallado por encima'
+            ],
+            calificacion: 4.3,
+            resenas: 27
+        });
+
+        recipes.push({
+            id: Date.now() + Math.random() + 108,
+            nombre: 'Ponche Navideño Mexicano',
+            pais: 'México',
+            tiempo: 45,
+            categorias: ['Bebidas'],
+            ingredientes: [
+                { nombre: '2 litros de agua', icono: '💧' },
+                { nombre: '4 tejocotes', icono: '🍎' },
+                { nombre: '2 manzanas', icono: '🍎' },
+                { nombre: '2 peras', icono: '🍐' },
+                { nombre: '1 taza de caña de azúcar', icono: '🌾' },
+                { nombre: '4 rajas de canela', icono: '🌰' },
+                { nombre: '1 piloncillo', icono: '🍯' },
+                { nombre: 'Ron al gusto (opcional)', icono: '🥃' }
+            ],
+            instrucciones: [
+                'Hervir agua con canela durante 10 minutos',
+                'Agregar tejocotes enteros y cocinar 15 minutos',
+                'Incorporar manzanas y peras en trozos',
+                'Añadir caña de azúcar cortada en trozos',
+                'Endulzar con piloncillo al gusto',
+                'Cocinar a fuego lento durante 15 minutos más',
+                'Agregar ron al gusto si se desea',
+                'Servir caliente en jarros de barro'
+            ],
+            calificacion: 4.6,
+            resenas: 38
+        });
+
+        recipes.push({
+            id: Date.now() + Math.random() + 109,
+            nombre: 'Bubble Tea de Taro',
+            pais: 'Taiwán',
+            tiempo: 25,
+            categorias: ['Bebidas'],
+            ingredientes: [
+                { nombre: '100g de perlas de tapioca', icono: '⚫' },
+                { nombre: '200ml de té negro fuerte', icono: '🍃' },
+                { nombre: '100ml de leche', icono: '🥛' },
+                { nombre: '3 cucharadas de polvo de taro', icono: '🟣' },
+                { nombre: '2 cucharadas de azúcar', icono: '🍯' },
+                { nombre: 'Hielo', icono: '🧊' }
+            ],
+            instrucciones: [
+                'Cocinar las perlas de tapioca según instrucciones del paquete',
+                'Preparar té negro fuerte y dejar enfriar',
+                'Mezclar polvo de taro con un poco de leche caliente',
+                'Combinar té frío con mezcla de taro',
+                'Agregar leche restante y azúcar',
+                'Colocar perlas cocidas en el fondo del vaso',
+                'Verter la mezcla sobre las perlas',
+                'Servir con pajita ancha para las perlas'
+            ],
+            calificacion: 4.2,
+            resenas: 21
+        });
+
+        recipes.push({
+            id: Date.now() + Math.random() + 110,
+            nombre: 'Agua Fresca de Sandía',
+            pais: 'México',
+            tiempo: 15,
+            categorias: ['Bebidas'],
+            ingredientes: [
+                { nombre: '4 tazas de sandía sin semillas', icono: '🍉' },
+                { nombre: '2 tazas de agua', icono: '💧' },
+                { nombre: '3 cucharadas de azúcar', icono: '🍯' },
+                { nombre: '2 cucharadas de jugo de limón', icono: '🍋' },
+                { nombre: 'Hielo', icono: '🧊' },
+                { nombre: 'Hojas de menta', icono: '🌿' }
+            ],
+            instrucciones: [
+                'Cortar la sandía en trozos y retirar semillas',
+                'Licuar la sandía hasta obtener jugo',
+                'Colar el jugo para eliminar pulpa si se desea',
+                'Mezclar con agua y azúcar',
+                'Agregar jugo de limón fresco',
+                'Refrigerar durante al menos 1 hora',
+                'Servir con hielo abundante',
+                'Decorar con hojas de menta fresca'
+            ],
+            calificacion: 4.4,
+            resenas: 29
+        });
+
+        recipes.push({
+            id: Date.now() + Math.random() + 111,
+            nombre: 'Café Turco Tradicional',
+            pais: 'Turquía',
+            tiempo: 10,
+            categorias: ['Bebidas'],
+            ingredientes: [
+                { nombre: '2 cucharaditas de café molido muy fino', icono: '☕' },
+                { nombre: '2 tazas de agua fría', icono: '💧' },
+                { nombre: '2 cucharaditas de azúcar', icono: '🍯' },
+                { nombre: '1 pizca de cardamomo (opcional)', icono: '🌿' }
+            ],
+            instrucciones: [
+                'Mezclar café, azúcar y agua fría en cezve (cafetera turca)',
+                'Revolver bien hasta que se disuelva el azúcar',
+                'Colocar a fuego lento sin revolver más',
+                'Cuando comience a formar espuma, retirar del fuego',
+                'Verter un poco en cada taza para distribuir la espuma',
+                'Volver al fuego hasta que hierva nuevamente',
+                'Servir inmediatamente en tazas pequeñas',
+                'Acompañar con un vaso de agua y dulce turco'
+            ],
+            calificacion: 4.1,
+            resenas: 16
+        });
+
+        console.log(`✅ Recetas de bebidas agregadas. Total de recetas: ${recipes.length}`);

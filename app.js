@@ -3009,20 +3009,56 @@ class RecipesApp {
     purchaseProduct(productId) {
         const user = this.currentUser;
         if (!user) return this.showNotification('Inicia sesión para canjear productos', 'error');
+        
+        // Verificar si el usuario tiene dirección configurada
+        if (!this.checkAddressBeforeRedeem(productId)) {
+            return; // La función checkAddressBeforeRedeem maneja el modal
+        }
+        
         const product = this.products.find(p => p.id === productId);
         if (!product) return this.showNotification('Producto no encontrado', 'error');
         if (product.stock <= 0) return this.showNotification('Producto agotado', 'error');
         const username = user.username;
         const balance = this.userPoints[username] || 0;
         if (balance < product.points) return this.showNotification('No tienes suficientes puntos', 'error');
+        
         // deduct points using centralized function
         const pointsToDeduct = -product.points; // Negative to deduct
         this.awardPoints(username, pointsToDeduct, `canje de ${product.name}`);
         
         product.stock = Math.max(0, product.stock - 1);
         this.saveProducts();
-        this.showNotification(`Has canjeado ${product.name} por ${product.points} pts`);
+        
+        // Registrar el canje
+        this.recordProductRedemption(productId, product);
+        
+        this.showNotification(`¡Has canjeado ${product.name} por ${product.points} pts! Se enviará a tu dirección registrada.`, 'success');
         this.showProducts();
+    }
+    
+    recordProductRedemption(productId, product) {
+        if (!this.currentUser) return;
+        
+        const redemptions = JSON.parse(localStorage.getItem('productRedemptions')) || {};
+        const username = this.currentUser.username;
+        
+        if (!redemptions[username]) {
+            redemptions[username] = [];
+        }
+        
+        const redemption = {
+            productId: productId,
+            productName: product.name,
+            points: product.points,
+            redeemedAt: new Date().toISOString(),
+            status: 'pending', // pending, shipped, delivered
+            address: this.getUserAddress()
+        };
+        
+        redemptions[username].push(redemption);
+        localStorage.setItem('productRedemptions', JSON.stringify(redemptions));
+        
+        console.log('✅ Canje registrado:', redemption);
     }
 
     toggleMenu() {
@@ -4281,6 +4317,9 @@ class RecipesApp {
                     <button class="profile-tab-btn" data-tab="stats">
                         <i class="fas fa-chart-bar"></i> Estadísticas
                     </button>
+                    <button class="profile-tab-btn" data-tab="address">
+                        <i class="fas fa-map-marker-alt"></i> Mi Dirección
+                    </button>
                     <button class="profile-tab-btn" data-tab="account">
                         <i class="fas fa-user"></i> Mi Cuenta
                     </button>
@@ -4428,6 +4467,123 @@ class RecipesApp {
                         </div>
                     </div>
 
+                    <!-- Tab: Mi Dirección -->
+                    <div class="profile-tab-panel" id="profile-tab-address">
+                        <div class="address-section">
+                            <h4><i class="fas fa-map-marker-alt"></i> Dirección de Envío</h4>
+                            
+                            <div class="address-info">
+                                <p class="address-description">
+                                    <i class="fas fa-info-circle"></i>
+                                    Esta dirección se utilizará para enviar los productos que canjees con tus puntos.
+                                </p>
+                                
+                                <form id="addressForm" class="address-form">
+                                    <div class="form-grid">
+                                        <div class="form-group">
+                                            <label for="address_name">
+                                                <i class="fas fa-user"></i> Nombre completo *
+                                            </label>
+                                            <input type="text" id="address_name" class="modern-input" placeholder="Tu nombre completo" required>
+                                        </div>
+                                        
+                                        <div class="form-group">
+                                            <label for="address_phone">
+                                                <i class="fas fa-phone"></i> Teléfono *
+                                            </label>
+                                            <input type="tel" id="address_phone" class="modern-input" placeholder="Tu número de teléfono" required>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                        <label for="address_street">
+                                            <i class="fas fa-road"></i> Dirección *
+                                        </label>
+                                        <input type="text" id="address_street" class="modern-input" placeholder="Calle, número, colonia" required>
+                                    </div>
+                                    
+                                    <div class="form-grid">
+                                        <div class="form-group">
+                                            <label for="address_city">
+                                                <i class="fas fa-city"></i> Ciudad *
+                                            </label>
+                                            <input type="text" id="address_city" class="modern-input" placeholder="Tu ciudad" required>
+                                        </div>
+                                        
+                                        <div class="form-group">
+                                            <label for="address_state">
+                                                <i class="fas fa-map"></i> Estado/Provincia *
+                                            </label>
+                                            <input type="text" id="address_state" class="modern-input" placeholder="Tu estado o provincia" required>
+                                        </div>
+                                        
+                                        <div class="form-group">
+                                            <label for="address_postal">
+                                                <i class="fas fa-mail-bulk"></i> Código Postal *
+                                            </label>
+                                            <input type="text" id="address_postal" class="modern-input" placeholder="Código postal" required>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                        <label for="address_country">
+                                            <i class="fas fa-globe"></i> País *
+                                        </label>
+                                        <select id="address_country" class="modern-input" required>
+                                            <option value="">Selecciona tu país</option>
+                                            <option value="MX">México</option>
+                                            <option value="US">Estados Unidos</option>
+                                            <option value="CA">Canadá</option>
+                                            <option value="ES">España</option>
+                                            <option value="AR">Argentina</option>
+                                            <option value="CO">Colombia</option>
+                                            <option value="PE">Perú</option>
+                                            <option value="CL">Chile</option>
+                                            <option value="EC">Ecuador</option>
+                                            <option value="VE">Venezuela</option>
+                                            <option value="UY">Uruguay</option>
+                                            <option value="PY">Paraguay</option>
+                                            <option value="BO">Bolivia</option>
+                                            <option value="CR">Costa Rica</option>
+                                            <option value="PA">Panamá</option>
+                                            <option value="GT">Guatemala</option>
+                                            <option value="HN">Honduras</option>
+                                            <option value="SV">El Salvador</option>
+                                            <option value="NI">Nicaragua</option>
+                                            <option value="DO">República Dominicana</option>
+                                            <option value="CU">Cuba</option>
+                                            <option value="PR">Puerto Rico</option>
+                                        </select>
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                        <label for="address_notes">
+                                            <i class="fas fa-sticky-note"></i> Notas adicionales (opcional)
+                                        </label>
+                                        <textarea id="address_notes" class="modern-input" rows="3" placeholder="Referencias, instrucciones especiales, etc."></textarea>
+                                    </div>
+                                    
+                                    <div class="form-actions">
+                                        <button type="button" id="saveAddressBtn" class="btn-primary">
+                                            <i class="fas fa-save"></i> Guardar Dirección
+                                        </button>
+                                        <button type="button" id="clearAddressBtn" class="btn-secondary">
+                                            <i class="fas fa-eraser"></i> Limpiar
+                                        </button>
+                                    </div>
+                                </form>
+                                
+                                <div id="savedAddressDisplay" class="saved-address" style="display: none;">
+                                    <h5><i class="fas fa-check-circle"></i> Dirección Guardada</h5>
+                                    <div class="address-display-content"></div>
+                                    <button type="button" id="editAddressBtn" class="btn-secondary">
+                                        <i class="fas fa-edit"></i> Editar Dirección
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                     <!-- Tab: Mi Cuenta -->
                     <div class="profile-tab-panel" id="profile-tab-account">
                         <div class="account-section">
@@ -4468,9 +4624,6 @@ class RecipesApp {
                             <div class="account-actions">
                                 <button class="btn-secondary" onclick="app.exportUserData()">
                                     <i class="fas fa-download"></i> Exportar Datos
-                                </button>
-                                <button class="btn-warning" onclick="app.resetUserProgress()">
-                                    <i class="fas fa-refresh"></i> Reiniciar Progreso
                                 </button>
                             </div>
                         </div>
@@ -6508,6 +6661,32 @@ class RecipesApp {
             closeEditRecipeModal.addEventListener('click', () => this.closeEditRecipeModal());
         }
 
+        // ========== EVENT LISTENERS PARA MODAL DE EDICIÓN DE PRODUCTOS ==========
+        const submitEditProduct = document.getElementById('submitEditProduct');
+        if (submitEditProduct) {
+            submitEditProduct.addEventListener('click', () => this.adminEditProduct());
+        }
+
+        const cancelEditProduct = document.getElementById('cancelEditProduct');
+        if (cancelEditProduct) {
+            cancelEditProduct.addEventListener('click', () => this.closeEditProductModal());
+        }
+
+        const closeEditProductModal = document.getElementById('closeEditProductModal');
+        if (closeEditProductModal) {
+            closeEditProductModal.addEventListener('click', () => this.closeEditProductModal());
+        }
+
+        // Event listener para cerrar modal al hacer click fuera
+        const editProductModal = document.getElementById('editProductModal');
+        if (editProductModal) {
+            editProductModal.addEventListener('click', (e) => {
+                if (e.target === editProductModal) {
+                    this.closeEditProductModal();
+                }
+            });
+        }
+
         // Event listeners para búsquedas
         const adminRecipeSearch = document.getElementById('adminRecipeSearch');
         if (adminRecipeSearch) {
@@ -7307,11 +7486,11 @@ class RecipesApp {
                     // Si vienen objetos o strings, normalizar a objetos
                     ingredientes = parsed.map(item => {
                         if (typeof item === 'string') {
-                            return { nombre: item, icono: '🥄' };
+                            return { nombre: item, icono: this.getIngredientIcon(item) };
                         } else {
                             return {
                                 nombre: item.nombre || item,
-                                icono: item.icono || '🥄'
+                                icono: item.icono || this.getIngredientIcon(item.nombre || item)
                             };
                         }
                     });
@@ -7320,7 +7499,7 @@ class RecipesApp {
                 // No es JSON: tratar cada línea como ingrediente
                 ingredientes = ingredientesRaw.split(/\r?\n/).map(l => l.trim()).filter(Boolean).map(l => ({ 
                     nombre: l, 
-                    icono: '🥄' 
+                    icono: this.getIngredientIcon(l) // Usar función automática de iconos
                 }));
             }
 
@@ -7699,27 +7878,42 @@ class RecipesApp {
     }
 
     openAdminEditProduct(prod) {
-        document.getElementById('p_name').value = prod.name || '';
-        document.getElementById('p_points').value = prod.points || 0;
-        document.getElementById('p_stock').value = prod.stock || 0;
+        console.log('🔧 Abriendo modal de edición de producto:', prod);
+        
+        // Guardar ID del producto que se está editando
+        this.adminProductEditId = prod.id;
+        
+        // Llenar el formulario de edición
+        document.getElementById('edit_p_name').value = prod.name || '';
+        document.getElementById('edit_p_points').value = prod.points || 0;
+        document.getElementById('edit_p_stock').value = prod.stock || 0;
+        
+        // Actualizar título del modal
+        document.getElementById('editProductTitle').textContent = `Editando: ${prod.name}`;
         
         // Mostrar imagen actual si existe
-        const productImagePreview = document.getElementById('productImagePreview');
-        if (productImagePreview && prod.imageBase64) {
-            productImagePreview.innerHTML = `
-                <img src="${prod.imageBase64}" class="image-preview" alt="Imagen actual">
-                <p>Imagen actual del producto</p>
-                <small>Haz clic para cambiar</small>
+        const imagePreview = document.getElementById('editProductImagePreview');
+        if (prod.imageBase64 || prod.imagen) {
+            const imageSrc = prod.imageBase64 || prod.imagen;
+            imagePreview.innerHTML = `
+                <img src="${imageSrc}" alt="${prod.name}" style="max-width: 100%; max-height: 200px; object-fit: cover; border-radius: 8px;">
+                <p style="margin-top: 10px;">Haz clic para cambiar la imagen</p>
+                <small>PNG, JPG hasta 5MB</small>
+            `;
+        } else {
+            imagePreview.innerHTML = `
+                <i class="fas fa-cloud-upload-alt"></i>
+                <p>Haz clic para agregar una imagen</p>
+                <small>PNG, JPG hasta 5MB</small>
             `;
         }
         
-        this.adminProductEditId = prod.id;
-        const submitBtn = document.getElementById('submitAddProduct'); 
-        if (submitBtn) {
-            submitBtn.innerHTML = '<i class="fas fa-save"></i> Actualizar Producto';
+        // Mostrar el modal
+        const modal = document.getElementById('editProductModal');
+        if (modal) {
+            modal.classList.add('active');
+            modal.style.display = 'flex';
         }
-        
-        this.showNotification(`Editando: ${prod.name}`, 'info');
     }
 
     adminDeleteProduct(id) {
@@ -8553,8 +8747,16 @@ class RecipesApp {
                 if (targetPanel) {
                     targetPanel.classList.add('active');
                 }
+                
+                // Si se abre la pestaña de dirección, cargar datos guardados
+                if (targetTab === 'address') {
+                    this.loadSavedAddress();
+                }
             });
         });
+        
+        // Event listeners para la dirección
+        this.setupAddressEventListeners();
     }
     
     // Obtener nombre de categoría para mostrar
@@ -8851,6 +9053,13 @@ class RecipesApp {
 
 // Variable global para la instancia de la app
 let app;
+
+// Inicializar cuando el DOM esté listo
+document.addEventListener('DOMContentLoaded', () => {
+    console.log('🚀 Inicializando RecetasWorld...');
+    window.app = new RecipesApp();
+    app = window.app; // Para compatibilidad
+});
 
 // Inicializar cuando el DOM esté listo
 document.addEventListener('DOMContentLoaded', () => {

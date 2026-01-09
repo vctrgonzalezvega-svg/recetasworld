@@ -70,6 +70,7 @@ body {
     position: relative;
     font-weight: 400;
     overflow-x: hidden;
+    padding-top: 90px; /* Espacio para el header fixed */
 }
 
 body::before {
@@ -155,8 +156,11 @@ body::before {
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
     color: #FFFFFF;
-    position: sticky;
+    position: fixed; /* Cambiar de sticky a fixed */
     top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
     z-index: 1000; /* Header en capa 3 */
     box-shadow: var(--shadow-lg);
     border-bottom: 1px solid #222222;
@@ -6826,7 +6830,6 @@ button#advancedFiltersBtn i,
         visibility: visible !important;
     }
 }
-}
 
 /* ========== ADMIN PANEL MODERN STYLES ========== */
 
@@ -8144,5 +8147,223 @@ html, body {
         grid-template-columns: 1fr;
         gap: 1.5rem;
         padding: 0 0.25rem;
+    }
+}
+/* ========== ESTILOS PARA PESTAÑA DE DIRECCIÓN ========== */
+
+.address-section {
+    padding: 1.5rem;
+}
+
+.address-description {
+    background: rgba(74, 144, 226, 0.1);
+    border: 1px solid rgba(74, 144, 226, 0.3);
+    border-radius: 8px;
+    padding: 1rem;
+    margin-bottom: 2rem;
+    color: #4A90E2;
+    font-weight: 500;
+}
+
+.address-description i {
+    margin-right: 0.5rem;
+}
+
+.address-form {
+    background: #FFFFFF;
+    border: 1px solid #E5E5E5;
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.address-form .form-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.address-form .form-group {
+    margin-bottom: 1.5rem;
+}
+
+.address-form label {
+    display: block;
+    font-weight: 600;
+    color: #333333;
+    margin-bottom: 0.5rem;
+    font-size: 0.95rem;
+}
+
+.address-form label i {
+    margin-right: 0.5rem;
+    color: #666666;
+    width: 16px;
+}
+
+.address-form .modern-input {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border: 2px solid #E5E5E5;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: var(--transition);
+    background: #FFFFFF;
+}
+
+.address-form .modern-input:focus {
+    outline: none;
+    border-color: #4A90E2;
+    box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.1);
+}
+
+.address-form textarea.modern-input {
+    resize: vertical;
+    min-height: 80px;
+}
+
+.address-form .form-actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: flex-end;
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid #E5E5E5;
+}
+
+.saved-address {
+    background: rgba(34, 197, 94, 0.1);
+    border: 2px solid rgba(34, 197, 94, 0.3);
+    border-radius: 12px;
+    padding: 2rem;
+}
+
+.saved-address h5 {
+    color: #22C55E;
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.address-card {
+    background: #FFFFFF;
+    border: 1px solid #E5E5E5;
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.address-field {
+    margin-bottom: 0.75rem;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid #F5F5F5;
+}
+
+.address-field:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+}
+
+.address-field strong {
+    color: #333333;
+    display: inline-block;
+    min-width: 120px;
+    margin-right: 0.5rem;
+}
+
+.address-field strong i {
+    margin-right: 0.5rem;
+    width: 16px;
+    color: #666666;
+}
+
+.saved-date {
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid #E5E5E5;
+    color: #666666;
+    font-style: italic;
+}
+
+/* Modal de dirección requerida */
+.address-required-content {
+    text-align: center;
+    padding: 2rem 1rem;
+}
+
+.address-required-icon {
+    margin-bottom: 1.5rem;
+}
+
+.address-required-icon i {
+    font-size: 4rem;
+    color: #4A90E2;
+    background: rgba(74, 144, 226, 0.1);
+    padding: 1.5rem;
+    border-radius: 50%;
+    border: 3px solid rgba(74, 144, 226, 0.2);
+}
+
+.address-required-content h3 {
+    color: #333333;
+    font-size: 1.8rem;
+    font-weight: 800;
+    margin-bottom: 1rem;
+}
+
+.address-required-content p {
+    color: #666666;
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+    line-height: 1.6;
+}
+
+.address-required-actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 2rem;
+}
+
+.address-required-actions .btn-primary {
+    background: linear-gradient(90deg, #4A90E2 0%, #357ABD 100%);
+    min-width: 180px;
+}
+
+.address-required-actions .btn-secondary {
+    min-width: 120px;
+}
+
+/* Responsive para dirección */
+@media (max-width: 768px) {
+    .address-form .form-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    
+    .address-form .form-actions {
+        flex-direction: column;
+    }
+    
+    .address-required-actions {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .address-required-actions .btn-primary,
+    .address-required-actions .btn-secondary {
+        width: 100%;
+        max-width: 250px;
+    }
+    
+    .address-field strong {
+        min-width: 100px;
+        display: block;
+        margin-bottom: 0.25rem;
     }
 }
