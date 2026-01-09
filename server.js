@@ -89,6 +89,31 @@ const server = http.createServer(async (req, res) => {
             return;
         }
         try {
+            // GET categories
+            if (req.method === 'GET' && pathname === '/api/categories') {
+                db.all('SELECT DISTINCT categorias FROM recipes WHERE categorias IS NOT NULL AND categorias != ""', [], (err, rows) => {
+                    if (err) return sendJSON(res, 500, { ok: false, error: err.message });
+                    
+                    const allCategories = new Set();
+                    rows.forEach(row => {
+                        try {
+                            const cats = JSON.parse(row.categorias || '[]');
+                            cats.forEach(cat => allCategories.add(cat));
+                        } catch (e) {
+                            // Skip invalid JSON
+                        }
+                    });
+                    
+                    return sendJSON(res, 200, { categories: Array.from(allCategories).sort() });
+                });
+                return;
+            }
+
+            // Health check endpoint for deployment
+            if (req.method === 'GET' && pathname === '/api/health') {
+                return sendJSON(res, 200, { ok: true, status: 'healthy', timestamp: new Date().toISOString() });
+            }
+
             // GET recipes
             if (req.method === 'GET' && pathname === '/api/recipes') {
                 db.all('SELECT * FROM recipes ORDER BY id DESC', [], (err, rows) => {
@@ -478,8 +503,8 @@ const server = http.createServer(async (req, res) => {
     });
 });
 
-const PORT = 8081;
+const PORT = process.env.PORT || 8081;
 server.listen(PORT, () => {
-    console.log(`Servidor ejecutándose en http://localhost:${PORT}`);
+    console.log(`Servidor ejecutándose en puerto ${PORT}`);
     console.log('Presiona Ctrl+C para detener el servidor');
 });
