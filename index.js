@@ -399,7 +399,7 @@ server.listen(PORT, '0.0.0.0', () => {
             nombre: 'Tacos al Pastor',
             pais: 'México',
             tiempo: 30,
-            categorias: ['Mexicana', 'Cena'],
+            categorias: ['Cena'],
             ingredientes: [
                 { nombre: '1 kg de carne de cerdo (pierna o lomo)', icono: '🥩' },
                 { nombre: '3 chiles guajillo desvenados', icono: '🌶️' },
@@ -429,7 +429,7 @@ server.listen(PORT, '0.0.0.0', () => {
                 'Servir la carne en las tortillas calientes, agregar piña, cebolla y cilantro',
                 'Acompañar con limón y salsa al gusto'
             ],
-            imagen: 'img/tacos-al-pastor.svg',
+            imagen: 'https://images.unsplash.com/photo-1565299624946-b28f40a0ca4b?w=400&h=300&fit=crop&crop=center&bg=white',
             calificacion: 4.5,
             resenas: 10
         });
@@ -439,7 +439,7 @@ server.listen(PORT, '0.0.0.0', () => {
             nombre: 'Pancakes Americanos',
             pais: 'Estados Unidos',
             tiempo: 20,
-            categorias: ['Americana', 'Desayuno'],
+            categorias: ['Desayuno'],
             ingredientes: [
                 { nombre: '2 tazas de harina para todo uso', icono: '🌾' },
                 { nombre: '2 cucharadas de azúcar', icono: '🍯' },
@@ -465,7 +465,7 @@ server.listen(PORT, '0.0.0.0', () => {
                 'Voltear con cuidado y cocinar 1-2 minutos más hasta que estén dorados',
                 'Servir inmediatamente con mantequilla y miel de maple caliente'
             ],
-            imagen: 'img/pancakes-americanos.svg',
+            imagen: 'https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?w=400&h=300&fit=crop&crop=center&bg=white',
             calificacion: 4.2,
             resenas: 8
         });
@@ -475,7 +475,7 @@ server.listen(PORT, '0.0.0.0', () => {
             nombre: 'Spaghetti Carbonara',
             pais: 'Italia',
             tiempo: 25,
-            categorias: ['Italiana', 'Cena'],
+            categorias: ['Cena'],
             ingredientes: [
                 { nombre: '400g de spaghetti', icono: '🍝' },
                 { nombre: '200g de panceta o guanciale en cubos', icono: '🥓' },
@@ -499,7 +499,7 @@ server.listen(PORT, '0.0.0.0', () => {
                 'Agregar agua de pasta poco a poco hasta obtener una salsa cremosa (no debe cuajar el huevo)',
                 'Servir inmediatamente con más queso parmesano y pimienta negra al gusto'
             ],
-            imagen: 'img/spaghetti-carbonara.svg',
+            imagen: 'https://images.unsplash.com/photo-1621996346565-e3dbc353d2e5?w=400&h=300&fit=crop&crop=center&bg=white',
             calificacion: 4.7,
             resenas: 15
         });
@@ -510,7 +510,7 @@ server.listen(PORT, '0.0.0.0', () => {
             nombre: 'Huevos Rancheros',
             pais: 'México',
             tiempo: 15,
-            categorias: ['Mexicana', 'Desayuno'],
+            categorias: ['Desayuno'],
             ingredientes: [
                 { nombre: '4 huevos frescos', icono: '🥚' },
                 { nombre: '4 tortillas de maíz', icono: '🌮' },
@@ -538,7 +538,7 @@ server.listen(PORT, '0.0.0.0', () => {
                 'Bañar con la salsa roja caliente',
                 'Decorar con queso desmoronado, crema y rebanadas de aguacate'
             ],
-            imagen: 'img/huevos-rancheros.svg',
+            imagen: 'https://images.unsplash.com/photo-1551218808-94e220e084d2?w=400&h=300&fit=crop&crop=center&bg=white',
             calificacion: 4.4,
             resenas: 18
         });
@@ -548,7 +548,7 @@ server.listen(PORT, '0.0.0.0', () => {
             nombre: 'Waffles Belgas',
             pais: 'Bélgica',
             tiempo: 25,
-            categorias: ['Europea', 'Desayuno'],
+            categorias: ['Desayuno'],
             ingredientes: [
                 { nombre: '2 tazas de harina para todo uso', icono: '🌾' },
                 { nombre: '2 cucharadas de azúcar', icono: '🍯' },
@@ -576,7 +576,7 @@ server.listen(PORT, '0.0.0.0', () => {
                 'Cocinar según las instrucciones hasta que estén dorados y crujientes',
                 'Servir inmediatamente con fresas, azúcar glass y miel de maple'
             ],
-            imagen: 'img/waffles-belgas.svg',
+            imagen: 'https://images.unsplash.com/photo-1562376552-0d160a2f238d?w=400&h=300&fit=crop&crop=center&bg=white',
             calificacion: 4.5,
             resenas: 14
         });
@@ -586,7 +586,7 @@ server.listen(PORT, '0.0.0.0', () => {
             nombre: 'Smoothie Bowl',
             pais: 'Brasil',
             tiempo: 10,
-            categorias: ['Saludable', 'Desayuno'],
+            categorias: ['Desayuno', 'Saludable'],
             ingredientes: [
                 { nombre: '200g de açaí congelado', icono: '🫐' },
                 { nombre: '1 plátano maduro congelado', icono: '🍌' },
@@ -610,7 +610,7 @@ server.listen(PORT, '0.0.0.0', () => {
                 'Rociar con miel al gusto',
                 'Servir inmediatamente con cuchara'
             ],
-            imagen: 'img/smoothie-bowl.svg',
+            imagen: 'https://images.unsplash.com/photo-1511690743698-d9d85f2fbf38?w=400&h=300&fit=crop&crop=center&bg=white',
             calificacion: 4.3,
             resenas: 12
         });
@@ -620,7 +620,7 @@ server.listen(PORT, '0.0.0.0', () => {
             nombre: 'Pollo al Curry',
             pais: 'India',
             tiempo: 45,
-            categorias: ['India', 'Comida'],
+            categorias: ['Comida'],
             ingredientes: [
                 { nombre: '1 kg de muslos de pollo sin hueso, en trozos', icono: '🍗' },
                 { nombre: '2 cebollas medianas finamente picadas', icono: '🧅' },
@@ -653,7 +653,7 @@ server.listen(PORT, '0.0.0.0', () => {
                 'Ajustar sazón con sal y pimienta',
                 'Servir sobre arroz basmati y decorar with cilantro fresco'
             ],
-            imagen: 'img/pollo-curry.svg',
+            imagen: 'https://images.unsplash.com/photo-1565557623262-b51c2513a641?w=400&h=300&fit=crop&crop=center&bg=white',
             calificacion: 4.4,
             resenas: 18
         });
@@ -663,7 +663,7 @@ server.listen(PORT, '0.0.0.0', () => {
             nombre: 'Pizza Margherita',
             pais: 'Italia',
             tiempo: 30,
-            categorias: ['Italiana', 'Cena'],
+            categorias: ['Cena'],
             ingredientes: [
                 { nombre: '1 masa de pizza casera o comprada', icono: '🍕' },
                 { nombre: '1/2 taza de salsa de tomate para pizza', icono: '🍅' },
@@ -687,7 +687,7 @@ server.listen(PORT, '0.0.0.0', () => {
                 'Retirar del horno y agregar hojas de albahaca fresca',
                 'Dejar reposar 2 minutos antes de cortar y servir'
             ],
-            imagen: 'img/pizza-margherita.svg',
+            imagen: 'https://images.unsplash.com/photo-1513104890138-7c749659a591?w=400&h=300&fit=crop&crop=center&bg=white',
             calificacion: 4.4,
             resenas: 22
         });
@@ -697,7 +697,7 @@ server.listen(PORT, '0.0.0.0', () => {
             nombre: 'Salmón a la Plancha',
             pais: 'Noruega',
             tiempo: 20,
-            categorias: ['Saludable', 'Comida'],
+            categorias: ['Comida', 'Saludable'],
             ingredientes: [
                 { nombre: '4 filetes de salmón de 150g cada uno', icono: '🐟' },
                 { nombre: '2 limones (jugo y ralladura)', icono: '🍋' },
@@ -721,7 +721,7 @@ server.listen(PORT, '0.0.0.0', () => {
                 'En otra sartén, saltear los espárragos con mantequilla por 5 minutos',
                 'Servir el salmón con espárragos y rociar con jugo de limón fresco'
             ],
-            imagen: 'img/salmon-plancha.svg',
+            imagen: 'https://images.unsplash.com/photo-1467003909585-2f8a72700288?w=400&h=300&fit=crop&crop=center&bg=white',
             calificacion: 4.3,
             resenas: 20
         });
@@ -731,7 +731,7 @@ server.listen(PORT, '0.0.0.0', () => {
             nombre: 'Mojito',
             pais: 'Cuba',
             tiempo: 5,
-            categorias: ['Cubana', 'Bebida'],
+            categorias: ['Bebida'],
             ingredientes: [
                 { nombre: '60ml de ron blanco cubano', icono: '🥃' },
                 { nombre: '10-12 hojas de menta fresca', icono: '🌿' },
@@ -754,7 +754,7 @@ server.listen(PORT, '0.0.0.0', () => {
                 'Decorar con una ramita de menta fresca y rodaja de limón',
                 'Servir inmediatamente con pajita'
             ],
-            imagen: 'img/mojito.svg',
+            imagen: 'https://images.unsplash.com/photo-1551538827-9c037cb4f32a?w=400&h=300&fit=crop&crop=center&bg=white',
             calificacion: 4.3,
             resenas: 16
         });
@@ -764,7 +764,7 @@ server.listen(PORT, '0.0.0.0', () => {
             nombre: 'Guacamole',
             pais: 'México',
             tiempo: 10,
-            categorias: ['Mexicana', 'Botana'],
+            categorias: ['Botana'],
             ingredientes: [
                 { nombre: '4 aguacates maduros', icono: '🥑' },
                 { nombre: '2 limones (jugo fresco)', icono: '🍋' },
@@ -789,7 +789,7 @@ server.listen(PORT, '0.0.0.0', () => {
                 'Probar y ajustar sazón con más limón, sal o chile',
                 'Servir inmediatamente con totopos o refrigerar máximo 2 horas'
             ],
-            imagen: 'img/guacamole.svg',
+            imagen: 'https://images.unsplash.com/photo-1553729459-efe14ef6055d?w=400&h=300&fit=crop&crop=center&bg=white',
             calificacion: 4.5,
             resenas: 35
         });
@@ -800,7 +800,7 @@ server.listen(PORT, '0.0.0.0', () => {
             nombre: 'Croissants Franceses',
             pais: 'Francia',
             tiempo: 180,
-            categorias: ['Francesa', 'Desayuno'],
+            categorias: ['Desayuno'],
             ingredientes: [
                 { nombre: '500g de harina de fuerza', icono: '🌾' },
                 { nombre: '250g de mantequilla fría sin sal', icono: '🧈' },
@@ -824,7 +824,7 @@ server.listen(PORT, '0.0.0.0', () => {
                 'Estirar masa final, cortar triángulos y enrollar desde la base',
                 'Dejar leudar 2 horas, barnizar con huevo batido y hornear a 200°C por 15-20 minutos'
             ],
-            imagen: 'img/croissants-franceses.svg',
+            imagen: 'https://images.unsplash.com/photo-1555507036-ab794f4afe5e?w=400&h=300&fit=crop&crop=center&bg=white',
             calificacion: 4.6,
             resenas: 20
         });
@@ -834,7 +834,7 @@ server.listen(PORT, '0.0.0.0', () => {
             nombre: 'Chilaquiles Rojos',
             pais: 'México',
             tiempo: 20,
-            categorias: ['Mexicana', 'Desayuno'],
+            categorias: ['Desayuno'],
             ingredientes: [
                 { nombre: '8 tortillas de maíz del día anterior', icono: '🌮' },
                 { nombre: '4 tomates rojos medianos', icono: '🍅' },
@@ -862,7 +862,7 @@ server.listen(PORT, '0.0.0.0', () => {
                 'Agregar los totopos fritos y mezclar suavemente',
                 'Servir inmediatamente con queso, crema, cebolla y huevo si se desea'
             ],
-            imagen: 'img/chilaquiles-rojos.svg',
+            imagen: 'https://images.unsplash.com/photo-1599974579688-8dbdd335c77f?w=400&h=300&fit=crop&crop=center&bg=white',
             calificacion: 4.5,
             resenas: 22
         });
@@ -872,7 +872,7 @@ server.listen(PORT, '0.0.0.0', () => {
             nombre: 'Muffins de Arándanos',
             pais: 'Estados Unidos',
             tiempo: 35,
-            categorias: ['Americana', 'Desayuno'],
+            categorias: ['Desayuno', 'Postre'],
             ingredientes: [
                 { nombre: '2 tazas de harina para todo uso', icono: '🌾' },
                 { nombre: '3/4 taza de azúcar', icono: '🍯' },
@@ -899,7 +899,7 @@ server.listen(PORT, '0.0.0.0', () => {
                 'Dejar enfriar 5 minutos antes de desmoldar',
                 'Servir tibios o a temperatura ambiente'
             ],
-            imagen: 'img/muffins-arandanos.svg',
+            imagen: 'https://images.unsplash.com/photo-1426869981800-95ebf51ce900?w=400&h=300&fit=crop&crop=center&bg=white',
             calificacion: 4.2,
             resenas: 11
         });
@@ -909,7 +909,7 @@ server.listen(PORT, '0.0.0.0', () => {
             nombre: 'Tostadas de Aguacate',
             pais: 'Australia',
             tiempo: 10,
-            categorias: ['Saludable', 'Desayuno'],
+            categorias: ['Desayuno', 'Saludable'],
             ingredientes: [
                 { nombre: '4 rebanadas de pan integral artesanal', icono: '🍞' },
                 { nombre: '2 aguacates maduros', icono: '🥑' },
@@ -934,7 +934,7 @@ server.listen(PORT, '0.0.0.0', () => {
                 'Espolvorear semillas de girasol y cilantro fresco',
                 'Servir inmediatamente con hojuelas de chile al gusto'
             ],
-            imagen: 'img/tostadas-aguacate.svg',
+            imagen: 'https://images.unsplash.com/photo-1482049016688-2d3e1b311543?w=400&h=300&fit=crop&crop=center&bg=white',
             calificacion: 4.0,
             resenas: 13
         });
@@ -945,7 +945,7 @@ server.listen(PORT, '0.0.0.0', () => {
             nombre: 'Lasaña de Carne',
             pais: 'Italia',
             tiempo: 90,
-            categorias: ['Italiana', 'Comida'],
+            categorias: ['Comida'],
             ingredientes: [
                 { nombre: '12 láminas de pasta para lasaña', icono: '🍝' },
                 { nombre: '500g de carne molida de res', icono: '🥩' },
@@ -976,7 +976,7 @@ server.listen(PORT, '0.0.0.0', () => {
                 'Retirar papel y hornear 15 minutos más hasta dorar',
                 'Dejar reposar 10 minutos antes de cortar y servir con perejil'
             ],
-            imagen: 'img/lasana-carne.svg',
+            imagen: 'https://images.unsplash.com/photo-1574894709920-11b28e7367e3?w=400&h=300&fit=crop&crop=center&bg=white',
             calificacion: 4.6,
             resenas: 25
         });
@@ -986,7 +986,7 @@ server.listen(PORT, '0.0.0.0', () => {
             nombre: 'Paella Valenciana',
             pais: 'España',
             tiempo: 60,
-            categorias: ['Española', 'Comida'],
+            categorias: ['Comida'],
             ingredientes: [
                 { nombre: '400g de arroz bomba o calasparra', icono: '🍚' },
                 { nombre: '1 pollo de 1.5kg cortado en trozos', icono: '🍗' },
@@ -1016,7 +1016,7 @@ server.listen(PORT, '0.0.0.0', () => {
                 'Dejar reposar 5 minutos tapado con paño limpio',
                 'Servir con cuartos de limón'
             ],
-            imagen: 'img/paella-valenciana.svg',
+            imagen: 'https://images.unsplash.com/photo-1534080564583-6be75777b70a?w=400&h=300&fit=crop&crop=center&bg=white',
             calificacion: 4.7,
             resenas: 28
         });
@@ -1026,7 +1026,7 @@ server.listen(PORT, '0.0.0.0', () => {
             nombre: 'Pad Thai',
             pais: 'Tailandia',
             tiempo: 25,
-            categorias: ['Tailandesa', 'Comida'],
+            categorias: ['Comida'],
             ingredientes: [
                 { nombre: '200g de fideos de arroz anchos', icono: '🍜' },
                 { nombre: '300g de camarones medianos pelados', icono: '🦐' },
@@ -1055,7 +1055,7 @@ server.listen(PORT, '0.0.0.0', () => {
                 'Incorporar brotes de soja y cebolletas, saltear 2 minutos',
                 'Servir inmediatamente decorado con cacahuetes y cuartos de lima'
             ],
-            imagen: 'img/pad-thai.svg',
+            imagen: 'https://images.unsplash.com/photo-1559314809-0f31657def5e?w=400&h=300&fit=crop&crop=center&bg=white',
             calificacion: 4.4,
             resenas: 19
         });
@@ -1066,7 +1066,7 @@ server.listen(PORT, '0.0.0.0', () => {
             nombre: 'Hamburguesa Clásica',
             pais: 'Estados Unidos',
             tiempo: 20,
-            categorias: ['Americana', 'Cena'],
+            categorias: ['Cena'],
             ingredientes: [
                 { nombre: '600g de carne molida de res (80/20)', icono: '🥩' },
                 { nombre: '4 panes para hamburguesa con semillas', icono: '🍔' },
@@ -1094,7 +1094,7 @@ server.listen(PORT, '0.0.0.0', () => {
                 'Colocar hamburguesa con queso, cebolla y pepinillos',
                 'Agregar ketchup y mostaza en la tapa, cerrar y servir'
             ],
-            imagen: 'img/hamburguesa-clasica.svg',
+            imagen: 'https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=400&h=300&fit=crop&crop=center&bg=white',
             calificacion: 4.2,
             resenas: 30
         });
@@ -1104,7 +1104,7 @@ server.listen(PORT, '0.0.0.0', () => {
             nombre: 'Ramen Japonés',
             pais: 'Japón',
             tiempo: 40,
-            categorias: ['Japonesa', 'Cena'],
+            categorias: ['Cena'],
             ingredientes: [
                 { nombre: '4 porciones de fideos ramen frescos', icono: '🍜' },
                 { nombre: '1.5 litros de caldo de huesos de cerdo', icono: '🍲' },
@@ -1131,7 +1131,7 @@ server.listen(PORT, '0.0.0.0', () => {
                 'Agregar hoja de nori y cebolletas picadas',
                 'Servir inmediatamente muy caliente'
             ],
-            imagen: 'img/ramen-japones.svg',
+            imagen: 'https://images.unsplash.com/photo-1569718212165-3a8278d5f624?w=400&h=300&fit=crop&crop=center&bg=white',
             calificacion: 4.5,
             resenas: 19
         });
@@ -1141,7 +1141,7 @@ server.listen(PORT, '0.0.0.0', () => {
             nombre: 'Fish and Chips',
             pais: 'Reino Unido',
             tiempo: 30,
-            categorias: ['Británica', 'Cena'],
+            categorias: ['Cena'],
             ingredientes: [
                 { nombre: '800g de filetes de bacalao o merluza', icono: '🐟' },
                 { nombre: '1 kg de papas para freír', icono: '🥔' },
@@ -1168,7 +1168,7 @@ server.listen(PORT, '0.0.0.0', () => {
                 'Freír papas nuevamente a 190°C por 2-3 minutos hasta dorar',
                 'Servir inmediatamente con sal marina, vinagre y guisantes'
             ],
-            imagen: 'img/fish-chips.svg',
+            imagen: 'https://images.unsplash.com/photo-1544982503-9f984c14501a?w=400&h=300&fit=crop&crop=center&bg=white',
             calificacion: 4.1,
             resenas: 16
         });
@@ -1179,7 +1179,7 @@ server.listen(PORT, '0.0.0.0', () => {
             nombre: 'Tiramisú',
             pais: 'Italia',
             tiempo: 240,
-            categorias: ['Italiana', 'Postre'],
+            categorias: ['Postre'],
             ingredientes: [
                 { nombre: '500g de queso mascarpone a temperatura ambiente', icono: '🧀' },
                 { nombre: '6 huevos grandes (separados)', icono: '🥚' },
@@ -1204,7 +1204,7 @@ server.listen(PORT, '0.0.0.0', () => {
                 'Refrigerar mínimo 4 horas o toda la noche',
                 'Antes de servir, espolvorear generosamente con cacao en polvo'
             ],
-            imagen: 'img/tiramisu.svg',
+            imagen: 'https://images.unsplash.com/photo-1571877227200-a0d98ea607e9?w=400&h=300&fit=crop&crop=center&bg=white',
             calificacion: 4.7,
             resenas: 28
         });
@@ -1214,7 +1214,7 @@ server.listen(PORT, '0.0.0.0', () => {
             nombre: 'Cheesecake',
             pais: 'Estados Unidos',
             tiempo: 300,
-            categorias: ['Americana', 'Postre'],
+            categorias: ['Postre'],
             ingredientes: [
                 { nombre: '200g de galletas digestivas trituradas', icono: '🍪' },
                 { nombre: '80g de mantequilla derretida', icono: '🧈' },
@@ -1240,7 +1240,7 @@ server.listen(PORT, '0.0.0.0', () => {
                 'Enfriar completamente, luego refrigerar mínimo 4 horas',
                 'Decorar con fresas antes de servir'
             ],
-            imagen: 'img/cheesecake.svg',
+            imagen: 'https://images.unsplash.com/photo-1533134242443-d4fd215305ad?w=400&h=300&fit=crop&crop=center&bg=white',
             calificacion: 4.6,
             resenas: 24
         });
@@ -1250,7 +1250,7 @@ server.listen(PORT, '0.0.0.0', () => {
             nombre: 'Flan Napolitano',
             pais: 'México',
             tiempo: 180,
-            categorias: ['Mexicana', 'Postre'],
+            categorias: ['Postre'],
             ingredientes: [
                 { nombre: '1 lata de leche condensada (397g)', icono: '🥛' },
                 { nombre: '1 lata de leche evaporada (354ml)', icono: '🥛' },
@@ -1274,7 +1274,7 @@ server.listen(PORT, '0.0.0.0', () => {
                 'Probar con palillo: debe salir limpio',
                 'Enfriar completamente, refrigerar mínimo 4 horas antes de desmoldar'
             ],
-            imagen: 'img/flan-napolitano.svg',
+            imagen: 'https://images.unsplash.com/photo-1551024506-0bccd828d307?w=400&h=300&fit=crop&crop=center&bg=white',
             calificacion: 4.4,
             resenas: 21
         });
@@ -1285,7 +1285,7 @@ server.listen(PORT, '0.0.0.0', () => {
             nombre: 'Margarita',
             pais: 'México',
             tiempo: 3,
-            categorias: ['Mexicana', 'Bebida'],
+            categorias: ['Bebida'],
             ingredientes: [
                 { nombre: '60ml de tequila blanco 100% agave', icono: '🥃' },
                 { nombre: '30ml de triple sec o Cointreau', icono: '🍊' },
@@ -1306,7 +1306,7 @@ server.listen(PORT, '0.0.0.0', () => {
                 'Decorar con rodaja de lima en el borde',
                 'Servir inmediatamente'
             ],
-            imagen: 'img/margarita.svg',
+            imagen: 'https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?w=400&h=300&fit=crop&crop=center&bg=white',
             calificacion: 4.4,
             resenas: 21
         });
@@ -1316,7 +1316,7 @@ server.listen(PORT, '0.0.0.0', () => {
             nombre: 'Agua de Jamaica',
             pais: 'México',
             tiempo: 15,
-            categorias: ['Mexicana', 'Bebida'],
+            categorias: ['Bebida'],
             ingredientes: [
                 { nombre: '1 taza de flor de jamaica seca', icono: '🌺' },
                 { nombre: '2 litros de agua', icono: '💧' },
@@ -1337,7 +1337,7 @@ server.listen(PORT, '0.0.0.0', () => {
                 'Refrigerar hasta que esté bien fría',
                 'Servir con hielo y decorar con rodajas de limón'
             ],
-            imagen: 'img/agua-jamaica.svg',
+            imagen: 'https://images.unsplash.com/photo-1544145945-f90425340c7e?w=400&h=300&fit=crop&crop=center&bg=white',
             calificacion: 4.1,
             resenas: 14
         });
@@ -1347,7 +1347,7 @@ server.listen(PORT, '0.0.0.0', () => {
             nombre: 'Smoothie de Frutas',
             pais: 'Tropical',
             tiempo: 8,
-            categorias: ['Saludable', 'Bebida'],
+            categorias: ['Bebida', 'Saludable'],
             ingredientes: [
                 { nombre: '1 mango maduro pelado y cortado', icono: '🥭' },
                 { nombre: '1 taza de piña fresca en trozos', icono: '🍍' },
@@ -1371,7 +1371,7 @@ server.listen(PORT, '0.0.0.0', () => {
                 'Servir inmediatamente en vasos altos',
                 'Decorar con hojas de menta fresca'
             ],
-            imagen: 'img/smoothie-frutas.svg',
+            imagen: 'https://images.unsplash.com/photo-1553530666-ba11a7da3888?w=400&h=300&fit=crop&crop=center&bg=white',
             calificacion: 4.2,
             resenas: 15
         });
@@ -1382,7 +1382,7 @@ server.listen(PORT, '0.0.0.0', () => {
             nombre: 'Hummus',
             pais: 'Líbano',
             tiempo: 15,
-            categorias: ['Árabe', 'Botana'],
+            categorias: ['Botana'],
             ingredientes: [
                 { nombre: '400g de garbanzos cocidos (1 lata escurrida)', icono: '🫘' },
                 { nombre: '3 cucharadas de tahini (pasta de sésamo)', icono: '🥄' },
@@ -1407,7 +1407,7 @@ server.listen(PORT, '0.0.0.0', () => {
                 'Servir en plato extendido, hacer surcos con cuchara',
                 'Decorar con garbanzos reservados, pimentón y aceite de oliva'
             ],
-            imagen: 'img/hummus.svg',
+            imagen: 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400&h=300&fit=crop&crop=center&bg=white',
             calificacion: 4.2,
             resenas: 18
         });
@@ -1417,7 +1417,7 @@ server.listen(PORT, '0.0.0.0', () => {
             nombre: 'Nachos con Queso',
             pais: 'México',
             tiempo: 15,
-            categorias: ['Mexicana', 'Botana'],
+            categorias: ['Botana'],
             ingredientes: [
                 { nombre: '300g de totopos de maíz', icono: '🌮' },
                 { nombre: '200g de queso cheddar rallado', icono: '🧀' },
@@ -1442,7 +1442,7 @@ server.listen(PORT, '0.0.0.0', () => {
                 'Esparcir pico de gallo, cebolletas y cilantro',
                 'Servir inmediatamente con cuartos de lima'
             ],
-            imagen: 'img/nachos-queso.svg',
+            imagen: 'https://images.unsplash.com/photo-1513456852971-30c0b8199d4d?w=400&h=300&fit=crop&crop=center&bg=white',
             calificacion: 4.3,
             resenas: 26
         });
@@ -1453,7 +1453,7 @@ server.listen(PORT, '0.0.0.0', () => {
             nombre: 'Quesadillas',
             pais: 'México',
             tiempo: 10,
-            categorias: ['Mexicana', 'Rápida', 'Económica'],
+            categorias: ['Rápida', 'Económica'],
             ingredientes: [
                 { nombre: '8 tortillas de harina medianas', icono: '🌮' },
                 { nombre: '300g de queso oaxaca o monterey jack rallado', icono: '🧀' },
@@ -1473,7 +1473,7 @@ server.listen(PORT, '0.0.0.0', () => {
                 'Cortar en triángulos con cortador de pizza',
                 'Servir calientes con crema, salsa y aguacate'
             ],
-            imagen: 'img/quesadillas.svg',
+            imagen: 'https://images.unsplash.com/photo-1565299624946-b28f40a0ca4b?w=400&h=300&fit=crop&crop=center&bg=white',
             calificacion: 4.1,
             resenas: 32
         });
@@ -1483,7 +1483,7 @@ server.listen(PORT, '0.0.0.0', () => {
             nombre: 'Pasta con Mantequilla',
             pais: 'Italia',
             tiempo: 12,
-            categorias: ['Italiana', 'Rápida', 'Económica'],
+            categorias: ['Rápida', 'Económica'],
             ingredientes: [
                 { nombre: '400g de pasta (spaghetti o fettuccine)', icono: '🍝' },
                 { nombre: '100g de mantequilla sin sal', icono: '🧈' },
@@ -1505,7 +1505,7 @@ server.listen(PORT, '0.0.0.0', () => {
                 'Sazonar con pimienta negra y perejil fresco',
                 'Servir inmediatamente con más queso parmesano'
             ],
-            imagen: 'img/pasta-mantequilla.svg',
+            imagen: 'https://images.unsplash.com/photo-1551183053-bf91a1d81141?w=400&h=300&fit=crop&crop=center&bg=white',
             calificacion: 3.9,
             resenas: 24
         });
@@ -1515,7 +1515,7 @@ server.listen(PORT, '0.0.0.0', () => {
             nombre: 'Huevos Revueltos',
             pais: 'Universal',
             tiempo: 5,
-            categorias: ['Universal', 'Rápida', 'Económica'],
+            categorias: ['Rápida', 'Económica', 'Desayuno'],
             ingredientes: [
                 { nombre: '6 huevos frescos grandes', icono: '🥚' },
                 { nombre: '2 cucharadas de mantequilla', icono: '🧈' },
@@ -1535,7 +1535,7 @@ server.listen(PORT, '0.0.0.0', () => {
                 'Retirar del fuego mientras aún están cremosos',
                 'Servir inmediatamente espolvoreados con cebollín'
             ],
-            imagen: 'img/huevos-revueltos.svg',
+            imagen: 'https://images.unsplash.com/photo-1525351484163-7529414344d8?w=400&h=300&fit=crop&crop=center&bg=white',
             calificacion: 3.8,
             resenas: 45
         });
@@ -1546,7 +1546,7 @@ server.listen(PORT, '0.0.0.0', () => {
             nombre: 'Huevos Benedictinos',
             pais: 'Estados Unidos',
             tiempo: 25,
-            categorias: ['Americana', 'Desayuno'],
+            categorias: ['Desayuno'],
             ingredientes: [
                 { nombre: '4 huevos frescos', icono: '🥚' },
                 { nombre: '2 muffins ingleses cortados por la mitad', icono: '🍞' },
@@ -1573,7 +1573,7 @@ server.listen(PORT, '0.0.0.0', () => {
                 'Montar: muffin, jamón, huevo pochado, salsa holandesa',
                 'Decorar con perejil y servir inmediatamente'
             ],
-            imagen: 'img/huevos-benedictinos.svg',
+            imagen: 'https://images.unsplash.com/photo-1608039829572-78524f79c4c7?w=400&h=300&fit=crop&crop=center&bg=white',
             calificacion: 4.6,
             resenas: 18
         });
@@ -1583,7 +1583,7 @@ server.listen(PORT, '0.0.0.0', () => {
             nombre: 'Yogurt con Granola',
             pais: 'Grecia',
             tiempo: 10,
-            categorias: ['Saludable', 'Desayuno'],
+            categorias: ['Desayuno', 'Saludable'],
             ingredientes: [
                 { nombre: '2 tazas de yogurt griego natural', icono: '🥛' },
                 { nombre: '1 taza de granola casera', icono: '🥣' },
@@ -1604,7 +1604,7 @@ server.listen(PORT, '0.0.0.0', () => {
                 'Espolvorear nueces picadas y semillas de chía',
                 'Servir inmediatamente o refrigerar máximo 2 horas'
             ],
-            imagen: 'img/yogurt-con-granola.svg',
+            imagen: 'https://images.unsplash.com/photo-1488477181946-6428a0291777?w=400&h=300&fit=crop&crop=center&bg=white',
             calificacion: 4.3,
             resenas: 22
         });
@@ -1682,7 +1682,7 @@ server.listen(PORT, '0.0.0.0', () => {
             nombre: 'Arepas Venezolanas',
             pais: 'Venezuela',
             tiempo: 30,
-            categorias: ['Venezolana', 'Comida'],
+            categorias: ['Comida'],
             ingredientes: [
                 { nombre: '2 tazas de harina de maíz precocida', icono: '🌽' },
                 { nombre: '2 1/2 tazas de agua tibia', icono: '💧' },
@@ -1708,7 +1708,7 @@ server.listen(PORT, '0.0.0.0', () => {
                 'Rellenar con pollo, queso, aguacate y tomate',
                 'Servir calientes inmediatamente'
             ],
-            imagen: 'img/arepas-venezolanas.svg',
+            imagen: 'https://images.unsplash.com/photo-1626645738196-c2a7c87a8f58?w=400&h=300&fit=crop&crop=center&bg=white',
             calificacion: 4.5,
             resenas: 28
         });
@@ -1898,7 +1898,7 @@ server.listen(PORT, '0.0.0.0', () => {
             nombre: 'Banana Bread',
             pais: 'Estados Unidos',
             tiempo: 75,
-            categorias: ['Americana', 'Postre'],
+            categorias: ['Postre'],
             ingredientes: [
                 { nombre: '3 plátanos muy maduros machacados', icono: '🍌' },
                 { nombre: '1/3 taza de mantequilla derretida', icono: '🧈' },
@@ -1923,7 +1923,7 @@ server.listen(PORT, '0.0.0.0', () => {
                 'Enfriar 10 minutos antes de desmoldar',
                 'Servir tibio o a temperatura ambiente'
             ],
-            imagen: 'img/banana-bread.svg',
+            imagen: 'https://images.unsplash.com/photo-1586985289688-ca3cf47d3e6e?w=400&h=300&fit=crop&crop=center&bg=white',
             calificacion: 4.4,
             resenas: 27
         });
@@ -1934,7 +1934,7 @@ server.listen(PORT, '0.0.0.0', () => {
             nombre: 'Café con Leche',
             pais: 'España',
             tiempo: 5,
-            categorias: ['Española', 'Bebida'],
+            categorias: ['Bebida'],
             ingredientes: [
                 { nombre: '1/2 taza de café espresso fuerte', icono: '☕' },
                 { nombre: '1/2 taza de leche entera', icono: '🥛' },
@@ -1951,7 +1951,7 @@ server.listen(PORT, '0.0.0.0', () => {
                 'Espolvorear canela por encima',
                 'Servir inmediatamente muy caliente'
             ],
-            imagen: 'img/cafe-con-leche.svg',
+            imagen: 'https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=400&h=300&fit=crop&crop=center&bg=white',
             calificacion: 4.1,
             resenas: 15
         });
