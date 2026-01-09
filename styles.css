@@ -70,7 +70,7 @@ body {
     position: relative;
     font-weight: 400;
     overflow-x: hidden;
-    padding-top: 90px; /* Espacio para el header fixed */
+    padding-top: 75px; /* Reducir espacio para el header fixed */
 }
 
 body::before {
@@ -1000,7 +1000,7 @@ button#advancedFiltersBtn i,
 /* ========== CONTENIDO PRINCIPAL MEJORADO ========== */
 .main-content {
     max-width: 1600px;
-    margin: 3rem auto;
+    margin: 1rem auto; /* Reducir margen superior */
     padding: 0 2rem;
     animation: fadeInUp 0.8s ease-out;
 }
@@ -2044,14 +2044,7 @@ button#advancedFiltersBtn i,
     border-color: #FF7A50;
 }
 
-/* Asegurar que header y search bar estén debajo de modales */
-.header {
-    position: sticky;
-    top: 0;
-    z-index: 1000; /* Header en capa 3 */
-    transition: transform 0.3s ease;
-}
-
+/* Asegurar que search bar esté debajo de modales */
 .search-bar-container {
     position: relative;
     z-index: 500; /* Barra de búsqueda en capa 2 - DEBAJO de modales */
