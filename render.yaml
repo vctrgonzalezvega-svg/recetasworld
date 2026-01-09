@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 services:
   - type: web
     name: recetasworld
@@ -13,4 +14,21 @@ services:
         fromService:
           type: web
           name: recetasworld
+=======
+services:
+  - type: web
+    name: recetasworld
+    env: node
+    plan: free
+    buildCommand: npm install
+    startCommand: npm start
+    healthCheckPath: /api/health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        fromService:
+          type: web
+          name: recetasworld
+>>>>>>> eab5421d03b9a6c3dbfc011336f0ad0a39dcdcf1
           property: port

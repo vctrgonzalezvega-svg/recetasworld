@@ -5,25 +5,17 @@ const CDN_CONFIG = {
     // ========== CONFIGURACIÓN PRINCIPAL ==========
     
     // CDN para imágenes estáticas (SVG predefinidos)
-    // Opciones recomendadas:
-    // - jsDelivr (gratis): https://cdn.jsdelivr.net/gh/usuario/repo@branch/
-    // - GitHub Pages: https://usuario.github.io/repo/
-    // - Netlify: https://app.netlify.com/
     staticCDN: {
-        enabled: true,
+        enabled: false, // Usar archivos locales por defecto
         baseUrl: 'https://cdn.jsdelivr.net/gh/tu-usuario/recetas-world@main/',
         fallback: true
     },
     
     // CDN para imágenes subidas por usuarios
-    // Opciones recomendadas:
-    // - Cloudinary (gratis hasta 25GB): https://cloudinary.com/
-    // - ImageKit (gratis hasta 20GB): https://imagekit.io/
-    // - Imgur API (gratis): https://api.imgur.com/
     uploadsCDN: {
-        enabled: false, // Cambiar a true cuando configures un servicio
+        enabled: false,
         baseUrl: 'https://res.cloudinary.com/tu-cloud-name/image/upload/',
-        apiKey: '', // Agregar tu API key aquí
+        apiKey: '',
         transformations: {
             thumbnail: 'w_300,h_200,c_fill,q_auto,f_auto',
             medium: 'w_600,h_400,c_fill,q_auto,f_auto',
@@ -36,32 +28,20 @@ const CDN_CONFIG = {
     // Configuración de lazy loading
     lazyLoading: {
         enabled: true,
-        threshold: '200px', // Cargar cuando esté a 200px del viewport
+        threshold: '200px',
         placeholder: 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZjBmMGYwIi8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxNCIgZmlsbD0iIzk5OSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZHk9Ii4zZW0iPkNhcmdhbmRvLi4uPC90ZXh0Pjwvc3ZnPg=='
     },
     
     // Configuración de formatos de imagen
     imageFormats: {
-        // Formatos universalmente soportados
         universal: ['png', 'jpg', 'jpeg', 'gif'],
-        
-        // Formatos modernos con mejor compresión
         modern: ['webp', 'avif'],
-        
-        // Formatos especializados
         specialized: ['svg', 'bmp', 'tiff', 'tif'],
-        
-        // Formatos móviles (principalmente iOS)
         mobile: ['heic', 'heif'],
-        
-        // Configuración de conversión automática
         autoConvert: {
             enabled: true,
-            // Convertir estos formatos a JPG para mejor compatibilidad
             convertToJPG: ['bmp', 'tiff', 'tif', 'heic', 'heif'],
-            // Usar WebP cuando sea soportado
             preferWebP: true,
-            // Calidad de conversión
             quality: 85
         }
     },
@@ -76,13 +56,11 @@ const CDN_CONFIG = {
         }
     },
     
-    // ========== CONFIGURACIÓN AVANZADA ==========
-    
     // Cache del navegador
     caching: {
         enabled: true,
-        maxAge: 86400, // 24 horas en segundos
-        staleWhileRevalidate: 3600 // 1 hora
+        maxAge: 86400,
+        staleWhileRevalidate: 3600
     },
     
     // Preload de imágenes críticas
@@ -90,8 +68,7 @@ const CDN_CONFIG = {
         enabled: true,
         criticalImages: [
             'img/default-recipe.svg',
-            'img/placeholder.svg',
-            'img/logo.svg'
+            'img/placeholder.svg'
         ]
     },
     
@@ -101,7 +78,7 @@ const CDN_CONFIG = {
         errorImage: 'img/error-recipe.svg',
         loadingEmoji: '🍽️',
         retryAttempts: 3,
-        retryDelay: 1000 // ms
+        retryDelay: 1000
     }
 };
 
@@ -109,6 +86,7 @@ const CDN_CONFIG = {
 
 // Detectar soporte para WebP
 function supportsWebP() {
+    if (typeof document === 'undefined') return false;
     const canvas = document.createElement('canvas');
     canvas.width = 1;
     canvas.height = 1;
@@ -117,80 +95,31 @@ function supportsWebP() {
 
 // Detectar conexión lenta
 function isSlowConnection() {
-    return navigator.connection && 
-           (navigator.connection.effectiveType === 'slow-2g' || 
-            navigator.connection.effectiveType === '2g');
+    if (typeof navigator === 'undefined' || !navigator.connection) return false;
+    return navigator.connection.effectiveType === 'slow-2g' || 
+           navigator.connection.effectiveType === '2g';
 }
 
 // Obtener el breakpoint actual
 function getCurrentBreakpoint() {
+    if (typeof window === 'undefined') return 'desktop';
     const width = window.innerWidth;
     if (width <= CDN_CONFIG.responsiveImages.breakpoints.mobile) return 'mobile';
     if (width <= CDN_CONFIG.responsiveImages.breakpoints.tablet) return 'tablet';
     return 'desktop';
 }
 
-// ========== INSTRUCCIONES DE CONFIGURACIÓN ==========
-
-/*
-CÓMO CONFIGURAR TU CDN:
-
-1. PARA IMÁGENES ESTÁTICAS (SVG predefinidos):
-   - Sube tu proyecto a GitHub
-   - Cambia 'tu-usuario/recetas-world' por tu repositorio real
-   - O usa GitHub Pages, Netlify, Vercel, etc.
-
-2. PARA IMÁGENES SUBIDAS POR USUARIOS:
-   
-   OPCIÓN A - Cloudinary (Recomendado):
-   - Regístrate en https://cloudinary.com/
-   - Obtén tu cloud_name de tu dashboard
-   - Cambia uploadsCDN.baseUrl por: https://res.cloudinary.com/TU_CLOUD_NAME/image/upload/
-   - Cambia enabled: true
-   
-   OPCIÓN B - ImageKit:
-   - Regístrate en https://imagekit.io/
-   - Obtén tu URL endpoint
-   - Cambia uploadsCDN.baseUrl por tu endpoint
-   - Cambia enabled: true
-   
-   OPCIÓN C - Imgur:
-   - Regístrate en https://api.imgur.com/
-   - Obtén tu Client ID
-   - Implementa la subida via API
-   - Cambia enabled: true
-
-3. PARA DESARROLLO LOCAL:
-   - Deja staticCDN.enabled: false para usar archivos locales
-   - Cambia a true solo en producción
-
-4. OPTIMIZACIONES ADICIONALES:
-   - Habilita webpSupport si tu servidor lo soporta
-   - Ajusta los breakpoints según tu diseño
-   - Personaliza las transformaciones de Cloudinary
-
-EJEMPLO DE CONFIGURACIÓN COMPLETA:
-
-const CDN_CONFIG = {
-    staticCDN: {
-        enabled: true,
-        baseUrl: 'https://cdn.jsdelivr.net/gh/miusuario/recetas-world@main/',
-        fallback: true
-    },
-    uploadsCDN: {
-        enabled: true,
-        baseUrl: 'https://res.cloudinary.com/micloud/image/upload/',
-        transformations: {
-            thumbnail: 'w_300,h_200,c_fill,q_auto,f_auto',
-            medium: 'w_600,h_400,c_fill,q_auto,f_auto'
-        }
-    }
-};
-*/
-
-// Exportar configuración
+// Exportar configuración y funciones
 if (typeof module !== 'undefined' && module.exports) {
-    module.exports = CDN_CONFIG;
-} else {
+    module.exports = {
+        CDN_CONFIG,
+        supportsWebP,
+        isSlowConnection,
+        getCurrentBreakpoint
+    };
+} else if (typeof window !== 'undefined') {
     window.CDN_CONFIG = CDN_CONFIG;
+    window.supportsWebP = supportsWebP;
+    window.isSlowConnection = isSlowConnection;
+    window.getCurrentBreakpoint = getCurrentBreakpoint;
 }

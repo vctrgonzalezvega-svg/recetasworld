@@ -1,12 +1,14 @@
 {
   "name": "recetasworld",
   "version": "1.0.0",
-  "main": "index-simple.js",
+  "main": "server.js",
   "scripts": {
-    "start": "node index-simple.js",
-    "dev": "node index.js"
+    "start": "node server.js"
   },
   "engines": {
     "node": "18.x"
+  },
+  "dependencies": {
+    "sqlite3": "^5.1.7"
   }
 }

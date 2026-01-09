@@ -1,2 +1,2 @@
-# Este archivo mantiene la carpeta img/uploads/ en Git
-# Las imágenes subidas por usuarios se guardan aquí
+# Esta carpeta es para imágenes subidas por usuarios
+# El archivo .gitkeep mantiene la carpeta en Git aunque esté vacía

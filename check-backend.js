@@ -32,19 +32,25 @@ class BackendChecker {
     async checkBackendConnection() {
         console.log('🔍 Verificando conexión con backend...');
         
-        // Obtener la URL del backend configurada
-        const app = new RecipesApp();
-        const backendUrl = app.getApiBase();
-        
-        console.log(`🔗 Backend configurado: ${backendUrl}`);
-        
-        if (backendUrl.includes('tu-backend')) {
-            console.error('❌ BACKEND NO CONFIGURADO');
-            this.showBackendSetupInstructions();
+        // Verificar si RecipesApp está disponible
+        if (typeof RecipesApp === 'undefined') {
+            console.log('⚠️ RecipesApp no disponible aún, usando configuración por defecto');
+            await this.checkDefaultBackend();
             return;
         }
-
+        
         try {
+            const app = new RecipesApp();
+            const backendUrl = app.getApiBase();
+            
+            console.log(`🔗 Backend configurado: ${backendUrl}`);
+            
+            if (backendUrl.includes('tu-backend')) {
+                console.error('❌ BACKEND NO CONFIGURADO');
+                this.showBackendSetupInstructions();
+                return;
+            }
+
             const response = await fetch(`${backendUrl.replace('/api', '')}/api/recipes`);
             
             if (response.ok) {
@@ -59,6 +65,19 @@ class BackendChecker {
         } catch (error) {
             console.error('❌ No se puede conectar al backend:', error);
             this.showBackendSetupInstructions();
+        }
+    }
+
+    async checkDefaultBackend() {
+        try {
+            const response = await fetch('/api/recipes');
+            if (response.ok) {
+                console.log('✅ Backend por defecto funcionando');
+            } else {
+                console.error('❌ Backend por defecto con problemas');
+            }
+        } catch (error) {
+            console.error('❌ Backend por defecto no disponible');
         }
     }
 
@@ -120,8 +139,6 @@ Mover todo a Railway para tener frontend + backend juntos.
         `;
         
         console.log(instructions);
-        
-        // Mostrar en la página también
         this.showInPageMessage('error', instructions);
     }
 
@@ -165,6 +182,8 @@ Status: ${status}
     }
 
     showInPageMessage(type, message) {
+        if (typeof document === 'undefined') return;
+        
         // Crear elemento de notificación en la página
         const notification = document.createElement('div');
         notification.style.cssText = `
@@ -203,14 +222,16 @@ Status: ${status}
 }
 
 // Ejecutar verificación cuando la página cargue
-window.addEventListener('DOMContentLoaded', () => {
-    // Esperar un poco para que RecipesApp se inicialice
-    setTimeout(() => {
-        new BackendChecker();
-    }, 2000);
-});
+if (typeof window !== 'undefined') {
+    window.addEventListener('DOMContentLoaded', () => {
+        // Esperar un poco para que RecipesApp se inicialice
+        setTimeout(() => {
+            new BackendChecker();
+        }, 2000);
+    });
 
-// Comando manual para verificar
-window.checkBackend = () => {
-    new BackendChecker();
-};
+    // Comando manual para verificar
+    window.checkBackend = () => {
+        new BackendChecker();
+    };
+}
