@@ -2187,5 +2187,1823 @@
     ],
     "calificacion": 4.6,
     "resenas": 134
+  },
+  {
+    "id": 36,
+    "nombre": "Ramen Tonkotsu",
+    "pais": "Japón",
+    "imagen": "🍜",
+    "tiempo": 120,
+    "categorias": [
+      "comidas",
+      "cenas"
+    ],
+    "ingredientes": [
+      {
+        "nombre": "Fideos ramen",
+        "cantidad": "200g",
+        "icono": "🍜"
+      },
+      {
+        "nombre": "Huesos de cerdo",
+        "cantidad": "1kg",
+        "icono": "🦴"
+      },
+      {
+        "nombre": "Chashu (cerdo)",
+        "cantidad": "200g",
+        "icono": "🥩"
+      },
+      {
+        "nombre": "Huevo marinado",
+        "cantidad": "2",
+        "icono": "🥚"
+      },
+      {
+        "nombre": "Cebolletas",
+        "cantidad": "3",
+        "icono": "🌿"
+      },
+      {
+        "nombre": "Nori",
+        "cantidad": "2 hojas",
+        "icono": "🟢"
+      },
+      {
+        "nombre": "Miso blanco",
+        "cantidad": "2 cucharadas",
+        "icono": "🥄"
+      },
+      {
+        "nombre": "Ajo",
+        "cantidad": "4 dientes",
+        "icono": "🧄"
+      }
+    ],
+    "instrucciones": [
+      "Hierve huesos de cerdo durante 12 horas para hacer caldo tonkotsu",
+      "Marina huevos en salsa de soya y mirin por 6 horas",
+      "Cocina chashu a fuego lento hasta que esté tierno",
+      "Cocina fideos ramen según instrucciones del paquete",
+      "Calienta el caldo y disuelve miso",
+      "Coloca fideos en tazón y vierte caldo caliente",
+      "Agrega chashu rebanado y huevo partido por la mitad",
+      "Decora con cebolletas picadas y nori",
+      "Sirve inmediatamente mientras está caliente"
+    ],
+    "calificacion": 4.9,
+    "resenas": 287
+  },
+  {
+    "id": 37,
+    "nombre": "Paella Valenciana",
+    "pais": "España",
+    "imagen": "🥘",
+    "tiempo": 60,
+    "categorias": [
+      "comidas",
+      "cenas"
+    ],
+    "ingredientes": [
+      {
+        "nombre": "Arroz bomba",
+        "cantidad": "400g",
+        "icono": "🍚"
+      },
+      {
+        "nombre": "Pollo",
+        "cantidad": "500g",
+        "icono": "🍗"
+      },
+      {
+        "nombre": "Conejo",
+        "cantidad": "300g",
+        "icono": "🐰"
+      },
+      {
+        "nombre": "Judías verdes",
+        "cantidad": "200g",
+        "icono": "🫛"
+      },
+      {
+        "nombre": "Garrofón",
+        "cantidad": "100g",
+        "icono": "🫘"
+      },
+      {
+        "nombre": "Tomate rallado",
+        "cantidad": "2",
+        "icono": "🍅"
+      },
+      {
+        "nombre": "Azafrán",
+        "cantidad": "1g",
+        "icono": "🌼"
+      },
+      {
+        "nombre": "Aceite de oliva",
+        "cantidad": "100ml",
+        "icono": "🫒"
+      },
+      {
+        "nombre": "Caldo de pollo",
+        "cantidad": "1L",
+        "icono": "🥣"
+      }
+    ],
+    "instrucciones": [
+      "Calienta aceite de oliva en paellera grande",
+      "Sofríe pollo y conejo hasta que estén dorados",
+      "Agrega judías verdes y garrofón, cocina 5 minutos",
+      "Añade tomate rallado y sofríe hasta que se reduzca",
+      "Incorpora el arroz y mezcla bien con los ingredientes",
+      "Vierte caldo caliente con azafrán disuelto",
+      "Cocina a fuego alto 10 minutos, luego medio 10 minutos más",
+      "No remuevas el arroz durante la cocción",
+      "Deja reposar 5 minutos antes de servir",
+      "Decora con limón y perejil fresco"
+    ],
+    "calificacion": 4.8,
+    "resenas": 198
+  },
+  {
+    "id": 38,
+    "nombre": "Ceviche Peruano",
+    "pais": "Perú",
+    "imagen": "🐟",
+    "tiempo": 30,
+    "categorias": [
+      "comidas",
+      "entradas"
+    ],
+    "ingredientes": [
+      {
+        "nombre": "Pescado blanco fresco",
+        "cantidad": "500g",
+        "icono": "🐟"
+      },
+      {
+        "nombre": "Limón peruano",
+        "cantidad": "8 piezas",
+        "icono": "🍋"
+      },
+      {
+        "nombre": "Cebolla roja",
+        "cantidad": "1",
+        "icono": "🧅"
+      },
+      {
+        "nombre": "Ají amarillo",
+        "cantidad": "2",
+        "icono": "🌶️"
+      },
+      {
+        "nombre": "Cilantro",
+        "cantidad": "20g",
+        "icono": "🌿"
+      },
+      {
+        "nombre": "Camote",
+        "cantidad": "2",
+        "icono": "🍠"
+      },
+      {
+        "nombre": "Choclo",
+        "cantidad": "1",
+        "icono": "🌽"
+      },
+      {
+        "nombre": "Sal",
+        "cantidad": "al gusto",
+        "icono": "🧂"
+      },
+      {
+        "nombre": "Pimienta",
+        "cantidad": "al gusto",
+        "icono": "⚫"
+      }
+    ],
+    "instrucciones": [
+      "Corta el pescado en cubos de 2cm aproximadamente",
+      "Exprime los limones y cuela el jugo",
+      "Marina el pescado en jugo de limón por 15-20 minutos",
+      "Corta la cebolla roja en juliana muy fina",
+      "Remoja la cebolla en agua fría por 10 minutos",
+      "Pica finamente el ají amarillo sin semillas",
+      "Escurre el pescado y mezcla con cebolla y ají",
+      "Sazona con sal y pimienta al gusto",
+      "Agrega cilantro picado finamente",
+      "Sirve con camote y choclo hervidos"
+    ],
+    "calificacion": 4.9,
+    "resenas": 234
+  },
+  {
+    "id": 39,
+    "nombre": "Pad Thai",
+    "pais": "Tailandia",
+    "imagen": "🍝",
+    "tiempo": 25,
+    "categorias": [
+      "comidas",
+      "cenas"
+    ],
+    "ingredientes": [
+      {
+        "nombre": "Fideos de arroz",
+        "cantidad": "200g",
+        "icono": "🍜"
+      },
+      {
+        "nombre": "Camarones",
+        "cantidad": "200g",
+        "icono": "🦐"
+      },
+      {
+        "nombre": "Huevos",
+        "cantidad": "2",
+        "icono": "🥚"
+      },
+      {
+        "nombre": "Brotes de soya",
+        "cantidad": "100g",
+        "icono": "🌱"
+      },
+      {
+        "nombre": "Cebolletas",
+        "cantidad": "3",
+        "icono": "🌿"
+      },
+      {
+        "nombre": "Cacahuates",
+        "cantidad": "50g",
+        "icono": "🥜"
+      },
+      {
+        "nombre": "Salsa de pescado",
+        "cantidad": "3 cucharadas",
+        "icono": "🐟"
+      },
+      {
+        "nombre": "Azúcar de palma",
+        "cantidad": "2 cucharadas",
+        "icono": "🍯"
+      },
+      {
+        "nombre": "Tamarindo",
+        "cantidad": "2 cucharadas",
+        "icono": "🌰"
+      },
+      {
+        "nombre": "Aceite",
+        "cantidad": "3 cucharadas",
+        "icono": "🫒"
+      }
+    ],
+    "instrucciones": [
+      "Remoja fideos de arroz en agua tibia hasta que ablanden",
+      "Mezcla salsa de pescado, azúcar y tamarindo para la salsa",
+      "Calienta aceite en wok a fuego alto",
+      "Saltea camarones hasta que estén rosados",
+      "Agrega huevos batidos y revuelve rápidamente",
+      "Incorpora fideos escurridos y salsa preparada",
+      "Añade brotes de soya y cebolletas picadas",
+      "Saltea todo junto por 2-3 minutos",
+      "Sirve inmediatamente con cacahuates triturados",
+      "Decora con limón y cilantro fresco"
+    ],
+    "calificacion": 4.7,
+    "resenas": 189
+  },
+  {
+    "id": 40,
+    "nombre": "Risotto de Hongos",
+    "pais": "Italia",
+    "imagen": "🍄",
+    "tiempo": 35,
+    "categorias": [
+      "comidas",
+      "cenas"
+    ],
+    "ingredientes": [
+      {
+        "nombre": "Arroz Arborio",
+        "cantidad": "300g",
+        "icono": "🍚"
+      },
+      {
+        "nombre": "Hongos mixtos",
+        "cantidad": "400g",
+        "icono": "🍄"
+      },
+      {
+        "nombre": "Caldo de vegetales",
+        "cantidad": "1L",
+        "icono": "🥣"
+      },
+      {
+        "nombre": "Vino blanco",
+        "cantidad": "150ml",
+        "icono": "🍷"
+      },
+      {
+        "nombre": "Cebolla",
+        "cantidad": "1",
+        "icono": "🧅"
+      },
+      {
+        "nombre": "Ajo",
+        "cantidad": "3 dientes",
+        "icono": "🧄"
+      },
+      {
+        "nombre": "Queso parmesano",
+        "cantidad": "100g",
+        "icono": "🧀"
+      },
+      {
+        "nombre": "Mantequilla",
+        "cantidad": "50g",
+        "icono": "🧈"
+      },
+      {
+        "nombre": "Aceite de oliva",
+        "cantidad": "3 cucharadas",
+        "icono": "🫒"
+      },
+      {
+        "nombre": "Perejil",
+        "cantidad": "20g",
+        "icono": "🌿"
+      }
+    ],
+    "instrucciones": [
+      "Calienta el caldo y manténlo caliente",
+      "Saltea hongos en aceite hasta que estén dorados",
+      "En otra sartén, sofríe cebolla y ajo picados",
+      "Agrega arroz y tuesta por 2 minutos",
+      "Vierte vino blanco y revuelve hasta que se absorba",
+      "Añade caldo caliente de a poco, revolviendo constantemente",
+      "Continúa agregando caldo por 18-20 minutos",
+      "Incorpora hongos salteados en los últimos 5 minutos",
+      "Retira del fuego y agrega mantequilla y parmesano",
+      "Decora con perejil fresco y sirve inmediatamente"
+    ],
+    "calificacion": 4.6,
+    "resenas": 156
+  },
+  {
+    "id": 41,
+    "nombre": "Bibimbap Coreano",
+    "pais": "Corea del Sur",
+    "imagen": "🍚",
+    "tiempo": 40,
+    "categorias": [
+      "comidas",
+      "saludables"
+    ],
+    "ingredientes": [
+      {
+        "nombre": "Arroz blanco",
+        "cantidad": "300g",
+        "icono": "🍚"
+      },
+      {
+        "nombre": "Carne de res",
+        "cantidad": "200g",
+        "icono": "🥩"
+      },
+      {
+        "nombre": "Espinacas",
+        "cantidad": "200g",
+        "icono": "🥬"
+      },
+      {
+        "nombre": "Zanahorias",
+        "cantidad": "2",
+        "icono": "🥕"
+      },
+      {
+        "nombre": "Brotes de soya",
+        "cantidad": "150g",
+        "icono": "🌱"
+      },
+      {
+        "nombre": "Shiitake",
+        "cantidad": "100g",
+        "icono": "🍄"
+      },
+      {
+        "nombre": "Huevo",
+        "cantidad": "4",
+        "icono": "🥚"
+      },
+      {
+        "nombre": "Gochujang",
+        "cantidad": "3 cucharadas",
+        "icono": "🌶️"
+      },
+      {
+        "nombre": "Aceite de sésamo",
+        "cantidad": "2 cucharadas",
+        "icono": "🫒"
+      },
+      {
+        "nombre": "Ajo",
+        "cantidad": "4 dientes",
+        "icono": "🧄"
+      }
+    ],
+    "instrucciones": [
+      "Cocina arroz blanco y manténlo caliente",
+      "Marina carne en salsa de soya y ajo por 20 minutos",
+      "Blanquea espinacas y sazona con aceite de sésamo",
+      "Saltea zanahorias en juliana hasta que estén tiernas",
+      "Cocina brotes de soya con ajo y sal",
+      "Saltea hongos shiitake rebanados",
+      "Cocina carne marinada hasta que esté bien hecha",
+      "Fríe huevos con yema líquida",
+      "Coloca arroz en tazones individuales",
+      "Acomoda vegetales y carne sobre el arroz",
+      "Corona con huevo frito y sirve con gochujang"
+    ],
+    "calificacion": 4.7,
+    "resenas": 143
+  },
+  {
+    "id": 42,
+    "nombre": "Moussaka Griega",
+    "pais": "Grecia",
+    "imagen": "🍆",
+    "tiempo": 90,
+    "categorias": [
+      "comidas",
+      "cenas"
+    ],
+    "ingredientes": [
+      {
+        "nombre": "Berenjenas",
+        "cantidad": "3 grandes",
+        "icono": "🍆"
+      },
+      {
+        "nombre": "Carne molida de cordero",
+        "cantidad": "500g",
+        "icono": "🥩"
+      },
+      {
+        "nombre": "Tomates",
+        "cantidad": "4",
+        "icono": "🍅"
+      },
+      {
+        "nombre": "Cebolla",
+        "cantidad": "2",
+        "icono": "🧅"
+      },
+      {
+        "nombre": "Ajo",
+        "cantidad": "4 dientes",
+        "icono": "🧄"
+      },
+      {
+        "nombre": "Queso feta",
+        "cantidad": "200g",
+        "icono": "🧀"
+      },
+      {
+        "nombre": "Leche",
+        "cantidad": "500ml",
+        "icono": "🥛"
+      },
+      {
+        "nombre": "Harina",
+        "cantidad": "50g",
+        "icono": "🌾"
+      },
+      {
+        "nombre": "Mantequilla",
+        "cantidad": "50g",
+        "icono": "🧈"
+      },
+      {
+        "nombre": "Canela",
+        "cantidad": "1 cucharadita",
+        "icono": "🥄"
+      }
+    ],
+    "instrucciones": [
+      "Corta berenjenas en rodajas y sala por 30 minutos",
+      "Enjuaga y seca las berenjenas, luego fríelas hasta dorar",
+      "Sofríe cebolla y ajo hasta que estén transparentes",
+      "Agrega carne molida y cocina hasta que esté dorada",
+      "Incorpora tomates picados y canela, cocina 20 minutos",
+      "Prepara salsa bechamel con mantequilla, harina y leche",
+      "En un refractario, alterna capas de berenjena y carne",
+      "Cubre con salsa bechamel y queso feta desmenuzado",
+      "Hornea a 180°C por 45 minutos hasta que esté dorado",
+      "Deja reposar 10 minutos antes de servir"
+    ],
+    "calificacion": 4.8,
+    "resenas": 167
+  },
+  {
+    "id": 43,
+    "nombre": "Churrasco Argentino",
+    "pais": "Argentina",
+    "imagen": "🥩",
+    "tiempo": 25,
+    "categorias": [
+      "comidas",
+      "cenas"
+    ],
+    "ingredientes": [
+      {
+        "nombre": "Bife de chorizo",
+        "cantidad": "4 piezas",
+        "icono": "🥩"
+      },
+      {
+        "nombre": "Chimichurri",
+        "cantidad": "150ml",
+        "icono": "🌿"
+      },
+      {
+        "nombre": "Papas",
+        "cantidad": "4 grandes",
+        "icono": "🥔"
+      },
+      {
+        "nombre": "Sal gruesa",
+        "cantidad": "al gusto",
+        "icono": "🧂"
+      },
+      {
+        "nombre": "Pimienta negra",
+        "cantidad": "al gusto",
+        "icono": "⚫"
+      },
+      {
+        "nombre": "Aceite",
+        "cantidad": "para freír",
+        "icono": "🫒"
+      },
+      {
+        "nombre": "Perejil",
+        "cantidad": "50g",
+        "icono": "🌿"
+      },
+      {
+        "nombre": "Ajo",
+        "cantidad": "4 dientes",
+        "icono": "🧄"
+      },
+      {
+        "nombre": "Vinagre",
+        "cantidad": "3 cucharadas",
+        "icono": "🥄"
+      },
+      {
+        "nombre": "Orégano",
+        "cantidad": "1 cucharadita",
+        "icono": "🌿"
+      }
+    ],
+    "instrucciones": [
+      "Prepara chimichurri mezclando perejil, ajo, vinagre y aceite",
+      "Sazona con orégano, sal y pimienta",
+      "Corta papas en bastones gruesos para papas fritas",
+      "Fríe papas en aceite caliente hasta que estén doradas",
+      "Saca carne del refrigerador 30 minutos antes de cocinar",
+      "Calienta parrilla o plancha a fuego alto",
+      "Sazona carne con sal gruesa justo antes de cocinar",
+      "Cocina bifes 3-4 minutos por lado para término medio",
+      "Deja reposar carne 5 minutos antes de servir",
+      "Sirve con chimichurri abundante y papas fritas"
+    ],
+    "calificacion": 4.9,
+    "resenas": 298
+  },
+  {
+    "id": 44,
+    "nombre": "Pho Vietnamita",
+    "pais": "Vietnam",
+    "imagen": "🍜",
+    "tiempo": 180,
+    "categorias": [
+      "comidas",
+      "sopas"
+    ],
+    "ingredientes": [
+      {
+        "nombre": "Huesos de res",
+        "cantidad": "1kg",
+        "icono": "🦴"
+      },
+      {
+        "nombre": "Fideos de arroz",
+        "cantidad": "200g",
+        "icono": "🍜"
+      },
+      {
+        "nombre": "Carne de res",
+        "cantidad": "300g",
+        "icono": "🥩"
+      },
+      {
+        "nombre": "Cebolla",
+        "cantidad": "2",
+        "icono": "🧅"
+      },
+      {
+        "nombre": "Jengibre",
+        "cantidad": "50g",
+        "icono": "🫚"
+      },
+      {
+        "nombre": "Anís estrella",
+        "cantidad": "3 piezas",
+        "icono": "⭐"
+      },
+      {
+        "nombre": "Canela",
+        "cantidad": "1 rama",
+        "icono": "🥄"
+      },
+      {
+        "nombre": "Cilantro",
+        "cantidad": "50g",
+        "icono": "🌿"
+      },
+      {
+        "nombre": "Cebolletas",
+        "cantidad": "4",
+        "icono": "🌿"
+      },
+      {
+        "nombre": "Brotes de soya",
+        "cantidad": "100g",
+        "icono": "🌱"
+      }
+    ],
+    "instrucciones": [
+      "Hierve huesos de res por 3 horas para hacer caldo",
+      "Tuesta cebolla y jengibre en comal hasta que se chamusquen",
+      "Agrega especias tostadas al caldo y cocina 1 hora más",
+      "Cuela el caldo y manténlo caliente",
+      "Remoja fideos de arroz en agua tibia hasta que ablanden",
+      "Corta carne cruda en láminas muy finas",
+      "Coloca fideos cocidos en tazones hondos",
+      "Agrega carne cruda sobre los fideos",
+      "Vierte caldo hirviendo que cocine la carne",
+      "Sirve con hierbas frescas, brotes y limón"
+    ],
+    "calificacion": 4.8,
+    "resenas": 201
+  },
+  {
+    "id": 45,
+    "nombre": "Fish and Chips",
+    "pais": "Reino Unido",
+    "imagen": "🐟",
+    "tiempo": 30,
+    "categorias": [
+      "comidas",
+      "cenas"
+    ],
+    "ingredientes": [
+      {
+        "nombre": "Filetes de bacalao",
+        "cantidad": "4 piezas",
+        "icono": "🐟"
+      },
+      {
+        "nombre": "Papas grandes",
+        "cantidad": "4",
+        "icono": "🥔"
+      },
+      {
+        "nombre": "Harina",
+        "cantidad": "200g",
+        "icono": "🌾"
+      },
+      {
+        "nombre": "Cerveza",
+        "cantidad": "250ml",
+        "icono": "🍺"
+      },
+      {
+        "nombre": "Polvo para hornear",
+        "cantidad": "1 cucharadita",
+        "icono": "🥄"
+      },
+      {
+        "nombre": "Sal",
+        "cantidad": "al gusto",
+        "icono": "🧂"
+      },
+      {
+        "nombre": "Aceite",
+        "cantidad": "para freír",
+        "icono": "🫒"
+      },
+      {
+        "nombre": "Vinagre de malta",
+        "cantidad": "al gusto",
+        "icono": "🥄"
+      },
+      {
+        "nombre": "Guisantes",
+        "cantidad": "200g",
+        "icono": "🟢"
+      },
+      {
+        "nombre": "Limón",
+        "cantidad": "2",
+        "icono": "🍋"
+      }
+    ],
+    "instrucciones": [
+      "Corta papas en bastones gruesos y remoja en agua fría",
+      "Prepara masa mezclando harina, cerveza y polvo para hornear",
+      "Deja reposar la masa por 15 minutos",
+      "Calienta aceite a 180°C en freidora profunda",
+      "Fríe papas por 5 minutos, retira y escurre",
+      "Seca filetes de pescado y sazona con sal",
+      "Sumerge pescado en masa y fríe hasta que esté dorado",
+      "Fríe papas nuevamente hasta que estén crujientes",
+      "Escurre en papel absorbente",
+      "Sirve con guisantes, vinagre de malta y limón"
+    ],
+    "calificacion": 4.5,
+    "resenas": 178
+  },
+  {
+    "id": 46,
+    "nombre": "Coq au Vin",
+    "pais": "Francia",
+    "imagen": "🍗",
+    "tiempo": 120,
+    "categorias": [
+      "comidas",
+      "cenas"
+    ],
+    "ingredientes": [
+      {
+        "nombre": "Pollo entero",
+        "cantidad": "1.5kg",
+        "icono": "🍗"
+      },
+      {
+        "nombre": "Vino tinto",
+        "cantidad": "750ml",
+        "icono": "🍷"
+      },
+      {
+        "nombre": "Tocino",
+        "cantidad": "150g",
+        "icono": "🥓"
+      },
+      {
+        "nombre": "Hongos",
+        "cantidad": "300g",
+        "icono": "🍄"
+      },
+      {
+        "nombre": "Cebollitas perla",
+        "cantidad": "200g",
+        "icono": "🧅"
+      },
+      {
+        "nombre": "Zanahoria",
+        "cantidad": "2",
+        "icono": "🥕"
+      },
+      {
+        "nombre": "Apio",
+        "cantidad": "2 tallos",
+        "icono": "🥬"
+      },
+      {
+        "nombre": "Tomillo",
+        "cantidad": "3 ramas",
+        "icono": "🌿"
+      },
+      {
+        "nombre": "Laurel",
+        "cantidad": "2 hojas",
+        "icono": "🍃"
+      },
+      {
+        "nombre": "Mantequilla",
+        "cantidad": "50g",
+        "icono": "🧈"
+      }
+    ],
+    "instrucciones": [
+      "Corta pollo en presas y sazona con sal y pimienta",
+      "Fríe tocino hasta que esté crujiente, reserva",
+      "Dora presas de pollo en la grasa del tocino",
+      "Retira pollo y sofríe vegetales picados",
+      "Vierte vino tinto y raspa fondos de cocción",
+      "Regresa pollo a la olla con hierbas",
+      "Cocina a fuego lento por 1 hora tapado",
+      "Saltea hongos y cebollitas por separado",
+      "Agrega hongos y cebollitas en los últimos 15 minutos",
+      "Sirve caliente con pan francés o puré de papas"
+    ],
+    "calificacion": 4.7,
+    "resenas": 145
+  },
+  {
+    "id": 47,
+    "nombre": "Mole Poblano",
+    "pais": "México",
+    "imagen": "🌶️",
+    "tiempo": 180,
+    "categorias": [
+      "comidas",
+      "cenas"
+    ],
+    "ingredientes": [
+      {
+        "nombre": "Pollo",
+        "cantidad": "1.5kg",
+        "icono": "🍗"
+      },
+      {
+        "nombre": "Chiles mulatos",
+        "cantidad": "6",
+        "icono": "🌶️"
+      },
+      {
+        "nombre": "Chiles anchos",
+        "cantidad": "4",
+        "icono": "🌶️"
+      },
+      {
+        "nombre": "Chiles pasilla",
+        "cantidad": "3",
+        "icono": "🌶️"
+      },
+      {
+        "nombre": "Chocolate",
+        "cantidad": "100g",
+        "icono": "🍫"
+      },
+      {
+        "nombre": "Almendras",
+        "cantidad": "100g",
+        "icono": "🌰"
+      },
+      {
+        "nombre": "Cacahuates",
+        "cantidad": "100g",
+        "icono": "🥜"
+      },
+      {
+        "nombre": "Ajonjolí",
+        "cantidad": "50g",
+        "icono": "⚪"
+      },
+      {
+        "nombre": "Tomate",
+        "cantidad": "3",
+        "icono": "🍅"
+      },
+      {
+        "nombre": "Cebolla",
+        "cantidad": "1",
+        "icono": "🧅"
+      }
+    ],
+    "instrucciones": [
+      "Desvenar y tostar chiles en comal seco",
+      "Remojar chiles en agua caliente por 30 minutos",
+      "Tostar almendras, cacahuates y ajonjolí por separado",
+      "Asar tomates y cebolla hasta que se chamusquen",
+      "Licuar chiles con un poco de agua de remojo",
+      "Licuar frutos secos con especias y vegetales asados",
+      "Freír cada mezcla por separado en aceite caliente",
+      "Combinar todas las mezclas y cocinar por 1 hora",
+      "Agregar chocolate y caldo de pollo gradualmente",
+      "Cocinar pollo por separado y bañar con mole"
+    ],
+    "calificacion": 4.9,
+    "resenas": 267
+  },
+  {
+    "id": 48,
+    "nombre": "Bouillabaisse",
+    "pais": "Francia",
+    "imagen": "🦐",
+    "tiempo": 90,
+    "categorias": [
+      "comidas",
+      "sopas"
+    ],
+    "ingredientes": [
+      {
+        "nombre": "Pescados mixtos",
+        "cantidad": "1kg",
+        "icono": "🐟"
+      },
+      {
+        "nombre": "Langostinos",
+        "cantidad": "300g",
+        "icono": "🦐"
+      },
+      {
+        "nombre": "Mejillones",
+        "cantidad": "500g",
+        "icono": "🦪"
+      },
+      {
+        "nombre": "Tomate",
+        "cantidad": "4",
+        "icono": "🍅"
+      },
+      {
+        "nombre": "Cebolla",
+        "cantidad": "2",
+        "icono": "🧅"
+      },
+      {
+        "nombre": "Hinojo",
+        "cantidad": "1 bulbo",
+        "icono": "🌿"
+      },
+      {
+        "nombre": "Azafrán",
+        "cantidad": "1g",
+        "icono": "🌼"
+      },
+      {
+        "nombre": "Pastis",
+        "cantidad": "50ml",
+        "icono": "🥃"
+      },
+      {
+        "nombre": "Aceite de oliva",
+        "cantidad": "100ml",
+        "icono": "🫒"
+      },
+      {
+        "nombre": "Pan",
+        "cantidad": "8 rebanadas",
+        "icono": "🍞"
+      }
+    ],
+    "instrucciones": [
+      "Limpia y corta pescados en trozos grandes",
+      "Sofríe cebolla, hinojo y tomate en aceite de oliva",
+      "Agrega pescados de carne firme primero",
+      "Vierte agua hirviendo hasta cubrir",
+      "Añade azafrán, hierbas y pastis",
+      "Cocina a fuego alto por 15 minutos",
+      "Agrega mariscos y pescados delicados",
+      "Cocina 5 minutos más hasta que abran mejillones",
+      "Sirve caldo y pescados por separado",
+      "Acompaña con pan tostado y rouille"
+    ],
+    "calificacion": 4.8,
+    "resenas": 189
+  },
+  {
+    "id": 49,
+    "nombre": "Tandoori Chicken",
+    "pais": "India",
+    "imagen": "🍗",
+    "tiempo": 240,
+    "categorias": [
+      "comidas",
+      "cenas"
+    ],
+    "ingredientes": [
+      {
+        "nombre": "Pollo entero",
+        "cantidad": "1.5kg",
+        "icono": "🍗"
+      },
+      {
+        "nombre": "Yogurt natural",
+        "cantidad": "200ml",
+        "icono": "🥛"
+      },
+      {
+        "nombre": "Pasta tandoori",
+        "cantidad": "3 cucharadas",
+        "icono": "🌶️"
+      },
+      {
+        "nombre": "Jengibre",
+        "cantidad": "30g",
+        "icono": "🫚"
+      },
+      {
+        "nombre": "Ajo",
+        "cantidad": "6 dientes",
+        "icono": "🧄"
+      },
+      {
+        "nombre": "Limón",
+        "cantidad": "2",
+        "icono": "🍋"
+      },
+      {
+        "nombre": "Garam masala",
+        "cantidad": "2 cucharaditas",
+        "icono": "🥄"
+      },
+      {
+        "nombre": "Comino",
+        "cantidad": "1 cucharadita",
+        "icono": "🥄"
+      },
+      {
+        "nombre": "Cilantro",
+        "cantidad": "30g",
+        "icono": "🌿"
+      },
+      {
+        "nombre": "Cebolla",
+        "cantidad": "2",
+        "icono": "🧅"
+      }
+    ],
+    "instrucciones": [
+      "Corta pollo en presas y haz incisiones profundas",
+      "Mezcla yogurt con pasta tandoori y especias",
+      "Agrega jengibre y ajo machacados",
+      "Marina pollo en esta mezcla por 4 horas mínimo",
+      "Precalienta horno a 220°C",
+      "Coloca pollo en bandeja y hornea 45 minutos",
+      "Voltea piezas a la mitad de la cocción",
+      "Rocía con jugo de limón antes de servir",
+      "Decora con cilantro fresco y cebolla",
+      "Acompaña con arroz basmati y naan"
+    ],
+    "calificacion": 4.7,
+    "resenas": 223
+  },
+  {
+    "id": 50,
+    "nombre": "Osso Buco",
+    "pais": "Italia",
+    "imagen": "🥩",
+    "tiempo": 150,
+    "categorias": [
+      "comidas",
+      "cenas"
+    ],
+    "ingredientes": [
+      {
+        "nombre": "Jarrete de ternera",
+        "cantidad": "4 piezas",
+        "icono": "🥩"
+      },
+      {
+        "nombre": "Vino blanco",
+        "cantidad": "300ml",
+        "icono": "🍷"
+      },
+      {
+        "nombre": "Caldo de res",
+        "cantidad": "500ml",
+        "icono": "🥣"
+      },
+      {
+        "nombre": "Tomate",
+        "cantidad": "4",
+        "icono": "🍅"
+      },
+      {
+        "nombre": "Zanahoria",
+        "cantidad": "2",
+        "icono": "🥕"
+      },
+      {
+        "nombre": "Apio",
+        "cantidad": "2 tallos",
+        "icono": "🥬"
+      },
+      {
+        "nombre": "Cebolla",
+        "cantidad": "1",
+        "icono": "🧅"
+      },
+      {
+        "nombre": "Limón",
+        "cantidad": "1",
+        "icono": "🍋"
+      },
+      {
+        "nombre": "Perejil",
+        "cantidad": "30g",
+        "icono": "🌿"
+      },
+      {
+        "nombre": "Harina",
+        "cantidad": "50g",
+        "icono": "🌾"
+      }
+    ],
+    "instrucciones": [
+      "Enharina jarretes de ternera y sazona",
+      "Dora la carne en aceite caliente por todos lados",
+      "Retira carne y sofríe vegetales picados",
+      "Vierte vino blanco y reduce a la mitad",
+      "Regresa carne a la olla con tomates",
+      "Agrega caldo hasta cubrir parcialmente",
+      "Cocina tapado en horno a 160°C por 2 horas",
+      "Prepara gremolata con limón, ajo y perejil",
+      "Sirve con risotto alla milanese",
+      "Corona con gremolata fresca"
+    ],
+    "calificacion": 4.8,
+    "resenas": 156
+  },
+  {
+    "id": 51,
+    "nombre": "Feijoada Brasileña",
+    "pais": "Brasil",
+    "imagen": "🫘",
+    "tiempo": 240,
+    "categorias": [
+      "comidas",
+      "cenas"
+    ],
+    "ingredientes": [
+      {
+        "nombre": "Frijoles negros",
+        "cantidad": "500g",
+        "icono": "🫘"
+      },
+      {
+        "nombre": "Carne seca",
+        "cantidad": "300g",
+        "icono": "🥩"
+      },
+      {
+        "nombre": "Chorizo",
+        "cantidad": "200g",
+        "icono": "🌭"
+      },
+      {
+        "nombre": "Tocino",
+        "cantidad": "200g",
+        "icono": "🥓"
+      },
+      {
+        "nombre": "Costillas de cerdo",
+        "cantidad": "400g",
+        "icono": "🍖"
+      },
+      {
+        "nombre": "Cebolla",
+        "cantidad": "2",
+        "icono": "🧅"
+      },
+      {
+        "nombre": "Ajo",
+        "cantidad": "6 dientes",
+        "icono": "🧄"
+      },
+      {
+        "nombre": "Laurel",
+        "cantidad": "3 hojas",
+        "icono": "🍃"
+      },
+      {
+        "nombre": "Naranja",
+        "cantidad": "2",
+        "icono": "🍊"
+      },
+      {
+        "nombre": "Arroz blanco",
+        "cantidad": "300g",
+        "icono": "🍚"
+      }
+    ],
+    "instrucciones": [
+      "Remoja frijoles negros toda la noche",
+      "Cocina frijoles con laurel por 1 hora",
+      "Sofríe carnes en trozos hasta dorar",
+      "Agrega cebolla y ajo picados",
+      "Incorpora carnes a los frijoles",
+      "Cocina a fuego lento por 2 horas más",
+      "Machaca algunos frijoles para espesar",
+      "Sazona con sal y pimienta",
+      "Sirve con arroz blanco y gajos de naranja",
+      "Acompaña con farofa y col rizada"
+    ],
+    "calificacion": 4.6,
+    "resenas": 187
+  },
+  {
+    "id": 52,
+    "nombre": "Laksa Malaya",
+    "pais": "Malasia",
+    "imagen": "🍜",
+    "tiempo": 45,
+    "categorias": [
+      "comidas",
+      "sopas"
+    ],
+    "ingredientes": [
+      {
+        "nombre": "Fideos de arroz",
+        "cantidad": "300g",
+        "icono": "🍜"
+      },
+      {
+        "nombre": "Leche de coco",
+        "cantidad": "400ml",
+        "icono": "🥥"
+      },
+      {
+        "nombre": "Camarones",
+        "cantidad": "300g",
+        "icono": "🦐"
+      },
+      {
+        "nombre": "Pollo",
+        "cantidad": "200g",
+        "icono": "🍗"
+      },
+      {
+        "nombre": "Brotes de soya",
+        "cantidad": "150g",
+        "icono": "🌱"
+      },
+      {
+        "nombre": "Pasta de curry",
+        "cantidad": "3 cucharadas",
+        "icono": "🌶️"
+      },
+      {
+        "nombre": "Galanga",
+        "cantidad": "20g",
+        "icono": "🫚"
+      },
+      {
+        "nombre": "Hierba limón",
+        "cantidad": "2 tallos",
+        "icono": "🌿"
+      },
+      {
+        "nombre": "Huevos cocidos",
+        "cantidad": "4",
+        "icono": "🥚"
+      },
+      {
+        "nombre": "Cilantro",
+        "cantidad": "30g",
+        "icono": "🌿"
+      }
+    ],
+    "instrucciones": [
+      "Cocina fideos de arroz según instrucciones",
+      "Sofríe pasta de curry en aceite hasta fragante",
+      "Agrega leche de coco y hierve suavemente",
+      "Incorpora galanga y hierba limón machacadas",
+      "Cocina camarones y pollo hasta que estén listos",
+      "Blanquea brotes de soya en agua hirviendo",
+      "Coloca fideos en tazones hondos",
+      "Vierte caldo de coco caliente",
+      "Agrega camarones, pollo y brotes",
+      "Decora con huevo cocido y cilantro"
+    ],
+    "calificacion": 4.7,
+    "resenas": 134
+  },
+  {
+    "id": 53,
+    "nombre": "Goulash Húngaro",
+    "pais": "Hungría",
+    "imagen": "🥩",
+    "tiempo": 120,
+    "categorias": [
+      "comidas",
+      "sopas"
+    ],
+    "ingredientes": [
+      {
+        "nombre": "Carne de res",
+        "cantidad": "800g",
+        "icono": "🥩"
+      },
+      {
+        "nombre": "Cebolla",
+        "cantidad": "4",
+        "icono": "🧅"
+      },
+      {
+        "nombre": "Pimentón húngaro",
+        "cantidad": "3 cucharadas",
+        "icono": "🌶️"
+      },
+      {
+        "nombre": "Tomate",
+        "cantidad": "3",
+        "icono": "🍅"
+      },
+      {
+        "nombre": "Pimientos",
+        "cantidad": "2",
+        "icono": "🫑"
+      },
+      {
+        "nombre": "Papas",
+        "cantidad": "4",
+        "icono": "🥔"
+      },
+      {
+        "nombre": "Comino",
+        "cantidad": "1 cucharadita",
+        "icono": "🥄"
+      },
+      {
+        "nombre": "Laurel",
+        "cantidad": "2 hojas",
+        "icono": "🍃"
+      },
+      {
+        "nombre": "Caldo de res",
+        "cantidad": "1L",
+        "icono": "🥣"
+      },
+      {
+        "nombre": "Crema agria",
+        "cantidad": "200ml",
+        "icono": "🥛"
+      }
+    ],
+    "instrucciones": [
+      "Corta carne en cubos de 3cm",
+      "Sofríe cebolla hasta que esté dorada",
+      "Agrega pimentón y revuelve rápidamente",
+      "Incorpora carne y dora por todos lados",
+      "Añade tomates picados y pimientos",
+      "Vierte caldo y agrega especias",
+      "Cocina tapado por 1 hora a fuego lento",
+      "Agrega papas en cubos",
+      "Continúa cociendo 30 minutos más",
+      "Sirve con crema agria y pan"
+    ],
+    "calificacion": 4.5,
+    "resenas": 167
+  },
+  {
+    "id": 54,
+    "nombre": "Tagine de Cordero",
+    "pais": "Marruecos",
+    "imagen": "🥩",
+    "tiempo": 150,
+    "categorias": [
+      "comidas",
+      "cenas"
+    ],
+    "ingredientes": [
+      {
+        "nombre": "Cordero en trozos",
+        "cantidad": "800g",
+        "icono": "🥩"
+      },
+      {
+        "nombre": "Ciruelas pasas",
+        "cantidad": "200g",
+        "icono": "🟣"
+      },
+      {
+        "nombre": "Almendras",
+        "cantidad": "100g",
+        "icono": "🌰"
+      },
+      {
+        "nombre": "Cebolla",
+        "cantidad": "2",
+        "icono": "🧅"
+      },
+      {
+        "nombre": "Jengibre",
+        "cantidad": "20g",
+        "icono": "🫚"
+      },
+      {
+        "nombre": "Canela",
+        "cantidad": "1 rama",
+        "icono": "🥄"
+      },
+      {
+        "nombre": "Azafrán",
+        "cantidad": "1g",
+        "icono": "🌼"
+      },
+      {
+        "nombre": "Miel",
+        "cantidad": "2 cucharadas",
+        "icono": "🍯"
+      },
+      {
+        "nombre": "Cilantro",
+        "cantidad": "30g",
+        "icono": "🌿"
+      },
+      {
+        "nombre": "Cuscús",
+        "cantidad": "300g",
+        "icono": "🌾"
+      }
+    ],
+    "instrucciones": [
+      "Dora trozos de cordero en aceite de oliva",
+      "Sofríe cebolla hasta que esté transparente",
+      "Agrega jengibre, canela y azafrán",
+      "Incorpora cordero dorado y agua",
+      "Cocina tapado por 1 hora a fuego lento",
+      "Añade ciruelas pasas y miel",
+      "Continúa cociendo 30 minutos más",
+      "Tuesta almendras hasta que estén doradas",
+      "Prepara cuscús según instrucciones",
+      "Sirve tagine sobre cuscús con almendras"
+    ],
+    "calificacion": 4.8,
+    "resenas": 145
+  },
+  {
+    "id": 55,
+    "nombre": "Jambalaya Criolla",
+    "pais": "Estados Unidos",
+    "imagen": "🍚",
+    "tiempo": 60,
+    "categorias": [
+      "comidas",
+      "cenas"
+    ],
+    "ingredientes": [
+      {
+        "nombre": "Arroz de grano largo",
+        "cantidad": "300g",
+        "icono": "🍚"
+      },
+      {
+        "nombre": "Camarones",
+        "cantidad": "300g",
+        "icono": "🦐"
+      },
+      {
+        "nombre": "Pollo",
+        "cantidad": "400g",
+        "icono": "🍗"
+      },
+      {
+        "nombre": "Chorizo andouille",
+        "cantidad": "200g",
+        "icono": "🌭"
+      },
+      {
+        "nombre": "Pimientos",
+        "cantidad": "2",
+        "icono": "🫑"
+      },
+      {
+        "nombre": "Apio",
+        "cantidad": "3 tallos",
+        "icono": "🥬"
+      },
+      {
+        "nombre": "Cebolla",
+        "cantidad": "1",
+        "icono": "🧅"
+      },
+      {
+        "nombre": "Tomate",
+        "cantidad": "2",
+        "icono": "🍅"
+      },
+      {
+        "nombre": "Caldo de pollo",
+        "cantidad": "600ml",
+        "icono": "🥣"
+      },
+      {
+        "nombre": "Especias cajún",
+        "cantidad": "2 cucharadas",
+        "icono": "🌶️"
+      }
+    ],
+    "instrucciones": [
+      "Corta pollo en trozos y sazona con especias cajún",
+      "Dora pollo y chorizo en aceite caliente",
+      "Retira carnes y sofríe la trinidad (cebolla, apio, pimientos)",
+      "Agrega tomate picado y cocina hasta que se reduzca",
+      "Incorpora arroz y tuesta por 2 minutos",
+      "Vierte caldo caliente y regresa las carnes",
+      "Cocina tapado por 18 minutos sin revolver",
+      "Agrega camarones en los últimos 5 minutos",
+      "Deja reposar 5 minutos antes de servir",
+      "Decora con cebolletas y perejil"
+    ],
+    "calificacion": 4.6,
+    "resenas": 198
+  },
+  {
+    "id": 56,
+    "nombre": "Crème Brûlée",
+    "pais": "Francia",
+    "imagen": "🍮",
+    "tiempo": 180,
+    "categorias": [
+      "postres"
+    ],
+    "ingredientes": [
+      {
+        "nombre": "Crema para batir",
+        "cantidad": "500ml",
+        "icono": "🥛"
+      },
+      {
+        "nombre": "Yemas de huevo",
+        "cantidad": "6",
+        "icono": "🥚"
+      },
+      {
+        "nombre": "Azúcar blanca",
+        "cantidad": "100g",
+        "icono": "🍯"
+      },
+      {
+        "nombre": "Azúcar morena",
+        "cantidad": "50g",
+        "icono": "🍯"
+      },
+      {
+        "nombre": "Vainilla",
+        "cantidad": "2 cucharaditas",
+        "icono": "🌸"
+      },
+      {
+        "nombre": "Sal",
+        "cantidad": "1 pizca",
+        "icono": "🧂"
+      }
+    ],
+    "instrucciones": [
+      "Precalienta horno a 160°C",
+      "Calienta crema con vainilla hasta que hierva suavemente",
+      "Bate yemas con azúcar blanca hasta que estén pálidas",
+      "Incorpora crema caliente gradualmente a las yemas",
+      "Cuela la mezcla para eliminar grumos",
+      "Vierte en moldes individuales",
+      "Hornea en baño maría por 40-45 minutos",
+      "Refrigera por al menos 2 horas",
+      "Espolvorea azúcar morena antes de servir",
+      "Carameliza con soplete hasta que esté dorado"
+    ],
+    "calificacion": 4.9,
+    "resenas": 234
+  },
+  {
+    "id": 57,
+    "nombre": "Panna Cotta",
+    "pais": "Italia",
+    "imagen": "🍮",
+    "tiempo": 240,
+    "categorias": [
+      "postres"
+    ],
+    "ingredientes": [
+      {
+        "nombre": "Crema para batir",
+        "cantidad": "500ml",
+        "icono": "🥛"
+      },
+      {
+        "nombre": "Azúcar",
+        "cantidad": "80g",
+        "icono": "🍯"
+      },
+      {
+        "nombre": "Gelatina sin sabor",
+        "cantidad": "1 sobre",
+        "icono": "🥄"
+      },
+      {
+        "nombre": "Agua fría",
+        "cantidad": "3 cucharadas",
+        "icono": "💧"
+      },
+      {
+        "nombre": "Vainilla",
+        "cantidad": "1 cucharadita",
+        "icono": "🌸"
+      },
+      {
+        "nombre": "Fresas",
+        "cantidad": "300g",
+        "icono": "🍓"
+      },
+      {
+        "nombre": "Azúcar para coulis",
+        "cantidad": "3 cucharadas",
+        "icono": "🍯"
+      },
+      {
+        "nombre": "Jugo de limón",
+        "cantidad": "1 cucharada",
+        "icono": "🍋"
+      }
+    ],
+    "instrucciones": [
+      "Espolvorea gelatina sobre agua fría, deja hidratar 5 minutos",
+      "Calienta crema con azúcar hasta que hierva suavemente",
+      "Retira del fuego y agrega gelatina hidratada",
+      "Revuelve hasta disolver completamente",
+      "Agrega vainilla y mezcla",
+      "Divide en 6 moldes individuales",
+      "Refrigera mínimo 4 horas hasta cuajar",
+      "Para coulis: licúa fresas con azúcar y limón",
+      "Cuela para eliminar semillas",
+      "Sirve panna cotta desmoldada con coulis"
+    ],
+    "calificacion": 4.7,
+    "resenas": 189
+  },
+  {
+    "id": 58,
+    "nombre": "Baklava",
+    "pais": "Grecia",
+    "imagen": "🥜",
+    "tiempo": 90,
+    "categorias": [
+      "postres"
+    ],
+    "ingredientes": [
+      {
+        "nombre": "Masa filo",
+        "cantidad": "500g",
+        "icono": "🍞"
+      },
+      {
+        "nombre": "Nueces mixtas",
+        "cantidad": "400g",
+        "icono": "🥜"
+      },
+      {
+        "nombre": "Mantequilla derretida",
+        "cantidad": "200g",
+        "icono": "🧈"
+      },
+      {
+        "nombre": "Azúcar",
+        "cantidad": "100g",
+        "icono": "🍯"
+      },
+      {
+        "nombre": "Canela",
+        "cantidad": "2 cucharaditas",
+        "icono": "🥄"
+      },
+      {
+        "nombre": "Miel",
+        "cantidad": "300ml",
+        "icono": "🍯"
+      },
+      {
+        "nombre": "Agua",
+        "cantidad": "200ml",
+        "icono": "💧"
+      },
+      {
+        "nombre": "Jugo de limón",
+        "cantidad": "2 cucharadas",
+        "icono": "🍋"
+      },
+      {
+        "nombre": "Clavos de olor",
+        "cantidad": "3",
+        "icono": "🥄"
+      }
+    ],
+    "instrucciones": [
+      "Precalienta horno a 180°C",
+      "Pica nueces finamente y mezcla con azúcar y canela",
+      "Desenrolla masa filo y cubre con paño húmedo",
+      "Pincela molde con mantequilla derretida",
+      "Coloca 8 hojas de filo, pintando cada una con mantequilla",
+      "Esparce mezcla de nueces uniformemente",
+      "Cubre con hojas restantes, pintando cada una",
+      "Corta en rombos antes de hornear",
+      "Hornea 45 minutos hasta que esté dorado",
+      "Prepara almíbar hirviendo miel, agua, limón y clavos",
+      "Vierte almíbar caliente sobre baklava frío"
+    ],
+    "calificacion": 4.8,
+    "resenas": 167
+  },
+  {
+    "id": 59,
+    "nombre": "Piña Colada",
+    "pais": "Puerto Rico",
+    "imagen": "🍹",
+    "tiempo": 5,
+    "categorias": [
+      "bebidas",
+      "rapidas"
+    ],
+    "ingredientes": [
+      {
+        "nombre": "Ron blanco",
+        "cantidad": "60ml",
+        "icono": "🥃"
+      },
+      {
+        "nombre": "Ron de coco",
+        "cantidad": "30ml",
+        "icono": "🥃"
+      },
+      {
+        "nombre": "Crema de coco",
+        "cantidad": "90ml",
+        "icono": "🥥"
+      },
+      {
+        "nombre": "Jugo de piña",
+        "cantidad": "180ml",
+        "icono": "🍍"
+      },
+      {
+        "nombre": "Hielo",
+        "cantidad": "2 tazas",
+        "icono": "🧊"
+      },
+      {
+        "nombre": "Piña fresca",
+        "cantidad": "2 rodajas",
+        "icono": "🍍"
+      },
+      {
+        "nombre": "Cereza",
+        "cantidad": "2",
+        "icono": "🍒"
+      }
+    ],
+    "instrucciones": [
+      "Coloca todos los ingredientes líquidos en licuadora",
+      "Agrega hielo abundante",
+      "Licúa a velocidad alta por 30 segundos",
+      "Prueba y ajusta dulzor si es necesario",
+      "Sirve en copas altas enfriadas",
+      "Decora con rodaja de piña y cereza",
+      "Sirve con popote y sombrilla"
+    ],
+    "calificacion": 4.6,
+    "resenas": 145
+  },
+  {
+    "id": 60,
+    "nombre": "Caipirinha",
+    "pais": "Brasil",
+    "imagen": "🍹",
+    "tiempo": 5,
+    "categorias": [
+      "bebidas",
+      "rapidas"
+    ],
+    "ingredientes": [
+      {
+        "nombre": "Cachaça",
+        "cantidad": "60ml",
+        "icono": "🥃"
+      },
+      {
+        "nombre": "Lima",
+        "cantidad": "1",
+        "icono": "🍋"
+      },
+      {
+        "nombre": "Azúcar",
+        "cantidad": "2 cucharadas",
+        "icono": "🍯"
+      },
+      {
+        "nombre": "Hielo",
+        "cantidad": "abundante",
+        "icono": "🧊"
+      }
+    ],
+    "instrucciones": [
+      "Lava lima y córtala en 8 gajos",
+      "Coloca gajos en vaso bajo",
+      "Agrega azúcar sobre la lima",
+      "Machaca lima con muddler para extraer jugo",
+      "Llena vaso con hielo picado",
+      "Vierte cachaça sobre el hielo",
+      "Revuelve vigorosamente",
+      "Sirve inmediatamente"
+    ],
+    "calificacion": 4.5,
+    "resenas": 123
   }
 ]

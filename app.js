@@ -1916,20 +1916,10 @@ class RecipesApp {
         if (location && location.protocol === 'file:') {
             this.debugLog('Aviso: la página se abrió via file:// — fetch() no funcionará. Usa un servidor local.');
             
-            try {
-                const response = await fetch('data/recipes.json');
-                const data = await response.json();
-                const fileRecipes = Array.isArray(data.recetas) ? data.recetas : [];
-                allRecipes = [...fileRecipes];
-                this.debugLog(`📁 Cargadas ${fileRecipes.length} recetas desde data/recipes.json (file protocol)`);
-            } catch (err) {
-                this.debugLog('❌ Error cargando data/recipes.json: ' + (err?.message || String(err)));
-                
-                // Fallback: usar recipesDatabase si está disponible
-                if (typeof recipesDatabase !== 'undefined' && Array.isArray(recipesDatabase)) {
-                    allRecipes = [...recipesDatabase];
-                    this.debugLog(`📚 Usando recipesDatabase como fallback: ${recipesDatabase.length} recetas`);
-                }
+            // Fallback: usar recipesDatabase si está disponible
+            if (typeof recipesDatabase !== 'undefined' && Array.isArray(recipesDatabase)) {
+                allRecipes = [...recipesDatabase];
+                this.debugLog(`📚 Usando recipesDatabase como fallback: ${recipesDatabase.length} recetas`);
             }
         } else {
             // Protocolo HTTP/HTTPS - intentar cargar desde múltiples fuentes
@@ -1966,23 +1956,7 @@ class RecipesApp {
                 this.debugLog('❌ Error parseando localStorage: ' + (e?.message || String(e)));
             }
             
-            // 3. Cargar desde data/recipes.json y combinar
-            try {
-                const response = await fetch('data/recipes.json');
-                const data = await response.json();
-                const jsonRecipes = Array.isArray(data.recetas) ? data.recetas : [];
-                
-                // Combinar evitando duplicados por ID
-                const existingIds = new Set(allRecipes.map(r => String(r.id)));
-                const uniqueJsonRecipes = jsonRecipes.filter(r => !existingIds.has(String(r.id)));
-                allRecipes = [...allRecipes, ...uniqueJsonRecipes];
-                console.log(`📄 data/recipes.json tenía ${jsonRecipes.length} recetas, agregadas ${uniqueJsonRecipes.length} únicas`);
-                this.debugLog(`📄 Agregadas ${uniqueJsonRecipes.length} recetas únicas desde data/recipes.json`);
-            } catch (err) {
-                this.debugLog('⚠️ Error cargando data/recipes.json: ' + (err?.message || String(err)));
-            }
-            
-            // 4. Último fallback: recipesDatabase
+            // 3. Último fallback: recipesDatabase desde js/recipes-data.js
             if (allRecipes.length === 0 && typeof recipesDatabase !== 'undefined' && Array.isArray(recipesDatabase)) {
                 allRecipes = [...recipesDatabase];
                 console.log(`📚 Usando recipesDatabase: ${recipesDatabase.length} recetas`);
