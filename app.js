@@ -17,6 +17,7 @@ class RecipesApp {
         this.blockedRecipes = JSON.parse(localStorage.getItem('blockedRecipes')) || {}; // { username: { [recipeId]: timestamp } }
         this.lastSearchQuery = '';
         this.openRecipeId = null;
+        this.originalIngredientIcons = {};
         
         // ========== CONFIGURACIÓN AUTOMÁTICA DE ENTORNO ==========
         this.environment = this.detectEnvironment();
@@ -3967,9 +3968,8 @@ class RecipesApp {
                     <ul class="ingredients-list">
                         ${recipe.ingredientes.map(ing => `
                             <li class="ingredient-item">
-                                <span class="ingredient-icon">${ing.icono}</span>
-                                <span class="ingredient-name">${ing.nombre}</span>
-                                <span class="ingredient-amount">${ing.cantidad}</span>
+                                <span class="ingredient-icon">${ing.icono || '🥄'}</span>
+                                <span class="ingredient-name">${ing.nombre || ing}</span>
                             </li>
                         `).join('')}
                     </ul>
@@ -6734,10 +6734,24 @@ class RecipesApp {
         
         // Llenar ingredientes
         if (recipe.ingredientes && Array.isArray(recipe.ingredientes)) {
-            const ingredientesText = recipe.ingredientes.map(ing => 
-                typeof ing === 'string' ? ing : ing.nombre || ing
-            ).join('\n');
+            const ingredientesText = recipe.ingredientes.map(ing => {
+                if (typeof ing === 'string') {
+                    return ing;
+                } else if (ing.nombre) {
+                    return ing.nombre;
+                } else {
+                    return ing;
+                }
+            }).join('\n');
             document.getElementById('edit_ingredientes').value = ingredientesText;
+            
+            // Guardar los iconos originales para preservarlos
+            this.originalIngredientIcons = recipe.ingredientes.reduce((acc, ing, index) => {
+                if (ing.icono) {
+                    acc[ing.nombre || ing] = ing.icono;
+                }
+                return acc;
+            }, {});
         }
         
         // Llenar instrucciones
@@ -6790,6 +6804,9 @@ class RecipesApp {
         document.getElementById('edit_instrucciones').value = '';
         document.getElementById('edit_imagenfile').value = '';
         
+        // Limpiar iconos originales
+        this.originalIngredientIcons = {};
+        
         // Limpiar checkboxes de categorías
         document.querySelectorAll('#editCategoriesWrapper input[type="checkbox"]').forEach(cb => {
             cb.checked = false;
@@ -6839,10 +6856,25 @@ class RecipesApp {
         try {
             const parsed = JSON.parse(ingredientesRaw);
             if (Array.isArray(parsed)) {
-                ingredientes = parsed.map(item => (typeof item === 'string') ? { nombre: item, cantidad: '', icono: '' } : item);
+                ingredientes = parsed.map(item => {
+                    if (typeof item === 'string') {
+                        return { 
+                            nombre: item, 
+                            icono: this.originalIngredientIcons?.[item] || '🥄' 
+                        };
+                    } else {
+                        return {
+                            nombre: item.nombre || item,
+                            icono: item.icono || this.originalIngredientIcons?.[item.nombre] || '🥄'
+                        };
+                    }
+                });
             } else ingredientes = [];
         } catch {
-            ingredientes = ingredientesRaw.split(/\r?\n/).map(l => l.trim()).filter(Boolean).map(l => ({ nombre: l, cantidad: '', icono: '' }));
+            ingredientes = ingredientesRaw.split(/\r?\n/).map(l => l.trim()).filter(Boolean).map(l => ({ 
+                nombre: l, 
+                icono: this.originalIngredientIcons?.[l] || '🥄' 
+            }));
         }
 
         try {
@@ -7273,11 +7305,23 @@ class RecipesApp {
                 const parsed = JSON.parse(ingredientesRaw);
                 if (Array.isArray(parsed)) {
                     // Si vienen objetos o strings, normalizar a objetos
-                    ingredientes = parsed.map(item => (typeof item === 'string') ? { nombre: item, cantidad: '', icono: '' } : item);
+                    ingredientes = parsed.map(item => {
+                        if (typeof item === 'string') {
+                            return { nombre: item, icono: '🥄' };
+                        } else {
+                            return {
+                                nombre: item.nombre || item,
+                                icono: item.icono || '🥄'
+                            };
+                        }
+                    });
                 } else ingredientes = [];
             } catch {
                 // No es JSON: tratar cada línea como ingrediente
-                ingredientes = ingredientesRaw.split(/\r?\n/).map(l => l.trim()).filter(Boolean).map(l => ({ nombre: l, cantidad: '', icono: '' }));
+                ingredientes = ingredientesRaw.split(/\r?\n/).map(l => l.trim()).filter(Boolean).map(l => ({ 
+                    nombre: l, 
+                    icono: '🥄' 
+                }));
             }
 
             try {

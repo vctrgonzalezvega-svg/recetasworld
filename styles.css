@@ -193,6 +193,27 @@ body::before {
     align-items: center;
     gap: 1rem; /* Espacio entre hamburger y logo */
     padding: 1.2rem 1rem;
+    max-width: 1400px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+}
+
+/* Responsive header */
+@media (max-width: 768px) {
+    .header-container {
+        padding: 1rem 0.75rem;
+        gap: 0.75rem;
+        grid-template-columns: auto 1fr auto; /* hamburger, logo (flexible), actions */
+    }
+}
+
+@media (max-width: 480px) {
+    .header-container {
+        padding: 0.75rem 0.5rem;
+        gap: 0.5rem;
+        grid-template-columns: auto 1fr auto;
+    }
 }
 
 .logo {
@@ -266,6 +287,25 @@ body::before {
     position: relative;
 }
 
+/* Responsive logo text */
+@media (max-width: 768px) {
+    .logo-text h1 {
+        font-size: 1.5rem;
+        letter-spacing: 0.3px;
+    }
+}
+
+@media (max-width: 480px) {
+    .logo-text h1 {
+        font-size: 1.3rem;
+        letter-spacing: 0.2px;
+    }
+    
+    .logo-subtitle {
+        display: none; /* Hide subtitle on very small screens */
+    }
+}
+
 .logo-text h1::after {
     content: '';
     position: absolute;
@@ -300,6 +340,37 @@ body::before {
     align-items: center;
     gap: 12px;
     justify-self: end; /* Alinear a la derecha en el grid */
+    flex-wrap: wrap;
+}
+
+/* Responsive header actions */
+@media (max-width: 768px) {
+    .header .header-actions {
+        gap: 8px;
+        flex-wrap: nowrap; /* Prevent wrapping on mobile */
+    }
+}
+
+@media (max-width: 480px) {
+    .header .header-actions {
+        gap: 6px;
+    }
+    
+    /* Hide some elements on very small screens */
+    .header .header-actions #pointsBadge,
+    .header .header-actions #uploadsRemainingBadge {
+        display: none !important;
+    }
+    
+    /* Make login button smaller */
+    .header .header-actions .btn-login {
+        padding: 0.5rem 0.8rem;
+        font-size: 0.85rem;
+    }
+    
+    .header .header-actions .btn-login span {
+        display: none; /* Hide text, show only icon */
+    }
 }
 
 /* Botones de iconos mejorados */
@@ -685,6 +756,24 @@ body::before {
     animation: fadeInUp 0.6s ease-out;
 }
 
+/* Responsive fixes for search bar */
+@media (max-width: 768px) {
+    .search-bar-container {
+        padding: 1.5rem 1rem;
+        margin: 1rem;
+        flex-direction: column;
+        gap: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .search-bar-container {
+        padding: 1rem 0.75rem;
+        margin: 0.5rem;
+        border-radius: 12px;
+    }
+}
+
 /* Asegurar que los elementos dentro de la barra no tapen el botón de filtros */
 .search-bar-container > * {
     position: relative;
@@ -712,7 +801,7 @@ button#advancedFiltersBtn,
     border-radius: 8px !important;
     font-weight: 600 !important;
     cursor: pointer !important;
-    min-width: 120px !important;
+    min-width: 100px !important; /* Reduced from 120px */
     min-height: 44px !important;
     align-items: center !important;
     justify-content: center !important;
@@ -727,6 +816,34 @@ button#advancedFiltersBtn,
     transform: none !important;
     clip: none !important;
     clip-path: none !important;
+}
+
+/* Responsive advanced filters button */
+@media (max-width: 768px) {
+    #advancedFiltersBtn,
+    button#advancedFiltersBtn,
+    .advanced-filters-btn#advancedFiltersBtn {
+        padding: 0.6rem 0.8rem !important;
+        font-size: 0.9rem !important;
+        min-width: 80px !important;
+        width: 100% !important;
+    }
+}
+
+@media (max-width: 480px) {
+    #advancedFiltersBtn,
+    button#advancedFiltersBtn,
+    .advanced-filters-btn#advancedFiltersBtn {
+        padding: 0.5rem 0.6rem !important;
+        font-size: 0.85rem !important;
+        min-width: 60px !important;
+    }
+    
+    #advancedFiltersBtn span,
+    button#advancedFiltersBtn span,
+    .advanced-filters-btn#advancedFiltersBtn span {
+        display: none !important; /* Hide text on very small screens */
+    }
 }
 
 #advancedFiltersBtn span,
@@ -785,7 +902,7 @@ button#advancedFiltersBtn i,
 
 .search-bar {
     flex: 1;
-    min-width: 300px;
+    min-width: 250px; /* Reduced from 300px */
     padding: 1.2rem 1.8rem;
     border: 2px solid transparent;
     border-radius: var(--border-radius-lg);
@@ -796,6 +913,24 @@ button#advancedFiltersBtn i,
     color: var(--dark);
     position: relative;
     box-shadow: var(--shadow-sm);
+}
+
+/* Responsive search bar */
+@media (max-width: 768px) {
+    .search-bar {
+        min-width: 200px;
+        padding: 1rem 1.2rem;
+        font-size: 1rem;
+        width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .search-bar {
+        min-width: 150px;
+        padding: 0.8rem 1rem;
+        font-size: 0.95rem;
+    }
 }
 
 .search-bar::placeholder {
@@ -827,8 +962,31 @@ button#advancedFiltersBtn i,
     gap: 0.8rem;
     position: relative;
     overflow: hidden;
-    min-width: 140px;
+    min-width: 120px; /* Reduced from 140px */
     justify-content: center;
+    white-space: nowrap;
+}
+
+/* Responsive search button */
+@media (max-width: 768px) {
+    .search-btn {
+        padding: 1rem 1.5rem;
+        font-size: 1rem;
+        min-width: 100px;
+        width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .search-btn {
+        padding: 0.8rem 1rem;
+        font-size: 0.9rem;
+        min-width: 80px;
+    }
+    
+    .search-btn span {
+        display: none; /* Hide text on very small screens, show only icon */
+    }
 }
 
 .search-btn::before {
@@ -875,8 +1033,31 @@ button#advancedFiltersBtn i,
     gap: 0.8rem;
     position: relative;
     overflow: hidden;
-    min-width: 160px;
+    min-width: 140px; /* Reduced from 160px */
     justify-content: center;
+    white-space: nowrap;
+}
+
+/* Responsive surprise button */
+@media (max-width: 768px) {
+    .surprise-btn {
+        padding: 1rem 1.5rem;
+        font-size: 1rem;
+        min-width: 120px;
+        width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .surprise-btn {
+        padding: 0.8rem 1rem;
+        font-size: 0.9rem;
+        min-width: 100px;
+    }
+    
+    .surprise-btn span {
+        display: none; /* Hide text on very small screens */
+    }
 }
 
 .surprise-btn::before {
@@ -975,6 +1156,21 @@ button#advancedFiltersBtn i,
     animation: fadeInUp 0.8s ease-out;
 }
 
+/* Responsive main content */
+@media (max-width: 768px) {
+    .main-content {
+        margin: 2rem auto;
+        padding: 0 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .main-content {
+        margin: 1rem auto;
+        padding: 0 0.5rem;
+    }
+}
+
 .recipes-section h2 {
     font-size: 3rem;
     margin-bottom: 2.5rem;
@@ -1023,6 +1219,23 @@ button#advancedFiltersBtn i,
     gap: 2.5rem;
     margin-bottom: 4rem;
     padding: 0 1rem;
+}
+
+/* Responsive recipe grid */
+@media (max-width: 768px) {
+    .recipes-grid {
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 1.5rem;
+        padding: 0 0.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .recipes-grid {
+        grid-template-columns: 1fr; /* Single column on very small screens */
+        gap: 1rem;
+        padding: 0 0.25rem;
+    }
 }
 
 /* Efecto ripple para las tarjetas al hacer click */
@@ -1947,6 +2160,22 @@ button#advancedFiltersBtn i,
     padding: 2rem;
 }
 
+/* Responsive modal */
+@media (max-width: 768px) {
+    .modal.active {
+        padding: 1rem;
+        align-items: flex-start;
+        padding-top: 2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .modal.active {
+        padding: 0.5rem;
+        padding-top: 1rem;
+    }
+}
+
 .modal-content {
     background: white;
     padding: 3rem;
@@ -1961,6 +2190,27 @@ button#advancedFiltersBtn i,
     box-shadow: 0 30px 80px rgba(0, 0, 0, 0.4); /* Sombra más pronunciada */
     border: 1px solid rgba(255,255,255,0.2);
     z-index: 15001; /* Contenido del modal aún más alto */
+}
+
+/* Responsive modal content */
+@media (max-width: 768px) {
+    .modal-content {
+        padding: 2rem 1.5rem;
+        border-radius: 15px;
+        width: 98%;
+        margin: 1rem 0;
+        max-height: 95vh;
+    }
+}
+
+@media (max-width: 480px) {
+    .modal-content {
+        padding: 1.5rem 1rem;
+        border-radius: 10px;
+        width: 100%;
+        margin: 0.5rem 0;
+        max-height: 98vh;
+    }
 }
 
 .modal-large {
@@ -8067,6 +8317,185 @@ button#advancedFiltersBtn i,
 
 .upload-card.rejected {
     border-color: var(--danger);
-/* Updated for Render */
+}
 
+/* ========== COMPREHENSIVE RESPONSIVE FIXES ========== */
+
+/* Ensure no horizontal overflow on any screen size */
+* {
+    box-sizing: border-box;
+}
+
+html, body {
+    overflow-x: hidden;
+    width: 100%;
+}
+
+/* Container max-widths to prevent overflow */
+.container, .header-container, .search-bar-container, .main-content {
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+/* Fix for very small screens (320px and up) */
+@media (max-width: 320px) {
+    .header-container {
+        padding: 0.5rem 0.25rem;
+        gap: 0.25rem;
+    }
+    
+    .logo-text h1 {
+        font-size: 1.1rem;
+    }
+    
+    .logo-icon {
+        width: 45px;
+        height: 45px;
+        font-size: 1.8rem;
+    }
+    
+    .search-bar-container {
+        padding: 0.75rem 0.5rem;
+        margin: 0.25rem;
+        gap: 0.5rem;
+    }
+    
+    .search-bar {
+        min-width: 120px;
+        padding: 0.6rem 0.8rem;
+        font-size: 0.9rem;
+    }
+    
+    .search-btn, .surprise-btn, .advanced-filters-btn {
+        padding: 0.6rem 0.8rem !important;
+        font-size: 0.8rem !important;
+        min-width: 50px !important;
+    }
+    
+    .search-btn span, .surprise-btn span, .advanced-filters-btn span {
+        display: none !important;
+    }
+    
+    .main-content {
+        padding: 0 0.25rem;
+        margin: 0.5rem auto;
+    }
+    
+    .recipes-grid {
+        padding: 0;
+        gap: 0.75rem;
+    }
+    
+    .recipe-card {
+        margin: 0 0.25rem;
+    }
+    
+    .modal-content {
+        padding: 1rem 0.75rem;
+        width: 100%;
+        margin: 0;
+        border-radius: 8px;
+    }
+}
+
+/* Fix for small screens (321px - 480px) */
+@media (min-width: 321px) and (max-width: 480px) {
+    .header-container {
+        padding: 0.6rem 0.4rem;
+        gap: 0.4rem;
+    }
+    
+    .search-bar-container {
+        padding: 1rem 0.6rem;
+        margin: 0.4rem;
+    }
+    
+    .main-content {
+        padding: 0 0.4rem;
+        margin: 0.8rem auto;
+    }
+}
+
+/* Fix for medium screens (481px - 768px) */
+@media (min-width: 481px) and (max-width: 768px) {
+    .header-container {
+        padding: 0.8rem 0.6rem;
+        gap: 0.6rem;
+    }
+    
+    .search-bar-container {
+        padding: 1.2rem 0.8rem;
+        margin: 0.6rem;
+    }
+    
+    .main-content {
+        padding: 0 0.6rem;
+        margin: 1.2rem auto;
+    }
+}
+
+/* Ensure buttons never overflow their containers */
+.btn-primary, .btn-secondary, .btn-login, .search-btn, .surprise-btn, .advanced-filters-btn {
+    max-width: 100%;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+/* Prevent text overflow in all elements */
+.recipe-name, .recipe-country, .logo-text h1, .menu-link {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    hyphens: auto;
+}
+
+/* Ensure images are responsive */
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Fix for flexbox containers */
+.header-actions, .search-bar-container, .recipe-actions {
+    flex-wrap: wrap;
+    min-width: 0; /* Allow flex items to shrink below their content size */
+}
+
+/* Ensure grid containers don't overflow */
+.recipes-grid, .categories-grid, .admin-tabs {
+    min-width: 0;
+    overflow-x: hidden;
+}
+
+/* Fix for absolute positioned elements */
+.mega-menu {
+    max-width: calc(100vw - 2rem);
+    left: 1rem !important;
+    right: 1rem !important;
+    width: auto !important;
+}
+
+@media (max-width: 480px) {
+    .mega-menu {
+        max-width: calc(100vw - 1rem);
+        left: 0.5rem !important;
+        right: 0.5rem !important;
+    }
+}
+
+/* Ensure no element can cause horizontal scroll */
+* {
+    max-width: 100%;
+}
+
+/* Special fix for elements that might still overflow */
+.search-suggestions, .notification, .tooltip {
+    max-width: calc(100vw - 2rem);
+    left: 1rem !important;
+    right: 1rem !important;
+    width: auto !important;
+}
+
+/* Final safety net - hide any overflow */
+.header, .search-bar-container, .main-content, .modal {
+    overflow-x: hidden;
 }

@@ -2421,6 +2421,1366 @@ server.listen(PORT, '0.0.0.0', () => {
             resenas: 18
         });
 
+        // ========== MÁS DESAYUNOS INTERNACIONALES ==========
+        recipes.push({
+            id: nextRecipeId++,
+            nombre: 'Avena con Frutas',
+            pais: 'Escocia',
+            tiempo: 10,
+            categorias: ['Desayuno', 'Saludable'],
+            ingredientes: [
+                { nombre: '1 taza de avena en hojuelas', icono: '🌾' },
+                { nombre: '2 tazas de leche o agua', icono: '🥛' },
+                { nombre: '1 plátano en rodajas', icono: '🍌' },
+                { nombre: '1/2 taza de fresas cortadas', icono: '🍓' },
+                { nombre: '2 cucharadas de miel', icono: '🍯' },
+                { nombre: '1/4 taza de nueces picadas', icono: '🥜' },
+                { nombre: '1 cucharadita de canela', icono: '🌶️' },
+                { nombre: 'Una pizca de sal', icono: '🧂' }
+            ],
+            instrucciones: [
+                'Hervir la leche o agua en una olla mediana',
+                'Agregar la avena y una pizca de sal',
+                'Cocinar a fuego medio por 5-7 minutos, revolviendo ocasionalmente',
+                'Retirar del fuego cuando tenga consistencia cremosa',
+                'Servir en bowls y agregar frutas frescas',
+                'Rociar con miel y espolvorear canela',
+                'Decorar con nueces picadas',
+                'Servir caliente inmediatamente'
+            ],
+            imagen: '',
+            calificacion: 4.2,
+            resenas: 15
+        });
+
+        recipes.push({
+            id: nextRecipeId++,
+            nombre: 'Shakshuka',
+            pais: 'Israel',
+            tiempo: 25,
+            categorias: ['Desayuno'],
+            ingredientes: [
+                { nombre: '6 huevos frescos', icono: '🥚' },
+                { nombre: '1 lata de tomates triturados (400g)', icono: '🍅' },
+                { nombre: '1 pimiento rojo en tiras', icono: '🫑' },
+                { nombre: '1 cebolla mediana picada', icono: '🧅' },
+                { nombre: '3 dientes de ajo picados', icono: '🧄' },
+                { nombre: '1 cucharadita de pimentón dulce', icono: '🌶️' },
+                { nombre: '1/2 cucharadita de comino', icono: '🌶️' },
+                { nombre: '1/4 cucharadita de cayena', icono: '🌶️' },
+                { nombre: '100g de queso feta desmoronado', icono: '🧀' },
+                { nombre: '2 cucharadas de aceite de oliva', icono: '🫒' },
+                { nombre: 'Perejil fresco para decorar', icono: '🌿' },
+                { nombre: 'Pan pita para acompañar', icono: '🥖' }
+            ],
+            instrucciones: [
+                'Calentar aceite en sartén grande a fuego medio',
+                'Sofreír cebolla hasta que esté transparente',
+                'Agregar pimiento rojo y cocinar 5 minutos',
+                'Añadir ajo, pimentón, comino y cayena, cocinar 1 minuto',
+                'Incorporar tomates triturados y sazonar con sal',
+                'Cocinar 10-15 minutos hasta que espese la salsa',
+                'Hacer 6 hoyos en la salsa con una cuchara',
+                'Romper los huevos cuidadosamente en cada hoyo',
+                'Tapar y cocinar 8-12 minutos hasta que las claras cuajen',
+                'Espolvorear queso feta y perejil, servir con pan pita'
+            ],
+            imagen: '',
+            calificacion: 4.6,
+            resenas: 22
+        });
+
+        recipes.push({
+            id: nextRecipeId++,
+            nombre: 'Congee Chino',
+            pais: 'China',
+            tiempo: 60,
+            categorias: ['Desayuno'],
+            ingredientes: [
+                { nombre: '1 taza de arroz blanco', icono: '🍚' },
+                { nombre: '8 tazas de caldo de pollo', icono: '🍲' },
+                { nombre: '200g de pollo desmenuzado', icono: '🍗' },
+                { nombre: '2 huevos cocidos cortados por la mitad', icono: '🥚' },
+                { nombre: '2 cebolletas picadas', icono: '🧅' },
+                { nombre: '1 cucharada de jengibre rallado', icono: '🫚' },
+                { nombre: '2 cucharadas de salsa de soja', icono: '🥄' },
+                { nombre: '1 cucharada de aceite de sésamo', icono: '🫒' },
+                { nombre: 'Cilantro fresco para decorar', icono: '🌿' }
+            ],
+            instrucciones: [
+                'Enjuagar el arroz hasta que el agua salga clara',
+                'En olla grande, combinar arroz con caldo de pollo',
+                'Llevar a ebullición, luego reducir fuego a mínimo',
+                'Cocinar 45-60 minutos, revolviendo ocasionalmente',
+                'El arroz debe desintegrarse y formar papilla cremosa',
+                'Agregar pollo desmenuzado en los últimos 10 minutos',
+                'Sazonar con salsa de soja y aceite de sésamo',
+                'Servir en bowls calientes',
+                'Decorar con huevo, cebolletas y cilantro',
+                'Acompañar con más salsa de soja al gusto'
+            ],
+            imagen: '',
+            calificacion: 4.3,
+            resenas: 18
+        });
+
+        recipes.push({
+            id: nextRecipeId++,
+            nombre: 'Arepa Reina Pepiada',
+            pais: 'Venezuela',
+            tiempo: 20,
+            categorias: ['Desayuno'],
+            ingredientes: [
+                { nombre: '2 tazas de harina de maíz precocida', icono: '🌽' },
+                { nombre: '2 1/2 tazas de agua tibia', icono: '💧' },
+                { nombre: '1 cucharadita de sal', icono: '🧂' },
+                { nombre: '2 pechugas de pollo cocidas y desmenuzadas', icono: '🍗' },
+                { nombre: '2 aguacates maduros', icono: '🥑' },
+                { nombre: '1/2 taza de mayonesa', icono: '🥄' },
+                { nombre: '1 cucharada de jugo de limón', icono: '🍋' },
+                { nombre: 'Sal y pimienta al gusto', icono: '🧂' }
+            ],
+            instrucciones: [
+                'Mezclar agua tibia con sal hasta disolver',
+                'Agregar harina de maíz gradualmente mientras mezclas',
+                'Amasar hasta obtener masa suave, dejar reposar 5 minutos',
+                'Para el relleno: machacar aguacates con tenedor',
+                'Mezclar aguacate con pollo, mayonesa y limón',
+                'Sazonar con sal y pimienta al gusto',
+                'Formar arepas del tamaño de la palma de la mano',
+                'Cocinar en plancha sin aceite 7 minutos por lado',
+                'Abrir cuidadosamente por un lado',
+                'Rellenar generosamente con la mezcla reina pepiada'
+            ],
+            imagen: '',
+            calificacion: 4.7,
+            resenas: 25
+        });
+
+        // ========== MÁS COMIDAS INTERNACIONALES ==========
+        recipes.push({
+            id: nextRecipeId++,
+            nombre: 'Ratatouille Francés',
+            pais: 'Francia',
+            tiempo: 45,
+            categorias: ['Comida', 'Saludable'],
+            ingredientes: [
+                { nombre: '1 berenjena grande en cubos', icono: '🍆' },
+                { nombre: '2 calabacines en rodajas', icono: '🥒' },
+                { nombre: '1 pimiento rojo en tiras', icono: '🫑' },
+                { nombre: '1 pimiento amarillo en tiras', icono: '🫑' },
+                { nombre: '4 tomates grandes en cubos', icono: '🍅' },
+                { nombre: '1 cebolla grande en rodajas', icono: '🧅' },
+                { nombre: '4 dientes de ajo picados', icono: '🧄' },
+                { nombre: '1/4 taza de aceite de oliva', icono: '🫒' },
+                { nombre: '2 cucharaditas de hierbas provenzales', icono: '🌿' },
+                { nombre: '1 cucharada de tomillo fresco', icono: '🌿' },
+                { nombre: 'Sal y pimienta al gusto', icono: '🧂' }
+            ],
+            instrucciones: [
+                'Precalentar horno a 200°C',
+                'Cortar todas las verduras en trozos uniformes',
+                'En una fuente grande para horno, mezclar todas las verduras',
+                'Rociar con aceite de oliva y sazonar con sal y pimienta',
+                'Agregar hierbas provenzales y tomillo',
+                'Mezclar bien para que se cubran todas las verduras',
+                'Hornear 35-40 minutos, revolviendo a la mitad',
+                'Las verduras deben estar tiernas y ligeramente caramelizadas',
+                'Servir caliente como plato principal o acompañamiento',
+                'Decorar con hierbas frescas adicionales'
+            ],
+            imagen: '',
+            calificacion: 4.4,
+            resenas: 20
+        });
+
+        recipes.push({
+            id: nextRecipeId++,
+            nombre: 'Chiles Rellenos',
+            pais: 'México',
+            tiempo: 40,
+            categorias: ['Comida'],
+            ingredientes: [
+                { nombre: '6 chiles poblanos grandes', icono: '🌶️' },
+                { nombre: '300g de queso monterey jack en bastones', icono: '🧀' },
+                { nombre: '4 huevos separados', icono: '🥚' },
+                { nombre: '1/4 taza de harina', icono: '🌾' },
+                { nombre: '2 tazas de aceite para freír', icono: '🫒' },
+                { nombre: 'Para la salsa:', icono: '🍅' },
+                { nombre: '4 tomates rojos', icono: '🍅' },
+                { nombre: '1/4 cebolla blanca', icono: '🧅' },
+                { nombre: '2 dientes de ajo', icono: '🧄' },
+                { nombre: 'Sal al gusto', icono: '🧂' }
+            ],
+            instrucciones: [
+                'Asar los chiles directamente en la llama hasta que se quemen por todos lados',
+                'Colocar en bolsa de plástico 10 minutos para que suden',
+                'Pelar cuidadosamente, hacer corte lateral y retirar semillas',
+                'Rellenar cada chile con bastones de queso',
+                'Para la salsa: asar tomates, cebolla y ajo, licuar con sal',
+                'Batir claras a punto de nieve, incorporar yemas una por una',
+                'Enharinar chiles, sumergir en huevo batido',
+                'Freír en aceite caliente hasta dorar por ambos lados',
+                'Escurrir en papel absorbente',
+                'Servir calientes bañados con salsa de tomate'
+            ],
+            imagen: '',
+            calificacion: 4.8,
+            resenas: 30
+        });
+
+        recipes.push({
+            id: nextRecipeId++,
+            nombre: 'Butter Chicken',
+            pais: 'India',
+            tiempo: 50,
+            categorias: ['Comida'],
+            ingredientes: [
+                { nombre: '800g de pollo en trozos', icono: '🍗' },
+                { nombre: '1 taza de yogurt natural', icono: '🥛' },
+                { nombre: '2 cucharadas de pasta de tomate', icono: '🍅' },
+                { nombre: '200ml de crema para cocinar', icono: '🥛' },
+                { nombre: '3 cucharadas de mantequilla', icono: '🧈' },
+                { nombre: '1 cebolla grande picada', icono: '🧅' },
+                { nombre: '4 dientes de ajo picados', icono: '🧄' },
+                { nombre: '1 trozo de jengibre de 3cm rallado', icono: '🫚' },
+                { nombre: '2 cucharaditas de garam masala', icono: '🌶️' },
+                { nombre: '1 cucharadita de cúrcuma', icono: '🌶️' },
+                { nombre: '1 cucharadita de pimentón dulce', icono: '🌶️' },
+                { nombre: 'Cilantro fresco para decorar', icono: '🌿' },
+                { nombre: 'Arroz basmati para acompañar', icono: '🍚' }
+            ],
+            instrucciones: [
+                'Marinar pollo con yogurt, sal y especias por 30 minutos',
+                'Calentar mantequilla en sartén grande, dorar el pollo',
+                'Retirar pollo y reservar',
+                'En la misma sartén, sofreír cebolla hasta dorar',
+                'Agregar ajo, jengibre y especias, cocinar 1 minuto',
+                'Añadir pasta de tomate, cocinar 2 minutos',
+                'Incorporar crema y llevar a ebullición suave',
+                'Regresar pollo a la sartén, cocinar 15 minutos',
+                'Ajustar sazón con sal y especias',
+                'Servir con arroz basmati y cilantro fresco'
+            ],
+            imagen: '',
+            calificacion: 4.7,
+            resenas: 35
+        });
+
+        recipes.push({
+            id: nextRecipeId++,
+            nombre: 'Paella de Mariscos',
+            pais: 'España',
+            tiempo: 45,
+            categorias: ['Comida'],
+            ingredientes: [
+                { nombre: '400g de arroz bomba', icono: '🍚' },
+                { nombre: '300g de camarones pelados', icono: '🦐' },
+                { nombre: '300g de mejillones', icono: '🦪' },
+                { nombre: '200g de calamares en anillos', icono: '🦑' },
+                { nombre: '1.2 litros de caldo de pescado', icono: '🍲' },
+                { nombre: '1 pimiento rojo en tiras', icono: '🫑' },
+                { nombre: '200g de judías verdes', icono: '🫛' },
+                { nombre: '4 dientes de ajo picados', icono: '🧄' },
+                { nombre: '1g de azafrán en hebras', icono: '🌿' },
+                { nombre: '100ml de aceite de oliva', icono: '🫒' },
+                { nombre: '1 limón en cuartos', icono: '🍋' },
+                { nombre: 'Perejil fresco para decorar', icono: '🌿' }
+            ],
+            instrucciones: [
+                'Calentar aceite en paellera a fuego medio-alto',
+                'Sofreír camarones y calamares 2 minutos, reservar',
+                'Agregar judías verdes y pimiento, cocinar 5 minutos',
+                'Añadir ajo y cocinar 1 minuto hasta aromático',
+                'Incorporar arroz y tostar 2 minutos',
+                'Verter caldo caliente con azafrán',
+                'Cocinar 10 minutos a fuego fuerte sin remover',
+                'Agregar mejillones y mariscos reservados',
+                'Cocinar 10 minutos más a fuego medio',
+                'Dejar reposar 5 minutos, decorar con limón y perejil'
+            ],
+            imagen: '',
+            calificacion: 4.6,
+            resenas: 28
+        });
+
+        recipes.push({
+            id: nextRecipeId++,
+            nombre: 'Beef Stroganoff',
+            pais: 'Rusia',
+            tiempo: 35,
+            categorias: ['Comida'],
+            ingredientes: [
+                { nombre: '600g de carne de res en tiras', icono: '🥩' },
+                { nombre: '300g de hongos en láminas', icono: '🍄' },
+                { nombre: '1 cebolla grande en juliana', icono: '🧅' },
+                { nombre: '2 cucharadas de harina', icono: '🌾' },
+                { nombre: '1 taza de crema agria', icono: '🥛' },
+                { nombre: '2 tazas de caldo de res', icono: '🍲' },
+                { nombre: '2 cucharadas de mostaza Dijon', icono: '🌭' },
+                { nombre: '3 cucharadas de mantequilla', icono: '🧈' },
+                { nombre: '2 cucharadas de aceite vegetal', icono: '🫒' },
+                { nombre: 'Sal y pimienta al gusto', icono: '🧂' },
+                { nombre: 'Fideos de huevo para acompañar', icono: '🍜' },
+                { nombre: 'Perejil fresco para decorar', icono: '🌿' }
+            ],
+            instrucciones: [
+                'Sazonar carne con sal y pimienta',
+                'Calentar aceite en sartén grande, dorar carne por lotes',
+                'Retirar carne y reservar',
+                'En la misma sartén, derretir mantequilla',
+                'Sofreír cebolla hasta transparente, agregar hongos',
+                'Cocinar hasta que hongos suelten su líquido',
+                'Espolvorear harina, cocinar 1 minuto',
+                'Agregar caldo gradualmente, batiendo constantemente',
+                'Incorporar mostaza y regresar carne a la sartén',
+                'Cocinar 10 minutos, agregar crema agria y servir con fideos'
+            ],
+            imagen: '',
+            calificacion: 4.5,
+            resenas: 24
+        });
+
+        // ========== MÁS CENAS VARIADAS ==========
+        recipes.push({
+            id: nextRecipeId++,
+            nombre: 'Tacos de Pescado',
+            pais: 'México',
+            tiempo: 25,
+            categorias: ['Cena'],
+            ingredientes: [
+                { nombre: '600g de filetes de pescado blanco', icono: '🐟' },
+                { nombre: '8 tortillas de maíz', icono: '🌮' },
+                { nombre: '2 tazas de repollo morado rallado', icono: '🥬' },
+                { nombre: '1 aguacate en rebanadas', icono: '🥑' },
+                { nombre: '1/2 taza de crema mexicana', icono: '🥛' },
+                { nombre: '1/4 taza de cilantro picado', icono: '🌿' },
+                { nombre: '2 limones en cuartos', icono: '🍋' },
+                { nombre: '1 cucharadita de comino', icono: '🌶️' },
+                { nombre: '1 cucharadita de pimentón', icono: '🌶️' },
+                { nombre: '2 cucharadas de aceite de oliva', icono: '🫒' },
+                { nombre: 'Salsa picante al gusto', icono: '🌶️' }
+            ],
+            instrucciones: [
+                'Sazonar pescado con comino, pimentón, sal y pimienta',
+                'Calentar aceite en sartén a fuego medio-alto',
+                'Cocinar pescado 3-4 minutos por lado hasta que se desmenuce',
+                'Calentar tortillas en comal seco',
+                'Desmenuzar pescado en trozos grandes',
+                'Armar tacos: tortilla, pescado, repollo, aguacate',
+                'Agregar crema mexicana y cilantro',
+                'Servir con limón y salsa picante',
+                'Acompañar con frijoles refritos si se desea'
+            ],
+            imagen: '',
+            calificacion: 4.4,
+            resenas: 19
+        });
+
+        recipes.push({
+            id: nextRecipeId++,
+            nombre: 'Pollo Teriyaki',
+            pais: 'Japón',
+            tiempo: 30,
+            categorias: ['Cena'],
+            ingredientes: [
+                { nombre: '4 muslos de pollo deshuesados', icono: '🍗' },
+                { nombre: '1/4 taza de salsa de soja', icono: '🥄' },
+                { nombre: '2 cucharadas de mirin', icono: '🥄' },
+                { nombre: '2 cucharadas de azúcar', icono: '🍯' },
+                { nombre: '1 cucharada de aceite de sésamo', icono: '🫒' },
+                { nombre: '2 dientes de ajo picados', icono: '🧄' },
+                { nombre: '1 trozo de jengibre rallado', icono: '🫚' },
+                { nombre: '1 cucharada de semillas de sésamo', icono: '🌱' },
+                { nombre: '2 cebolletas picadas', icono: '🧅' },
+                { nombre: 'Arroz japonés para acompañar', icono: '🍚' }
+            ],
+            instrucciones: [
+                'Mezclar salsa de soja, mirin, azúcar, ajo y jengibre',
+                'Marinar pollo en esta mezcla por 15 minutos',
+                'Calentar aceite de sésamo en sartén grande',
+                'Cocinar pollo con piel hacia abajo 6 minutos',
+                'Voltear y cocinar 4 minutos más',
+                'Agregar marinada restante a la sartén',
+                'Cocinar hasta que la salsa espese y glasee el pollo',
+                'Espolvorear semillas de sésamo y cebolletas',
+                'Servir sobre arroz japonés caliente'
+            ],
+            imagen: '',
+            calificacion: 4.6,
+            resenas: 26
+        });
+
+        recipes.push({
+            id: nextRecipeId++,
+            nombre: 'Churrasco Argentino',
+            pais: 'Argentina',
+            tiempo: 20,
+            categorias: ['Cena'],
+            ingredientes: [
+                { nombre: '4 bifes de chorizo de 200g cada uno', icono: '🥩' },
+                { nombre: '1/2 taza de chimichurri', icono: '🌿' },
+                { nombre: '4 papas grandes para papas fritas', icono: '🥔' },
+                { nombre: 'Sal gruesa para la carne', icono: '🧂' },
+                { nombre: 'Aceite para freír papas', icono: '🫒' },
+                { nombre: 'Para el chimichurri:', icono: '🌿' },
+                { nombre: '1 taza de perejil picado', icono: '🌿' },
+                { nombre: '4 dientes de ajo picados', icono: '🧄' },
+                { nombre: '1/2 taza de aceite de oliva', icono: '🫒' },
+                { nombre: '2 cucharadas de vinagre de vino tinto', icono: '🥄' },
+                { nombre: '1 cucharadita de orégano', icono: '🌿' },
+                { nombre: 'Sal y pimienta al gusto', icono: '🧂' }
+            ],
+            instrucciones: [
+                'Para chimichurri: mezclar todos los ingredientes, dejar reposar',
+                'Cortar papas en bastones gruesos, freír hasta dorar',
+                'Sacar carne del refrigerador 30 minutos antes',
+                'Calentar parrilla o plancha a fuego alto',
+                'Sazonar carne con sal gruesa justo antes de cocinar',
+                'Cocinar 3-4 minutos por lado para término medio',
+                'Dejar reposar carne 5 minutos antes de servir',
+                'Servir con chimichurri y papas fritas',
+                'Acompañar con ensalada mixta si se desea'
+            ],
+            imagen: '',
+            calificacion: 4.8,
+            resenas: 32
+        });
+
+        recipes.push({
+            id: nextRecipeId++,
+            nombre: 'Pollo a la Parmesana',
+            pais: 'Italia',
+            tiempo: 45,
+            categorias: ['Cena'],
+            ingredientes: [
+                { nombre: '4 pechugas de pollo aplanadas', icono: '🍗' },
+                { nombre: '2 tazas de pan molido', icono: '🍞' },
+                { nombre: '1 taza de queso parmesano rallado', icono: '🧀' },
+                { nombre: '2 huevos batidos', icono: '🥚' },
+                { nombre: '1/2 taza de harina', icono: '🌾' },
+                { nombre: '2 tazas de salsa marinara', icono: '🍅' },
+                { nombre: '200g de mozzarella en rebanadas', icono: '🧀' },
+                { nombre: '1/4 taza de aceite de oliva', icono: '🫒' },
+                { nombre: 'Albahaca fresca para decorar', icono: '🌿' },
+                { nombre: 'Pasta para acompañar', icono: '🍝' }
+            ],
+            instrucciones: [
+                'Precalentar horno a 200°C',
+                'Mezclar pan molido con la mitad del parmesano',
+                'Pasar pollo por harina, luego huevo, luego pan molido',
+                'Calentar aceite en sartén grande',
+                'Dorar pollo 3 minutos por lado hasta que esté crujiente',
+                'Colocar en fuente para horno',
+                'Cubrir con salsa marinara y mozzarella',
+                'Espolvorear parmesano restante',
+                'Hornear 20 minutos hasta que el queso se derrita',
+                'Decorar con albahaca y servir con pasta'
+            ],
+            imagen: '',
+            calificacion: 4.7,
+            resenas: 29
+        });
+
+        // ========== MÁS POSTRES INTERNACIONALES ==========
+        recipes.push({
+            id: nextRecipeId++,
+            nombre: 'Brownies de Chocolate',
+            pais: 'Estados Unidos',
+            tiempo: 45,
+            categorias: ['Postre'],
+            ingredientes: [
+                { nombre: '200g de chocolate negro picado', icono: '🍫' },
+                { nombre: '150g de mantequilla', icono: '🧈' },
+                { nombre: '200g de azúcar', icono: '🍯' },
+                { nombre: '3 huevos grandes', icono: '🥚' },
+                { nombre: '100g de harina', icono: '🌾' },
+                { nombre: '30g de cacao en polvo', icono: '🍫' },
+                { nombre: '1/2 cucharadita de sal', icono: '🧂' },
+                { nombre: '100g de nueces picadas (opcional)', icono: '🥜' },
+                { nombre: '1 cucharadita de extracto de vainilla', icono: '🌿' }
+            ],
+            instrucciones: [
+                'Precalentar horno a 180°C, engrasar molde cuadrado',
+                'Derretir chocolate con mantequilla en baño maría',
+                'Batir azúcar con huevos hasta que estén cremosos',
+                'Incorporar chocolate derretido y vainilla',
+                'Mezclar harina, cacao y sal en bowl separado',
+                'Agregar ingredientes secos a la mezcla húmeda',
+                'Incorporar nueces si se usan',
+                'Verter en molde preparado',
+                'Hornear 25-30 minutos hasta que palillo salga con pocas migas',
+                'Enfriar completamente antes de cortar'
+            ],
+            imagen: '',
+            calificacion: 4.8,
+            resenas: 45
+        });
+
+        recipes.push({
+            id: nextRecipeId++,
+            nombre: 'Panna Cotta',
+            pais: 'Italia',
+            tiempo: 240,
+            categorias: ['Postre'],
+            ingredientes: [
+                { nombre: '500ml de crema para batir', icono: '🥛' },
+                { nombre: '80g de azúcar', icono: '🍯' },
+                { nombre: '1 sobre de gelatina sin sabor', icono: '🥄' },
+                { nombre: '3 cucharadas de agua fría', icono: '💧' },
+                { nombre: '1 cucharadita de extracto de vainilla', icono: '🌿' },
+                { nombre: 'Para el coulis de fresas:', icono: '🍓' },
+                { nombre: '300g de fresas frescas', icono: '🍓' },
+                { nombre: '3 cucharadas de azúcar', icono: '🍯' },
+                { nombre: '1 cucharada de jugo de limón', icono: '🍋' }
+            ],
+            instrucciones: [
+                'Espolvorear gelatina sobre agua fría, dejar hidratar 5 minutos',
+                'Calentar crema con azúcar hasta que hierva suavemente',
+                'Retirar del fuego, agregar gelatina hidratada',
+                'Revolver hasta disolver completamente',
+                'Agregar vainilla y mezclar',
+                'Dividir en 6 moldes individuales',
+                'Refrigerar mínimo 4 horas hasta cuajar',
+                'Para coulis: licuar fresas con azúcar y limón',
+                'Colar para eliminar semillas',
+                'Servir panna cotta desmoldada con coulis de fresas'
+            ],
+            imagen: '',
+            calificacion: 4.5,
+            resenas: 22
+        });
+
+        recipes.push({
+            id: nextRecipeId++,
+            nombre: 'Churros con Chocolate',
+            pais: 'España',
+            tiempo: 30,
+            categorias: ['Postre'],
+            ingredientes: [
+                { nombre: '1 taza de agua', icono: '💧' },
+                { nombre: '2 cucharadas de azúcar', icono: '🍯' },
+                { nombre: '1/2 cucharadita de sal', icono: '🧂' },
+                { nombre: '2 cucharadas de aceite vegetal', icono: '🫒' },
+                { nombre: '1 taza de harina', icono: '🌾' },
+                { nombre: '2 huevos', icono: '🥚' },
+                { nombre: 'Aceite para freír', icono: '🫒' },
+                { nombre: '1/2 taza de azúcar con canela', icono: '🍯' },
+                { nombre: 'Para el chocolate:', icono: '🍫' },
+                { nombre: '200ml de leche', icono: '🥛' },
+                { nombre: '100g de chocolate negro', icono: '🍫' },
+                { nombre: '1 cucharada de azúcar', icono: '🍯' }
+            ],
+            instrucciones: [
+                'Hervir agua con azúcar, sal y aceite',
+                'Agregar harina de golpe, revolver hasta formar masa',
+                'Retirar del fuego, dejar enfriar 5 minutos',
+                'Incorporar huevos uno por uno hasta obtener masa lisa',
+                'Colocar masa en manga pastelera con boquilla estrellada',
+                'Calentar aceite a 180°C',
+                'Formar churros directamente en el aceite',
+                'Freír hasta dorar, escurrir en papel absorbente',
+                'Rebozar en azúcar con canela mientras están calientes',
+                'Para chocolate: calentar leche, agregar chocolate y azúcar hasta derretir'
+            ],
+            imagen: '',
+            calificacion: 4.6,
+            resenas: 38
+        });
+
+        // ========== MÁS BEBIDAS REFRESCANTES ==========
+        recipes.push({
+            id: nextRecipeId++,
+            nombre: 'Piña Colada',
+            pais: 'Puerto Rico',
+            tiempo: 5,
+            categorias: ['Bebida'],
+            ingredientes: [
+                { nombre: '60ml de ron blanco', icono: '🥃' },
+                { nombre: '30ml de ron de coco', icono: '🥃' },
+                { nombre: '90ml de crema de coco', icono: '🥥' },
+                { nombre: '90ml de jugo de piña', icono: '🍍' },
+                { nombre: '2 tazas de hielo', icono: '🧊' },
+                { nombre: '1 rodaja de piña para decorar', icono: '🍍' },
+                { nombre: '1 cereza marrasquino', icono: '🍒' }
+            ],
+            instrucciones: [
+                'Colocar todos los ingredientes líquidos en licuadora',
+                'Agregar hielo y licuar hasta obtener consistencia suave',
+                'Servir en copa hurricane o vaso alto',
+                'Decorar con rodaja de piña y cereza',
+                'Servir inmediatamente con pajita'
+            ],
+            imagen: '',
+            calificacion: 4.3,
+            resenas: 18
+        });
+
+        recipes.push({
+            id: nextRecipeId++,
+            nombre: 'Té Chai Masala',
+            pais: 'India',
+            tiempo: 15,
+            categorias: ['Bebida'],
+            ingredientes: [
+                { nombre: '2 tazas de agua', icono: '💧' },
+                { nombre: '1 taza de leche entera', icono: '🥛' },
+                { nombre: '2 cucharadas de té negro', icono: '🍃' },
+                { nombre: '4 vainas de cardamomo', icono: '🌶️' },
+                { nombre: '1 rama de canela', icono: '🌶️' },
+                { nombre: '4 clavos de olor', icono: '🌶️' },
+                { nombre: '1 trozo de jengibre de 2cm', icono: '🫚' },
+                { nombre: '3 cucharadas de azúcar', icono: '🍯' }
+            ],
+            instrucciones: [
+                'Machacar ligeramente las especias en mortero',
+                'Hervir agua con especias por 5 minutos',
+                'Agregar té negro y cocinar 2 minutos más',
+                'Añadir leche y azúcar, llevar a ebullición',
+                'Reducir fuego y cocinar 3-4 minutos',
+                'Colar y servir caliente inmediatamente'
+            ],
+            imagen: '',
+            calificacion: 4.4,
+            resenas: 16
+        });
+
+        // ========== MÁS BOTANAS Y APERITIVOS ==========
+        recipes.push({
+            id: nextRecipeId++,
+            nombre: 'Alitas Buffalo',
+            pais: 'Estados Unidos',
+            tiempo: 35,
+            categorias: ['Botana'],
+            ingredientes: [
+                { nombre: '1 kg de alitas de pollo', icono: '🍗' },
+                { nombre: '1/2 taza de salsa picante', icono: '🌶️' },
+                { nombre: '1/4 taza de mantequilla derretida', icono: '🧈' },
+                { nombre: '1 cucharada de vinagre blanco', icono: '🥄' },
+                { nombre: '1/4 cucharadita de ajo en polvo', icono: '🧄' },
+                { nombre: 'Sal y pimienta al gusto', icono: '🧂' },
+                { nombre: 'Apio en bastones para acompañar', icono: '🥬' },
+                { nombre: 'Salsa ranch para acompañar', icono: '🥄' }
+            ],
+            instrucciones: [
+                'Precalentar horno a 220°C',
+                'Sazonar alitas con sal y pimienta',
+                'Hornear 25-30 minutos hasta que estén crujientes',
+                'Mezclar salsa picante, mantequilla, vinagre y ajo en polvo',
+                'Bañar alitas calientes con la salsa buffalo',
+                'Servir inmediatamente con apio y salsa ranch'
+            ],
+            imagen: '',
+            calificacion: 4.5,
+            resenas: 27
+        });
+
+        recipes.push({
+            id: nextRecipeId++,
+            nombre: 'Ceviche de Camarón',
+            pais: 'Perú',
+            tiempo: 30,
+            categorias: ['Botana'],
+            ingredientes: [
+                { nombre: '500g de camarones cocidos y pelados', icono: '🦐' },
+                { nombre: '1 taza de jugo de limón fresco', icono: '🍋' },
+                { nombre: '1 cebolla roja en juliana fina', icono: '🧅' },
+                { nombre: '2 ajíes amarillos picados', icono: '🌶️' },
+                { nombre: '1 camote cocido en cubos', icono: '🍠' },
+                { nombre: '1 taza de maíz cancha', icono: '🌽' },
+                { nombre: '1/4 taza de cilantro picado', icono: '🌿' },
+                { nombre: 'Sal y pimienta al gusto', icono: '🧂' },
+                { nombre: 'Hojas de lechuga para servir', icono: '🥬' }
+            ],
+            instrucciones: [
+                'Cortar camarones en trozos medianos',
+                'Marinar con jugo de limón por 15 minutos',
+                'Agregar cebolla roja y ají amarillo',
+                'Sazonar con sal y pimienta',
+                'Incorporar cilantro y mezclar suavemente',
+                'Servir sobre hojas de lechuga',
+                'Acompañar con camote y maíz cancha'
+            ],
+            imagen: '',
+            calificacion: 4.7,
+            resenas: 23
+        });
+
+        recipes.push({
+            id: nextRecipeId++,
+            nombre: 'Bruschetta de Tomate',
+            pais: 'Italia',
+            tiempo: 15,
+            categorias: ['Botana'],
+            ingredientes: [
+                { nombre: '1 baguette cortada en rebanadas', icono: '🥖' },
+                { nombre: '4 tomates maduros en cubitos', icono: '🍅' },
+                { nombre: '3 dientes de ajo', icono: '🧄' },
+                { nombre: '1/4 taza de albahaca fresca picada', icono: '🌿' },
+                { nombre: '3 cucharadas de aceite de oliva', icono: '🫒' },
+                { nombre: '2 cucharadas de vinagre balsámico', icono: '🥄' },
+                { nombre: 'Sal y pimienta al gusto', icono: '🧂' }
+            ],
+            instrucciones: [
+                'Tostar rebanadas de pan hasta dorar',
+                'Frotar cada rebanada con ajo',
+                'Mezclar tomates, albahaca, aceite y vinagre',
+                'Sazonar con sal y pimienta',
+                'Colocar mezcla sobre cada tostada',
+                'Servir inmediatamente'
+            ],
+            imagen: '',
+            calificacion: 4.3,
+            resenas: 19
+        });
+
+        // ========== RECETAS RÁPIDAS Y ECONÓMICAS ==========
+        recipes.push({
+            id: nextRecipeId++,
+            nombre: 'Sopa de Tomate',
+            pais: 'Universal',
+            tiempo: 20,
+            categorias: ['Rápida', 'Económica'],
+            ingredientes: [
+                { nombre: '1 lata de tomates triturados (800g)', icono: '🍅' },
+                { nombre: '2 tazas de caldo de verduras', icono: '🍲' },
+                { nombre: '1 cebolla mediana picada', icono: '🧅' },
+                { nombre: '2 dientes de ajo picados', icono: '🧄' },
+                { nombre: '1/4 taza de crema para cocinar', icono: '🥛' },
+                { nombre: '1 cucharada de azúcar', icono: '🍯' },
+                { nombre: '2 cucharadas de aceite de oliva', icono: '🫒' },
+                { nombre: 'Albahaca fresca para decorar', icono: '🌿' },
+                { nombre: 'Sal y pimienta al gusto', icono: '🧂' }
+            ],
+            instrucciones: [
+                'Calentar aceite en olla mediana',
+                'Sofreír cebolla hasta transparente',
+                'Agregar ajo y cocinar 1 minuto',
+                'Añadir tomates triturados y caldo',
+                'Cocinar 15 minutos a fuego medio',
+                'Licuar hasta obtener consistencia suave',
+                'Regresar a la olla, agregar crema y azúcar',
+                'Sazonar con sal y pimienta',
+                'Servir caliente decorado con albahaca'
+            ],
+            imagen: '',
+            calificacion: 4.1,
+            resenas: 14
+        });
+
+        recipes.push({
+            id: nextRecipeId++,
+            nombre: 'Arroz Frito',
+            pais: 'China',
+            tiempo: 15,
+            categorias: ['Rápida', 'Económica'],
+            ingredientes: [
+                { nombre: '3 tazas de arroz cocido frío', icono: '🍚' },
+                { nombre: '3 huevos batidos', icono: '🥚' },
+                { nombre: '1 taza de vegetales mixtos congelados', icono: '🥕' },
+                { nombre: '3 cebolletas picadas', icono: '🧅' },
+                { nombre: '2 dientes de ajo picados', icono: '🧄' },
+                { nombre: '3 cucharadas de salsa de soja', icono: '🥄' },
+                { nombre: '2 cucharadas de aceite vegetal', icono: '🫒' },
+                { nombre: '1 cucharadita de aceite de sésamo', icono: '🫒' }
+            ],
+            instrucciones: [
+                'Calentar aceite en wok o sartén grande',
+                'Agregar huevos batidos, revolver hasta cuajar',
+                'Retirar huevos y reservar',
+                'En la misma sartén, sofreír ajo y vegetales',
+                'Agregar arroz frío, separando granos',
+                'Incorporar salsa de soja y aceite de sésamo',
+                'Regresar huevos a la sartén',
+                'Agregar cebolletas y servir caliente'
+            ],
+            imagen: '',
+            calificacion: 4.2,
+            resenas: 21
+        });
+
+        recipes.push({
+            id: nextRecipeId++,
+            nombre: 'Sandwich Cubano',
+            pais: 'Cuba',
+            tiempo: 15,
+            categorias: ['Rápida', 'Económica'],
+            ingredientes: [
+                { nombre: '4 panes cubanos o baguettes', icono: '🥖' },
+                { nombre: '300g de cerdo asado en rebanadas', icono: '🥩' },
+                { nombre: '200g de jamón en rebanadas', icono: '🥓' },
+                { nombre: '150g de queso suizo', icono: '🧀' },
+                { nombre: '8 pepinillos en rebanadas', icono: '🥒' },
+                { nombre: '4 cucharadas de mostaza', icono: '🌭' },
+                { nombre: '2 cucharadas de mantequilla', icono: '🧈' }
+            ],
+            instrucciones: [
+                'Cortar panes por la mitad horizontalmente',
+                'Untar mostaza en ambas mitades',
+                'Colocar cerdo, jamón, queso y pepinillos',
+                'Cerrar sandwiches y untar mantequilla por fuera',
+                'Cocinar en plancha o sartén pesada',
+                'Presionar mientras se cocina 3-4 minutos por lado',
+                'Servir caliente y crujiente'
+            ],
+            imagen: '',
+            calificacion: 4.4,
+            resenas: 17
+        });
+
+        // ========== MÁS RECETAS SALUDABLES ==========
+        recipes.push({
+            id: nextRecipeId++,
+            nombre: 'Ensalada César',
+            pais: 'México',
+            tiempo: 15,
+            categorias: ['Saludable'],
+            ingredientes: [
+                { nombre: '2 lechugas romanas lavadas y cortadas', icono: '🥬' },
+                { nombre: '1/2 taza de queso parmesano rallado', icono: '🧀' },
+                { nombre: '1 taza de crutones caseros', icono: '🍞' },
+                { nombre: 'Para el aderezo:', icono: '🥄' },
+                { nombre: '3 filetes de anchoa', icono: '🐟' },
+                { nombre: '2 dientes de ajo', icono: '🧄' },
+                { nombre: '1 yema de huevo', icono: '🥚' },
+                { nombre: '2 cucharadas de jugo de limón', icono: '🍋' },
+                { nombre: '1/2 taza de aceite de oliva', icono: '🫒' },
+                { nombre: '1 cucharadita de mostaza Dijon', icono: '🌭' },
+                { nombre: 'Pimienta negra al gusto', icono: '🌶️' }
+            ],
+            instrucciones: [
+                'Para aderezo: machacar anchoas y ajo en mortero',
+                'Agregar yema de huevo y mostaza',
+                'Incorporar jugo de limón',
+                'Agregar aceite en hilo fino mientras bates',
+                'Sazonar con pimienta negra',
+                'En bowl grande, mezclar lechuga con aderezo',
+                'Agregar parmesano y crutones',
+                'Servir inmediatamente'
+            ],
+            imagen: '',
+            calificacion: 4.5,
+            resenas: 25
+        });
+
+        recipes.push({
+            id: nextRecipeId++,
+            nombre: 'Bowl de Quinoa',
+            pais: 'Perú',
+            tiempo: 25,
+            categorias: ['Saludable'],
+            ingredientes: [
+                { nombre: '1 taza de quinoa', icono: '🌾' },
+                { nombre: '2 tazas de caldo de verduras', icono: '🍲' },
+                { nombre: '1 aguacate en rebanadas', icono: '🥑' },
+                { nombre: '1 taza de garbanzos cocidos', icono: '🫘' },
+                { nombre: '1 taza de espinacas frescas', icono: '🥬' },
+                { nombre: '1/2 taza de tomates cherry', icono: '🍅' },
+                { nombre: '1/4 taza de semillas de girasol', icono: '🌻' },
+                { nombre: '2 cucharadas de aceite de oliva', icono: '🫒' },
+                { nombre: '1 cucharada de jugo de limón', icono: '🍋' },
+                { nombre: 'Sal y pimienta al gusto', icono: '🧂' }
+            ],
+            instrucciones: [
+                'Enjuagar quinoa hasta que el agua salga clara',
+                'Cocinar quinoa en caldo por 15 minutos',
+                'Dejar enfriar la quinoa cocida',
+                'En bowls, colocar base de espinacas',
+                'Agregar quinoa, garbanzos y tomates',
+                'Colocar rebanadas de aguacate',
+                'Espolvorear semillas de girasol',
+                'Aliñar con aceite de oliva y limón',
+                'Sazonar con sal y pimienta'
+            ],
+            imagen: '',
+            calificacion: 4.6,
+            resenas: 20
+        });
+
+        // ========== RECETAS ASIÁTICAS ==========
+        recipes.push({
+            id: nextRecipeId++,
+            nombre: 'Sushi California Roll',
+            pais: 'Japón',
+            tiempo: 45,
+            categorias: ['Comida'],
+            ingredientes: [
+                { nombre: '2 tazas de arroz para sushi', icono: '🍚' },
+                { nombre: '4 hojas de nori', icono: '🌿' },
+                { nombre: '1 aguacate en bastones', icono: '🥑' },
+                { nombre: '200g de surimi (imitación cangrejo)', icono: '🦀' },
+                { nombre: '1 pepino en bastones', icono: '🥒' },
+                { nombre: '2 cucharadas de mayonesa japonesa', icono: '🥄' },
+                { nombre: '2 cucharadas de vinagre de arroz', icono: '🥄' },
+                { nombre: '1 cucharada de azúcar', icono: '🍯' },
+                { nombre: '1 cucharadita de sal', icono: '🧂' },
+                { nombre: 'Semillas de sésamo para decorar', icono: '🌱' },
+                { nombre: 'Salsa de soja para acompañar', icono: '🥄' },
+                { nombre: 'Wasabi y jengibre encurtido', icono: '🫚' }
+            ],
+            instrucciones: [
+                'Cocinar arroz según instrucciones del paquete',
+                'Mezclar vinagre, azúcar y sal, calentar hasta disolver',
+                'Agregar mezcla al arroz caliente, dejar enfriar',
+                'Colocar nori sobre esterilla de bambú',
+                'Extender arroz sobre nori dejando borde de 2cm',
+                'Colocar aguacate, surimi y pepino en línea',
+                'Enrollar firmemente usando la esterilla',
+                'Cortar en 8 piezas con cuchillo húmedo',
+                'Decorar con semillas de sésamo',
+                'Servir con salsa de soja, wasabi y jengibre'
+            ],
+            imagen: '',
+            calificacion: 4.4,
+            resenas: 18
+        });
+
+        recipes.push({
+            id: nextRecipeId++,
+            nombre: 'Tom Yum Goong',
+            pais: 'Tailandia',
+            tiempo: 25,
+            categorias: ['Comida'],
+            ingredientes: [
+                { nombre: '500g de camarones grandes pelados', icono: '🦐' },
+                { nombre: '4 tazas de caldo de pollo', icono: '🍲' },
+                { nombre: '3 tallos de hierba limón', icono: '🌿' },
+                { nombre: '4 hojas de lima kaffir', icono: '🍃' },
+                { nombre: '3 chiles tailandeses', icono: '🌶️' },
+                { nombre: '200g de hongos shiitake', icono: '🍄' },
+                { nombre: '3 cucharadas de pasta de chile', icono: '🌶️' },
+                { nombre: '3 cucharadas de salsa de pescado', icono: '🐟' },
+                { nombre: '2 cucharadas de jugo de lima', icono: '🍋' },
+                { nombre: '1 cucharada de azúcar de palma', icono: '🍯' },
+                { nombre: 'Cilantro fresco para decorar', icono: '🌿' }
+            ],
+            instrucciones: [
+                'Machacar hierba limón y chiles en mortero',
+                'Hervir caldo con hierba limón y hojas de lima',
+                'Agregar pasta de chile y cocinar 5 minutos',
+                'Añadir hongos y cocinar 3 minutos',
+                'Incorporar camarones y cocinar hasta que cambien de color',
+                'Sazonar con salsa de pescado, jugo de lima y azúcar',
+                'Ajustar sabor: debe ser ácido, picante y salado',
+                'Servir caliente decorado con cilantro'
+            ],
+            imagen: '',
+            calificacion: 4.7,
+            resenas: 22
+        });
+
+        recipes.push({
+            id: nextRecipeId++,
+            nombre: 'Dumplings de Cerdo',
+            pais: 'China',
+            tiempo: 60,
+            categorias: ['Comida'],
+            ingredientes: [
+                { nombre: '300g de carne de cerdo molida', icono: '🥩' },
+                { nombre: '1 paquete de masa para dumplings', icono: '🥟' },
+                { nombre: '2 cebolletas picadas finamente', icono: '🧅' },
+                { nombre: '1 cucharada de jengibre rallado', icono: '🫚' },
+                { nombre: '2 cucharadas de salsa de soja', icono: '🥄' },
+                { nombre: '1 cucharada de aceite de sésamo', icono: '🫒' },
+                { nombre: '1 cucharadita de azúcar', icono: '🍯' },
+                { nombre: '1/2 cucharadita de sal', icono: '🧂' },
+                { nombre: 'Para la salsa:', icono: '🥄' },
+                { nombre: '3 cucharadas de salsa de soja', icono: '🥄' },
+                { nombre: '1 cucharada de vinagre negro', icono: '🥄' },
+                { nombre: '1 cucharadita de aceite de chile', icono: '🌶️' }
+            ],
+            instrucciones: [
+                'Mezclar carne con cebolletas, jengibre, salsa de soja, aceite de sésamo, azúcar y sal',
+                'Colocar 1 cucharada de relleno en centro de cada masa',
+                'Humedecer bordes con agua',
+                'Plegar y sellar formando dumplings',
+                'Hervir agua en olla grande',
+                'Cocinar dumplings 8-10 minutos hasta que floten',
+                'Alternativamente, cocinar al vapor 15 minutos',
+                'Mezclar ingredientes para salsa',
+                'Servir dumplings calientes con salsa'
+            ],
+            imagen: '',
+            calificacion: 4.5,
+            resenas: 26
+        });
+
+        // ========== RECETAS MEDITERRÁNEAS ==========
+        recipes.push({
+            id: nextRecipeId++,
+            nombre: 'Paella de Verduras',
+            pais: 'España',
+            tiempo: 40,
+            categorias: ['Comida', 'Saludable'],
+            ingredientes: [
+                { nombre: '400g de arroz bomba', icono: '🍚' },
+                { nombre: '1 litro de caldo de verduras', icono: '🍲' },
+                { nombre: '200g de judías verdes', icono: '🫛' },
+                { nombre: '200g de garrofón', icono: '🫘' },
+                { nombre: '1 pimiento rojo en tiras', icono: '🫑' },
+                { nombre: '200g de alcachofas', icono: '🌿' },
+                { nombre: '100g de tomate rallado', icono: '🍅' },
+                { nombre: '4 dientes de ajo picados', icono: '🧄' },
+                { nombre: '1g de azafrán', icono: '🌿' },
+                { nombre: '100ml de aceite de oliva', icono: '🫒' },
+                { nombre: '1 limón en cuartos', icono: '🍋' },
+                { nombre: 'Sal al gusto', icono: '🧂' }
+            ],
+            instrucciones: [
+                'Calentar aceite en paellera a fuego medio',
+                'Sofreír judías verdes y garrofón 5 minutos',
+                'Agregar pimiento y alcachofas, cocinar 3 minutos',
+                'Añadir ajo y tomate, cocinar hasta que se evapore',
+                'Incorporar arroz y tostar 2 minutos',
+                'Verter caldo caliente con azafrán',
+                'Cocinar 20 minutos sin remover',
+                'Dejar reposar 5 minutos',
+                'Servir con cuartos de limón'
+            ],
+            imagen: '',
+            calificacion: 4.3,
+            resenas: 19
+        });
+
+        recipes.push({
+            id: nextRecipeId++,
+            nombre: 'Tzatziki Griego',
+            pais: 'Grecia',
+            tiempo: 15,
+            categorias: ['Botana', 'Saludable'],
+            ingredientes: [
+                { nombre: '2 tazas de yogurt griego', icono: '🥛' },
+                { nombre: '1 pepino grande rallado', icono: '🥒' },
+                { nombre: '3 dientes de ajo picados finamente', icono: '🧄' },
+                { nombre: '2 cucharadas de aceite de oliva', icono: '🫒' },
+                { nombre: '1 cucharada de vinagre blanco', icono: '🥄' },
+                { nombre: '2 cucharadas de eneldo fresco picado', icono: '🌿' },
+                { nombre: '1/2 cucharadita de sal', icono: '🧂' },
+                { nombre: 'Pan pita para acompañar', icono: '🥖' }
+            ],
+            instrucciones: [
+                'Rallar pepino y escurrir en colador con sal 10 minutos',
+                'Exprimir pepino para eliminar exceso de agua',
+                'Mezclar yogurt con ajo, aceite de oliva y vinagre',
+                'Incorporar pepino escurrido y eneldo',
+                'Sazonar con sal al gusto',
+                'Refrigerar mínimo 1 hora antes de servir',
+                'Servir con pan pita tostado'
+            ],
+            imagen: '',
+            calificacion: 4.4,
+            resenas: 21
+        });
+
+        // ========== RECETAS DE ORIENTE MEDIO ==========
+        recipes.push({
+            id: nextRecipeId++,
+            nombre: 'Falafel',
+            pais: 'Líbano',
+            tiempo: 30,
+            categorias: ['Botana', 'Saludable'],
+            ingredientes: [
+                { nombre: '2 tazas de garbanzos secos remojados 24 horas', icono: '🫘' },
+                { nombre: '1 cebolla mediana picada', icono: '🧅' },
+                { nombre: '4 dientes de ajo', icono: '🧄' },
+                { nombre: '1/4 taza de perejil fresco', icono: '🌿' },
+                { nombre: '2 cucharadas de cilantro fresco', icono: '🌿' },
+                { nombre: '1 cucharadita de comino', icono: '🌶️' },
+                { nombre: '1 cucharadita de cilantro molido', icono: '🌶️' },
+                { nombre: '1/2 cucharadita de cayena', icono: '🌶️' },
+                { nombre: '1 cucharadita de sal', icono: '🧂' },
+                { nombre: '2 cucharadas de harina', icono: '🌾' },
+                { nombre: 'Aceite para freír', icono: '🫒' }
+            ],
+            instrucciones: [
+                'Escurrir garbanzos remojados (no cocinar)',
+                'Procesar garbanzos, cebolla y ajo hasta obtener pasta gruesa',
+                'Agregar hierbas, especias, sal y harina',
+                'Mezclar hasta formar masa que se pueda moldear',
+                'Refrigerar 1 hora',
+                'Formar bolitas del tamaño de una nuez',
+                'Freír en aceite caliente hasta dorar',
+                'Escurrir en papel absorbente',
+                'Servir calientes con tahini o tzatziki'
+            ],
+            imagen: '',
+            calificacion: 4.6,
+            resenas: 24
+        });
+
+        recipes.push({
+            id: nextRecipeId++,
+            nombre: 'Tabulé Libanés',
+            pais: 'Líbano',
+            tiempo: 20,
+            categorias: ['Saludable'],
+            ingredientes: [
+                { nombre: '1/2 taza de bulgur fino', icono: '🌾' },
+                { nombre: '3 tazas de perejil fresco picado finamente', icono: '🌿' },
+                { nombre: '1/2 taza de menta fresca picada', icono: '🌿' },
+                { nombre: '4 tomates medianos en cubitos', icono: '🍅' },
+                { nombre: '4 cebolletas picadas finamente', icono: '🧅' },
+                { nombre: '1/4 taza de jugo de limón fresco', icono: '🍋' },
+                { nombre: '1/4 taza de aceite de oliva extra virgen', icono: '🫒' },
+                { nombre: '1 cucharadita de sal', icono: '🧂' },
+                { nombre: '1/2 cucharadita de pimienta negra', icono: '🌶️' }
+            ],
+            instrucciones: [
+                'Remojar bulgur en agua tibia 15 minutos',
+                'Escurrir y exprimir para eliminar exceso de agua',
+                'Mezclar perejil, menta, tomates y cebolletas',
+                'Agregar bulgur escurrido',
+                'Aliñar con jugo de limón y aceite de oliva',
+                'Sazonar con sal y pimienta',
+                'Dejar reposar 30 minutos antes de servir',
+                'Servir fresco a temperatura ambiente'
+            ],
+            imagen: '',
+            calificacion: 4.5,
+            resenas: 18
+        });
+
+        // ========== RECETAS AFRICANAS Y EXÓTICAS ==========
+        recipes.push({
+            id: nextRecipeId++,
+            nombre: 'Tagine Marroquí',
+            pais: 'Marruecos',
+            tiempo: 90,
+            categorias: ['Comida'],
+            ingredientes: [
+                { nombre: '1 kg de cordero en trozos', icono: '🥩' },
+                { nombre: '2 cebollas grandes en cuartos', icono: '🧅' },
+                { nombre: '4 zanahorias en trozos grandes', icono: '🥕' },
+                { nombre: '200g de ciruelas pasas', icono: '🍇' },
+                { nombre: '100g de almendras', icono: '🥜' },
+                { nombre: '2 cucharaditas de canela', icono: '🌶️' },
+                { nombre: '1 cucharadita de jengibre molido', icono: '🫚' },
+                { nombre: '1 cucharadita de cúrcuma', icono: '🌶️' },
+                { nombre: '2 cucharadas de miel', icono: '🍯' },
+                { nombre: '3 cucharadas de aceite de oliva', icono: '🫒' },
+                { nombre: 'Cilantro fresco para decorar', icono: '🌿' },
+                { nombre: 'Cuscús para acompañar', icono: '🌾' }
+            ],
+            instrucciones: [
+                'Calentar aceite en tagine o olla pesada',
+                'Dorar cordero por todos lados',
+                'Agregar cebollas y especias, cocinar 5 minutos',
+                'Añadir agua suficiente para cubrir',
+                'Cocinar tapado 1 hora a fuego lento',
+                'Agregar zanahorias y cocinar 20 minutos más',
+                'Incorporar ciruelas, almendras y miel',
+                'Cocinar 10 minutos hasta que espese',
+                'Decorar con cilantro y servir con cuscús'
+            ],
+            imagen: '',
+            calificacion: 4.7,
+            resenas: 15
+        });
+
+        recipes.push({
+            id: nextRecipeId++,
+            nombre: 'Jollof Rice',
+            pais: 'Nigeria',
+            tiempo: 45,
+            categorias: ['Comida'],
+            ingredientes: [
+                { nombre: '3 tazas de arroz basmati', icono: '🍚' },
+                { nombre: '400g de pollo en trozos', icono: '🍗' },
+                { nombre: '1/2 taza de pasta de tomate', icono: '🍅' },
+                { nombre: '1 cebolla grande picada', icono: '🧅' },
+                { nombre: '3 dientes de ajo picados', icono: '🧄' },
+                { nombre: '1 pimiento rojo picado', icono: '🫑' },
+                { nombre: '2 cubos de caldo de pollo', icono: '🍲' },
+                { nombre: '1 cucharadita de curry en polvo', icono: '🌶️' },
+                { nombre: '1 cucharadita de tomillo', icono: '🌿' },
+                { nombre: '1/2 cucharadita de cayena', icono: '🌶️' },
+                { nombre: '4 tazas de agua', icono: '💧' },
+                { nombre: '1/4 taza de aceite vegetal', icono: '🫒' }
+            ],
+            instrucciones: [
+                'Calentar aceite en olla grande',
+                'Dorar pollo hasta cocinar completamente, reservar',
+                'En la misma olla, sofreír cebolla hasta dorar',
+                'Agregar ajo, pimiento y pasta de tomate',
+                'Cocinar 5 minutos hasta que se concentre',
+                'Añadir especias y cocinar 1 minuto',
+                'Incorporar arroz y mezclar bien',
+                'Agregar agua y cubos de caldo',
+                'Regresar pollo a la olla',
+                'Cocinar tapado 25 minutos hasta que arroz esté tierno'
+            ],
+            imagen: '',
+            calificacion: 4.4,
+            resenas: 12
+        });
+
+        // ========== RECETAS DE POSTRES ÚNICOS ==========
+        recipes.push({
+            id: nextRecipeId++,
+            nombre: 'Mochi de Fresa',
+            pais: 'Japón',
+            tiempo: 60,
+            categorias: ['Postre'],
+            ingredientes: [
+                { nombre: '1 taza de harina de arroz glutinoso', icono: '🌾' },
+                { nombre: '1/4 taza de azúcar', icono: '🍯' },
+                { nombre: '1 taza de agua', icono: '💧' },
+                { nombre: '200ml de crema para batir', icono: '🥛' },
+                { nombre: '2 cucharadas de azúcar glass', icono: '🍯' },
+                { nombre: '8 fresas grandes', icono: '🍓' },
+                { nombre: 'Almidón de maíz para espolvorear', icono: '🌽' }
+            ],
+            instrucciones: [
+                'Mezclar harina de arroz con azúcar y agua',
+                'Cocinar en microondas 2 minutos, revolver',
+                'Cocinar 1 minuto más hasta obtener masa pegajosa',
+                'Dejar enfriar ligeramente',
+                'Batir crema con azúcar glass hasta formar picos',
+                'Espolvorear superficie con almidón de maíz',
+                'Dividir masa en 8 porciones',
+                'Aplanar cada porción, colocar fresa y crema',
+                'Envolver cuidadosamente formando bolitas',
+                'Refrigerar 30 minutos antes de servir'
+            ],
+            imagen: '',
+            calificacion: 4.3,
+            resenas: 16
+        });
+
+        recipes.push({
+            id: nextRecipeId++,
+            nombre: 'Alfajores Argentinos',
+            pais: 'Argentina',
+            tiempo: 90,
+            categorias: ['Postre'],
+            ingredientes: [
+                { nombre: '200g de harina', icono: '🌾' },
+                { nombre: '100g de maicena', icono: '🌽' },
+                { nombre: '150g de mantequilla', icono: '🧈' },
+                { nombre: '3 yemas de huevo', icono: '🥚' },
+                { nombre: '1 cucharadita de polvo de hornear', icono: '🥄' },
+                { nombre: '1 cucharadita de extracto de vainilla', icono: '🌿' },
+                { nombre: '1 lata de dulce de leche', icono: '🥛' },
+                { nombre: '200g de coco rallado', icono: '🥥' },
+                { nombre: 'Azúcar glass para espolvorear', icono: '🍯' }
+            ],
+            instrucciones: [
+                'Mezclar harina, maicena y polvo de hornear',
+                'Batir mantequilla hasta cremosa',
+                'Agregar yemas y vainilla a la mantequilla',
+                'Incorporar ingredientes secos hasta formar masa',
+                'Envolver en film y refrigerar 1 hora',
+                'Estirar masa de 5mm de grosor',
+                'Cortar círculos de 6cm de diámetro',
+                'Hornear a 180°C por 12-15 minutos',
+                'Enfriar completamente',
+                'Unir de a pares con dulce de leche',
+                'Rebozar bordes en coco rallado'
+            ],
+            imagen: '',
+            calificacion: 4.8,
+            resenas: 34
+        });
+
+        // ========== BEBIDAS ESPECIALES ==========
+        recipes.push({
+            id: nextRecipeId++,
+            nombre: 'Bubble Tea',
+            pais: 'Taiwán',
+            tiempo: 30,
+            categorias: ['Bebida'],
+            ingredientes: [
+                { nombre: '1/2 taza de perlas de tapioca', icono: '⚫' },
+                { nombre: '2 bolsitas de té negro', icono: '🍃' },
+                { nombre: '2 tazas de agua caliente', icono: '💧' },
+                { nombre: '1/4 taza de azúcar morena', icono: '🍯' },
+                { nombre: '1/2 taza de leche entera', icono: '🥛' },
+                { nombre: '2 tazas de hielo', icono: '🧊' }
+            ],
+            instrucciones: [
+                'Hervir agua en olla grande',
+                'Cocinar perlas de tapioca 15 minutos',
+                'Escurrir y enjuagar con agua fría',
+                'Preparar té fuerte con agua caliente, dejar enfriar',
+                'Mezclar azúcar morena con las perlas',
+                'En vasos altos, colocar perlas endulzadas',
+                'Agregar hielo, té frío y leche',
+                'Mezclar bien y servir con pajita ancha'
+            ],
+            imagen: '',
+            calificacion: 4.2,
+            resenas: 20
+        });
+
+        recipes.push({
+            id: nextRecipeId++,
+            nombre: 'Horchata Mexicana',
+            pais: 'México',
+            tiempo: 180,
+            categorias: ['Bebida'],
+            ingredientes: [
+                { nombre: '1 taza de arroz blanco', icono: '🍚' },
+                { nombre: '1 rama de canela', icono: '🌶️' },
+                { nombre: '5 tazas de agua tibia', icono: '💧' },
+                { nombre: '3/4 taza de leche entera', icono: '🥛' },
+                { nombre: '1/2 taza de azúcar', icono: '🍯' },
+                { nombre: '1 cucharadita de extracto de vainilla', icono: '🌿' },
+                { nombre: '1/2 cucharadita de canela molida', icono: '🌶️' },
+                { nombre: 'Hielo para servir', icono: '🧊' }
+            ],
+            instrucciones: [
+                'Remojar arroz y canela en agua tibia 3 horas',
+                'Licuar mezcla hasta que esté muy suave',
+                'Colar a través de malla fina',
+                'Agregar leche, azúcar y vainilla',
+                'Mezclar bien hasta disolver azúcar',
+                'Refrigerar hasta que esté bien fría',
+                'Servir sobre hielo',
+                'Espolvorear canela molida antes de servir'
+            ],
+            imagen: '',
+            calificacion: 4.5,
+            resenas: 28
+        });
+
+        // ========== RECETAS VEGANAS ==========
+        recipes.push({
+            id: nextRecipeId++,
+            nombre: 'Curry de Lentejas',
+            pais: 'India',
+            tiempo: 35,
+            categorias: ['Comida', 'Saludable'],
+            ingredientes: [
+                { nombre: '2 tazas de lentejas rojas', icono: '🫘' },
+                { nombre: '1 lata de leche de coco', icono: '🥥' },
+                { nombre: '1 cebolla grande picada', icono: '🧅' },
+                { nombre: '3 dientes de ajo picados', icono: '🧄' },
+                { nombre: '1 trozo de jengibre de 3cm rallado', icono: '🫚' },
+                { nombre: '2 cucharaditas de curry en polvo', icono: '🌶️' },
+                { nombre: '1 cucharadita de cúrcuma', icono: '🌶️' },
+                { nombre: '1 cucharadita de comino', icono: '🌶️' },
+                { nombre: '2 tazas de caldo de verduras', icono: '🍲' },
+                { nombre: '2 cucharadas de aceite de coco', icono: '🥥' },
+                { nombre: 'Cilantro fresco para decorar', icono: '🌿' },
+                { nombre: 'Arroz basmati para acompañar', icono: '🍚' }
+            ],
+            instrucciones: [
+                'Enjuagar lentejas hasta que el agua salga clara',
+                'Calentar aceite de coco en olla grande',
+                'Sofreír cebolla hasta que esté dorada',
+                'Agregar ajo, jengibre y especias, cocinar 1 minuto',
+                'Añadir lentejas y caldo, llevar a ebullición',
+                'Reducir fuego y cocinar 20 minutos hasta que lentejas estén tiernas',
+                'Incorporar leche de coco y cocinar 5 minutos más',
+                'Ajustar consistencia con más caldo si es necesario',
+                'Sazonar con sal al gusto',
+                'Servir sobre arroz basmati decorado con cilantro'
+            ],
+            imagen: '',
+            calificacion: 4.6,
+            resenas: 25
+        });
+
         saveRecipes();
         console.log(`✅ Added ${recipes.length} comprehensive recipes to database`);
     }
