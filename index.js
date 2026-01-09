@@ -1540,6 +1540,889 @@ server.listen(PORT, '0.0.0.0', () => {
             resenas: 45
         });
         
+        // ========== MÁS DESAYUNOS ==========
+        recipes.push({
+            id: nextRecipeId++,
+            nombre: 'Huevos Benedictinos',
+            pais: 'Estados Unidos',
+            tiempo: 25,
+            categorias: ['Americana', 'Desayuno'],
+            ingredientes: [
+                { nombre: '4 huevos frescos', icono: '🥚' },
+                { nombre: '2 muffins ingleses cortados por la mitad', icono: '🍞' },
+                { nombre: '4 rebanadas de jamón canadiense', icono: '🥓' },
+                { nombre: '2 cucharadas de vinagre blanco', icono: '🥄' },
+                { nombre: 'Para la salsa holandesa:', icono: '🥄' },
+                { nombre: '3 yemas de huevo', icono: '🥚' },
+                { nombre: '100g de mantequilla sin sal', icono: '🧈' },
+                { nombre: '2 cucharadas de jugo de limón', icono: '🍋' },
+                { nombre: '1/4 cucharadita de sal', icono: '🧂' },
+                { nombre: 'Una pizca de cayena', icono: '🌶️' },
+                { nombre: 'Perejil fresco para decorar', icono: '🌿' }
+            ],
+            instrucciones: [
+                'Para la salsa holandesa: derretir mantequilla en baño maría',
+                'Batir yemas con limón, sal y cayena en otro bowl',
+                'Agregar mantequilla derretida en hilo fino mientras bates',
+                'Mantener tibia en baño maría',
+                'Hervir agua con vinagre en olla honda',
+                'Crear remolino y agregar huevos uno por uno para pochar',
+                'Cocinar 3-4 minutos hasta que claras estén firmes',
+                'Tostar muffins ingleses hasta dorar',
+                'Calentar jamón en sartén por 1 minuto cada lado',
+                'Montar: muffin, jamón, huevo pochado, salsa holandesa',
+                'Decorar con perejil y servir inmediatamente'
+            ],
+            imagen: 'img/huevos-benedictinos.svg',
+            calificacion: 4.6,
+            resenas: 18
+        });
+
+        recipes.push({
+            id: nextRecipeId++,
+            nombre: 'Yogurt con Granola',
+            pais: 'Grecia',
+            tiempo: 10,
+            categorias: ['Saludable', 'Desayuno'],
+            ingredientes: [
+                { nombre: '2 tazas de yogurt griego natural', icono: '🥛' },
+                { nombre: '1 taza de granola casera', icono: '🥣' },
+                { nombre: '1/2 taza de fresas frescas cortadas', icono: '🍓' },
+                { nombre: '1/2 taza de arándanos frescos', icono: '🫐' },
+                { nombre: '2 cucharadas de miel de abeja', icono: '🍯' },
+                { nombre: '2 cucharadas de nueces picadas', icono: '🥜' },
+                { nombre: '1 cucharada de semillas de chía', icono: '🌱' },
+                { nombre: '1 kiwi pelado y cortado', icono: '🥝' }
+            ],
+            instrucciones: [
+                'Lavar y cortar todas las frutas frescas',
+                'En vasos o bowls, colocar una capa de yogurt griego',
+                'Agregar una capa de granola sobre el yogurt',
+                'Añadir frutas mezcladas uniformemente',
+                'Repetir capas hasta llenar el recipiente',
+                'Rociar miel sobre la capa superior',
+                'Espolvorear nueces picadas y semillas de chía',
+                'Servir inmediatamente o refrigerar máximo 2 horas'
+            ],
+            imagen: 'img/yogurt-con-granola.svg',
+            calificacion: 4.3,
+            resenas: 22
+        });
+
+        recipes.push({
+            id: nextRecipeId++,
+            nombre: 'Pan Francés',
+            pais: 'Francia',
+            tiempo: 15,
+            categorias: ['Francesa', 'Desayuno'],
+            ingredientes: [
+                { nombre: '8 rebanadas de pan brioche del día anterior', icono: '🍞' },
+                { nombre: '4 huevos grandes', icono: '🥚' },
+                { nombre: '1/2 taza de leche entera', icono: '🥛' },
+                { nombre: '2 cucharadas de azúcar', icono: '🍯' },
+                { nombre: '1 cucharadita de extracto de vainilla', icono: '🌿' },
+                { nombre: '1/2 cucharadita de canela molida', icono: '🌶️' },
+                { nombre: '1/4 cucharadita de sal', icono: '🧂' },
+                { nombre: '3 cucharadas de mantequilla', icono: '🧈' },
+                { nombre: 'Azúcar glass para espolvorear', icono: '🍯' },
+                { nombre: 'Miel de maple', icono: '🍯' }
+            ],
+            instrucciones: [
+                'Batir huevos, leche, azúcar, vainilla, canela y sal en bowl hondo',
+                'Sumergir cada rebanada de pan en la mezcla por ambos lados',
+                'Dejar que absorba bien la mezcla por 30 segundos',
+                'Calentar mantequilla en sartén grande a fuego medio',
+                'Cocinar rebanadas 3-4 minutos por lado hasta dorar',
+                'Mantener calientes en horno a 100°C',
+                'Espolvorear con azúcar glass antes de servir',
+                'Acompañar con miel de maple tibia'
+            ],
+            imagen: 'img/pan-frances.svg',
+            calificacion: 4.4,
+            resenas: 16
+        });
+
+        recipes.push({
+            id: nextRecipeId++,
+            nombre: 'Desayuno Japonés',
+            pais: 'Japón',
+            tiempo: 20,
+            categorias: ['Japonesa', 'Desayuno'],
+            ingredientes: [
+                { nombre: '2 tazas de arroz japonés cocido', icono: '🍚' },
+                { nombre: '4 huevos frescos', icono: '🥚' },
+                { nombre: '4 cucharadas de salsa de soja', icono: '🥄' },
+                { nombre: '2 cucharadas de miso blanco', icono: '🥄' },
+                { nombre: '1 taza de caldo dashi', icono: '🍲' },
+                { nombre: '100g de tofu sedoso', icono: '🧀' },
+                { nombre: '2 cebolletas picadas', icono: '🧅' },
+                { nombre: '1 hoja de nori cortada en tiras', icono: '🌿' },
+                { nombre: '1 cucharada de semillas de sésamo', icono: '🌱' },
+                { nombre: '100g de salmón salado', icono: '🐟' }
+            ],
+            instrucciones: [
+                'Calentar arroz cocido en microondas o vapor',
+                'Preparar sopa miso: disolver miso en caldo dashi caliente',
+                'Agregar tofu en cubitos a la sopa miso',
+                'Cocinar huevos: hervir 6 minutos para yema cremosa',
+                'Pelar huevos cuidadosamente bajo agua fría',
+                'Servir arroz en bowls individuales',
+                'Colocar huevo sobre arroz, rociar con salsa de soja',
+                'Acompañar con sopa miso, salmón y nori',
+                'Espolvorear semillas de sésamo y cebolletas'
+            ],
+            imagen: 'img/desayuno-japones.svg',
+            calificacion: 4.2,
+            resenas: 12
+        });
+
+        // ========== MÁS COMIDAS ==========
+        recipes.push({
+            id: nextRecipeId++,
+            nombre: 'Arepas Venezolanas',
+            pais: 'Venezuela',
+            tiempo: 30,
+            categorias: ['Venezolana', 'Comida'],
+            ingredientes: [
+                { nombre: '2 tazas de harina de maíz precocida', icono: '🌽' },
+                { nombre: '2 1/2 tazas de agua tibia', icono: '💧' },
+                { nombre: '1 cucharadita de sal', icono: '🧂' },
+                { nombre: '1 cucharada de aceite vegetal', icono: '🫒' },
+                { nombre: 'Para el relleno:', icono: '🥩' },
+                { nombre: '300g de pollo desmenuzado', icono: '🍗' },
+                { nombre: '200g de queso blanco rallado', icono: '🧀' },
+                { nombre: '1 aguacate en rebanadas', icono: '🥑' },
+                { nombre: '2 tomates en rodajas', icono: '🍅' },
+                { nombre: 'Mayonesa al gusto', icono: '🥄' }
+            ],
+            instrucciones: [
+                'Mezclar agua tibia con sal hasta disolver',
+                'Agregar harina de maíz gradualmente mientras mezclas',
+                'Amasar hasta obtener masa suave y sin grumos',
+                'Dejar reposar 5 minutos para hidratar',
+                'Formar bolas del tamaño de una pelota de tenis',
+                'Aplanar formando discos de 1cm de grosor',
+                'Cocinar en plancha o sartén sin aceite 7 minutos por lado',
+                'Deben sonar huecas al golpear',
+                'Abrir cuidadosamente por un lado formando bolsillo',
+                'Rellenar con pollo, queso, aguacate y tomate',
+                'Servir calientes inmediatamente'
+            ],
+            imagen: 'img/arepas-venezolanas.svg',
+            calificacion: 4.5,
+            resenas: 28
+        });
+
+        recipes.push({
+            id: nextRecipeId++,
+            nombre: 'Empanadas Colombianas',
+            pais: 'Colombia',
+            tiempo: 45,
+            categorias: ['Colombiana', 'Comida'],
+            ingredientes: [
+                { nombre: '2 tazas de harina de maíz amarilla', icono: '🌽' },
+                { nombre: '2 tazas de agua', icono: '💧' },
+                { nombre: '1 cucharadita de sal', icono: '🧂' },
+                { nombre: '2 cucharadas de aceite', icono: '🫒' },
+                { nombre: 'Para el relleno:', icono: '🥩' },
+                { nombre: '300g de carne molida', icono: '🥩' },
+                { nombre: '2 papas medianas en cubitos', icono: '🥔' },
+                { nombre: '1 cebolla picada', icono: '🧅' },
+                { nombre: '2 dientes de ajo', icono: '🧄' },
+                { nombre: '1 cucharadita de comino', icono: '🌶️' },
+                { nombre: '1 cucharadita de color (achiote)', icono: '🌶️' },
+                { nombre: 'Aceite para freír', icono: '🫒' }
+            ],
+            instrucciones: [
+                'Hervir agua con sal y aceite',
+                'Agregar harina de maíz gradualmente revolviendo',
+                'Cocinar 5 minutos hasta formar masa homogénea',
+                'Dejar enfriar y amasar hasta suave',
+                'Para relleno: sofreír cebolla y ajo',
+                'Agregar carne, comino y color, cocinar 10 minutos',
+                'Añadir papas cocidas, sazonar y enfriar',
+                'Formar círculos con la masa, rellenar',
+                'Doblar y sellar bordes con tenedor',
+                'Freír en aceite caliente hasta dorar',
+                'Escurrir y servir calientes'
+            ],
+            imagen: 'img/empanadas-colombianas.svg',
+            calificacion: 4.6,
+            resenas: 32
+        });
+
+        recipes.push({
+            id: nextRecipeId++,
+            nombre: 'Gallo Pinto',
+            pais: 'Costa Rica',
+            tiempo: 20,
+            categorias: ['Costarricense', 'Comida'],
+            ingredientes: [
+                { nombre: '2 tazas de arroz cocido del día anterior', icono: '🍚' },
+                { nombre: '1 taza de frijoles negros cocidos', icono: '🫘' },
+                { nombre: '1/2 taza de caldo de frijoles', icono: '🍲' },
+                { nombre: '1 cebolla mediana picada', icono: '🧅' },
+                { nombre: '1 pimiento rojo picado', icono: '🫑' },
+                { nombre: '3 dientes de ajo picados', icono: '🧄' },
+                { nombre: '2 cucharadas de aceite vegetal', icono: '🫒' },
+                { nombre: '2 cucharadas de salsa inglesa', icono: '🥄' },
+                { nombre: '1 cucharadita de comino', icono: '🌶️' },
+                { nombre: 'Sal y pimienta al gusto', icono: '🧂' },
+                { nombre: 'Cilantro fresco picado', icono: '🌿' }
+            ],
+            instrucciones: [
+                'Calentar aceite en sartén grande a fuego medio',
+                'Sofreír cebolla hasta transparente',
+                'Agregar pimiento y ajo, cocinar 3 minutos',
+                'Añadir frijoles con su caldo',
+                'Incorporar salsa inglesa y comino',
+                'Agregar arroz desmenuzando grumos',
+                'Mezclar todo cuidadosamente',
+                'Cocinar 5-7 minutos revolviendo ocasionalmente',
+                'Sazonar con sal y pimienta',
+                'Servir decorado con cilantro fresco'
+            ],
+            imagen: 'img/gallo-pinto.svg',
+            calificacion: 4.3,
+            resenas: 19
+        });
+
+        recipes.push({
+            id: nextRecipeId++,
+            nombre: 'Pupusas Salvadoreñas',
+            pais: 'El Salvador',
+            tiempo: 40,
+            categorias: ['Salvadoreña', 'Comida'],
+            ingredientes: [
+                { nombre: '2 tazas de masa harina para pupusas', icono: '🌽' },
+                { nombre: '1 1/4 tazas de agua tibia', icono: '💧' },
+                { nombre: '1 cucharadita de sal', icono: '🧂' },
+                { nombre: 'Para el relleno:', icono: '🧀' },
+                { nombre: '200g de queso mozzarella rallado', icono: '🧀' },
+                { nombre: '200g de chicharrón prensado', icono: '🥓' },
+                { nombre: '1 taza de frijoles refritos', icono: '🫘' },
+                { nombre: 'Para la curtida:', icono: '🥬' },
+                { nombre: '1/2 repollo finamente cortado', icono: '🥬' },
+                { nombre: '1 zanahoria rallada', icono: '🥕' },
+                { nombre: '1/2 taza de vinagre blanco', icono: '🥄' },
+                { nombre: '1 cucharadita de orégano', icono: '🌿' }
+            ],
+            instrucciones: [
+                'Mezclar masa harina con agua y sal hasta formar masa suave',
+                'Dejar reposar 10 minutos',
+                'Para curtida: mezclar vegetales con vinagre y orégano',
+                'Formar bolas de masa del tamaño de una pelota de tenis',
+                'Hacer hoyo en el centro, rellenar con queso y chicharrón',
+                'Cerrar y aplanar cuidadosamente',
+                'Cocinar en comal sin aceite 3-4 minutos por lado',
+                'Deben inflarse ligeramente',
+                'Servir calientes con curtida y salsa'
+            ],
+            imagen: 'img/pupusas-salvadorenas.svg',
+            calificacion: 4.4,
+            resenas: 25
+        });
+
+        // ========== MÁS CENAS ==========
+        recipes.push({
+            id: nextRecipeId++,
+            nombre: 'Enchiladas de Desayuno',
+            pais: 'México',
+            tiempo: 35,
+            categorias: ['Mexicana', 'Cena'],
+            ingredientes: [
+                { nombre: '8 tortillas de maíz', icono: '🌮' },
+                { nombre: '8 huevos revueltos', icono: '🥚' },
+                { nombre: '2 tazas de salsa roja', icono: '🍅' },
+                { nombre: '200g de queso fresco desmoronado', icono: '🧀' },
+                { nombre: '1/2 taza de crema mexicana', icono: '🥛' },
+                { nombre: '1/4 cebolla blanca en rebanadas', icono: '🧅' },
+                { nombre: '200g de chorizo mexicano', icono: '🌭' },
+                { nombre: '1/2 taza de aceite para freír', icono: '🫒' },
+                { nombre: 'Cilantro fresco para decorar', icono: '🌿' }
+            ],
+            instrucciones: [
+                'Cocinar chorizo en sartén hasta dorar, reservar',
+                'Preparar huevos revueltos cremosos, mezclar con chorizo',
+                'Calentar salsa roja en olla pequeña',
+                'Freír tortillas ligeramente en aceite caliente',
+                'Sumergir cada tortilla en salsa caliente',
+                'Rellenar con mezcla de huevo y chorizo',
+                'Enrollar y colocar en plato',
+                'Bañar con más salsa caliente',
+                'Decorar con queso, crema, cebolla y cilantro',
+                'Servir inmediatamente muy calientes'
+            ],
+            imagen: 'img/enchiladas-desayuno.svg',
+            calificacion: 4.5,
+            resenas: 21
+        });
+
+        recipes.push({
+            id: nextRecipeId++,
+            nombre: 'Molletes Mexicanos',
+            pais: 'México',
+            tiempo: 15,
+            categorias: ['Mexicana', 'Cena'],
+            ingredientes: [
+                { nombre: '4 bolillos o pan francés', icono: '🥖' },
+                { nombre: '2 tazas de frijoles refritos', icono: '🫘' },
+                { nombre: '300g de queso oaxaca o monterey jack rallado', icono: '🧀' },
+                { nombre: '2 tomates en cubitos', icono: '🍅' },
+                { nombre: '1/2 cebolla blanca picada', icono: '🧅' },
+                { nombre: '2 chiles serranos picados', icono: '🌶️' },
+                { nombre: '1/4 taza de cilantro picado', icono: '🌿' },
+                { nombre: '2 aguacates en rebanadas', icono: '🥑' },
+                { nombre: 'Salsa verde al gusto', icono: '🌶️' }
+            ],
+            instrucciones: [
+                'Precalentar horno a 200°C',
+                'Cortar bolillos por la mitad a lo largo',
+                'Tostar ligeramente en el horno 5 minutos',
+                'Untar frijoles refritos generosamente',
+                'Cubrir con queso rallado abundante',
+                'Hornear 8-10 minutos hasta que el queso se derrita',
+                'Mientras tanto, mezclar tomate, cebolla, chile y cilantro',
+                'Sacar del horno cuando el queso burbujee',
+                'Agregar pico de gallo y aguacate',
+                'Servir con salsa verde al lado'
+            ],
+            imagen: 'img/molletes-mexicanos.svg',
+            calificacion: 4.2,
+            resenas: 18
+        });
+
+        // ========== MÁS POSTRES ==========
+        recipes.push({
+            id: nextRecipeId++,
+            nombre: 'Banana Bread',
+            pais: 'Estados Unidos',
+            tiempo: 75,
+            categorias: ['Americana', 'Postre'],
+            ingredientes: [
+                { nombre: '3 plátanos muy maduros machacados', icono: '🍌' },
+                { nombre: '1/3 taza de mantequilla derretida', icono: '🧈' },
+                { nombre: '3/4 taza de azúcar', icono: '🍯' },
+                { nombre: '1 huevo batido', icono: '🥚' },
+                { nombre: '1 cucharadita de extracto de vainilla', icono: '🌿' },
+                { nombre: '1 cucharadita de bicarbonato de sodio', icono: '🥄' },
+                { nombre: '1/4 cucharadita de sal', icono: '🧂' },
+                { nombre: '1 1/2 tazas de harina para todo uso', icono: '🌾' },
+                { nombre: '1/2 taza de nueces picadas (opcional)', icono: '🥜' }
+            ],
+            instrucciones: [
+                'Precalentar horno a 175°C y engrasar molde para pan',
+                'Machacar plátanos hasta obtener puré con algunos trozos',
+                'Mezclar mantequilla derretida con plátanos',
+                'Agregar azúcar, huevo batido y vainilla',
+                'Incorporar bicarbonato y sal',
+                'Añadir harina gradualmente hasta apenas integrar',
+                'Si se usan, agregar nueces picadas',
+                'Verter en molde preparado',
+                'Hornear 60-65 minutos hasta que palillo salga limpio',
+                'Enfriar 10 minutos antes de desmoldar',
+                'Servir tibio o a temperatura ambiente'
+            ],
+            imagen: 'img/banana-bread.svg',
+            calificacion: 4.4,
+            resenas: 27
+        });
+
+        // ========== MÁS BEBIDAS ==========
+        recipes.push({
+            id: nextRecipeId++,
+            nombre: 'Café con Leche',
+            pais: 'España',
+            tiempo: 5,
+            categorias: ['Española', 'Bebida'],
+            ingredientes: [
+                { nombre: '1/2 taza de café espresso fuerte', icono: '☕' },
+                { nombre: '1/2 taza de leche entera', icono: '🥛' },
+                { nombre: '2 cucharaditas de azúcar (opcional)', icono: '🍯' },
+                { nombre: 'Canela en polvo para espolvorear', icono: '🌶️' }
+            ],
+            instrucciones: [
+                'Preparar café espresso fuerte y caliente',
+                'Calentar leche en cazo sin que hierva',
+                'Espumar leche con batidor o vaporizador',
+                'Servir café en taza grande',
+                'Agregar leche caliente espumada',
+                'Endulzar con azúcar si se desea',
+                'Espolvorear canela por encima',
+                'Servir inmediatamente muy caliente'
+            ],
+            imagen: 'img/cafe-con-leche.svg',
+            calificacion: 4.1,
+            resenas: 15
+        });
+
+        // ========== MÁS COMIDAS INTERNACIONALES ==========
+        recipes.push({
+            id: nextRecipeId++,
+            nombre: 'Curry de Pollo Tailandés',
+            pais: 'Tailandia',
+            tiempo: 35,
+            categorias: ['Tailandesa', 'Comida'],
+            ingredientes: [
+                { nombre: '600g de muslos de pollo sin hueso, en trozos', icono: '🍗' },
+                { nombre: '400ml de leche de coco', icono: '🥥' },
+                { nombre: '3 cucharadas de pasta de curry rojo', icono: '🌶️' },
+                { nombre: '2 cucharadas de salsa de pescado', icono: '🐟' },
+                { nombre: '2 cucharadas de azúcar de palma', icono: '🍯' },
+                { nombre: '1 berenjena asiática en cubos', icono: '🍆' },
+                { nombre: '100g de ejotes cortados', icono: '🫛' },
+                { nombre: '4 hojas de albahaca tailandesa', icono: '🌿' },
+                { nombre: '2 chiles rojos en rodajas', icono: '🌶️' },
+                { nombre: '2 cucharadas de aceite vegetal', icono: '🫒' },
+                { nombre: 'Arroz jasmín para acompañar', icono: '🍚' }
+            ],
+            instrucciones: [
+                'Calentar aceite en wok o sartén grande a fuego medio-alto',
+                'Freír pasta de curry 2 minutos hasta aromática',
+                'Agregar 1/2 taza de leche de coco, mezclar bien',
+                'Añadir pollo y cocinar hasta que cambie de color',
+                'Incorporar resto de leche de coco, salsa de pescado y azúcar',
+                'Llevar a ebullición, reducir fuego y cocinar 15 minutos',
+                'Agregar berenjena y ejotes, cocinar 8 minutos más',
+                'Añadir albahaca y chiles en los últimos 2 minutos',
+                'Ajustar sazón con más salsa de pescado o azúcar',
+                'Servir sobre arroz jasmín caliente'
+            ],
+            imagen: 'img/curry-pollo-tailandes.svg',
+            calificacion: 4.6,
+            resenas: 24
+        });
+
+        recipes.push({
+            id: nextRecipeId++,
+            nombre: 'Risotto de Hongos',
+            pais: 'Italia',
+            tiempo: 40,
+            categorias: ['Italiana', 'Comida'],
+            ingredientes: [
+                { nombre: '300g de arroz arborio', icono: '🍚' },
+                { nombre: '1 litro de caldo de pollo caliente', icono: '🍲' },
+                { nombre: '300g de hongos mixtos (portobello, shiitake)', icono: '🍄' },
+                { nombre: '1 cebolla mediana finamente picada', icono: '🧅' },
+                { nombre: '3 dientes de ajo picados', icono: '🧄' },
+                { nombre: '1/2 taza de vino blanco seco', icono: '🍷' },
+                { nombre: '100g de queso parmesano rallado', icono: '🧀' },
+                { nombre: '3 cucharadas de mantequilla', icono: '🧈' },
+                { nombre: '2 cucharadas de aceite de oliva', icono: '🫒' },
+                { nombre: '2 cucharadas de perejil fresco picado', icono: '🌿' },
+                { nombre: 'Sal y pimienta negra al gusto', icono: '🧂' }
+            ],
+            instrucciones: [
+                'Limpiar y cortar hongos en láminas gruesas',
+                'Saltear hongos en aceite hasta dorar, reservar',
+                'En la misma sartén, sofreír cebolla hasta transparente',
+                'Agregar ajo y cocinar 1 minuto más',
+                'Añadir arroz, tostar 2 minutos revolviendo',
+                'Verter vino blanco, cocinar hasta evaporar',
+                'Agregar caldo caliente de a poco, revolviendo constantemente',
+                'Cocinar 18-20 minutos hasta que arroz esté cremoso',
+                'Incorporar hongos, mantequilla y parmesano',
+                'Sazonar y decorar con perejil antes de servir'
+            ],
+            imagen: 'img/risotto-hongos.svg',
+            calificacion: 4.5,
+            resenas: 19
+        });
+
+        recipes.push({
+            id: nextRecipeId++,
+            nombre: 'Ceviche Peruano',
+            pais: 'Perú',
+            tiempo: 25,
+            categorias: ['Peruana', 'Comida'],
+            ingredientes: [
+                { nombre: '500g de pescado blanco fresco (corvina o lenguado)', icono: '🐟' },
+                { nombre: '1 taza de jugo de limón fresco', icono: '🍋' },
+                { nombre: '1 cebolla roja mediana en juliana fina', icono: '🧅' },
+                { nombre: '2 ajíes amarillos sin venas, picados', icono: '🌶️' },
+                { nombre: '2 dientes de ajo picados finamente', icono: '🧄' },
+                { nombre: '1 trozo de jengibre de 2cm, rallado', icono: '🫚' },
+                { nombre: '1 camote cocido en rodajas', icono: '🍠' },
+                { nombre: '1 taza de maíz cancha tostado', icono: '🌽' },
+                { nombre: '1/4 taza de cilantro picado', icono: '🌿' },
+                { nombre: 'Sal y pimienta al gusto', icono: '🧂' },
+                { nombre: 'Hojas de lechuga para servir', icono: '🥬' }
+            ],
+            instrucciones: [
+                'Cortar pescado en cubos de 2cm, verificar que no tenga espinas',
+                'Colocar pescado en bowl de vidrio o cerámica',
+                'Agregar jugo de limón hasta cubrir completamente',
+                'Añadir ají amarillo, ajo, jengibre y sal',
+                'Mezclar suavemente y refrigerar 15 minutos',
+                'El pescado debe verse opaco (cocido por el ácido)',
+                'Agregar cebolla roja y mezclar delicadamente',
+                'Ajustar sazón con sal y pimienta',
+                'Servir inmediatamente sobre hojas de lechuga',
+                'Acompañar con camote y maíz cancha, decorar con cilantro'
+            ],
+            imagen: 'img/ceviche-peruano.svg',
+            calificacion: 4.7,
+            resenas: 31
+        });
+
+        recipes.push({
+            id: nextRecipeId++,
+            nombre: 'Bibimbap Coreano',
+            pais: 'Corea del Sur',
+            tiempo: 45,
+            categorias: ['Coreana', 'Comida'],
+            ingredientes: [
+                { nombre: '2 tazas de arroz blanco cocido', icono: '🍚' },
+                { nombre: '200g de carne de res en tiras finas', icono: '🥩' },
+                { nombre: '4 huevos', icono: '🥚' },
+                { nombre: '100g de espinacas frescas', icono: '🥬' },
+                { nombre: '1 zanahoria en juliana', icono: '🥕' },
+                { nombre: '100g de brotes de soja', icono: '🌱' },
+                { nombre: '100g de hongos shiitake', icono: '🍄' },
+                { nombre: '3 cucharadas de aceite de sésamo', icono: '🫒' },
+                { nombre: '3 cucharadas de salsa de soja', icono: '🥄' },
+                { nombre: '2 cucharadas de pasta gochujang', icono: '🌶️' },
+                { nombre: '2 dientes de ajo picados', icono: '🧄' },
+                { nombre: '1 cucharada de semillas de sésamo', icono: '🌱' }
+            ],
+            instrucciones: [
+                'Marinar carne con salsa de soja, ajo y aceite de sésamo',
+                'Blanquear espinacas 1 minuto, escurrir y sazonar',
+                'Saltear zanahoria, brotes de soja y hongos por separado',
+                'Cocinar carne marinada hasta dorar',
+                'Freír huevos estrellados con yemas líquidas',
+                'Calentar arroz y dividir en 4 bowls',
+                'Acomodar vegetales y carne sobre arroz en secciones',
+                'Colocar huevo frito en el centro',
+                'Servir con gochujang al lado',
+                'Mezclar todo antes de comer, espolvorear sésamo'
+            ],
+            imagen: 'img/bibimbap-coreano.svg',
+            calificacion: 4.4,
+            resenas: 17
+        });
+
+        // ========== MÁS CENAS INTERNACIONALES ==========
+        recipes.push({
+            id: nextRecipeId++,
+            nombre: 'Moussaka Griega',
+            pais: 'Grecia',
+            tiempo: 90,
+            categorias: ['Griega', 'Cena'],
+            ingredientes: [
+                { nombre: '2 berenjenas grandes en rodajas de 1cm', icono: '🍆' },
+                { nombre: '500g de carne molida de cordero', icono: '🥩' },
+                { nombre: '1 cebolla grande picada', icono: '🧅' },
+                { nombre: '3 dientes de ajo picados', icono: '🧄' },
+                { nombre: '400g de tomates triturados', icono: '🍅' },
+                { nombre: '1/2 taza de vino tinto', icono: '🍷' },
+                { nombre: '1 cucharadita de canela molida', icono: '🌶️' },
+                { nombre: '1/2 taza de aceite de oliva', icono: '🫒' },
+                { nombre: 'Para la bechamel:', icono: '🥛' },
+                { nombre: '4 cucharadas de mantequilla', icono: '🧈' },
+                { nombre: '4 cucharadas de harina', icono: '🌾' },
+                { nombre: '2 tazas de leche caliente', icono: '🥛' },
+                { nombre: '100g de queso kefalotyri rallado', icono: '🧀' }
+            ],
+            instrucciones: [
+                'Salar berenjenas y dejar escurrir 30 minutos',
+                'Secar y freír berenjenas en aceite hasta dorar',
+                'Sofreír cebolla y ajo hasta transparentes',
+                'Agregar carne y cocinar hasta dorar',
+                'Añadir tomates, vino y canela, cocinar 20 minutos',
+                'Para bechamel: derretir mantequilla, agregar harina',
+                'Incorporar leche gradualmente batiendo',
+                'Cocinar hasta espesar, agregar queso',
+                'En fuente, alternar capas: berenjena, carne, bechamel',
+                'Hornear a 180°C por 45 minutos hasta dorar',
+                'Dejar reposar 15 minutos antes de cortar'
+            ],
+            imagen: 'img/moussaka-griega.svg',
+            calificacion: 4.6,
+            resenas: 22
+        });
+
+        recipes.push({
+            id: nextRecipeId++,
+            nombre: 'Coq au Vin Francés',
+            pais: 'Francia',
+            tiempo: 120,
+            categorias: ['Francesa', 'Cena'],
+            ingredientes: [
+                { nombre: '1 pollo entero cortado en presas', icono: '🍗' },
+                { nombre: '750ml de vino tinto Burgundy', icono: '🍷' },
+                { nombre: '200g de tocino en cubitos', icono: '🥓' },
+                { nombre: '12 cebollitas perla', icono: '🧅' },
+                { nombre: '250g de hongos botón', icono: '🍄' },
+                { nombre: '3 dientes de ajo picados', icono: '🧄' },
+                { nombre: '2 cucharadas de harina', icono: '🌾' },
+                { nombre: '2 cucharadas de mantequilla', icono: '🧈' },
+                { nombre: '2 hojas de laurel', icono: '🌿' },
+                { nombre: '3 ramitas de tomillo fresco', icono: '🌿' },
+                { nombre: '2 cucharadas de perejil picado', icono: '🌿' },
+                { nombre: 'Sal y pimienta al gusto', icono: '🧂' }
+            ],
+            instrucciones: [
+                'Marinar pollo en vino tinto 2 horas o toda la noche',
+                'Escurrir pollo, reservar vino de marinado',
+                'Freír tocino hasta crujiente, reservar grasa',
+                'Dorar presas de pollo en grasa de tocino',
+                'Retirar pollo, sofreír cebollitas y hongos',
+                'Agregar ajo y harina, cocinar 2 minutos',
+                'Verter vino de marinado gradualmente',
+                'Regresar pollo, agregar hierbas',
+                'Cocinar tapado 1 hora a fuego lento',
+                'Incorporar tocino en últimos 10 minutos',
+                'Servir decorado with perejil fresco'
+            ],
+            imagen: 'img/coq-au-vin.svg',
+            calificacion: 4.7,
+            resenas: 18
+        });
+
+        // ========== MÁS POSTRES INTERNACIONALES ==========
+        recipes.push({
+            id: nextRecipeId++,
+            nombre: 'Crème Brûlée',
+            pais: 'Francia',
+            tiempo: 240,
+            categorias: ['Francesa', 'Postre'],
+            ingredientes: [
+                { nombre: '2 tazas de crema para batir', icono: '🥛' },
+                { nombre: '6 yemas de huevo grandes', icono: '🥚' },
+                { nombre: '1/3 taza de azúcar granulada', icono: '🍯' },
+                { nombre: '1 cucharadita de extracto de vainilla', icono: '🌿' },
+                { nombre: '6 cucharadas de azúcar para caramelizar', icono: '🍯' },
+                { nombre: 'Una pizca de sal', icono: '🧂' }
+            ],
+            instrucciones: [
+                'Precalentar horno a 160°C',
+                'Calentar crema en cazo hasta que humee (no hervir)',
+                'Batir yemas con azúcar hasta que estén pálidas',
+                'Agregar vainilla y sal a las yemas',
+                'Verter crema caliente lentamente sobre yemas batiendo',
+                'Colar mezcla para eliminar grumos',
+                'Dividir en 6 ramekins',
+                'Hornear en baño maría 35-40 minutos hasta cuajar',
+                'Refrigerar mínimo 3 horas',
+                'Antes de servir, espolvorear azúcar y caramelizar con soplete',
+                'Servir inmediatamente después de caramelizar'
+            ],
+            imagen: 'img/creme-brulee.svg',
+            calificacion: 4.8,
+            resenas: 26
+        });
+
+        recipes.push({
+            id: nextRecipeId++,
+            nombre: 'Tres Leches',
+            pais: 'Nicaragua',
+            tiempo: 180,
+            categorias: ['Nicaragüense', 'Postre'],
+            ingredientes: [
+                { nombre: '1 taza de harina para todo uso', icono: '🌾' },
+                { nombre: '1 1/2 cucharaditas de polvo de hornear', icono: '🥄' },
+                { nombre: '5 huevos separados', icono: '🥚' },
+                { nombre: '1 taza de azúcar', icono: '🍯' },
+                { nombre: '1/3 taza de leche entera', icono: '🥛' },
+                { nombre: '1 cucharadita de extracto de vainilla', icono: '🌿' },
+                { nombre: 'Para la mezcla de leches:', icono: '🥛' },
+                { nombre: '1 lata de leche evaporada', icono: '🥛' },
+                { nombre: '1 lata de leche condensada', icono: '🥛' },
+                { nombre: '1/2 taza de crema para batir', icono: '🥛' },
+                { nombre: 'Para el merengue:', icono: '🥚' },
+                { nombre: '3 claras de huevo', icono: '🥚' },
+                { nombre: '3 cucharadas de azúcar', icono: '🍯' }
+            ],
+            instrucciones: [
+                'Precalentar horno a 180°C, engrasar molde rectangular',
+                'Mezclar harina y polvo de hornear',
+                'Batir yemas con 3/4 taza de azúcar hasta cremosas',
+                'Agregar leche y vainilla a las yemas',
+                'Incorporar harina gradualmente',
+                'Batir claras a punto de nieve, agregar azúcar restante',
+                'Incorporar claras a la mezcla con movimientos envolventes',
+                'Hornear 25-30 minutos hasta dorar',
+                'Mezclar las tres leches, verter sobre pastel tibio',
+                'Refrigerar 3 horas para que absorba',
+                'Cubrir con merengue antes de servir'
+            ],
+            imagen: 'img/tres-leches.svg',
+            calificacion: 4.6,
+            resenas: 29
+        });
+
+        recipes.push({
+            id: nextRecipeId++,
+            nombre: 'Baklava Turca',
+            pais: 'Turquía',
+            tiempo: 90,
+            categorias: ['Turca', 'Postre'],
+            ingredientes: [
+                { nombre: '1 paquete de masa filo (450g)', icono: '🥟' },
+                { nombre: '200g de mantequilla derretida', icono: '🧈' },
+                { nombre: '300g de nueces picadas', icono: '🥜' },
+                { nombre: '100g de pistachos picados', icono: '🥜' },
+                { nombre: '2 cucharaditas de canela molida', icono: '🌶️' },
+                { nombre: 'Para el almíbar:', icono: '🍯' },
+                { nombre: '1 taza de azúcar', icono: '🍯' },
+                { nombre: '1 taza de agua', icono: '💧' },
+                { nombre: '1/2 taza de miel', icono: '🍯' },
+                { nombre: '1 cucharada de jugo de limón', icono: '🍋' },
+                { nombre: '1 rama de canela', icono: '🌶️' }
+            ],
+            instrucciones: [
+                'Precalentar horno a 180°C, engrasar molde rectangular',
+                'Mezclar nueces, pistachos y canela molida',
+                'Colocar 8 hojas de filo, pincelando cada una con mantequilla',
+                'Esparcir 1/3 de la mezcla de nueces',
+                'Repetir capas: 4 hojas filo, nueces, hasta terminar',
+                'Finalizar con 8 hojas de filo encima',
+                'Cortar en rombos antes de hornear',
+                'Hornear 45-50 minutos hasta dorar',
+                'Para almíbar: hervir todos los ingredientes 10 minutos',
+                'Verter almíbar caliente sobre baklava caliente',
+                'Dejar enfriar completamente antes de servir'
+            ],
+            imagen: 'img/baklava-turca.svg',
+            calificacion: 4.5,
+            resenas: 21
+        });
+
+        // ========== MÁS BEBIDAS INTERNACIONALES ==========
+        recipes.push({
+            id: nextRecipeId++,
+            nombre: 'Sangría Española',
+            pais: 'España',
+            tiempo: 15,
+            categorias: ['Española', 'Bebida'],
+            ingredientes: [
+                { nombre: '1 botella de vino tinto español (750ml)', icono: '🍷' },
+                { nombre: '1/4 taza de brandy español', icono: '🥃' },
+                { nombre: '2 cucharadas de azúcar', icono: '🍯' },
+                { nombre: '1 naranja en rodajas', icono: '🍊' },
+                { nombre: '1 limón en rodajas', icono: '🍋' },
+                { nombre: '1 manzana en cubitos', icono: '🍎' },
+                { nombre: '1 taza de agua con gas', icono: '💧' },
+                { nombre: '2 tazas de hielo', icono: '🧊' },
+                { nombre: 'Hojas de menta para decorar', icono: '🌿' }
+            ],
+            instrucciones: [
+                'En jarra grande, mezclar vino tinto con brandy',
+                'Agregar azúcar y revolver hasta disolver',
+                'Añadir todas las frutas cortadas',
+                'Refrigerar mínimo 2 horas para que se maceren',
+                'Al servir, agregar agua con gas',
+                'Llenar copas con hielo',
+                'Servir sangría asegurándose de incluir frutas',
+                'Decorar con hojas de menta fresca'
+            ],
+            imagen: 'img/sangria-espanola.svg',
+            calificacion: 4.3,
+            resenas: 25
+        });
+
+        recipes.push({
+            id: nextRecipeId++,
+            nombre: 'Lassi de Mango',
+            pais: 'India',
+            tiempo: 10,
+            categorias: ['India', 'Bebida'],
+            ingredientes: [
+                { nombre: '2 mangos maduros pelados y cortados', icono: '🥭' },
+                { nombre: '1 taza de yogurt natural', icono: '🥛' },
+                { nombre: '1/2 taza de leche fría', icono: '🥛' },
+                { nombre: '3 cucharadas de azúcar', icono: '🍯' },
+                { nombre: '1/4 cucharadita de cardamomo molido', icono: '🌶️' },
+                { nombre: '1 taza de hielo picado', icono: '🧊' },
+                { nombre: 'Pistachos picados para decorar', icono: '🥜' }
+            ],
+            instrucciones: [
+                'Colocar mango cortado en licuadora',
+                'Agregar yogurt, leche y azúcar',
+                'Añadir cardamomo molido',
+                'Licuar hasta obtener mezcla suave',
+                'Agregar hielo y licuar nuevamente',
+                'Probar y ajustar dulzor si es necesario',
+                'Servir en vasos altos',
+                'Decorar con pistachos picados'
+            ],
+            imagen: 'img/lassi-mango.svg',
+            calificacion: 4.4,
+            resenas: 16
+        });
+
+        // ========== MÁS BOTANAS Y ENTRADAS ==========
+        recipes.push({
+            id: nextRecipeId++,
+            nombre: 'Bruschetta Italiana',
+            pais: 'Italia',
+            tiempo: 20,
+            categorias: ['Italiana', 'Botana'],
+            ingredientes: [
+                { nombre: '1 baguette cortada en rebanadas de 2cm', icono: '🥖' },
+                { nombre: '4 tomates roma maduros, sin semillas', icono: '🍅' },
+                { nombre: '3 dientes de ajo', icono: '🧄' },
+                { nombre: '1/4 taza de albahaca fresca picada', icono: '🌿' },
+                { nombre: '3 cucharadas de aceite de oliva extra virgen', icono: '🫒' },
+                { nombre: '2 cucharadas de vinagre balsámico', icono: '🥄' },
+                { nombre: '100g de queso mozzarella fresco', icono: '🧀' },
+                { nombre: 'Sal marina y pimienta negra', icono: '🧂' }
+            ],
+            instrucciones: [
+                'Precalentar horno a 200°C',
+                'Tostar rebanadas de pan hasta dorar ligeramente',
+                'Frotar cada rebanada con 1 diente de ajo',
+                'Cortar tomates en cubitos pequeños',
+                'Picar finamente los 2 dientes de ajo restantes',
+                'Mezclar tomates, ajo, albahaca, aceite y vinagre',
+                'Sazonar con sal y pimienta, dejar reposar 10 minutos',
+                'Colocar mezcla de tomate sobre cada tostada',
+                'Agregar trozos de mozzarella fresca',
+                'Servir inmediatamente'
+            ],
+            imagen: 'img/bruschetta-italiana.svg',
+            calificacion: 4.3,
+            resenas: 20
+        });
+
+        recipes.push({
+            id: nextRecipeId++,
+            nombre: 'Samosas Indias',
+            pais: 'India',
+            tiempo: 60,
+            categorias: ['India', 'Botana'],
+            ingredientes: [
+                { nombre: '2 tazas de harina para todo uso', icono: '🌾' },
+                { nombre: '4 cucharadas de aceite vegetal', icono: '🫒' },
+                { nombre: '1/2 cucharadita de sal', icono: '🧂' },
+                { nombre: 'Agua según necesidad', icono: '💧' },
+                { nombre: 'Para el relleno:', icono: '🥔' },
+                { nombre: '3 papas medianas cocidas y en cubitos', icono: '🥔' },
+                { nombre: '1 taza de chícharos cocidos', icono: '🟢' },
+                { nombre: '1 cebolla picada finamente', icono: '🧅' },
+                { nombre: '2 cucharaditas de semillas de comino', icono: '🌶️' },
+                { nombre: '1 cucharadita de cúrcuma', icono: '🌶️' },
+                { nombre: '1 cucharadita de garam masala', icono: '🌶️' },
+                { nombre: 'Aceite para freír', icono: '🫒' }
+            ],
+            instrucciones: [
+                'Mezclar harina, aceite y sal, agregar agua para formar masa',
+                'Amasar hasta suave, dejar reposar 30 minutos',
+                'Para relleno: sofreír cebolla hasta dorar',
+                'Agregar especias y cocinar 1 minuto',
+                'Incorporar papas y chícharos, sazonar',
+                'Dividir masa en porciones, estirar en círculos',
+                'Cortar círculos por la mitad',
+                'Formar conos, rellenar y sellar bordes',
+                'Freír en aceite caliente hasta dorar',
+                'Servir calientes con chutney'
+            ],
+            imagen: 'img/samosas-indias.svg',
+            calificacion: 4.4,
+            resenas: 18
+        });
+
         saveRecipes();
         console.log(`✅ Added ${recipes.length} comprehensive recipes to database`);
     }

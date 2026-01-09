@@ -3363,8 +3363,26 @@ class RecipesApp {
 
     filterByCategory(category) {
         this.currentCategory = category;
+        
+        // Mapeo de categorías del filtro a categorías de las recetas
+        const categoryMapping = {
+            'desayunos': 'Desayuno',
+            'comidas': 'Comida', 
+            'cenas': 'Cena',
+            'postres': 'Postre',
+            'bebidas': 'Bebida',
+            'botanas': 'Botana',
+            'entradas': 'Entrada',
+            'rapidas': 'Rápida',
+            'baratas': 'Económica',
+            'economicas': 'Económica'
+        };
+        
+        // Convertir la categoría del filtro a la categoría de la receta
+        const recipeCategory = categoryMapping[category] || category;
+        
         let filtered = this.recipes.filter(recipe => 
-            recipe.categorias.includes(category)
+            recipe.categorias && recipe.categorias.includes(recipeCategory)
         );
         
         const categoryNames = {
@@ -3376,10 +3394,12 @@ class RecipesApp {
             'botanas': 'Botanas',
             'entradas': 'Entradas',
             'rapidas': 'Recetas Rápidas',
-            'baratas': 'Recetas Económicas'
+            'baratas': 'Recetas Económicas',
+            'economicas': 'Recetas Económicas'
         };
         
         document.getElementById('sectionTitle').textContent = categoryNames[category] || category;
+        console.log(`🔍 Filtro aplicado: ${category} -> ${recipeCategory}, encontradas: ${filtered.length} recetas`);
         this.displayRecipes(filtered);
     }
 
@@ -8793,5 +8813,4 @@ document.addEventListener('DOMContentLoaded', () => {
     console.log('🚀 Inicializando RecetasWorld...');
     window.app = new RecipesApp();
     app = window.app; // Para compatibilidad
- // Updated for Render
 });
