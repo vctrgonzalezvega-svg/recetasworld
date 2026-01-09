@@ -1906,150 +1906,104 @@ class RecipesApp {
     }
 
     // Cargar recetas desde JSON usando AJAX
-    loadRecipesFromJSON() {
-        console.log('Inicio: loadRecipesFromJSON');
-        // Leer posibles recetas locales (solo como último recurso)
+    async loadRecipesFromJSON() {
+        console.log('🚀 Inicio: loadRecipesFromJSON - Cargando todas las recetas disponibles');
+        
+        let allRecipes = [];
         const localRaw = localStorage.getItem('localRecipes');
-        console.log('localRaw presente:', localRaw ? 'sí' : 'no');
-        // Intentar cargar desde la API cuando exista, sino desde el JSON local
-        console.log('Intentando fetch API /api/recipes');
+        
         // Detectar si se está abriendo por file:// — esto bloqueará fetch por motivos de CORS/file access
         if (location && location.protocol === 'file:') {
-            this.debugLog('Aviso: la página se abrió via file:// — fetch() no funcionará. Usa un servidor local (Apache/XAMPP o `node server.js`).');
-            // intentar cargar directamente desde data/recipes.json
-            return fetch('data/recipes.json')
-                .then(r => r.json())
-                .then(data => {
-                    const arr = Array.isArray(data.recetas) ? data.recetas : [];
-                    this.debugLog('data/recipes.json length (file protocol): ' + arr.length);
-                    this.recipes = arr;
-                    this.applyRatingStatsToRecipes();
-                    this.applyRecipeOverrides();
-                    this.initializeApp();
-                })
-                .catch(err => {
-                    this.debugLog('Fallo fetch data/recipes.json en file protocol: ' + (err && err.message ? err.message : String(err)));
-                    
-                    // Fallback: usar recipesDatabase si está disponible
-                    if (typeof recipesDatabase !== 'undefined' && Array.isArray(recipesDatabase)) {
-                        this.debugLog('Usando recipesDatabase como fallback en file protocol: ' + recipesDatabase.length + ' recetas');
-                        this.recipes = recipesDatabase;
-                        this.applyRatingStatsToRecipes();
-                        this.applyRecipeOverrides();
-                        this.initializeApp();
-                    } else {
-                        this.recipes = [];
-                        this.initializeApp();
-                    }
-                });
-        }
-
-        this.apiFetch('/api/recipes')
-            .then(response => {
-                this.debugLog('API respuesta recibida (status ' + (response && response.status) + ')');
-                if (!response.ok) throw new Error('API no disponible');
-                return response.json();
-            })
-            .then(data => {
-                const apiRecipes = Array.isArray(data.recetas) ? data.recetas : [];
-                this.debugLog('API recetas: ' + apiRecipes.length);
-                if (apiRecipes.length > 0) {
-                    this.recipes = apiRecipes;
-                    this.applyRatingStatsToRecipes();
-                    this.applyRecipeOverrides();
-                    this.initializeApp();
-                    try { localStorage.removeItem('localRecipes'); } catch(e) {}
-                } else {
-                    this.debugLog('API devolvió 0 recetas; probando localRaw y luego data/recipes.json');
-                    // Si la API trae 0, intentar usar local primero y luego JSON
-                    try {
-                        if (localRaw) {
-                            const parsedLocal = JSON.parse(localRaw);
-                            if (Array.isArray(parsedLocal) && parsedLocal.length > 0) {
-                                this.debugLog('Cargando recetas desde localRaw: ' + parsedLocal.length);
-                                this.recipes = parsedLocal;
-                                this.applyRatingStatsToRecipes();
-                                this.applyRecipeOverrides();
-                                this.initializeApp();
-                                return;
-                            }
-                        }
-                    } catch(e) { this.debugLog('Error parseando localRaw: ' + (e && e.message ? e.message : String(e))); }
-
-                    this.debugLog('Cargando data/recipes.json como fallback');
-                    return fetch('data/recipes.json')
-                        .then(r => r.json())
-                        .then(fallback => {
-                            const arr = Array.isArray(fallback.recetas) ? fallback.recetas : [];
-                            this.debugLog('data/recipes.json length: ' + arr.length);
-                            this.recipes = arr;
-                            this.applyRatingStatsToRecipes();
-                            this.applyRecipeOverrides();
-                            this.initializeApp();
-                        })
-                        .catch(err => {
-                            this.debugLog('Error cargando data/recipes.json: ' + (err && err.message ? err.message : String(err)));
-                            
-                            // Fallback: usar recipesDatabase si está disponible
-                            if (typeof recipesDatabase !== 'undefined' && Array.isArray(recipesDatabase)) {
-                                this.debugLog('Usando recipesDatabase como fallback: ' + recipesDatabase.length + ' recetas');
-                                this.recipes = recipesDatabase;
-                                this.applyRatingStatsToRecipes();
-                                this.applyRecipeOverrides();
-                                this.initializeApp();
-                            } else {
-                                this.recipes = [];
-                                this.initializeApp();
-                            }
-                        });
+            this.debugLog('Aviso: la página se abrió via file:// — fetch() no funcionará. Usa un servidor local.');
+            
+            try {
+                const response = await fetch('data/recipes.json');
+                const data = await response.json();
+                const fileRecipes = Array.isArray(data.recetas) ? data.recetas : [];
+                allRecipes = [...fileRecipes];
+                this.debugLog(`📁 Cargadas ${fileRecipes.length} recetas desde data/recipes.json (file protocol)`);
+            } catch (err) {
+                this.debugLog('❌ Error cargando data/recipes.json: ' + (err?.message || String(err)));
+                
+                // Fallback: usar recipesDatabase si está disponible
+                if (typeof recipesDatabase !== 'undefined' && Array.isArray(recipesDatabase)) {
+                    allRecipes = [...recipesDatabase];
+                    this.debugLog(`📚 Usando recipesDatabase como fallback: ${recipesDatabase.length} recetas`);
                 }
-            })
-            .catch((err) => {
-                this.debugLog('API fetch falló: ' + (err && err.message ? err.message : String(err)));
-                // Si la API falla: intentar local y luego JSON
-                try {
-                    if (localRaw) {
-                        const parsedLocal = JSON.parse(localRaw);
-                        if (Array.isArray(parsedLocal) && parsedLocal.length > 0) {
-                            this.debugLog('Cargando recetas desde localRaw en catch: ' + parsedLocal.length);
-                            this.recipes = parsedLocal;
-                            this.applyRatingStatsToRecipes();
-                            this.applyRecipeOverrides();
-                            this.initializeApp();
-                            return;
-                        }
+            }
+        } else {
+            // Protocolo HTTP/HTTPS - intentar cargar desde múltiples fuentes
+            
+            // 1. Intentar cargar desde la API
+            try {
+                const response = await this.apiFetch('/api/recipes');
+                if (response.ok) {
+                    const data = await response.json();
+                    const apiRecipes = Array.isArray(data.recetas) ? data.recetas : [];
+                    allRecipes = [...apiRecipes];
+                    this.debugLog(`📡 Cargadas ${apiRecipes.length} recetas desde API`);
+                }
+            } catch (err) {
+                this.debugLog('⚠️ API no disponible: ' + (err?.message || String(err)));
+            }
+            
+            // 2. Cargar desde localStorage y combinar
+            try {
+                if (localRaw) {
+                    const localRecipes = JSON.parse(localRaw);
+                    if (Array.isArray(localRecipes) && localRecipes.length > 0) {
+                        // Combinar evitando duplicados por ID
+                        const existingIds = new Set(allRecipes.map(r => String(r.id)));
+                        const uniqueLocalRecipes = localRecipes.filter(r => !existingIds.has(String(r.id)));
+                        allRecipes = [...allRecipes, ...uniqueLocalRecipes];
+                        this.debugLog(`💾 Agregadas ${uniqueLocalRecipes.length} recetas únicas desde localStorage`);
                     }
-                } catch(e) { this.debugLog('Error parseando localRaw en catch: ' + (e && e.message ? e.message : String(e))); }
-                this.debugLog('Intentando cargar data/recipes.json en catch');
-                fetch('data/recipes.json')
-                    .then(response => response.json())
-                    .then(data => {
-                        const arr = Array.isArray(data.recetas) ? data.recetas : [];
-                        this.debugLog('data/recipes.json length (catch): ' + arr.length);
-                        this.recipes = arr;
-                        this.applyRatingStatsToRecipes();
-                        this.applyRecipeOverrides();
-                        this.initializeApp();
-                    })
-                    .catch(error => {
-                        console.error('Error cargando recetas:', error);
-                        this.debugLog('Error cargando recetas final: ' + (error && error.message ? error.message : String(error)));
-                        
-                        // Último fallback: usar recipesDatabase si está disponible
-                        if (typeof recipesDatabase !== 'undefined' && Array.isArray(recipesDatabase)) {
-                            this.debugLog('Usando recipesDatabase como último fallback: ' + recipesDatabase.length + ' recetas');
-                            this.recipes = recipesDatabase;
-                            this.applyRatingStatsToRecipes();
-                            this.applyRecipeOverrides();
-                            this.initializeApp();
-                        } else {
-                            this.debugLog('recipesDatabase no disponible');
-                            this.recipes = [];
-                            this.initializeApp();
-                            this.showNotification('Error al cargar las recetas ❌');
-                        }
-                    });
-            });
+                }
+            } catch (e) {
+                this.debugLog('❌ Error parseando localStorage: ' + (e?.message || String(e)));
+            }
+            
+            // 3. Cargar desde data/recipes.json y combinar
+            try {
+                const response = await fetch('data/recipes.json');
+                const data = await response.json();
+                const jsonRecipes = Array.isArray(data.recetas) ? data.recetas : [];
+                
+                // Combinar evitando duplicados por ID
+                const existingIds = new Set(allRecipes.map(r => String(r.id)));
+                const uniqueJsonRecipes = jsonRecipes.filter(r => !existingIds.has(String(r.id)));
+                allRecipes = [...allRecipes, ...uniqueJsonRecipes];
+                this.debugLog(`📄 Agregadas ${uniqueJsonRecipes.length} recetas únicas desde data/recipes.json`);
+            } catch (err) {
+                this.debugLog('⚠️ Error cargando data/recipes.json: ' + (err?.message || String(err)));
+            }
+            
+            // 4. Último fallback: recipesDatabase
+            if (allRecipes.length === 0 && typeof recipesDatabase !== 'undefined' && Array.isArray(recipesDatabase)) {
+                allRecipes = [...recipesDatabase];
+                this.debugLog(`📚 Usando recipesDatabase como último recurso: ${recipesDatabase.length} recetas`);
+            }
+        }
+        
+        // Asignar todas las recetas combinadas
+        this.recipes = allRecipes;
+        console.log(`✅ Total de recetas cargadas: ${this.recipes.length}`);
+        
+        if (this.recipes.length === 0) {
+            this.debugLog('❌ No se pudieron cargar recetas desde ninguna fuente');
+            this.showNotification('Error al cargar las recetas ❌');
+        } else {
+            // Limpiar localStorage si tenemos recetas de la API
+            const hasApiRecipes = allRecipes.some(r => !String(r.id).startsWith('r_'));
+            if (hasApiRecipes) {
+                try { localStorage.removeItem('localRecipes'); } catch(e) {}
+            }
+        }
+        
+        // Aplicar estadísticas y inicializar
+        this.applyRatingStatsToRecipes();
+        this.applyRecipeOverrides();
+        this.initializeApp();
     }
 
     applyRatingStatsToRecipes() {
@@ -2670,7 +2624,7 @@ class RecipesApp {
         const recommendationsTrigger = document.getElementById('recommendations-link');
         if (recommendationsTrigger) recommendationsTrigger.addEventListener('click', (e) => {
             e.preventDefault();
-            this.showRecommendations();
+            this.showHome(); // Cambiar a showHome para que funcione igual que el logo
             this.closeMenu();
         });
 
@@ -2946,7 +2900,11 @@ class RecipesApp {
         if (productsLink) productsLink.addEventListener('click', (e) => { e.preventDefault(); this.showProducts(); this.closeMenu(); });
 
         const recommendationsLink = document.getElementById('recommendations-link');
-        if (recommendationsLink) recommendationsLink.addEventListener('click', (e) => { e.preventDefault(); this.showRecommendations(); this.closeMenu(); });
+        if (recommendationsLink) recommendationsLink.addEventListener('click', (e) => { 
+            e.preventDefault(); 
+            this.showHome(); // Cambiar a showHome para que funcione igual que el logo
+            this.closeMenu(); 
+        });
 
         const submitAddProduct = document.getElementById('submitAddProduct');
         if (submitAddProduct) submitAddProduct.addEventListener('click', () => this.adminAddProduct());
@@ -7267,28 +7225,46 @@ class RecipesApp {
     }
 
     async loadAdminLists() {
+        let allRecipes = [];
+        
         try {
+            // Primero intentar cargar desde la API
             const rres = await this.apiFetch('/api/recipes');
             if (rres.ok) {
                 const rdata = await rres.json();
-                const recetas = rdata.recetas || [];
-                this.renderAdminRecipes(recetas);
+                const recetasAPI = rdata.recetas || [];
+                allRecipes = [...recetasAPI];
+                console.log(`📡 Cargadas ${recetasAPI.length} recetas desde API`);
             }
-
-            // render admin products area from local storage
-            this.renderAdminProducts();
         } catch (err) { 
-            console.error(err); 
+            console.error('Error cargando desde API:', err); 
         }
 
-        // Si la API no está disponible o no devolvió recetas, renderizar desde las recetas locales en memoria
+        // Luego cargar desde almacenamiento local y combinar
         try {
             const recetasLocal = this.recipes && this.recipes.length ? this.recipes : (JSON.parse(localStorage.getItem('localRecipes') || '[]'));
-            this.renderAdminRecipes(recetasLocal);
+            
+            // Combinar recetas evitando duplicados (por ID)
+            const existingIds = new Set(allRecipes.map(r => String(r.id)));
+            const uniqueLocalRecipes = recetasLocal.filter(r => !existingIds.has(String(r.id)));
+            
+            allRecipes = [...allRecipes, ...uniqueLocalRecipes];
+            console.log(`💾 Total de recetas combinadas: ${allRecipes.length} (${uniqueLocalRecipes.length} adicionales desde local)`);
+            
+            // Renderizar todas las recetas combinadas
+            this.renderAdminRecipes(allRecipes);
         } catch (err) { 
-            /* ignore */ 
+            console.error('Error cargando recetas locales:', err);
+            // Si hay error con local, al menos mostrar las de la API
+            if (allRecipes.length > 0) {
+                this.renderAdminRecipes(allRecipes);
+            }
         }
 
+        // Cargar productos desde localStorage
+        this.renderAdminProducts();
+
+        // Cargar usuarios
         try {
             const ures = await this.apiFetch('/api/users');
             if (ures.ok) {
@@ -7326,6 +7302,12 @@ class RecipesApp {
                 (r.nombre||'').toLowerCase().includes(searchVal) || 
                 (r.pais||'').toLowerCase().includes(searchVal)
             );
+        }
+
+        // Agregar contador de recetas
+        const counterElement = document.getElementById('adminRecipesCounter');
+        if (counterElement) {
+            counterElement.textContent = `Mostrando ${recetasToRender.length} de ${recetas.length} recetas`;
         }
 
         list.innerHTML = recetasToRender.map(r => `
