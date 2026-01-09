@@ -6,11 +6,71 @@ const PORT = process.env.PORT || 3000;
 
 console.log('Starting RecetasWorld server...');
 
-// Simple in-memory storage
+// Simple persistent storage using JSON files
 let recipes = [];
 let users = [];
 let nextRecipeId = 1;
 let nextUserId = 1;
+
+// File paths for persistent storage
+const RECIPES_FILE = path.join(__dirname, 'recipes-data.json');
+const USERS_FILE = path.join(__dirname, 'users-data.json');
+
+// Load data from files
+function loadData() {
+    // Load recipes
+    if (fs.existsSync(RECIPES_FILE)) {
+        try {
+            const recipesData = fs.readFileSync(RECIPES_FILE, 'utf8');
+            recipes = JSON.parse(recipesData);
+            if (recipes.length > 0) {
+                nextRecipeId = Math.max(...recipes.map(r => r.id || 0)) + 1;
+            }
+            console.log(`📚 Loaded ${recipes.length} recipes from file`);
+        } catch (err) {
+            console.error('❌ Error loading recipes:', err);
+            recipes = [];
+        }
+    }
+    
+    // Load users
+    if (fs.existsSync(USERS_FILE)) {
+        try {
+            const usersData = fs.readFileSync(USERS_FILE, 'utf8');
+            users = JSON.parse(usersData);
+            if (users.length > 0) {
+                nextUserId = Math.max(...users.map(u => u.id || 0)) + 1;
+            }
+            console.log(`👥 Loaded ${users.length} users from file`);
+        } catch (err) {
+            console.error('❌ Error loading users:', err);
+            users = [];
+        }
+    }
+}
+
+// Save data to files
+function saveRecipes() {
+    try {
+        fs.writeFileSync(RECIPES_FILE, JSON.stringify(recipes, null, 2));
+        console.log(`💾 Saved ${recipes.length} recipes to file`);
+        return true;
+    } catch (err) {
+        console.error('❌ Error saving recipes:', err);
+        return false;
+    }
+}
+
+function saveUsers() {
+    try {
+        fs.writeFileSync(USERS_FILE, JSON.stringify(users, null, 2));
+        console.log(`💾 Saved ${users.length} users to file`);
+        return true;
+    } catch (err) {
+        console.error('❌ Error saving users:', err);
+        return false;
+    }
+}
 
 function sendResponse(res, statusCode, data, contentType = 'application/json') {
     res.writeHead(statusCode, {
@@ -100,6 +160,7 @@ const server = http.createServer((req, res) => {
                         resenas: 0
                     };
                     recipes.unshift(recipe);
+                    saveRecipes(); // Save to file
                     sendResponse(res, 201, { ok: true, receta: recipe });
                 } catch (err) {
                     sendResponse(res, 400, { ok: false, error: 'Invalid JSON' });
@@ -163,6 +224,7 @@ const server = http.createServer((req, res) => {
                     };
 
                     recipes[recipeIndex] = updatedRecipe;
+                    saveRecipes(); // Save to file
                     sendResponse(res, 200, { ok: true, receta: updatedRecipe });
                 } catch (err) {
                     sendResponse(res, 400, { ok: false, error: 'Invalid JSON' });
@@ -185,6 +247,7 @@ const server = http.createServer((req, res) => {
             }
 
             recipes.splice(recipeIndex, 1);
+            saveRecipes(); // Save to file
             sendResponse(res, 200, { ok: true });
             return;
         }
@@ -218,6 +281,7 @@ const server = http.createServer((req, res) => {
                         role: data.role || 'user'
                     };
                     users.push(user);
+                    saveUsers(); // Save to file
                     sendResponse(res, 201, { ok: true, user: { id: user.id, username: user.username, role: user.role } });
                 } catch (err) {
                     sendResponse(res, 400, { ok: false, error: 'Invalid JSON' });
@@ -322,6 +386,28 @@ server.listen(PORT, '0.0.0.0', () => {
     console.log(`🔗 API available at: http://localhost:${PORT}/api/`);
     console.log(`📁 Working directory: ${__dirname}`);
     
+    // Load existing data
+    loadData();
+    
+    // If no data exists, add sample data
+    if (recipes.length === 0) {
+        console.log('📝 No existing recipes found, adding sample data...');
+        // Add sample recipes here
+        recipes.push({
+            id: nextRecipeId++,
+            nombre: 'Tacos al Pastor',
+            pais: 'México',
+            tiempo: 30,
+            categorias: ['Mexicana', 'Cena'],
+            ingredientes: ['Carne de cerdo', 'Tortillas', 'Piña', 'Cebolla'],
+            instrucciones: ['Marinar la carne', 'Cocinar en trompo', 'Servir en tortillas'],
+            imagen: 'img/tacos-al-pastor.svg',
+            calificacion: 4.5,
+            resenas: 10
+        });
+        saveRecipes();
+    }
+    
     // List directory contents for debugging
     console.log('\n📂 Directory structure:');
     try {
@@ -347,20 +433,3 @@ server.listen(PORT, '0.0.0.0', () => {
         console.log(`❌ Cannot read root directory: ${e.message}`);
     }
 });
-
-// Add some sample data
-recipes.push({
-    id: 1,
-    nombre: 'Tacos al Pastor',
-    pais: 'México',
-    tiempo: 30,
-    categorias: ['Mexicana', 'Cena'],
-    ingredientes: ['Carne de cerdo', 'Tortillas', 'Piña', 'Cebolla'],
-    instrucciones: ['Marinar la carne', 'Cocinar en trompo', 'Servir en tortillas'],
-    imagen: 'img/tacos-al-pastor.svg',
-    calificacion: 4.5,
-    resenas: 10
-});
-
-console.log('✅ Sample data loaded');
-console.log('🚀 RecetasWorld is ready!');
