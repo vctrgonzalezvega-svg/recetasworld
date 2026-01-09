@@ -167,62 +167,97 @@ const server = http.createServer((req, res) => {
 
     // Serve static files
     if (method === 'GET' && !pathname.startsWith('/api/')) {
-        let filePath = path.join(__dirname, pathname === '/' ? 'index.html' : pathname);
+        // Handle root path
+        if (pathname === '/') {
+            pathname = '/index.html';
+        }
+        
+        // Remove leading slash for path.join
+        const relativePath = pathname.startsWith('/') ? pathname.slice(1) : pathname;
+        let filePath = path.join(__dirname, relativePath);
         
         // Log for debugging in production
         if (NODE_ENV === 'production') {
-            console.log(`📁 Static request: ${pathname} -> ${filePath}`);
+            console.log(`📁 Static request: ${pathname}`);
+            console.log(`📁 Relative path: ${relativePath}`);
+            console.log(`📁 Full path: ${filePath}`);
+            console.log(`📁 File exists: ${fs.existsSync(filePath)}`);
         }
         
         // Security check
-        if (!filePath.startsWith(__dirname)) {
-            console.log(`❌ Security check failed: ${filePath}`);
+        const normalizedPath = path.normalize(filePath);
+        if (!normalizedPath.startsWith(__dirname)) {
+            console.log(`❌ Security check failed: ${normalizedPath}`);
             sendResponse(res, 403, { error: 'Forbidden' });
             return;
         }
 
-        if (fs.existsSync(filePath) && fs.statSync(filePath).isFile()) {
-            const ext = path.extname(filePath);
-            const contentTypes = {
-                '.html': 'text/html; charset=utf-8',
-                '.js': 'application/javascript; charset=utf-8',
-                '.css': 'text/css; charset=utf-8',
-                '.json': 'application/json',
-                '.png': 'image/png',
-                '.jpg': 'image/jpeg',
-                '.jpeg': 'image/jpeg',
-                '.gif': 'image/gif',
-                '.svg': 'image/svg+xml',
-                '.ico': 'image/x-icon',
-                '.woff': 'font/woff',
-                '.woff2': 'font/woff2',
-                '.ttf': 'font/ttf',
-                '.eot': 'application/vnd.ms-fontobject'
-            };
-            
-            const contentType = contentTypes[ext] || 'text/plain';
-            
-            try {
-                const content = fs.readFileSync(filePath);
-                res.writeHead(200, {
-                    'Content-Type': contentType,
-                    'Access-Control-Allow-Origin': '*',
-                    'Cache-Control': NODE_ENV === 'production' ? 'public, max-age=86400' : 'no-cache'
-                });
-                res.end(content);
+        // Check if file exists and is a file
+        if (fs.existsSync(filePath)) {
+            const stats = fs.statSync(filePath);
+            if (stats.isFile()) {
+                const ext = path.extname(filePath).toLowerCase();
+                const contentTypes = {
+                    '.html': 'text/html; charset=utf-8',
+                    '.js': 'application/javascript; charset=utf-8',
+                    '.css': 'text/css; charset=utf-8',
+                    '.json': 'application/json',
+                    '.png': 'image/png',
+                    '.jpg': 'image/jpeg',
+                    '.jpeg': 'image/jpeg',
+                    '.gif': 'image/gif',
+                    '.svg': 'image/svg+xml',
+                    '.ico': 'image/x-icon',
+                    '.woff': 'font/woff',
+                    '.woff2': 'font/woff2',
+                    '.ttf': 'font/ttf',
+                    '.eot': 'application/vnd.ms-fontobject'
+                };
                 
-                if (NODE_ENV === 'production') {
-                    console.log(`✅ Served: ${pathname} (${contentType})`);
+                const contentType = contentTypes[ext] || 'text/plain';
+                
+                try {
+                    const content = fs.readFileSync(filePath);
+                    res.writeHead(200, {
+                        'Content-Type': contentType,
+                        'Access-Control-Allow-Origin': '*',
+                        'Cache-Control': NODE_ENV === 'production' ? 'public, max-age=86400' : 'no-cache',
+                        'Content-Length': content.length
+                    });
+                    res.end(content);
+                    
+                    if (NODE_ENV === 'production') {
+                        console.log(`✅ Served: ${pathname} (${contentType}, ${content.length} bytes)`);
+                    }
+                    return;
+                } catch (err) {
+                    console.error('❌ Error reading file:', err);
+                    sendResponse(res, 500, { error: 'Internal server error' });
+                    return;
+                }
+            }
+        }
+        
+        // File not found - log detailed info for debugging
+        console.log(`❌ File not found: ${pathname}`);
+        console.log(`❌ Tried path: ${filePath}`);
+        
+        if (NODE_ENV === 'production') {
+            // List directory contents for debugging
+            try {
+                const dirPath = path.dirname(filePath);
+                if (fs.existsSync(dirPath)) {
+                    const files = fs.readdirSync(dirPath);
+                    console.log(`📁 Directory ${dirPath} contains:`, files.slice(0, 10));
+                } else {
+                    console.log(`📁 Directory ${dirPath} does not exist`);
                 }
             } catch (err) {
-                console.error('❌ Error reading file:', err);
-                sendResponse(res, 500, { error: 'Internal server error' });
+                console.log(`📁 Error listing directory:`, err.message);
             }
-        } else {
-            console.log(`❌ File not found: ${filePath}`);
-            console.log(`📁 Directory contents:`, fs.readdirSync(__dirname).slice(0, 10));
-            sendResponse(res, 404, { error: 'File not found' });
         }
+        
+        sendResponse(res, 404, { error: 'File not found', path: pathname });
         return;
     }
 
@@ -268,6 +303,85 @@ const server = http.createServer((req, res) => {
             });
             return;
         }
+        
+        // Debug endpoint for file system
+        if (pathname === '/api/debug' && method === 'GET') {
+            try {
+                const debugInfo = {
+                    workingDirectory: __dirname,
+                    environment: NODE_ENV,
+                    recipes: recipes.length,
+                    files: {},
+                    directories: {},
+                    criticalFiles: {}
+                };
+                
+                // List files in root
+                const rootFiles = fs.readdirSync(__dirname);
+                rootFiles.forEach(item => {
+                    const fullPath = path.join(__dirname, item);
+                    const stat = fs.statSync(fullPath);
+                    if (stat.isDirectory()) {
+                        try {
+                            debugInfo.directories[item] = fs.readdirSync(fullPath);
+                        } catch (err) {
+                            debugInfo.directories[item] = `Error: ${err.message}`;
+                        }
+                    } else {
+                        debugInfo.files[item] = `${(stat.size / 1024).toFixed(1)}KB`;
+                    }
+                });
+                
+                // Test critical files
+                const criticalFiles = ['index.html', 'css/styles.css', 'js/app.js', 'js/recipes-data.js'];
+                criticalFiles.forEach(file => {
+                    const fullPath = path.join(__dirname, file);
+                    debugInfo.criticalFiles[file] = {
+                        exists: fs.existsSync(fullPath),
+                        fullPath: fullPath,
+                        size: fs.existsSync(fullPath) ? `${(fs.statSync(fullPath).size / 1024).toFixed(1)}KB` : 'N/A'
+                    };
+                });
+                
+                sendResponse(res, 200, debugInfo);
+            } catch (err) {
+                sendResponse(res, 500, { error: err.message, stack: err.stack });
+            }
+            return;
+        }
+        
+        // Test static files endpoint
+        if (pathname === '/api/test-static' && method === 'GET') {
+            const testResults = {};
+            const testFiles = ['css/styles.css', 'js/app.js', 'js/recipes-data.js'];
+            
+            testFiles.forEach(file => {
+                const fullPath = path.join(__dirname, file);
+                testResults[file] = {
+                    exists: fs.existsSync(fullPath),
+                    fullPath: fullPath,
+                    accessible: false,
+                    size: 0
+                };
+                
+                if (fs.existsSync(fullPath)) {
+                    try {
+                        const stat = fs.statSync(fullPath);
+                        testResults[file].size = stat.size;
+                        testResults[file].accessible = stat.isFile();
+                    } catch (err) {
+                        testResults[file].error = err.message;
+                    }
+                }
+            });
+            
+            sendResponse(res, 200, { testResults, workingDir: __dirname });
+            return;
+        }
+        
+        // If no API route matches, return 404
+        sendResponse(res, 404, { error: 'API endpoint not found', path: pathname });
+        return;
     }
 
     // 404 for unmatched routes
@@ -317,15 +431,40 @@ server.listen(PORT, '0.0.0.0', () => {
     
     // List available files for debugging in production
     if (NODE_ENV === 'production') {
-        console.log('📂 Available files:');
+        console.log('📂 Listing all available files and directories:');
         try {
-            const files = fs.readdirSync(__dirname);
-            files.forEach(file => {
-                const stat = fs.statSync(path.join(__dirname, file));
-                console.log(`  ${stat.isDirectory() ? '📁' : '📄'} ${file}`);
-            });
+            function listDirectory(dir, prefix = '') {
+                const items = fs.readdirSync(dir);
+                items.forEach(item => {
+                    const fullPath = path.join(dir, item);
+                    const relativePath = path.relative(__dirname, fullPath);
+                    const stat = fs.statSync(fullPath);
+                    
+                    if (stat.isDirectory()) {
+                        console.log(`${prefix}📁 ${relativePath}/`);
+                        // Only go one level deep to avoid too much output
+                        if (prefix === '') {
+                            listDirectory(fullPath, '  ');
+                        }
+                    } else {
+                        const sizeKB = (stat.size / 1024).toFixed(1);
+                        console.log(`${prefix}📄 ${relativePath} (${sizeKB}KB)`);
+                    }
+                });
+            }
+            
+            listDirectory(__dirname);
         } catch (err) {
             console.error('❌ Error listing files:', err);
         }
+        
+        // Test critical files
+        const criticalFiles = ['index.html', 'css/styles.css', 'js/app.js', 'js/recipes-data.js'];
+        console.log('\n🔍 Testing critical files:');
+        criticalFiles.forEach(file => {
+            const fullPath = path.join(__dirname, file);
+            const exists = fs.existsSync(fullPath);
+            console.log(`${exists ? '✅' : '❌'} ${file} -> ${fullPath}`);
+        });
     }
 });
