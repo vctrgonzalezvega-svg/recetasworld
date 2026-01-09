@@ -538,6 +538,286 @@ server.listen(PORT, '0.0.0.0', () => {
             resenas: 35
         });
         
+        // ========== MÁS DESAYUNOS ==========
+        recipes.push({
+            id: nextRecipeId++,
+            nombre: 'Croissants Franceses',
+            pais: 'Francia',
+            tiempo: 180,
+            categorias: ['Francesa', 'Desayuno'],
+            ingredientes: ['Harina', 'Mantequilla', 'Levadura', 'Leche', 'Sal'],
+            instrucciones: ['Preparar masa', 'Laminar mantequilla', 'Plegar', 'Hornear'],
+            imagen: 'img/croissants-franceses.svg',
+            calificacion: 4.6,
+            resenas: 20
+        });
+        
+        recipes.push({
+            id: nextRecipeId++,
+            nombre: 'Chilaquiles Rojos',
+            pais: 'México',
+            tiempo: 20,
+            categorias: ['Mexicana', 'Desayuno'],
+            ingredientes: ['Tortillas', 'Salsa roja', 'Queso', 'Crema', 'Cebolla'],
+            instrucciones: ['Freír tortillas', 'Calentar salsa', 'Mezclar', 'Servir con queso'],
+            imagen: 'img/chilaquiles-rojos.svg',
+            calificacion: 4.5,
+            resenas: 22
+        });
+        
+        recipes.push({
+            id: nextRecipeId++,
+            nombre: 'Muffins de Arándanos',
+            pais: 'Estados Unidos',
+            tiempo: 35,
+            categorias: ['Americana', 'Desayuno'],
+            ingredientes: ['Harina', 'Arándanos', 'Huevos', 'Leche', 'Azúcar'],
+            instrucciones: ['Mezclar secos', 'Combinar líquidos', 'Agregar arándanos', 'Hornear'],
+            imagen: 'img/muffins-arandanos.svg',
+            calificacion: 4.2,
+            resenas: 11
+        });
+        
+        recipes.push({
+            id: nextRecipeId++,
+            nombre: 'Tostadas de Aguacate',
+            pais: 'Australia',
+            tiempo: 10,
+            categorias: ['Saludable', 'Desayuno'],
+            ingredientes: ['Pan integral', 'Aguacate', 'Limón', 'Sal', 'Tomate'],
+            instrucciones: ['Tostar pan', 'Machacar aguacate', 'Sazonar', 'Servir'],
+            imagen: 'img/tostadas-aguacate.svg',
+            calificacion: 4.0,
+            resenas: 13
+        });
+        
+        // ========== MÁS COMIDAS ==========
+        recipes.push({
+            id: nextRecipeId++,
+            nombre: 'Lasaña de Carne',
+            pais: 'Italia',
+            tiempo: 90,
+            categorias: ['Italiana', 'Comida'],
+            ingredientes: ['Pasta lasaña', 'Carne molida', 'Salsa tomate', 'Queso', 'Bechamel'],
+            instrucciones: ['Preparar boloñesa', 'Hacer bechamel', 'Armar capas', 'Hornear'],
+            imagen: 'img/lasana-carne.svg',
+            calificacion: 4.6,
+            resenas: 25
+        });
+        
+        recipes.push({
+            id: nextRecipeId++,
+            nombre: 'Paella Valenciana',
+            pais: 'España',
+            tiempo: 60,
+            categorias: ['Española', 'Comida'],
+            ingredientes: ['Arroz', 'Pollo', 'Conejo', 'Judías', 'Azafrán'],
+            instrucciones: ['Sofreír carnes', 'Agregar arroz', 'Añadir caldo', 'Cocinar sin remover'],
+            imagen: 'img/paella-valenciana.svg',
+            calificacion: 4.7,
+            resenas: 28
+        });
+        
+        recipes.push({
+            id: nextRecipeId++,
+            nombre: 'Pad Thai',
+            pais: 'Tailandia',
+            tiempo: 25,
+            categorias: ['Tailandesa', 'Comida'],
+            ingredientes: ['Fideos de arroz', 'Camarones', 'Huevo', 'Brotes soja', 'Salsa tamarindo'],
+            instrucciones: ['Remojar fideos', 'Saltear ingredientes', 'Mezclar con salsa', 'Servir'],
+            imagen: 'img/pad-thai.svg',
+            calificacion: 4.4,
+            resenas: 19
+        });
+        
+        // ========== MÁS CENAS ==========
+        recipes.push({
+            id: nextRecipeId++,
+            nombre: 'Hamburguesa Clásica',
+            pais: 'Estados Unidos',
+            tiempo: 20,
+            categorias: ['Americana', 'Cena'],
+            ingredientes: ['Carne molida', 'Pan hamburguesa', 'Lechuga', 'Tomate', 'Queso'],
+            instrucciones: ['Formar hamburguesas', 'Cocinar plancha', 'Tostar pan', 'Armar'],
+            imagen: 'img/hamburguesa-clasica.svg',
+            calificacion: 4.2,
+            resenas: 30
+        });
+        
+        recipes.push({
+            id: nextRecipeId++,
+            nombre: 'Ramen Japonés',
+            pais: 'Japón',
+            tiempo: 40,
+            categorias: ['Japonesa', 'Cena'],
+            ingredientes: ['Fideos ramen', 'Caldo hueso', 'Huevo', 'Chashu', 'Nori'],
+            instrucciones: ['Preparar caldo', 'Cocinar fideos', 'Preparar toppings', 'Montar bowl'],
+            imagen: 'img/ramen-japones.svg',
+            calificacion: 4.5,
+            resenas: 19
+        });
+        
+        recipes.push({
+            id: nextRecipeId++,
+            nombre: 'Fish and Chips',
+            pais: 'Reino Unido',
+            tiempo: 30,
+            categorias: ['Británica', 'Cena'],
+            ingredientes: ['Pescado blanco', 'Papas', 'Harina', 'Cerveza', 'Aceite'],
+            instrucciones: ['Preparar masa cerveza', 'Cortar papas', 'Freír pescado', 'Servir'],
+            imagen: 'img/fish-chips.svg',
+            calificacion: 4.1,
+            resenas: 16
+        });
+        
+        // ========== POSTRES ==========
+        recipes.push({
+            id: nextRecipeId++,
+            nombre: 'Tiramisú',
+            pais: 'Italia',
+            tiempo: 240,
+            categorias: ['Italiana', 'Postre'],
+            ingredientes: ['Mascarpone', 'Café', 'Bizcochos', 'Huevos', 'Cacao'],
+            instrucciones: ['Preparar crema', 'Remojar bizcochos', 'Armar capas', 'Refrigerar'],
+            imagen: 'img/tiramisu.svg',
+            calificacion: 4.7,
+            resenas: 28
+        });
+        
+        recipes.push({
+            id: nextRecipeId++,
+            nombre: 'Cheesecake',
+            pais: 'Estados Unidos',
+            tiempo: 300,
+            categorias: ['Americana', 'Postre'],
+            ingredientes: ['Queso crema', 'Galletas', 'Azúcar', 'Huevos', 'Vainilla'],
+            instrucciones: ['Hacer base', 'Preparar mezcla', 'Hornear baño maría', 'Enfriar'],
+            imagen: 'img/cheesecake.svg',
+            calificacion: 4.6,
+            resenas: 24
+        });
+        
+        recipes.push({
+            id: nextRecipeId++,
+            nombre: 'Flan Napolitano',
+            pais: 'México',
+            tiempo: 180,
+            categorias: ['Mexicana', 'Postre'],
+            ingredientes: ['Leche condensada', 'Leche evaporada', 'Huevos', 'Azúcar', 'Vainilla'],
+            instrucciones: ['Hacer caramelo', 'Mezclar ingredientes', 'Hornear baño maría', 'Enfriar'],
+            imagen: 'img/flan-napolitano.svg',
+            calificacion: 4.4,
+            resenas: 21
+        });
+        
+        // ========== MÁS BEBIDAS ==========
+        recipes.push({
+            id: nextRecipeId++,
+            nombre: 'Margarita',
+            pais: 'México',
+            tiempo: 3,
+            categorias: ['Mexicana', 'Bebida'],
+            ingredientes: ['Tequila', 'Triple sec', 'Jugo limón', 'Sal', 'Hielo'],
+            instrucciones: ['Escarchar copa', 'Mezclar ingredientes', 'Servir con hielo'],
+            imagen: 'img/margarita.svg',
+            calificacion: 4.4,
+            resenas: 21
+        });
+        
+        recipes.push({
+            id: nextRecipeId++,
+            nombre: 'Agua de Jamaica',
+            pais: 'México',
+            tiempo: 15,
+            categorias: ['Mexicana', 'Bebida'],
+            ingredientes: ['Flor jamaica', 'Agua', 'Azúcar', 'Limón'],
+            instrucciones: ['Hervir agua', 'Agregar jamaica', 'Endulzar', 'Servir fría'],
+            imagen: 'img/agua-jamaica.svg',
+            calificacion: 4.1,
+            resenas: 14
+        });
+        
+        recipes.push({
+            id: nextRecipeId++,
+            nombre: 'Smoothie de Frutas',
+            pais: 'Tropical',
+            tiempo: 8,
+            categorias: ['Saludable', 'Bebida'],
+            ingredientes: ['Mango', 'Piña', 'Plátano', 'Yogurt', 'Miel'],
+            instrucciones: ['Pelar frutas', 'Licuar todo', 'Ajustar consistencia', 'Servir'],
+            imagen: 'img/smoothie-frutas.svg',
+            calificacion: 4.2,
+            resenas: 15
+        });
+        
+        // ========== BOTANAS Y ENTRADAS ==========
+        recipes.push({
+            id: nextRecipeId++,
+            nombre: 'Hummus',
+            pais: 'Líbano',
+            tiempo: 15,
+            categorias: ['Árabe', 'Botana'],
+            ingredientes: ['Garbanzos', 'Tahini', 'Limón', 'Ajo', 'Aceite oliva'],
+            instrucciones: ['Procesar garbanzos', 'Agregar tahini', 'Sazonar', 'Servir'],
+            imagen: 'img/hummus.svg',
+            calificacion: 4.2,
+            resenas: 18
+        });
+        
+        recipes.push({
+            id: nextRecipeId++,
+            nombre: 'Nachos con Queso',
+            pais: 'México',
+            tiempo: 15,
+            categorias: ['Mexicana', 'Botana'],
+            ingredientes: ['Totopos', 'Queso cheddar', 'Jalapeños', 'Crema', 'Guacamole'],
+            instrucciones: ['Calentar totopos', 'Derretir queso', 'Agregar jalapeños', 'Servir'],
+            imagen: 'img/nachos-queso.svg',
+            calificacion: 4.3,
+            resenas: 26
+        });
+        
+        // ========== RÁPIDAS Y ECONÓMICAS ==========
+        recipes.push({
+            id: nextRecipeId++,
+            nombre: 'Quesadillas',
+            pais: 'México',
+            tiempo: 10,
+            categorias: ['Mexicana', 'Rápida', 'Económica'],
+            ingredientes: ['Tortillas', 'Queso', 'Jamón', 'Mantequilla'],
+            instrucciones: ['Rellenar tortillas', 'Cocinar en sartén', 'Voltear', 'Servir caliente'],
+            imagen: 'img/quesadillas.svg',
+            calificacion: 4.1,
+            resenas: 32
+        });
+        
+        recipes.push({
+            id: nextRecipeId++,
+            nombre: 'Pasta con Mantequilla',
+            pais: 'Italia',
+            tiempo: 12,
+            categorias: ['Italiana', 'Rápida', 'Económica'],
+            ingredientes: ['Pasta', 'Mantequilla', 'Queso parmesano', 'Sal', 'Pimienta'],
+            instrucciones: ['Cocinar pasta', 'Derretir mantequilla', 'Mezclar', 'Agregar queso'],
+            imagen: 'img/pasta-mantequilla.svg',
+            calificacion: 3.9,
+            resenas: 24
+        });
+        
+        recipes.push({
+            id: nextRecipeId++,
+            nombre: 'Huevos Revueltos',
+            pais: 'Universal',
+            tiempo: 5,
+            categorias: ['Universal', 'Rápida', 'Económica'],
+            ingredientes: ['Huevos', 'Mantequilla', 'Sal', 'Pimienta'],
+            instrucciones: ['Batir huevos', 'Calentar sartén', 'Cocinar revolviendo', 'Servir'],
+            imagen: 'img/huevos-revueltos.svg',
+            calificacion: 3.8,
+            resenas: 45
+        });
+        
         saveRecipes();
         console.log(`✅ Added ${recipes.length} comprehensive recipes to database`);
     }
