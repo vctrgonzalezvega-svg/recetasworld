@@ -3,98 +3,73 @@ const fs = require('fs');
 const path = require('path');
 
 const PORT = process.env.PORT || 3000;
+const NODE_ENV = process.env.NODE_ENV || 'development';
 
 console.log('Starting RecetasWorld server...');
+console.log(`🌍 Environment: ${NODE_ENV}`);
+console.log(`📁 Working directory: ${__dirname}`);
 
-// Complete recipe database integrated directly
-const recipesDatabase = [
-    {
-        id: 1,
-        nombre: "Pancakes americanos",
-        pais: "Estados Unidos",
-        imagen: "🥞",
-        tiempo: 30,
-        categorias: ["desayunos", "rapidas", "baratas"],
-        ingredientes: [
-            { nombre: "Harina de trigo", cantidad: "200g", icono: "🌾" },
-            { nombre: "Azúcar", cantidad: "30g", icono: "🍬" },
-            { nombre: "Polvo para hornear", cantidad: "10g", icono: "⚪" },
-            { nombre: "Sal", cantidad: "2g", icono: "🧂" },
-            { nombre: "Leche", cantidad: "240ml", icono: "🥛" },
-            { nombre: "Huevo", cantidad: "1", icono: "🥚" },
-            { nombre: "Aceite vegetal", cantidad: "30ml", icono: "🛢️" },
-            { nombre: "Vainilla", cantidad: "5ml", icono: "🌸" },
-            { nombre: "Mantequilla", cantidad: "10g", icono: "🧈" }
-        ],
-        instrucciones: [
-            "Mezcla los ingredientes secos: harina, azúcar, polvo para hornear y sal",
-            "En otro recipiente, bate los ingredientes líquidos: leche, huevo, aceite y vainilla",
-            "Vierte la mezcla líquida en los secos y mezcla suavemente",
-            "Deja reposar 5 minutos",
-            "Calienta una sartén a fuego medio con mantequilla",
-            "Vierte 1/4 de taza de mezcla por pancake",
-            "Cocina 2-3 minutos hasta que aparezcan burbujas, luego voltea",
-            "Cocina 1-2 minutos más del otro lado",
-            "Sirve con miel de maple, mantequilla y fruta fresca"
-        ],
-        calificacion: 4.8,
-        resenas: 125
-    },
-    {
-        id: 2,
-        nombre: "Tacos al Pastor",
-        pais: "México",
-        imagen: "🌮",
-        tiempo: 35,
-        categorias: ["comidas", "rapidas", "baratas"],
-        ingredientes: [
-            { nombre: "Carne de cerdo", cantidad: "600g", icono: "🥩" },
-            { nombre: "Piña", cantidad: "½ pieza", icono: "🍍" },
-            { nombre: "Cebolla", cantidad: "3 piezas", icono: "🧅" },
-            { nombre: "Cilantro", cantidad: "al gusto", icono: "🌿" },
-            { nombre: "Limón", cantidad: "2", icono: "🍋" },
-            { nombre: "Tortillas de maíz", cantidad: "12", icono: "🌮" },
-            { nombre: "Achiote", cantidad: "3 cucharadas", icono: "🌶️" }
-        ],
-        instrucciones: [
-            "Marina la carne en achiote, vinagre, sal y especias",
-            "Cocina la carne marinada en una sartén caliente",
-            "Coloca piña en los últimos minutos de cocción",
-            "Calienta las tortillas",
-            "Coloca la carne en las tortillas",
-            "Decora con cebolla picada, cilantro y limón"
-        ],
-        calificacion: 4.8,
-        resenas: 289
-    },
-    {
-        id: 3,
-        nombre: "Spaghetti Carbonara",
-        pais: "Italia",
-        imagen: "🍝",
-        tiempo: 20,
-        categorias: ["comidas", "rapidas"],
-        ingredientes: [
-            { nombre: "Espagueti", cantidad: "400g", icono: "🍝" },
-            { nombre: "Guanciale o Panceta", cantidad: "150g", icono: "🥓" },
-            { nombre: "Huevo", cantidad: "4", icono: "🥚" },
-            { nombre: "Queso Pecorino", cantidad: "100g", icono: "🧀" },
-            { nombre: "Pimienta negra", cantidad: "al gusto", icono: "⚫" },
-            { nombre: "Sal", cantidad: "al gusto", icono: "🧂" }
-        ],
-        instrucciones: [
-            "Cocina el espagueti según las instrucciones",
-            "Fríe el guanciale hasta que esté crujiente",
-            "Bate los huevos con queso y pimienta",
-            "Escurre la pasta dejando agua de cocción",
-            "Mezcla pasta caliente con el guanciale",
-            "Retira del fuego y agrega la mezcla de huevo",
-            "Revuelve constantemente para crear salsa cremosa"
-        ],
-        calificacion: 4.7,
-        resenas: 234
+// Load complete recipe database from external file
+let recipesDatabase = [];
+
+// Function to load recipes from js/recipes-data.js
+function loadRecipesDatabase() {
+    try {
+        // Try to load from recipes-data.json first
+        if (fs.existsSync(path.join(__dirname, 'recipes-data.json'))) {
+            const jsonData = fs.readFileSync(path.join(__dirname, 'recipes-data.json'), 'utf8');
+            recipesDatabase = JSON.parse(jsonData);
+            console.log(`📚 Loaded ${recipesDatabase.length} recipes from recipes-data.json`);
+            return recipesDatabase;
+        }
+        
+        // Fallback: try to load from js/recipes-data.js by reading and parsing
+        if (fs.existsSync(path.join(__dirname, 'js/recipes-data.js'))) {
+            const jsContent = fs.readFileSync(path.join(__dirname, 'js/recipes-data.js'), 'utf8');
+            
+            // Extract the recipesDatabase array from the JS file
+            const match = jsContent.match(/const recipesDatabase = (\[[\s\S]*?\]);/);
+            if (match) {
+                // Use eval to parse the array (safe in this controlled environment)
+                recipesDatabase = eval(match[1]);
+                console.log(`📚 Loaded ${recipesDatabase.length} recipes from js/recipes-data.js`);
+                return recipesDatabase;
+            }
+        }
+        
+        // If no external files found, use minimal fallback
+        console.log('⚠️ No recipe database files found, using minimal fallback');
+        recipesDatabase = [
+            {
+                id: 1,
+                nombre: "Pancakes americanos",
+                pais: "Estados Unidos",
+                imagen: "🥞",
+                tiempo: 30,
+                categorias: ["desayunos", "rapidas", "baratas"],
+                ingredientes: [
+                    { nombre: "Harina de trigo", cantidad: "200g", icono: "🌾" },
+                    { nombre: "Azúcar", cantidad: "30g", icono: "🍬" },
+                    { nombre: "Leche", cantidad: "240ml", icono: "🥛" },
+                    { nombre: "Huevo", cantidad: "1", icono: "🥚" }
+                ],
+                instrucciones: [
+                    "Mezcla los ingredientes secos",
+                    "Añade los líquidos",
+                    "Cocina en sartén caliente"
+                ],
+                calificacion: 4.8,
+                resenas: 125
+            }
+        ];
+        
+    } catch (error) {
+        console.error('❌ Error loading recipes database:', error);
+        recipesDatabase = [];
     }
-];
+    
+    return recipesDatabase;
+}
 
 // Simple persistent storage using JSON files
 let recipes = [];
@@ -194,8 +169,14 @@ const server = http.createServer((req, res) => {
     if (method === 'GET' && !pathname.startsWith('/api/')) {
         let filePath = path.join(__dirname, pathname === '/' ? 'index.html' : pathname);
         
+        // Log for debugging in production
+        if (NODE_ENV === 'production') {
+            console.log(`📁 Static request: ${pathname} -> ${filePath}`);
+        }
+        
         // Security check
         if (!filePath.startsWith(__dirname)) {
+            console.log(`❌ Security check failed: ${filePath}`);
             sendResponse(res, 403, { error: 'Forbidden' });
             return;
         }
@@ -203,20 +184,43 @@ const server = http.createServer((req, res) => {
         if (fs.existsSync(filePath) && fs.statSync(filePath).isFile()) {
             const ext = path.extname(filePath);
             const contentTypes = {
-                '.html': 'text/html',
-                '.js': 'application/javascript',
-                '.css': 'text/css',
+                '.html': 'text/html; charset=utf-8',
+                '.js': 'application/javascript; charset=utf-8',
+                '.css': 'text/css; charset=utf-8',
                 '.json': 'application/json',
                 '.png': 'image/png',
                 '.jpg': 'image/jpeg',
+                '.jpeg': 'image/jpeg',
                 '.gif': 'image/gif',
-                '.svg': 'image/svg+xml'
+                '.svg': 'image/svg+xml',
+                '.ico': 'image/x-icon',
+                '.woff': 'font/woff',
+                '.woff2': 'font/woff2',
+                '.ttf': 'font/ttf',
+                '.eot': 'application/vnd.ms-fontobject'
             };
             
             const contentType = contentTypes[ext] || 'text/plain';
-            const content = fs.readFileSync(filePath);
-            sendResponse(res, 200, content, contentType);
+            
+            try {
+                const content = fs.readFileSync(filePath);
+                res.writeHead(200, {
+                    'Content-Type': contentType,
+                    'Access-Control-Allow-Origin': '*',
+                    'Cache-Control': NODE_ENV === 'production' ? 'public, max-age=86400' : 'no-cache'
+                });
+                res.end(content);
+                
+                if (NODE_ENV === 'production') {
+                    console.log(`✅ Served: ${pathname} (${contentType})`);
+                }
+            } catch (err) {
+                console.error('❌ Error reading file:', err);
+                sendResponse(res, 500, { error: 'Internal server error' });
+            }
         } else {
+            console.log(`❌ File not found: ${filePath}`);
+            console.log(`📁 Directory contents:`, fs.readdirSync(__dirname).slice(0, 10));
             sendResponse(res, 404, { error: 'File not found' });
         }
         return;
@@ -225,6 +229,7 @@ const server = http.createServer((req, res) => {
     // API Routes
     if (pathname.startsWith('/api/')) {
         if (pathname === '/api/recipes' && method === 'GET') {
+            console.log(`📊 API: Serving ${recipes.length} recipes`);
             sendResponse(res, 200, { recetas: recipes });
             return;
         }
@@ -243,11 +248,23 @@ const server = http.createServer((req, res) => {
                     };
                     recipes.unshift(recipe);
                     saveRecipes();
+                    console.log(`📝 API: Created recipe "${recipe.nombre}" (ID: ${recipe.id})`);
                     sendResponse(res, 201, { ok: true, receta: recipe });
                 } catch (err) {
-                    console.error('Error creating recipe:', err);
+                    console.error('❌ API Error creating recipe:', err);
                     sendResponse(res, 400, { ok: false, error: 'Invalid JSON' });
                 }
+            });
+            return;
+        }
+        
+        // Health check endpoint for Render
+        if (pathname === '/api/health' && method === 'GET') {
+            sendResponse(res, 200, { 
+                status: 'ok', 
+                recipes: recipes.length,
+                environment: NODE_ENV,
+                timestamp: new Date().toISOString()
             });
             return;
         }
@@ -259,19 +276,29 @@ const server = http.createServer((req, res) => {
 
 server.listen(PORT, '0.0.0.0', () => {
     console.log(`✅ RecetasWorld server running on port ${PORT}`);
-    console.log(`🌐 Frontend available at: http://localhost:${PORT}`);
-    console.log(`🔗 API available at: http://localhost:${PORT}/api/`);
+    console.log(`🌐 Environment: ${NODE_ENV}`);
+    
+    if (NODE_ENV === 'production') {
+        console.log(`🚀 Production server ready`);
+        console.log(`📁 Serving static files from: ${__dirname}`);
+    } else {
+        console.log(`🔧 Development server ready`);
+        console.log(`🌐 Frontend available at: http://localhost:${PORT}`);
+        console.log(`�d API available at: http://localhost:${PORT}/api/`);
+    }
+    
     console.log(`📁 Working directory: ${__dirname}`);
     
     // Load existing data
     loadData();
     
-    // If no data exists, add complete recipe database
-    if (recipes.length === 0) {
-        console.log('📝 Loading complete recipe database...');
-        
-        // Use the complete recipe database integrated above
-        recipes = [...recipesDatabase];
+    // Load complete recipe database
+    console.log('📝 Loading complete recipe database...');
+    const completeDatabase = loadRecipesDatabase();
+    
+    // If no data exists in persistent storage, use complete database
+    if (recipes.length === 0 && completeDatabase.length > 0) {
+        recipes = [...completeDatabase];
         
         // Update nextRecipeId
         if (recipes.length > 0) {
@@ -282,5 +309,23 @@ server.listen(PORT, '0.0.0.0', () => {
         
         // Save to file for persistence
         saveRecipes();
+    } else if (recipes.length > 0) {
+        console.log(`✅ Using ${recipes.length} existing recipes from persistent storage`);
+    } else {
+        console.log('⚠️ No recipes available - check recipe database files');
+    }
+    
+    // List available files for debugging in production
+    if (NODE_ENV === 'production') {
+        console.log('📂 Available files:');
+        try {
+            const files = fs.readdirSync(__dirname);
+            files.forEach(file => {
+                const stat = fs.statSync(path.join(__dirname, file));
+                console.log(`  ${stat.isDirectory() ? '📁' : '📄'} ${file}`);
+            });
+        } catch (err) {
+            console.error('❌ Error listing files:', err);
+        }
     }
 });
