@@ -1941,6 +1941,8 @@ class RecipesApp {
                     const data = await response.json();
                     const apiRecipes = Array.isArray(data.recetas) ? data.recetas : [];
                     allRecipes = [...apiRecipes];
+                    console.log(`📡 API devolvió ${apiRecipes.length} recetas`);
+                    console.log(`📡 Primeras 5 recetas de API:`, apiRecipes.slice(0, 5).map(r => r.nombre));
                     this.debugLog(`📡 Cargadas ${apiRecipes.length} recetas desde API`);
                 }
             } catch (err) {
@@ -1956,6 +1958,7 @@ class RecipesApp {
                         const existingIds = new Set(allRecipes.map(r => String(r.id)));
                         const uniqueLocalRecipes = localRecipes.filter(r => !existingIds.has(String(r.id)));
                         allRecipes = [...allRecipes, ...uniqueLocalRecipes];
+                        console.log(`💾 LocalStorage tenía ${localRecipes.length} recetas, agregadas ${uniqueLocalRecipes.length} únicas`);
                         this.debugLog(`💾 Agregadas ${uniqueLocalRecipes.length} recetas únicas desde localStorage`);
                     }
                 }
@@ -1973,6 +1976,7 @@ class RecipesApp {
                 const existingIds = new Set(allRecipes.map(r => String(r.id)));
                 const uniqueJsonRecipes = jsonRecipes.filter(r => !existingIds.has(String(r.id)));
                 allRecipes = [...allRecipes, ...uniqueJsonRecipes];
+                console.log(`📄 data/recipes.json tenía ${jsonRecipes.length} recetas, agregadas ${uniqueJsonRecipes.length} únicas`);
                 this.debugLog(`📄 Agregadas ${uniqueJsonRecipes.length} recetas únicas desde data/recipes.json`);
             } catch (err) {
                 this.debugLog('⚠️ Error cargando data/recipes.json: ' + (err?.message || String(err)));
@@ -1981,13 +1985,15 @@ class RecipesApp {
             // 4. Último fallback: recipesDatabase
             if (allRecipes.length === 0 && typeof recipesDatabase !== 'undefined' && Array.isArray(recipesDatabase)) {
                 allRecipes = [...recipesDatabase];
+                console.log(`📚 Usando recipesDatabase: ${recipesDatabase.length} recetas`);
                 this.debugLog(`📚 Usando recipesDatabase como último recurso: ${recipesDatabase.length} recetas`);
             }
         }
         
         // Asignar todas las recetas combinadas
         this.recipes = allRecipes;
-        console.log(`✅ Total de recetas cargadas: ${this.recipes.length}`);
+        console.log(`✅ TOTAL FINAL: ${this.recipes.length} recetas cargadas`);
+        console.log(`📋 Lista de todas las recetas:`, this.recipes.map(r => r.nombre));
         
         if (this.recipes.length === 0) {
             this.debugLog('❌ No se pudieron cargar recetas desde ninguna fuente');
@@ -3130,8 +3136,13 @@ class RecipesApp {
         this.currentCategory = null;
         this.lastSearchQuery = '';
         
+        console.log(`🏠 showHome() iniciado - this.recipes.length = ${this.recipes.length}`);
+        
         // Mostrar TODAS las recetas ordenadas por preferencias del usuario
         const allRecipesPersonalized = this.getAllRecipesPersonalized();
+        
+        console.log(`🏠 getAllRecipesPersonalized() devolvió ${allRecipesPersonalized.length} recetas`);
+        console.log(`🏠 Primeras 10 recetas:`, allRecipesPersonalized.slice(0, 10).map(r => r.nombre));
         
         document.getElementById('sectionTitle').textContent = 'Todas las Recetas - Personalizadas para Ti';
         this.displayRecipes(allRecipesPersonalized);
@@ -7234,7 +7245,8 @@ class RecipesApp {
                 const rdata = await rres.json();
                 const recetasAPI = rdata.recetas || [];
                 allRecipes = [...recetasAPI];
-                console.log(`📡 Cargadas ${recetasAPI.length} recetas desde API`);
+                console.log(`📡 ADMIN: Cargadas ${recetasAPI.length} recetas desde API`);
+                console.log(`📡 ADMIN: Primeras 5 recetas de API:`, recetasAPI.slice(0, 5).map(r => r.nombre));
             }
         } catch (err) { 
             console.error('Error cargando desde API:', err); 
@@ -7249,7 +7261,8 @@ class RecipesApp {
             const uniqueLocalRecipes = recetasLocal.filter(r => !existingIds.has(String(r.id)));
             
             allRecipes = [...allRecipes, ...uniqueLocalRecipes];
-            console.log(`💾 Total de recetas combinadas: ${allRecipes.length} (${uniqueLocalRecipes.length} adicionales desde local)`);
+            console.log(`💾 ADMIN: Total de recetas combinadas: ${allRecipes.length} (${uniqueLocalRecipes.length} adicionales desde local)`);
+            console.log(`📋 ADMIN: Lista completa de recetas:`, allRecipes.map(r => r.nombre));
             
             // Renderizar todas las recetas combinadas
             this.renderAdminRecipes(allRecipes);
